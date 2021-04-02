@@ -16,10 +16,10 @@ let mlController= {
         res.render("productAdd", { title:"Pagina de agregar producto "})
     },
     profile:(req, res) => {
-        res.render(" profile", { title:"Pagina de perfil"})
+        res.render("profile", { title:"Pagina de perfil"})
     },
     profileEdit:(req, res) => {
-        res.render(" profileEdit", { title:"Pagina de edicion de perfil"})
+        res.render("profileEdit", { title:"Pagina de edicion de perfil"})
     },
     searchResult:(req, res) => {
         res.render("searchResult", { title:" Pagina resultado de busquedas"})
