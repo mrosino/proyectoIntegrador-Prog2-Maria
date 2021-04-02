@@ -4,22 +4,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="/images/logo-mercado-liebre.jpg" />
 	
 	<title> Mercado Liebre Argentina</title>
 			<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
 	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="../public/stylesheets/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="../public/stylesheets/app.css">
+	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
-
+ <%- include('./partials/header') %> 
 	
 	<!-- Banner -->
 	<div class="banner">
-		<img src="../public/images/img-home-banner.jpg" alt="Banner de ofertas">
+		<img src="/images/img-home-banner.jpg" alt="Banner de ofertas">
 	
 	</div>
 	<!-- /Banner -->
@@ -33,9 +33,9 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -47,9 +47,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -62,9 +62,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -77,9 +77,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -102,9 +102,9 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -116,9 +116,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -130,9 +130,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -144,9 +144,9 @@
 			</div>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/products">
+					<a href="/ml/products">
 						<figure class="product-box_image">
-							<img src="../public/images/products/default-image.png" alt="cafetera moulinex">
+							<img src="/images/products/default-image.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -160,6 +160,6 @@
 	</div>
 	<!-- /Más comentados -->
 
-
+	<%- include('./partials/footer') %>
 </body>	
 </html>
