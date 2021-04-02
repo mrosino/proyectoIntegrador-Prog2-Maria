@@ -1,3 +1,4 @@
+const http = require('http');
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +10,10 @@ var usersRouter = require('./routes/users');
 var mLiebreRouter = require('./routes/mercadoLiebre')
 
 var app = express();
+
+
+const hostname = '127.0.0.1';
+const port = 3000;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -39,5 +44,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(3000);
 
 module.exports = app;
