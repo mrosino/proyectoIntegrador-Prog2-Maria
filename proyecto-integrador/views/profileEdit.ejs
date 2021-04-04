@@ -25,11 +25,38 @@
 				<h2 class="products-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de edición de datos del perfil de usuario. <br>
-			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos deñ usuario<br>
-			Eliminen estás líneas y coloquen el formulario. <br>
-			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
-			////////////////
+			
+			<form action="" method="post" class="formProfileEdit"><!--  Averiguar de que va el action acá -->
+				<label for="name">
+					Si desea modificar su nombre escribalo aquí
+				</label>
+				<input type="text" name="name" placeholder="Ingrese su nombre"> 
+				<br><br>
+
+				<label for="surname">
+					Si desea modificar su apellido escribalo aquí
+				</label>
+				<input type="text" name="apellido" placeholder="Ingrese su apellido"> 
+				<br><br>
+				<label for="birthday">
+					Si desea modificar su fecha de nacimiento seleccionela aquí
+					<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento"> 
+				</label>
+				<br><br>
+
+				<label for="email">
+					Si desea modificar su dirección de correo electronico escribala aquí
+					<E-mail><input type="email" name="email" placeholder="Ingrese su correo electronico"> </E-mail>
+				</label>
+				
+				<br><br>
+
+				<label for="password">
+					Si desea modificar su contraseña escribala aqui
+					<input type="password" name="password" placeholder="Ingrese su contraseña"> 
+				</label>
+
+			</form>
 			</h2>
 
 
