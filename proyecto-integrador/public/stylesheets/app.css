@@ -11,6 +11,7 @@
   --light-gray: #ebebeb;
   --green: #39b54a;
   --base-font-family:'Raleway', sans-serif;
+  --general-font-family: 'Sanchez', serif;
 }
 
 
@@ -80,6 +81,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
+  font-family: var(--general-font-family);
 }
 
 .search-form {
@@ -130,6 +132,7 @@ hr {
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
+  font-family: var(--general-font-family)
 }
 
 .logout{
