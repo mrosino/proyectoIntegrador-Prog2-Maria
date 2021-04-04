@@ -4,12 +4,12 @@
 
 /*====== Variables ======*/
 :root {
-  --yellow: #EAC926;
-  --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --yellow: #E0C8C8;
+  --rose-ebony: #653E3E;
+  --tuscan-red: #825050;
   --gray: #666666;
-  --light-gray: #ebebeb;
-  --green: #39b54a;
+    --lavander-blush: #F1E4E4;
+  --green: #2d6a4f;
   --base-font-family:'Raleway', sans-serif;
   --hipervinculos-font-family: 'Sanchez', serif;
   --destacados-font-family: 'Kiwi Maru', serif;
@@ -70,14 +70,16 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+background: linear-gradient(165deg, rgba(224,200,200,1) 0%, rgba(241,228,228,1) 100%);
 }
 
 .main-header_home-link,
 .main-header_credit-link {
   display: block;
 }
-
+.logo{
+  width: 100%;
+}
 .main-header_credit-link {
   font-size: 1.5em;
   margin-top: 20px;
@@ -115,7 +117,7 @@ hr {
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
-  background-color: var(--dark-blue);
+  background-color: var(--rose-ebony);
   color: #ffffff;
   font-size: 1.5em;
   border: none;
@@ -126,7 +128,7 @@ hr {
 }
 
 .main-navbar {
-  margin-top: 20px;
+  margin-top: 2px;
   display: none;
 }
 
@@ -275,7 +277,7 @@ hr {
 }
 
 .footer-data i {
-  color: var(--light-blue);
+  color: var(--tuscan-red);
   font-size: 3.5em;
 }
 
@@ -375,7 +377,7 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--light-blue);
+  background-color: var(--tuscan-red);
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;
@@ -514,7 +516,7 @@ textarea.form-input {
 
   .left-navbar a:hover,
   .right-navbar a:hover {
-    color: var(--light-blue);
+    color: var(--tuscan-red);
   }
 
   .left-navbar li {
