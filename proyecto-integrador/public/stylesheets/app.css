@@ -12,7 +12,7 @@
   --green: #39b54a;
   --base-font-family:'Raleway', sans-serif;
   --hipervinculos-font-family: 'Sanchez', serif;
-  --destacados-font-family: 
+  --destacados-font-family: 'Kiwi Maru', serif;
 }
 
 
@@ -82,7 +82,7 @@ hr {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
-  font-family: var(--hipervinculo-font-family);
+  font-family: var(--hipervinculos-font-family);
 }
 
 .search-form {
@@ -133,7 +133,7 @@ hr {
 .left-navbar,
 .right-navbar {
   font-size: 1.5em;
-  font-family: var(--hipervinculo-font-family)
+  font-family: var(--hipervinculos-font-family)
 }
 
 .logout{
@@ -176,6 +176,8 @@ hr {
   font-size: 2.4em;
   font-weight: 400;
   color: var(--gray);
+  font-family: var(--destacados-font-family);
+  
 }
 
 .product-box {
@@ -530,5 +532,6 @@ textarea.form-input {
   .footer-data {
     width: 95%;
     margin: auto;
+    font-family: var(--destacados-font-family);
   }
 }
