@@ -92,6 +92,29 @@ background: linear-gradient(165deg, rgba(224,200,200,1) 0%, rgba(241,228,228,1) 
   display: flex;
   align-items: center;
 }
+.formLogin{
+  position: relative;
+  display: flex;
+  
+  align-items: center;
+  min-width: inherit;
+  width: fit-content;
+}  
+.formProductAdd{
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: inherit;
+  width: fit-content;
+}    
+.formRegister{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: inherit;
+  width: fit-content;
+}
 
 .search-form_input {
   border: solid 1px var(--light-gray);
@@ -283,13 +306,13 @@ background: linear-gradient(165deg, rgba(224,200,200,1) 0%, rgba(241,228,228,1) 
 
 .footer-data h2 {
   color: var(--gray);
-  font-size: 2.4em;
+  font-size: 1.5em;
   font-weight: 400;
 }
 
 .footer-data p {
   color: var(--gray);
-  font-size: 1.5em;
+  font-size: 1em;
   font-weight: 300;
 }
 
