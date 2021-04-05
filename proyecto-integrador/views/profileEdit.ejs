@@ -25,18 +25,39 @@
 				<h2 class="products-title typography-title">Editar mi perfil</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			
+			<div class="col-12">
+				<h2 class="products-title typography-title">Datos de cuenta</h2>
+			</div>
 			<form action="" method="post" class="formProfileEdit"><!--  Averiguar de que va el action acá -->
+				<label for="name">
+					Si desea modificar su usuario escribalo aquí
+				</label>
+				<input type="text" name="usuario" placeholder="Ingrese su nuevo usuario"> 
+				<br><br>
+
+				<label for="email">
+					Si desea modificar su email escribalo aquí
+				</label>
+				<E-mail><input type="email" name="email" placeholder="Ingrese su correo electronico"> </E-mail>
+				<br><br>
+				<label for="password">
+					Si desea modificar su contraseña escribala aqui
+					<input type="password" name="password" placeholder="Ingrese su contraseña"> 
+				</label>
+			</form>
+			<div class="col-12">
+				<h2 class="products-title typography-title">Datos de personales</h2>
+			</div>
+			<form action="" method="post" class="formProfileEdit">
 				<label for="name">
 					Si desea modificar su nombre escribalo aquí
 				</label>
-				<input type="text" name="name" placeholder="Ingrese su nombre"> 
+				<input type="text" name="nombre" placeholder="Ingrese su nuevo nombre"> 
 				<br><br>
-
 				<label for="surname">
 					Si desea modificar su apellido escribalo aquí
 				</label>
-				<input type="text" name="apellido" placeholder="Ingrese su apellido"> 
+				<input type="text" name="apellido" placeholder="Ingrese su nuevo apellido"> 
 				<br><br>
 				<label for="birthday">
 					Si desea modificar su fecha de nacimiento seleccionela aquí
@@ -44,19 +65,18 @@
 				</label>
 				<br><br>
 
-				<label for="email">
-					Si desea modificar su dirección de correo electronico escribala aquí
-					<E-mail><input type="email" name="email" placeholder="Ingrese su correo electronico"> </E-mail>
+				<label for="documento">
+					Si desea modificar su documento escribalo aquí
+					<input type="number" name="documento" placeholder="Ingrese su documento"> 
 				</label>
-				
 				<br><br>
-
-				<label for="password">
-					Si desea modificar su contraseña escribala aqui
-					<input type="password" name="password" placeholder="Ingrese su contraseña"> 
+				<label for="telefono">
+					Si desea modificar su telefono escribala aqui
+					<input type="number" name="telefono" placeholder="Ingrese su telefono"> 
 				</label>
-
 			</form>
+			
+
 			</h2>
 
 
