@@ -10,11 +10,24 @@
   --gray: #666666;
     --lavander-blush: #F1E4E4;
   --green: #2d6a4f;
-  --base-font-family:'Raleway', sans-serif;
-  --hipervinculos-font-family: 'Sanchez', serif;
-  --destacados-font-family: 'Kiwi Maru', serif;
-}
+  --base-font-family:'Work Sans', sans-serif;
+  --hipervinculos-font-family: 'Mulish' ;
+  --destacados-font-family: 'Varela Round';
 
+  font-family: 'Varela Round', sans-serif;
+font-family: 'Archivo', sans-serif;
+
+font-family: 'Mulish', sans-serif;
+font-family: 'Nunito', sans-serif;
+font-family: 'Varela Round', sans-serif;
+font-family: 'Work Sans', sans-serif;
+
+}
+.bodyRegister{
+
+  background-image: url(../images/gifs/Diseño\ sin\ título\ \(3\).gif);
+   
+}
 
 /*====== Basics ======*/
 * {
