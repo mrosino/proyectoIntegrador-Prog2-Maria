@@ -496,6 +496,33 @@ background: linear-gradient(165deg, rgba(224,200,200,1) 0%, rgba(241,228,228,1) 
   font-size: 1.7em;
 }
 
+/*====== contacto ======*/
+.nombres{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 5%;
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 2px;
+}
+.ade {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #D6B8B2;
+  text-align: center;
+  
+}
+.mery {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #D6B8B2;
+  text-align: center;
+  
+}
+.pp{
+  border-radius: 50%;
+  width: 200px;
+}
+
 /*====== Formularios ======*/
 .form-label {
   display: inline-block;

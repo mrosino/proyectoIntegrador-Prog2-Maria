@@ -7,6 +7,9 @@ let ramoController= {
     searchResult:(req, res) => {
         res.render("searchResult", { title:" Pagina resultado de busquedas"})
     },
+    contacto:(req, res) => {
+        res.render("contacto", { title:" Pagina muestra con quien contactar del sitio"})
+    },
 
 }
 
