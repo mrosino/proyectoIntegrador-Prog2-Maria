@@ -1,5 +1,5 @@
 
-let mlController= {
+let ramoController= {
     index: (req, res) => {
         res.render("index", { title:"Pagina de inicio"}) 
     },
@@ -10,4 +10,4 @@ let mlController= {
 
 }
 
-module.exports = mlController;
+module.exports = ramoController;
