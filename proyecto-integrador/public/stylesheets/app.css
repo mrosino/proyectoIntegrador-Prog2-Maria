@@ -243,7 +243,6 @@ hr {
 .product-box_data {
   padding: 15px;
   position: relative;
-  display: flex;
   align-items: center;
   flex-wrap: wrap;
   text-align: center;
