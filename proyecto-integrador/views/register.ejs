@@ -22,7 +22,7 @@
 
 		<!-- Rearmado -->
 		<div class="form">
-			
+
 			<div class="form-panel one">
 				<div class="form-header">
 					<h1>Registrarse</h1>
@@ -65,14 +65,15 @@
 							<label for="country">
 								Argentina es el unico pais dispoible
 							</label>
-							<input type="text" value="Argentina">
+							
+							
 						</div>
 
 						<div class="form-group">
 							<label for="province">
 								Seleccione su provincia
 							</label>
-							<select name="provincias" id="provincias">
+							<select name="provincias" id="provincias" class="form-control">
 								<option value="Buenos Aires">Bs. As.</option>
 								<option value="Catamarca">Catamarca</option>
 								<option value="Chaco">Chaco</option>
@@ -110,21 +111,21 @@
 							<label for="gender">
 								Ingrese el genero de identificación
 							</label>
-								<select id="gender">
-									<option>Masculino</option>
-									<option>Femenino</option>
-									<option>Prefiero no elegir</option>
-								</select>
+							<select id="gender" class="form-control">
+								<option>Masculino</option>
+								<option>Femenino</option>
+								<option>Prefiero no elegir</option>
+							</select>
 
-							
+
 						</div>
 						<div class="form-group">
 
 							<label for="birthday">
 								Ingrese su fecha de nacimiento
 							</label>
-								<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento">
-							
+							<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento">
+
 						</div>
 						<div class="form-group">
 
@@ -148,7 +149,7 @@
 
 
 		</div>
-
+		<br><br><br><br><br><br>
 		<%- include('./partials/footer') %>
 </body>
 

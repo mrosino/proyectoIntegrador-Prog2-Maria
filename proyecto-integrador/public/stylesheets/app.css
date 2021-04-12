@@ -169,7 +169,7 @@ justify-content: space-between;
 }
 
 .main-navbar {
-  
+  letter-spacing: 0.06em;
   display: flex;
   flex-direction: column;
   text-align: end;
@@ -325,9 +325,13 @@ justify-content: space-between;
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
-  padding: 20px 0;
-  margin-top: 80px;
+  background-color: rgba(241, 228, 228);
+  padding: 15px 0;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 .footer-data {
@@ -602,7 +606,7 @@ textarea.form-input {
   }
 
   .banner {
-    height: 320px;
+    height: 220px;
   }
 
   .btn-toggle-navbar {
@@ -724,6 +728,7 @@ textarea.form-input {
   justify-content: space-between;
   margin: 0 0 20px;
 }
+
 .form-group:last-child {
   margin: 0;
 }
@@ -736,6 +741,7 @@ textarea.form-input {
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 0.2em;
+  align-items: center;
 }
 .two .form-group label {
   color: #FFFFFF;
