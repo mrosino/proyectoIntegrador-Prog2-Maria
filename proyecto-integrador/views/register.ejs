@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;"/>
+	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;" />
 
 	<title> Ramo Furniture </title>
 	<!-- Font Awesome Stylesheet -->
@@ -17,143 +17,139 @@
 </head>
 
 <body class="bodyRegister">
-	<%- include('./partials/header') %> 
+	<%- include('./partials/header') %>
 
-		
-<!-- Rearmado -->
-<div class="form">
-	<div class="form-toggle"></div>
-	<div class="form-panel one">
-	  <div class="form-header">
-		<h1>Registrarse</h1>
-		<h2>Ingresá tus datos.</h2>
-	  </div>
-	  <div class="form-content">
-		<form>
-			<div class="form-group">
-			<label for="name">
-				Ingrese su Nombre
-				<input type="text" name="name" placeholder="Ingrese su nombre"> 
-			</label>
-			</div>
-			<div class="form-group">
-			
-			<label for="surname">
-				Ingrese su Apellido
-			</label>
-			</div>
-			 <div class="form-group">
-			<input type="text" name="apellido" placeholder="Ingrese su apellido"> 
-			<label for="email">
-				Ingrese su email
-			</label>
-			</div>
-			<div class="form-group">
-			<input type="email" name="email" placeholder="Ingrese su correo electronico"> 
-			
-			<label for="password">
-				Ingrese su clave
-			</label>
-			</div>
-			<div class="form-group">
-			<input type="password" name="password" placeholder="Ingrese su clave">
 
-			<label for="passwordConfirm">
-				Confirme su clave
-			</label>
+		<!-- Rearmado -->
+		<div class="form">
+			<div class="form-toggle"></div>
+			<div class="form-panel one">
+				<div class="form-header">
+					<h1>Registrarse</h1>
+					<h2>Ingresá tus datos.</h2>
+				</div>
+				<div class="form-content">
+					<form>
+						<div class="form-group">
+							<label for="name"> Ingrese su Nombre </label>
+							<input type="text" name="name" placeholder="Ingrese su nombre">
+						</div>
+						<div class="form-group">
+							<label for="surname">
+								Ingrese su Apellido
+							</label>
+							<input type="text" name="apellido" placeholder="Ingrese su apellido">
+						</div>
+						<div class="form-group">
+							<label for="email">
+								Ingrese su email
+							</label>
+							<input type="email" name="email" placeholder="Ingrese su correo electronico">
+						</div>
+						<div class="form-group">
+
+							<label for="password">
+								Ingrese su clave
+							</label>
+							<input type="password" name="password" placeholder="Ingrese su clave">
+						</div>
+						<div class="form-group">
+							<label for="passwordConfirm">
+								Confirme su clave
+							</label>
+							<input type="password" name="passwordConfirm" placeholder="Confirme su clave">
+						</div>
+
+						<div class="form-group">
+
+							<label for="country">
+								Argentina es el unico pais dispoible
+							</label>
+							<input type="text" value="Argentina">
+						</div>
+
+						<div class="form-group">
+							<label for="province">
+								Seleccione su provincia
+							</label>
+							<select name="provincias" id="provincias">
+								<option value="Buenos Aires">Bs. As.</option>
+								<option value="Catamarca">Catamarca</option>
+								<option value="Chaco">Chaco</option>
+								<option value="Chubut">Chubut</option>
+								<option value="Cordoba">Cordoba</option>
+								<option value="Corrientes">Corrientes</option>
+								<option value="Entre Rios">Entre Rios</option>
+								<option value="Formosa">Formosa</option>
+								<option value="Jujuy">Jujuy</option>
+								<option value="La Pampa">La Pampa</option>
+								<option value="La Rioja">La Rioja</option>
+								<option value="Mendoza">Mendoza</option>
+								<option value="Misiones">Misiones</option>
+								<option value="Neuquen">Neuquen</option>
+								<option value="Rio Negro">Rio Negro</option>
+								<option value="Salta">Salta</option>
+								<option value="San Juan">San Juan</option>
+								<option value="San Luis">San Luis</option>
+								<option value="Santa Cruz">Santa Cruz</option>
+								<option value="Santa Fe">Santa Fe</option>
+								<option value="Sgo. del Estero">Sgo. del Estero</option>
+								<option value="Tierra del Fuego">Tierra del Fuego</option>
+								<option value="Tucuman">Tucuman</option>
+							</select>
+
+						</div>
+						<div class="form-group">
+							<label for="document">
+								Ingrese su documento
+							</label>
+							<input type="number" name="document" placeholder="Ingrese su documento">
+						</div>
+						<div class="form-group">
+
+							<label for="gender">
+								Ingrese el genero de identificación
+							</label>
+								<select id="gender">
+									<option>Masculino</option>
+									<option>Femenino</option>
+									<option>Prefiero no elegir</option>
+								</select>
+
+							
+						</div>
+						<div class="form-group">
+
+							<label for="birthday">
+								Ingrese su fecha de nacimiento
+							</label>
+								<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento">
+							
+						</div>
+						<div class="form-group">
+
+							<label for="phone">
+								Ingrese su telefono
+							</label>
+							<input type="number" name="phone" placeholder="Ingrese su telefono">
+						</div>
+
+
+						<div class="form-group">
+							<button type="submit">Registrarse</button>
+						</div>
+					</form>
+				</div>
 			</div>
 
-			<div class="form-group">
-			<input type="password" name="passwordConfirm" placeholder="Confirme su clave"> 
-<br>
-			<label for="country">
-				<br>
-				Argentina es el unico pais dispoible
-				
-			</label>
-
-		
-		<div class="form-group">
-			<label for="province">
-				Seleccione su provincia
-				<select name="provincias" id="provincias">
-	  <option value="Buenos Aires">Bs. As.</option>
-	  <option value="Catamarca">Catamarca</option>
-	  <option value="Chaco">Chaco</option>
-	  <option value="Chubut">Chubut</option>
-	  <option value="Cordoba">Cordoba</option>
-	  <option value="Corrientes">Corrientes</option>
-	  <option value="Entre Rios">Entre Rios</option>
-	  <option value="Formosa">Formosa</option>
-	  <option value="Jujuy">Jujuy</option>
-	  <option value="La Pampa">La Pampa</option>
-	  <option value="La Rioja">La Rioja</option>
-	  <option value="Mendoza">Mendoza</option>
-	  <option value="Misiones">Misiones</option>
-	  <option value="Neuquen">Neuquen</option>
-	  <option value="Rio Negro">Rio Negro</option>
-	  <option value="Salta">Salta</option>
-	  <option value="San Juan">San Juan</option>
-	  <option value="San Luis">San Luis</option>
-	  <option value="Santa Cruz">Santa Cruz</option>
-	  <option value="Santa Fe">Santa Fe</option>
-	  <option value="Sgo. del Estero">Sgo. del Estero</option>
-	  <option value="Tierra del Fuego">Tierra del Fuego</option>
-	 <option value="Tucuman">Tucuman</option>
-	</select>
-			</label>
 		</div>
-		<div class="form-group">
-			<input type="text" name="province" placeholder="Ingrese su provincia"> 
-
-			<label for="document">
-				Ingrese su documento
-			</label>
 		</div>
-		<div class="form-group">
-			<input type="number" name="document" placeholder="Ingrese su documento"> 
-
-			<label for="gender">
-				Ingrese su genero
-					<select id="gender">
-						<option>Masculino</option>
-						<option>Femenino</option>
-						<option>Prefiero no elegir</option>
-					</select>
-					
-			</label>
 		</div>
-		<div class="form-group">
-			<input type="text" name="gender" placeholder= "Ingrese su genero"> 
-			
-			<label for="birthday">
-				Ingrese su fecha de nacimiento
-	
-			</label>
-		</div>
-		<div class="form-group">
-			<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento"> 
-			<label for="phone">
-				Ingrese su telefono
-			</label>
-			</div>
-			<input type="number" name="phone" placeholder="Ingrese su telefono"> 
-
-		  <div class="form-group">
-			<button type="submit">Registrarse</button>
-		  </div>
-		</form>
-	  </div>
-	</div>
-	
-	  </div>
-	</div>
-  </div>
 
 
 		</div>
 
-			<%- include('./partials/footer') %>
+		<%- include('./partials/footer') %>
 </body>
 
 </html>

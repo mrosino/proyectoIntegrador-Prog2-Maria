@@ -1,5 +1,6 @@
 /*====== Fonts ======*/
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 
 /*====== Variables ======*/
@@ -11,7 +12,7 @@
     --lavander-blush: #F1E4E4;
   --green: #2d6a4f;
   --base-font-family:'Work Sans', sans-serif;
-  --hipervinculos-font-family: 'Mulish' ;
+  --hipervinculos-font-family: 'Mulish';
   --destacados-font-family: 'Varela Round';
 
   font-family: 'Varela Round', sans-serif;
@@ -19,8 +20,7 @@ font-family: 'Archivo', sans-serif;
 
 font-family: 'Mulish', sans-serif;
 font-family: 'Nunito', sans-serif;
-font-family: 'Varela Round', sans-serif;
-font-family: 'Work Sans', sans-serif;
+
 
 }
 .bodyRegister{
@@ -84,6 +84,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
+  font-size: 16px;
  
 }
 
@@ -92,13 +93,20 @@ hr {
   display: block;
 }
 .logo{
-  width: 100%;
+  width: 120%;
+
+}
+.primera-linea{
+margin-top: 2;
+display: flex;
+justify-content: space-between;
 }
 .main-header_credit-link {
   font-size: 1.5em;
   margin-top: 20px;
   text-align: center;
   font-family: var(--hipervinculos-font-family);
+  font-weight: bold;
 }
 
 .search-form {
@@ -165,15 +173,20 @@ hr {
 }
 
 .main-navbar {
-  margin-top: 2px;
-  display: none;
-}
-
-.left-navbar,
-.right-navbar {
-  font-size: 1.5em;
+  
+  display: flex;
+  text-align: end;
+  font-size: 1.2em;
   font-family: var(--hipervinculos-font-family)
 }
+
+.main-div{
+
+  padding: 1px;
+ 
+  
+
+} 
 
 .logout{
   background: transparent;
