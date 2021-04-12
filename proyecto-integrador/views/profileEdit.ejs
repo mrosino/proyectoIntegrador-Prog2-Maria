@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;"/>
+	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;" />
 
 	<title> Ramo Furniture </title>
 	<!-- Font Awesome Stylesheet -->
@@ -17,100 +17,82 @@
 </head>
 
 <body>
-	<%- include('./partials/headerLogueado') %> 
-	<!-- Novedades -->
+	<%- include('./partials/headerLogueado') %>
+		<!-- Novedades -->
 
 
 
 
-<!-- Rearmado -->
+		<!-- Rearmado -->
 
+		<div class="form">
 
+			<div class="form-panel one">
+				<div class="form-header">
+					<h1 style="text-align: center;">Cambie su información</h1>
+					<h2>Modifique los datos que desee cambiar a continuación</h2>
+					<h3>Algunos de los datos que no pueden modificarse por cuestiones de seguridad son:
+						<br><br>
+						
+						<ul>
+							<li>Nombre</li>
+							<li>Apellido</li>
+							<li>Fecha de nacimiento</li>
+							<li>Número de documento</li>
+						</ul>
+					</h3>
+					<h3>Por cualquier inconveniente contactarse con soporte para que podamos ayudarlo.</h3>
+				</div>
+				<div class="form-content">
+					<form>
+						<div class="form-group">
+							<label for="name">
+								Si desea modificar su usuario escribalo aquí
+							</label>
+							<input type="text" name="usuario" placeholder="Nuevo usuario">
 
+						</div>
+						<div class="form-group">
+							<label for="email">
+								Si desea modificar su email escribalo aquí
+							</label>
+							<input type="email" name="email" placeholder="Nuevo correo electronico">
 
+						</div>
+						<div class="form-group">
+							<label for="password">
+								Si desea modificar su contraseña escribala aqui
+							</label>
+							<input type="password" name="password" placeholder="Nueva contraseña">
 
+						</div>
 
+						<div class="form-group">
+							<label for="telefono">
+								Si desea modificar su número de telefono escribala aqui
 
+							</label>
+							<input type="number" name="telefono" placeholder="Nuevo número de telefono">
 
+						</div>
+						<div class="form-group">
+							<button type="submit">Enviar</button>
+						</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title typography-title">Editar mi perfil</h2>
+					</form>
+				</div>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<div class="col-12">
-				<h2 class="products-title typography-title">Datos de cuenta</h2>
-			</div>
-			<form action="" method="post" class="formProfileEdit"><!--  Averiguar de que va el action acá -->
-				<label for="name">
-					Si desea modificar su usuario escribalo aquí
-				</label>
-				<input type="text" name="usuario" placeholder="Ingrese su nuevo usuario"> 
-				<br><br>
-
-				<label for="email">
-					Si desea modificar su email escribalo aquí
-				</label>
-				<E-mail><input type="email" name="email" placeholder="Ingrese su correo electronico"> </E-mail>
-				<br><br>
-				<label for="password">
-					Si desea modificar su contraseña escribala aqui
-					<input type="password" name="password" placeholder="Ingrese su contraseña"> 
-				</label>
-			</form>
-			<div class="col-12">
-				<h2 class="products-title typography-title">Datos de personales</h2>
-			</div>
-			<form action="" method="post" class="formProfileEdit">
-				<label for="name">
-					Si desea modificar su nombre escribalo aquí
-				</label>
-				<input type="text" name="nombre" placeholder="Ingrese su nuevo nombre"> 
-				<br><br>
-				<label for="surname">
-					Si desea modificar su apellido escribalo aquí
-				</label>
-				<input type="text" name="apellido" placeholder="Ingrese su nuevo apellido"> 
-				<br><br>
-				<label for="birthday">
-					Si desea modificar su fecha de nacimiento seleccionela aquí
-					<input type="date" name="birthday" placeholder="Ingrese su fecha de nacimiento"> 
-				</label>
-				<br><br>
-
-				<label for="documento">
-					Si desea modificar su documento escribalo aquí
-					<input type="number" name="documento" placeholder="Ingrese su documento"> 
-				</label>
-				<br><br>
-				<label for="telefono">
-					Si desea modificar su telefono escribala aqui
-					<input type="number" name="telefono" placeholder="Ingrese su telefono"> 
-				</label>
-			</form>
-			
-
-			</h2>
+		</div>
 
 
-			<%- include('./partials/footer') %>
+
+
+
+
+
+
+
+		<%- include('./partials/footer') %>
 </body>
 
 </html>
