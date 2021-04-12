@@ -15,11 +15,7 @@
   --hipervinculos-font-family: 'Mulish';
   --destacados-font-family: 'Varela Round';
 
-  font-family: 'Varela Round', sans-serif;
-font-family: 'Archivo', sans-serif;
 
-font-family: 'Mulish', sans-serif;
-font-family: 'Nunito', sans-serif;
 
 
 }
@@ -175,6 +171,7 @@ justify-content: space-between;
 .main-navbar {
   
   display: flex;
+  flex-direction: column;
   text-align: end;
   font-size: 1.2em;
   font-family: var(--hipervinculos-font-family)
@@ -193,6 +190,8 @@ justify-content: space-between;
   border: 0px;
   cursor: pointer;
   font-size: 1em;
+  font-family: var(--hipervinculos-font-family);
+  padding-top: 22px;
 }
 
 .logout:hover{
@@ -207,7 +206,11 @@ justify-content: space-between;
 }
 
 
-
+.saludo{
+  padding-top: 4px;
+  text-align: center;
+  font-family: var(--hipervinculos-font-family)
+}
 /*====== Banner ======*/
 .banner {
   background-image: url(/images/Inspiredinyourhome.png); /*ver ruta */

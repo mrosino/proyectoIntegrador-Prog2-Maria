@@ -16,61 +16,58 @@
 <body>
 	<!-- Header -->
 	<header class="main-header">
+
+
+
 		<div class="container">
-			<div class="row align-items-center">
+			<div class="row align-items-center primera-linea">
 				<div class="col-5 col-md-2">
-					<a href="/ramo" class="main-header_home-link">
-						<img src="/images/ramo-logo.png">
+					<a href="/ramo" class="left-navbar main-header_home-link">
+						<img class="logo" src="/images/ramo-logo.png">
 					</a>
+				
 				</div>
+				
 	
 				<div class="col-7 col-md-6">
-					<form action="" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
+					<form action="/ramo/searchResult" method="GET" class="search-form">
+						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
+							class="search-form_input">
 						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
 					</form>
 				</div>
-	
-				<div class="col-12 col-md-4">
-					<a class="main-header_credit-link">
-						<i class="fas fa-hand-holding-usd"></i>
-						Todas las opiniones en un solo lugar.
+
+				<button class="btn-toggle-navbar">
+					<i class="fas fa-bars"></i>
+				</button>
+				<div class="main-navbar">
+					
+						<div class="main-div">
+				
+					<a href="/ramo/profile" class="saludo">
+						<!-- Reemplzar con link a base de datos user(name) -->	¡Hola Malena Perez! 
 					</a>
-				</div>
-			</div>
-	
-			<button class="btn-toggle-navbar">
-				<i class="fas fa-bars"></i>
-			</button>
-	
-			<nav class="main-navbar">
-				<ul class="left-navbar thypography-hiperlink">
-					<li><a href="/ramo">Todos los productos</a></li>
-					<li><a href="/ramo/productAdd">Cargar productos</a></li>
-				</ul>
-	
-				<ul class="right-navbar">
-					<li><a href="/ramo/profile">
-							Malena Perez <i class="fas fa-user"></i>
-						</a>
-					</li>
-					<li>
+					
 						<form action="" method="post">
+							
 							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+								<a href="/ramo">Cerrar sesión <i class="fas fa-sign-in-alt"></i> 	</a>
 							</button>
+					
 						</form>
-					</li>
-					<!-- Solo deslogueado <li>
-						<a href="/ramo/register">Creá tu cuenta <i class="far fa-address-card"></i>
-						</a>
-					</li>
-					<li>
-						<a href="/ramo/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-					</li> -->
-				</ul>
-			</nav>
+					</div>
+				</div>	
+			
 		</div>
+
+
+
+
+</div>
+
+
+
+
 	</header>
 	<!-- /Header -->
 	
