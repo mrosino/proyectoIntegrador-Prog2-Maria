@@ -12,6 +12,9 @@ let userController={
     profileEdit:(req, res) => {
         res.render("profileEdit", { title:"Pagina de edicion de perfil"})
     },
+    contacto:(req, res) => {
+        res.render("contacto", { title:"Pagina muestra los contactos del sitio"})
+    },
 
 }
 module.exports = userController;

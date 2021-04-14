@@ -7,8 +7,10 @@ router.get('/register', userController.register);
 
 router.get('/login', userController.login);
 
-router.get('/profile', userController.profile); //no anda 
+router.get('/profile', userController.profile);
 
-router.get('/profileEdit', userController.profileEdit); //no anda 
+router.get('/profileEdit', userController.profileEdit); 
+
+router.get('/contacto', userController.contacto); 
 
 module.exports = router;
