@@ -80,7 +80,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  font-size: 16px;
+  font-size: 17px;
  
 }
 
@@ -583,9 +583,18 @@ textarea.form-input {
 
 .foto-perfil{
   border-radius: 50%;
-  width: 150px;
+  width: 300px;
+ 
 }
+.costado{
+  padding-left: 100px;
 
+}
+.addProduct{
+  align-items: center;
+  align-self: center;
+text-align: center;
+}
 .main-title{
   font-size: 25px;
   margin-bottom: 10px;
