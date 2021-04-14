@@ -19,41 +19,48 @@
 <body>
 	<%- include('./partials/headerLogueado') %> 
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title typography-title">Agregar productos</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<form action="" method="post" class="formProductAdd"><!--  Averiguar de que va el action acá -->
-				<label for="name">
-					Nombre del producto
-					 <input type="text" name="name" placeholder="Ingrese el nombre del prodcuto"> 
-				</label>
-				<br><br>
-				<label for="brand">
-					Marca del prdocuto
-					 <input type="text" name="brand" placeholder="Ingrese la marca del prodcuto"> 
-				</label>
-				<br><br>
-				<label for="model">
-					Modelo del producto
-					 <input type="text" name="model" placeholder="Ingrese el modelo del prodcuto"> 
-				</label>
-				<br><br>
-				<label for="caracteristicas">
-					Caracteristicas del producto
-					 <input type="text" name="caracteristicas" placeholder="Ingrese la caracteristicas del prodcuto"> 
-				</label>
-				<br><br>
+			<div class="form">
+				<div class="form-toggle"></div>
+				<div class="form-panel one">
+				  <div class="form-header">
+					<h1>Agregar productos</h1>
+					<h2>Ingresá los datos correspondientes para agregar un nuevo producto a tu cuenta</h2>
+				  </div>
+				  <div class="form-content">
+					<form>
+					  <div class="form-group">
+						<label for="productName">Nombre del producto </label>
+						<input type="text" id="nombre del producto" name="nombre del producto" placeholder="nombre del producto" required="required"/>
+					  </div>
+					  <div class="form-group">
+						<label for="password">Marca del prdocuto</label>
+						<input type="text" id="marca" name="marca" placeholder="marca del producto" required="required"/>
+					  </div>
+					  <div class="form-group">
+						<label for="password">Modelo del producto</label>
+						<input type="text" id="modelo del producto" name="modelo del producto" placeholder="modelo del producto" required="required"/>
+					  </div>
+					  <div class="form-group">
+						<label for="password">Caracteristicas del producto</label>
+						<input type="text" id="caracteristicas del producto" name="caracteristicas del producto" placeholder="caracteristicas del producto" required="required"/>
+					  </div>
+					  <div class="form-group">
+						<button type="submit">cargar imagenes</button>
+					  </div>
+					  <div class="form-group">
+						<label class="form-remember">
+						  <input type="checkbox"/>Aceptar terminos y condiciones 
+					  </div>
+					  <div class="form-group">
+						<button type="submit">Subir producto</button>
+					  </div>
+					</form>
+				  </div>
+				</div>
 				
-
-
-				</form>
-
-		
-			</h2>
+				  </div>
+				</div>
+			  </div>
 
 
 			<%- include('./partials/footer') %>
