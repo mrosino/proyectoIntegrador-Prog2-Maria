@@ -417,8 +417,9 @@ justify-content: space-between;
 
 .product-detail-description {
   padding: 15px 15px 15px 40px;
-  font-size: 1.8em;
-  line-height: 1.5;
+  font-size: 1.5em;
+  /*line-height: 1.5;*/
+  text-align: justify;
 }
 
 .product-detail-price {
@@ -427,7 +428,6 @@ justify-content: space-between;
 }
 .product-detail .form{
   padding: 0 15px;
-  display: flex;
   flex-direction: column;
 }
 .small {
@@ -553,10 +553,10 @@ justify-content: space-between;
 
 .form-input {
   display: block;
-  width: 100%;
+  width: 38%;
   height: 45px;
   margin-bottom: 15px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   border-radius: 8px;
   border: none;
   border: solid 1px var(--gray);
@@ -583,6 +583,7 @@ textarea.form-input {
 
 .foto-perfil{
   border-radius: 50%;
+  width: 150px;
 }
 
 .main-title{
@@ -591,7 +592,7 @@ textarea.form-input {
 }
 
 .btn{
-  background-color: #1259c3;
+  background-color: #B57D7D;
   padding: 10px 20px;
   border-radius: 4px;
   color: #fff;
@@ -681,7 +682,7 @@ textarea.form-input {
   background: #FFFFFF;
   width: 600px;
   border-radius: 4px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  /*box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);*/
   box-sizing: border-box;
   margin: 100px auto 10px;
   overflow: hidden;
