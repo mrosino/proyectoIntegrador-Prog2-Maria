@@ -10,10 +10,12 @@
 	<title> Ramo Furniture </title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/app.css">
+	<script src="../public/javascripts/codepen.js"></script>
 </head>
 
 <body>
@@ -23,47 +25,30 @@
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="products-title typography-title">Resultados de tu búsqueda: <%= search %>
-							<!-- Lograr Urlsearchparams para poder escribir lo que se buscó -->
-					</h2>
+					<div class="empty-icon-container">
+						<div class="animation-container">
+						  <div class="bounce"></div>
+						  <div class="pebble1"></div>
+						  <div class="pebble2"></div>
+						  <div class="pebble3"></div>
+						  <div class="pebble4"></div>
+						  <div class="pebble5"></div>
+						</div>
+						<div>
+							<h2 class="products-title typography-title">Perdón!</h2>
+							<h3 class="products-title typography-title">No encontramos ningun resultado para "<%= search %>" </h3>
+						</div>
+				  
+					  </div>
 				</div>
 				<!-- Show the "ultimos" products -->
 
 
 
+	
+						
 			
-						<div class="form-panel one">
-
-
-							<table class="table table-bordered table-hover">
-							
-								<div class="form-group">
-									<thead>
-										<tr>
-											<th>Nombre</th>
-											<th>Precio</th>
-										</tr>
-									<tbody>
-										<th>
-											<%= search %> de Madera
-
-										</th>
-										<th> $ 15.000</th>
-									</tbody>
-									<tbody>
-
-
-										<th>
-											<%= search %> de Plástico
-										</th>
-										<th> $ 11.000</th>
-									</tbody>
-									</thead>
-								</div>
-							</table>
-						</div>
-				
-			
+					
 
 
 				<%- include('./partials/footer') %>

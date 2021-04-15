@@ -669,7 +669,6 @@ text-align: center;
 
 /* codepen */
 
-
 .bodyLogin {
   background: linear-gradient(45deg, rgba(195, 151, 151) 0%, rgba(241, 228, 228) 100%);
   color: rgba(0, 0, 0, 0.6);
@@ -915,5 +914,103 @@ text-align: center;
 
 .cp-fab {
   background: #FFFFFF !important;
-  color: #B57D7D !important;
+  color: #b57d7d !important;
+}
+
+
+.empty-icon-container{
+  margin:1em auto;
+  text-align:center;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Dosis', sans-serif;
+
+}
+.animation-container{
+  position:relative;
+  display:block;
+  text-align: center;
+  height:100px;
+  width:300px;
+  border-bottom: solid 2px #b57d7d;
+  overflow:hidden;
+}
+.bounce{
+  display: inline-block;
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:40px;
+  height:40px;
+  margin-left: -20px;
+  background-size: contain;
+  animation: bounceAnim 1s cubic-bezier(.63,.09,.75,.46) infinite alternate,
+            spinAnim 3s linear infinite;
+}
+
+@keyframes bounceAnim{
+  0%, 10% { bottom: 50%; }
+
+  100% { bottom: 0%; }
+}
+@keyframes spinAnim{
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pebble1{
+  position:absolute;
+  top:95%;
+  background-color:#b57d7d;
+  width:10px;
+  height:10px;
+  border-radius: 22px 22px 1px 1px;
+  animation: pebblesAnim 1.5s linear infinite;
+}
+.pebble2{
+  position:absolute;
+  top:97%;
+  background-color:#b57d7d;
+  width:5px;
+  height:5px;
+  border-radius: 10px 10px 0px 0px;
+  animation: pebblesAnim 2s linear infinite;
+}
+.pebble3{
+  position:absolute;
+  top:98%;
+  background-color:#b57d7d;
+  width:4px;
+  height:4px;
+  border-radius: 20px 20px 0px 0px;
+  animation: pebblesAnim 3s linear infinite;
+}
+.pebble4{
+  position:absolute;
+  top:93%;
+  background-color:#b57d7d;
+  width:15px;
+  height:20px;
+  border-radius: 20px 20px 2px 2px;
+  animation: pebblesAnim 4s linear infinite;
+}
+.pebble5{
+  position:absolute;
+  top:90%;
+  background-color:#b57d7d;
+  width:20px;
+  height:25px;
+  border-radius: 25px 20px 3px 3px;
+  animation: pebblesAnim 5s linear infinite;
+}
+
+
+@keyframes pebblesAnim{
+  0% { right: -20%; }
+  100% { right: 110%; }
 }
