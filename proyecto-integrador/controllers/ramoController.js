@@ -5,8 +5,10 @@ let ramoController= {
     },
     
     searchResult:(req, res) => {
+        let search = req.query.search;
         res.render("searchResult", 
-        { title:" Pagina resultado de busquedas"})
+        { search,
+            title:" Pagina resultado de busquedas"})
     },
     contacto:(req, res) => {
         res.render("contacto", { title:" Pagina muestra con quien contactar del sitio"})

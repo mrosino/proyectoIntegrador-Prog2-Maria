@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;"/>
+	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;" />
 
 	<title> Ramo Furniture </title>
 	<!-- Font Awesome Stylesheet -->
@@ -17,24 +17,56 @@
 </head>
 
 <body>
-	<%- include('./partials/header') %> 
+	<%- include('./partials/header') %>
 
-	<!-- Novedades -->
-	<div class="container products-wrapper">
-		<div class="row">
-			<div class="col-12">
-				<h2 class="products-title typography-title">Resultados de búsqueda 
-					<!-- Lograr Urlsearchparams para poder escribir lo que se buscó -->
-				</h2>
-			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá van los resultados de búsqueda. <br>
-			Eliminen estás líneas y cosntruyan la página de resultados de búsqueda. <br>
-			////////////////
-			</h2>
+		<!-- Novedades -->
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="products-title typography-title">Resultados de tu búsqueda: <%= search %>
+							<!-- Lograr Urlsearchparams para poder escribir lo que se buscó -->
+					</h2>
+				</div>
+				<!-- Show the "ultimos" products -->
 
 
-			<%- include('./partials/footer') %>
+
+			
+						<div class="form-panel one">
+
+
+							<table class="table table-bordered table-hover">
+							
+								<div class="form-group">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Precio</th>
+										</tr>
+									<tbody>
+										<th>
+											<%= search %> de Madera
+
+										</th>
+										<th> $ 15.000</th>
+									</tbody>
+									<tbody>
+
+
+										<th>
+											<%= search %> de Plástico
+										</th>
+										<th> $ 11.000</th>
+									</tbody>
+									</thead>
+								</div>
+							</table>
+						</div>
+				
+			
+
+
+				<%- include('./partials/footer') %>
 </body>
 
 </html>
