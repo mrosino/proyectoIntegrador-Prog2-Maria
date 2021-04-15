@@ -22,6 +22,7 @@
 	<%- include('./partials/header') %>
 
 		<!-- Novedades -->
+		<div>
 		<div class="container products-wrapper">
 			<div class="row">
 				<div class="col-12">
@@ -34,13 +35,14 @@
 						  <div class="pebble4"></div>
 						  <div class="pebble5"></div>
 						</div>
-						<div>
-							<h2 class="products-title typography-title">Perdón!</h2>
-							<h3 class="products-title typography-title">No encontramos ningun resultado para "<%= search %>" </h3>
+						<div class="empty-icon-container">
+							<h2 class="products-title typography-title result-nulo ">Perdón!</h2>
+							<h3 class="products-title typography-title result-nulo ">Como no encontramos ningun resultado para "<%= search %>", te compartimos productos que creemos que te van a gustar </h3>
 						</div>
 				  
 					  </div>
 				</div>
+			</div>
 				<!-- Show the "ultimos" products -->
 
 

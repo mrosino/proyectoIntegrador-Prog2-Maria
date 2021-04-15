@@ -548,6 +548,15 @@ justify-content: space-between;
   border-radius: 50%;
   width: 200px;
 }
+.r-nulo{
+  align-content: center;
+  text-align: center;
+}
+.result-nulo{
+  color:#b57d7d;
+width: 40%;
+
+}
 
 /*====== Formularios ======*/
 .form-label {
@@ -892,30 +901,8 @@ text-align: center;
   z-index: 40;
   color: #FFFFFF;
 }
-.pen-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 600px;
-  margin: 20px auto 100px;
-}
-.pen-footer a {
-  color: #FFFFFF;
-  font-size: 12px;
-  text-decoration: none;
-  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-.pen-footer a .material-icons {
-  width: 12px;
-  margin: 0 5px;
-  vertical-align: middle;
-  font-size: 12px;
-}
 
-.cp-fab {
-  background: #FFFFFF !important;
-  color: #b57d7d !important;
-}
+
 
 
 .empty-icon-container{
@@ -936,18 +923,7 @@ text-align: center;
   border-bottom: solid 2px #b57d7d;
   overflow:hidden;
 }
-.bounce{
-  display: inline-block;
-  position:absolute;
-  bottom:0;
-  left:50%;
-  width:40px;
-  height:40px;
-  margin-left: -20px;
-  background-size: contain;
-  animation: bounceAnim 1s cubic-bezier(.63,.09,.75,.46) infinite alternate,
-            spinAnim 3s linear infinite;
-}
+
 
 @keyframes bounceAnim{
   0%, 10% { bottom: 50%; }
