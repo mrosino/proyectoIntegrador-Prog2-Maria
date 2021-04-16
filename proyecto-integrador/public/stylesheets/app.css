@@ -172,7 +172,16 @@ justify-content: space-between;
   display: block;
   margin: 20px auto 0;
 }
-
+.todos-prod{
+  width: 230px;
+  text-align: left;
+  font-family: var(--hipervinculos-font-family);
+  letter-spacing: 0.06em;
+  font-size: 1.2em;
+  margin-top: 20px;
+  color: #825050;
+ 
+}
 .main-navbar {
   letter-spacing: 0.06em;
   display: flex;
