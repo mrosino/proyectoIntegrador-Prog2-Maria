@@ -318,7 +318,25 @@ justify-content: space-between;
   align-items: center;
   transition: 300ms;
 }
-
+.no-margin button{
+  outline: none;
+  background: #B57D7D;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  line-height: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
 .noproducts {
   text-align: center
 }
