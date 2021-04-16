@@ -1,6 +1,9 @@
 let productController={
     products:(req, res) => {
-        res.render("products", { title:"Pagina de productos"})
+        id = req.params.id
+        res.render("products", {
+            id,
+            title:"Pagina de productos"})
     },
     productAdd:(req, res) => {
         res.render("productAdd", { title:"Pagina de agregar producto "})

@@ -3,7 +3,7 @@ var router = express.Router();
 
 let productController = require('../controllers/productController');
 
-router.get('/products', productController.products);
+router.get('/products/:id?', productController.products);
 
 router.get('/productAdd', productController.productAdd); //no anda
 
