@@ -554,7 +554,7 @@ justify-content: space-between;
 }
 .result-nulo{
   color:#b57d7d;
-width: 40%;
+width: 60%;
 
 }
 
@@ -911,7 +911,7 @@ text-align: center;
   display:flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Dosis', sans-serif;
+  
 
 }
 .animation-container{

@@ -10,7 +10,7 @@
 	<title> Ramo Furniture </title>
 	<!-- Font Awesome Stylesheet -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	
+
 	<!-- Bootstrap Grid Stylesheet -->
 	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
@@ -23,37 +23,101 @@
 
 		<!-- Novedades -->
 		<div>
-		<div class="container products-wrapper">
-			<div class="row">
-				<div class="col-12">
-					<div class="empty-icon-container">
-						<div class="animation-container">
-						  <div class="bounce"></div>
-						  <div class="pebble1"></div>
-						  <div class="pebble2"></div>
-						  <div class="pebble3"></div>
-						  <div class="pebble4"></div>
-						  <div class="pebble5"></div>
-						</div>
+			<div class="container products-wrapper">
+				<div class="row">
+					<div class="col-12">
 						<div class="empty-icon-container">
-							<h2 class="products-title typography-title result-nulo ">Perdón!</h2>
-							<h3 class="products-title typography-title result-nulo ">Como no encontramos ningun resultado para "<%= search %>", te compartimos productos que creemos que te van a gustar </h3>
+							<div class="animation-container">
+								<div class="bounce"></div>
+								<div class="pebble1"></div>
+								<div class="pebble2"></div>
+								<div class="pebble3"></div>
+								<div class="pebble4"></div>
+								<div class="pebble5"></div>
+							</div>
+							<div class="empty-icon-container">
+								<h3 class="products-title typography-title result-nulo ">¡Perdón!
+									<br>
+									Como no encontramos ningun resultado para "<%= search %>", te compartimos productos
+										que creemos que te van a gustar.
+								</h3>
+							</div>
 						</div>
-				  
-					  </div>
+					</div>
 				</div>
 			</div>
-				<!-- Show the "ultimos" products -->
+		</div>
+
+
+		
+		<!-- Show the "ultimos" products -->
+
+		<div class="container products-wrapper">
+		<div class="row">
+		
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/ramo/products">
+						<figure class="product-box_image">
+							<img src="/images/products/mesa chica.png" alt="Mesa de jardin chica">
+						</figure>
+						<article class="product-box_data">
+							<h2>Mesa de jardin chica</h2>
+							<p>Diseño funcional adaptable a diferentes ambientes. Distintas posiciones y alturas</p>
+							<p>Comentarios: 12</p>
+						</article>
+					</a>
+				</section>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/ramo/products">
+						<figure class="product-box_image">
+							<img src="/images/products/reposera.png" alt="Mesa de jardin chica">
+						</figure>
+						<article class="product-box_data">
+							<h2>Mesa de jardin chica</h2>
+							<p>Diseño funcional adaptable a distintas posiciones, impermeble al agua. Exclusiva para exteriores.</p>
+							<p>Comentarios: 12</p>
+						</article>
+					</a>
+				</section>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/ramo/products">
+						<figure class="product-box_image">
+							<img src="/images/products/sillon de jardin.png" alt="Sillon de jardin">
+						</figure>
+						<article class="product-box_data">
+							<h2>Juego de jardin 5 piezas</h2>
+							<p>Juego de jardin varias piezas, apto para exteriores. En caso de granizo conservar bajo techo para evitar bollos en el metal. </p>
+							<p>Comentarios: 12</p>
+						</article>
+					</a>
+				</section>
+			</div>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="/ramo/products">
+						<figure class="product-box_image">
+							<img src="/images/products/barra.png" alt="Barra exteriores">
+						</figure>
+						<article class="product-box_data">
+							<h2>Barra exteriores con banquetas</h2>
+							<p>Barra funcional para exteriores, incluye 2 banquetas. Puertas para guardar, estantes exclusivo para vasos y bebidas</p>
+							<p>Comentarios: 12</p>
+						</article>
+					</a>
+				</section>
+			</div>
+		</div>
+</div>
 
 
 
-	
-						
-			
-					
 
-
-				<%- include('./partials/footer') %>
+		<%- include('./partials/footer') %>
 </body>
 
 </html>
