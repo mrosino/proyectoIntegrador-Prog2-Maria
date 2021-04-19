@@ -1,45 +1,45 @@
-
 <%- include('./partials/header') %>
+
 <body>
 
 
-		<!-- Novedades -->
-		<div>
-			<div class="container products-wrapper">
-				<div class="row">
-					<div class="col-12">
+	<!-- Novedades -->
+	<div>
+		<div class="container products-wrapper">
+			<div class="row">
+				<div class="col-12">
+					<div class="empty-icon-container">
+						<div class="animation-container">
+							<div class="bounce"></div>
+							<div class="pebble1"></div>
+							<div class="pebble2"></div>
+							<div class="pebble3"></div>
+							<div class="pebble4"></div>
+							<div class="pebble5"></div>
+						</div>
 						<div class="empty-icon-container">
-							<div class="animation-container">
-								<div class="bounce"></div>
-								<div class="pebble1"></div>
-								<div class="pebble2"></div>
-								<div class="pebble3"></div>
-								<div class="pebble4"></div>
-								<div class="pebble5"></div>
-							</div>
-							<div class="empty-icon-container">
-								<h3 class="products-title typography-title result-nulo ">¡Perdón!
-									<br>
-									Como no encontramos ningun resultado para "<%= search %>", te compartimos productos
-										que creemos que te van a gustar.
-								</h3>
-							</div>
+							<h3 class="products-title typography-title result-nulo ">¡Perdón!
+								<br>
+								Como no encontramos ningun resultado para "<%= search %>", te compartimos productos
+								que creemos que te van a gustar.
+							</h3>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
-		
-		<!-- Show the "ultimos" products -->
-
-		<%- include('./partials/muebles') %>
+	</div>
 
 
 
+	<!-- Show the "ultimos" products -->
 
-		<%- include('./partials/footer') %>
+	<%- include('./partials/muebles') %>
+
+
+
+
+	<%- include('./partials/footer') %>
 </body>
 
 </html>

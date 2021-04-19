@@ -1,23 +1,24 @@
+<%- include('./partials/header') %>
 
-<%- include('./partials/header') %> 
 <body>
 
 
 	<!-- Partials de las distintas secciones de productos para no tener que hardcodear todo en cada una de las vistas. Utilizamos esta opcion para resolver el problema hasta poder conectar la base de datos con el proyecto.-->
-	
+
 	<div class="banner">
-		<img src="/images/diseno banner 2.jpg" alt= "">
+		<img src="/images/diseno banner 2.jpg" alt="">
 	</div>
-	
+
 	<%- include('./partials/muebles') %>
 
 	<%- include('./partials/dormitorio') %>
 
 	<%- include('./partials/sillones') %>
-	
+
 	<%- include('./partials/cuadros') %>
 
-<!-- footer -->
+	<!-- footer -->
 	<%- include('./partials/footer') %>
-</body>	
+</body>
+
 </html>
