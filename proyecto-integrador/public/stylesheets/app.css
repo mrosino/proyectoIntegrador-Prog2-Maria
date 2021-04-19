@@ -214,14 +214,16 @@ hr {
 }
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/Inspiredinyourhome.png); /*ver ruta */
+  background-image: url(/images/diseno\ banner\ 2.jpg); /*ver ruta */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
-  width: 95%;
-  margin-top: 15px;
-  margin-left: 40px;
+  position: relative;
+  height: 80%;
+  width: 60%;
+  margin-top: 20px;
+  margin-left: 200px;
+  
 }
 
 /*====== Products ======*/
