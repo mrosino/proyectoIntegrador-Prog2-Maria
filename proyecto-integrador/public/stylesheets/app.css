@@ -214,15 +214,9 @@ hr {
 }
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/diseno\ banner\ 2.jpg); /*ver ruta */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  position: relative;
-  height: 80%;
-  width: 60%;
+  width: 80%;
   margin-top: 20px;
-  margin-left: 200px;
+  margin-left: 150px;
   
 }
 
@@ -642,9 +636,9 @@ textarea.form-input {
     text-align: right;
   }
 
-  .banner {
-    height: 220px;
-  }
+  /*.banner {
+    height: 50px;
+  }*/
 
   .btn-toggle-navbar {
     display: none;
