@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-04-2021 a las 15:07:10
+-- Tiempo de generación: 19-04-2021 a las 15:00:56
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `base_proyecto`
 --
-CREATE DATABASE IF NOT EXISTS `base_proyecto` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `base_proyecto`;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `arrays`
---
-
-DROP TABLE IF EXISTS `arrays`;
-CREATE TABLE `arrays` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `comment_array` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -43,7 +27,6 @@ CREATE TABLE `arrays` (
 -- Estructura de tabla para la tabla `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
@@ -132,14 +115,12 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 -- Estructura de tabla para la tabla `products`
 --
 
-DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(10) NOT NULL,
-  `user_id` int(10) DEFAULT NULL,
+  `created_by` int(10) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
   `creation_date` date DEFAULT current_timestamp(),
-  `comment_id` int(11) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -147,20 +128,20 @@ CREATE TABLE `products` (
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `user_id`, `image`, `product_name`, `creation_date`, `comment_id`, `description`) VALUES
-(28, 1, NULL, 'Sillon Callow', '2021-04-08', 5, 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
-(80, 1, NULL, 'Modulo Rack L Wengue', '2020-12-08', 1, 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
-(122, 2, NULL, 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 3, 'Mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
-(123, 2, NULL, 'Modular Rack 126 Blanco', '2014-04-17', 1, 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(124, 3, NULL, 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 4, 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(125, 4, NULL, 'Ropero Flex', '2029-07-20', 71, 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
-(126, 5, NULL, 'Chifonier Super Express Chocolate 5 Cajones ', '2020-08-25', 59, 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
-(127, 5, NULL, 'Pyp Bna Cucheta Gabinete Triliche Caoba ', '2015-10-17', 57, 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
-(128, 1, NULL, 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 43, 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
-(129, 3, NULL, 'Sillon Francis', '2021-07-08', 47, 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
-(130, 2, NULL, 'Sillon Watts', '2027-04-09', 50, 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
-(131, 1, NULL, 'Cuadro Arbol de la vida', '2013-04-11', 86, 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
-(132, 4, NULL, 'Biblioteca Juvenil Cubos', '2013-04-11', 43, 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct');
+INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_date`, `description`) VALUES
+(28, 1, NULL, 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
+(80, 1, NULL, 'Modulo Rack L Wengue', '2020-12-08', 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
+(122, 2, NULL, 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
+(123, 2, NULL, 'Modular Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(124, 3, NULL, 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(125, 4, NULL, 'Ropero Flex', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
+(126, 5, NULL, 'Chifonier Super Express Chocolate 5 Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
+(127, 5, NULL, 'Pyp Bna Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
+(128, 1, NULL, 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
+(129, 3, NULL, 'Sillon Francis', '2021-07-08', 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
+(130, 2, NULL, 'Sillon Watts', '2027-04-09', 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
+(131, 1, NULL, 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
+(132, 4, NULL, 'Biblioteca Juvenil Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct');
 
 -- --------------------------------------------------------
 
@@ -168,45 +149,33 @@ INSERT INTO `products` (`id`, `user_id`, `image`, `product_name`, `creation_date
 -- Estructura de tabla para la tabla `users`
 --
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `password_confirm` varchar(255) DEFAULT NULL,
   `province` varchar(255) DEFAULT NULL,
   `document` int(11) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
-  `comment_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL
+  `phone` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `password_confirm`, `province`, `document`, `gender`, `birthday`, `phone`, `comment_id`, `product_id`) VALUES
-(1, 'Adriana', 'Carrasco', 'acarrasco@gmail.com', 'acarra1', 'acarra1', 'Bs.As.', 30937152, 'femenino', '1973-05-28', 1164838871, NULL, NULL),
-(2, 'Agustina', 'Vallejos', 'avallejos@gmail.com', 'avall1', 'avall1', 'Catamarca', 8273646, 'Femenimo', '1944-01-07', 1130298374, NULL, NULL),
-(3, 'Oscar', 'Roxano', 'roxanooscar@yahoo.com.ar', 'roxarockstar', 'roxarockstar', 'Cordoba', 26094827, 'Masculino', '1969-09-28', 1164838872, NULL, NULL),
-(4, 'Analia', 'Tranchin', 'tranchiniok@hotmail.com', 'soycool', 'soycool', 'Salta', 2973646, 'Femenino', '1961-05-03', 118268374, NULL, NULL),
-(5, 'Roberto', 'Gomez', 'robertogomez@live.com.ar', 'pupi33', 'pupi33', 'Chubut', 12937152, 'Masculino', '1958-09-22', 1178838871, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `document`, `gender`, `birthday`, `phone`) VALUES
+(1, 'Adriana', 'Carrasco', 'acarrasco@gmail.com', 'acarra1', 'Bs.As.', 30937152, 'femenino', '1973-05-28', 1164838871),
+(2, 'Agustina', 'Vallejos', 'avallejos@gmail.com', 'avall1', 'Catamarca', 8273646, 'Femenimo', '1944-01-07', 1130298374),
+(3, 'Oscar', 'Roxano', 'roxanooscar@yahoo.com.ar', 'roxarockstar', 'Cordoba', 26094827, 'Masculino', '1969-09-28', 1164838872),
+(4, 'Analia', 'Tranchin', 'tranchiniok@hotmail.com', 'soycool', 'Salta', 2973646, 'Femenino', '1961-05-03', 118268374),
+(5, 'Roberto', 'Gomez', 'robertogomez@live.com.ar', 'pupi33', 'Chubut', 12937152, 'Masculino', '1958-09-22', 1178838871);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `arrays`
---
-ALTER TABLE `arrays`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `product_id` (`product_id`),
-  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indices de la tabla `comments`
@@ -221,26 +190,18 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `comment_id` (`comment_id`);
+  ADD KEY `created_by` (`created_by`);
 
 --
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `comment_id` (`comment_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `arrays`
---
-ALTER TABLE `arrays`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `comments`
@@ -265,13 +226,6 @@ ALTER TABLE `users`
 --
 
 --
--- Filtros para la tabla `arrays`
---
-ALTER TABLE `arrays`
-  ADD CONSTRAINT `arrays_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
-  ADD CONSTRAINT `arrays_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
---
 -- Filtros para la tabla `comments`
 --
 ALTER TABLE `comments`
@@ -282,16 +236,7 @@ ALTER TABLE `comments`
 -- Filtros para la tabla `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`),
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`);
-
---
--- Filtros para la tabla `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`comment_id`) REFERENCES `comments` (`id`),
-  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
