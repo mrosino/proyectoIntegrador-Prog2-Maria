@@ -167,12 +167,12 @@ hr {
 }
 .todos-prod {
   width: 230px;
-  text-align: left;
   font-family: var(--hipervinculos-font-family);
   letter-spacing: 0.06em;
-  font-size: 1.2em;
+  font-size: 1.8em;
   margin-top: 20px;
   color: #825050;
+  margin-left: 150px;
 }
 .main-navbar {
   letter-spacing: 0.06em;
