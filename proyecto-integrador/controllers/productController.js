@@ -4,7 +4,7 @@ let productController = {
     res.render("products", {
       id,
       title: "Pagina de productos",
-      logged: false,
+      logged: true,
     });
   },
   productAdd: (req, res) => {
