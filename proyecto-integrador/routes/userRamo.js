@@ -11,6 +11,6 @@ router.get('/profile', userController.profile);
 
 router.get('/profileEdit', userController.profileEdit); 
 
-router.get('/contacto', userController.contacto); 
+
 
 module.exports = router;

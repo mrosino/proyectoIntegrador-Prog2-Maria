@@ -1,5 +1,11 @@
+<% if (logged == true) { %> 
+	<%- include('./partials/headerLogueado') %>
+<% } else { %> 
 
-<%- include('./partials/header') %> 
+	<%- include('./partials/header') %>
+<% }	%> 
+
+
 <body>
 	
 	<!-- product detail -->

@@ -1,4 +1,11 @@
-<%- include('./partials/header') %>
+<% if (logged == true) { %> 
+	<%- include('./partials/headerLogueado') %>
+<% } else { %> 
+
+	<%- include('./partials/header') %>
+<% }	%> 
+
+
 
 <body class="bodyRegister">
 

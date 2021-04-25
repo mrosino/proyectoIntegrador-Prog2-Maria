@@ -166,13 +166,16 @@ hr {
   margin: 20px auto 0;
 }
 .todos-prod {
-  width: 230px;
   font-family: var(--hipervinculos-font-family);
   letter-spacing: 0.06em;
-  font-size: 1.8em;
-  margin-top: 20px;
   color: #825050;
-  margin-left: 150px;
+}
+.todos-prod2 {
+  font-family: var(--hipervinculos-font-family);
+  letter-spacing: 0.06em;
+  color: #825050;
+  margin-left: 5px;
+  font-size: 1.6em;
 }
 .main-navbar {
   letter-spacing: 0.06em;
