@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-04-2021 a las 15:00:56
+-- Tiempo de generación: 26-04-2021 a las 00:14:43
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `base_proyecto`
 --
+CREATE DATABASE IF NOT EXISTS `base_proyecto` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `base_proyecto`;
 
 -- --------------------------------------------------------
 
@@ -56,7 +58,7 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (17, 28, 4, 'Se nota fuerte y robusta la unidad. El color negro esta espectacular. Las piezas encajan casi perfectamente, digo casi, porque algunos tornillos sobresalen apenas uno o dos milímetros, lo que puede ocasionar que se rayen las superficies si se frotan. Y algunos paneles también sobresalen por uno o dos milímetros. Pero muy buen material, no me arrepiento de esta compra.\r\n\r\n', '2016-06-16'),
 (18, 80, 4, 'Al principio es medio trambolico para armar jaja pero una vez que le agarras la mano listo. Se recomienda destornillador electrico ya que llevan varios tornillos. \r\n', '2015-06-26'),
 (19, 122, 3, 'La mesa tiene una mano muy finita de pintura y el aglomerado se hizo globosy saltó la pintura, además una pata se mueve y la tabla que es para alargar se le salió una visagra el primer dia. Las sillas están muy bien solo que es bueno comprarle almohadoncitos ya que se inclina para atrás y es muy cómodo pero de usar todo el tiempo duele la cintura un poco, pero son muy buenas.\r\n\r\n', '2023-04-14'),
-(21, 123, NULL, 'Muy bonito. Pero muchos detalles malos que te das cuenta con el armado. Desnivel del encastre en la extension del medio de la mesa. \r\n', '2020-05-08'),
+(21, 123, 1, 'Muy bonito. Pero muchos detalles malos que te das cuenta con el armado. Desnivel del encastre en la extension del medio de la mesa. \r\n', '2020-05-08'),
 (22, 124, 5, 'Excelente producto, precio calidad de la mano, recomendable!!!. \r\n', '2021-05-01'),
 (24, 125, 1, 'Lo compre desarmado y en vez de disfrutarlo, estuve una semana volviendome loco porque el instructivo era inentendible. El rack en si es muy lindo, pero que te lo traigan todo desarmado y con un mal manual es una falta de respeto. Repito, en vez de disfrutar su llegada, la pase mal. \r\n', '0000-00-00'),
 (29, 126, 3, 'La calidad es bastante regular, no es el color de las fotos, no lo recomiendo, el armado es sencillo.\r\n', '2017-06-29'),
@@ -129,19 +131,19 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_date`, `description`) VALUES
-(28, 1, NULL, 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
-(80, 1, NULL, 'Modulo Rack L Wengue', '2020-12-08', 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
-(122, 2, NULL, 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
-(123, 2, NULL, 'Modular Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(124, 3, NULL, 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(125, 4, NULL, 'Ropero Flex', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
-(126, 5, NULL, 'Chifonier Super Express Chocolate 5 Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
-(127, 5, NULL, 'Pyp Bna Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
-(128, 1, NULL, 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
-(129, 3, NULL, 'Sillon Francis', '2021-07-08', 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
-(130, 2, NULL, 'Sillon Watts', '2027-04-09', 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
-(131, 1, NULL, 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
-(132, 4, NULL, 'Biblioteca Juvenil Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct');
+(28, 1, 'silloncallow.jpg', 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
+(80, 1, 'rack.jpg', 'Modulo Rack L Wengue', '2020-12-08', 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
+(122, 2, 'aimaretti.jpg', 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
+(123, 2, 'rack.jpg', 'Modular Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(124, 3, 'wngue.jpg', 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(125, 4, 'flex.jpg', 'Ropero Flex', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
+(126, 5, 'chifonier.jpg', 'Chifonier Super Express Chocolate 5 Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
+(127, 5, 'pyp.jpg', 'Pyp Bna Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
+(128, 1, 'mengue.jpg', 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
+(129, 3, 'francis.jpg', 'Sillon Francis', '2021-07-08', 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
+(130, 2, 'watts.jpg', 'Sillon Watts', '2027-04-09', 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
+(131, 1, 'arbo.jpg', 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
+(132, 4, 'cubos.jpg', 'Biblioteca Juvenil Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct');
 
 -- --------------------------------------------------------
 
@@ -237,6 +239,42 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
+
+--
+-- Metadatos
+--
+USE `phpmyadmin`;
+
+--
+-- Metadatos para la tabla comments
+--
+
+--
+-- Volcado de datos para la tabla `pma__table_uiprefs`
+--
+
+INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, `last_update`) VALUES
+('root', 'base_proyecto', 'comments', '{\"sorted_col\":\"`id` ASC\"}', '2021-04-25 22:10:16');
+
+--
+-- Metadatos para la tabla products
+--
+
+--
+-- Volcado de datos para la tabla `pma__table_uiprefs`
+--
+
+INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, `last_update`) VALUES
+('root', 'base_proyecto', 'products', '{\"sorted_col\":\"`id` ASC\"}', '2021-04-25 22:13:21');
+
+--
+-- Metadatos para la tabla users
+--
+
+--
+-- Metadatos para la base de datos base_proyecto
+--
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
