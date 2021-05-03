@@ -7,7 +7,7 @@ let ramoController = {
   },
 
   searchResult: (req, res) => {
-    let search = req.query.search; //parametros de url enviados a traves del form.
+    let search = req.query.search; 
     res.render("searchResult", {
       search,
       title: " Pagina resultado de busquedas",
