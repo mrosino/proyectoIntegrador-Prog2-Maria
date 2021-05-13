@@ -46,15 +46,3 @@ return Users; //lo que retorno en la ruta/controlador
 }
 
 
-
-
-// `id` int(11) NOT NULL,
-// `name` varchar(255) DEFAULT NULL,
-// `surname` varchar(255) DEFAULT NULL,
-// `email` varchar(255) DEFAULT NULL,
-// `password` varchar(255) NOT NULL,
-// `province` varchar(255) DEFAULT NULL,
-// `document` int(11) DEFAULT NULL,
-// `gender` varchar(255) DEFAULT NULL,
-// `birthday` date DEFAULT NULL,
-// `phone` int(11) DEFAULT NULL

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+let db = require('../database/models')
 let productController = require('../controllers/productController');
 
 router.get('/products/:id?', productController.products);

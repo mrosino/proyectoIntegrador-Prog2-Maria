@@ -1,11 +1,32 @@
 const db = require("../database/models")
+const Op = db.Sequelize.Op;
 let ramoController = {
+  
   index: (req, res) => {
-    res.render("index", {
-      title: "Pagina de inicio",
-      logged: false,
-    });
+    db.Products.findAll({
+      where: [
+        { description: { [Op.like]: "%Mueble%" } }
+        ],
+        order: [ [ 'id', 'DESC' ]],
+        limit: 4
+     
+}) //aca pido el modelo
+
+
+
+    .then((data)=> {
+      return res.render("index", {
+        products: data, //aca pido el nombre de la base de datos
+        title: "Pagina de inicio",
+        logged: false,
+      });
+    })
+    .catch((error)=> {
+      return res.send(error);
+    })
+  
   },
+
 
   searchResult: (req, res) => {
     let search = req.query.search; 
@@ -24,3 +45,6 @@ let ramoController = {
 };
 
 module.exports = ramoController;
+
+//find all con limite y un orden
+//con mas comentarios es de los mas dificiles todavia no lo puedo hacer

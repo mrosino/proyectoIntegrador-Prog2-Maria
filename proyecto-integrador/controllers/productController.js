@@ -1,4 +1,5 @@
 const db = require("../database/models")
+const Op = db.Sequelize.Op;
 let productController = {
   products: (req, res) => {
     id = req.params.id;
