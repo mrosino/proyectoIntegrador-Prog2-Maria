@@ -1,3 +1,5 @@
+const db = require("../database/models")
+
 let userController = {
   login: (req, res) => {
     res.render("login", {

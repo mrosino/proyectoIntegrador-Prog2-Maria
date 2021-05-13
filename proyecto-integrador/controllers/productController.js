@@ -1,3 +1,4 @@
+const db = require("../database/models")
 let productController = {
   products: (req, res) => {
     id = req.params.id;

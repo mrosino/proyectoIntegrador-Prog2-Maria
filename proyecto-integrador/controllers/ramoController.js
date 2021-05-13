@@ -1,3 +1,4 @@
+const db = require("../database/models")
 let ramoController = {
   index: (req, res) => {
     res.render("index", {
