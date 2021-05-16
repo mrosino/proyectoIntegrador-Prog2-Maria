@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2021 a las 00:45:18
+-- Tiempo de generación: 17-05-2021 a las 00:56:10
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -32,7 +32,7 @@ CREATE TABLE `comments` (
   `product_id` int(11) DEFAULT NULL,
   `creator_id` int(11) DEFAULT NULL,
   `content` text DEFAULT NULL,
-  `creation_date` date DEFAULT current_timestamp()
+  `creation_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `products` (
   `created_by` int(10) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
-  `creation_date` date DEFAULT current_timestamp(),
+  `creation_date` date DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
