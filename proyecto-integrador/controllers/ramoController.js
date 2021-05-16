@@ -4,11 +4,8 @@ let ramoController = {
   
   index: (req, res) => {
     db.Products.findAll({
-      where: [
-        { description: { [Op.like]: "%Mueble%" } }
-        ],
-        order: [ [ 'id', 'DESC' ]],
-        limit: 4
+        order: [ [ 'product_name', 'ASC' ]],
+        limit: 16
      
 }) //aca pido el modelo
 

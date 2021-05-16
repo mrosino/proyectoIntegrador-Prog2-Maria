@@ -7,11 +7,15 @@
 
 
 <body>
-	
+	<% for (let i = 0; i < products.length; i++) { %>
+
+
+
+	<% } %>
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title typography-title">Modulo rack L wengue #<%= id %> </h2> 
+			<h2 class="products-title typography-title"> <% products[i].product_name %>  #<%= id %> </h2> 
 			<p class="product-detail-description">
 				<!--<a href="/ramo/productAdd">Editar</a>-->
 				<div class="no-margin">
@@ -24,9 +28,9 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/libreria dis.png" alt="Modulo rack L wengue">
+					<img src="/images/products/<%= products[i].image %>  " alt="Modulo rack L wengue">
 					<p class="product-detail-description">
-						Mueble fabricado en melamina sobre MDP 15 mm. Diseño funcional adaptable a diferentes ambientes. 3 espacios abiertos. Puede ser usado en forma horizontal o vertical, combinando varias unidades..Peso: 13,6Kg.Ancho: 136cm. Profundo: 56cm. Alto: 29cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo de armado con código QR para visualizar en su teléfono celular un video instructivo de armado. Envios a todo el pais. El producto se entrega en la puerta del domicilio.</p>
+				<%	products[i].description &>/p>
 				</article>
 				<div class="col-12 col-lg-4 title-thypography">
 					<section class="comments">
