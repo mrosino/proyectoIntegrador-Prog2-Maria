@@ -7,15 +7,15 @@
 
 
 <body>
-	<% for (let i = 0; i < products.length; i++) { %>
 
 
 
-	<% } %>
+
+
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title typography-title"> <% products[i].product_name %>  #<%= id %> </h2> 
+			<h2 class="products-title typography-title"> <%= products.product_name %>  #<%= products.id %> </h2> 
 			<p class="product-detail-description">
 				<!--<a href="/ramo/productAdd">Editar</a>-->
 				<div class="no-margin">
@@ -28,9 +28,9 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%= products[i].image %>  " alt="Modulo rack L wengue">
+					<img src="/images/products/<%= products.image %>  " alt="Modulo rack L wengue">
 					<p class="product-detail-description">
-				<%	products[i].description &>/p>
+				<%=	products.description %></p>
 				</article>
 				<div class="col-12 col-lg-4 title-thypography">
 					<section class="comments">
@@ -87,7 +87,7 @@
 		</div>
 	</div>
 
-	
+
 	<!-- /product detail -->
 
 	<%- include('./partials/footer') %>

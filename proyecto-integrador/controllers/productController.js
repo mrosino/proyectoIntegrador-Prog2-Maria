@@ -2,17 +2,14 @@ const db = require("../database/models")
 const Op = db.Sequelize.Op;
 let productController = {
   products: (req, res) => {
-    let id = req.query.id;  
+    let id = req.params.id;  
     
-      db.Products.findOne({
-        where: [
-        { id: id }
-        ]
-        })       
+      db.Products.findByPk(id)       
 
   .then((data)=> {
+    console.log(data);
     return res.render("products", {
-      products: data, //aca pido el nombre de la base de datos
+      products: data.dataValues, //aca pido el nombre de la base de datos
       title: "Pagina de productos",
       logged: true,
     });
