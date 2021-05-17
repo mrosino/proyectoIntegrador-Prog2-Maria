@@ -1,13 +1,13 @@
-const db = require("../database/models")
+const db = require("../database/models");
+const { resolveInclude } = require("ejs");
 const Op = db.Sequelize.Op;
 let productController = {
   products: (req, res) => {
     let id = req.params.id;  
-    
+    let product = new Promise ((res,req) => { 
       db.Products.findByPk(id)       
 
   .then((data)=> {
-    console.log(data);
     return res.render("products", {
       products: data.dataValues, //aca pido el nombre de la base de datos
       title: "Pagina de productos",
@@ -17,9 +17,19 @@ let productController = {
   .catch((error)=> {
     return res.send(error);
   })
+});
 
+let comment= new Promise ((res,req) => { 
+  db.Comments.findAll({
+    raw: true, 
+    where: { productId: req.params.id }
+  })
+.then((data)=> {
+  res(data) //seguir ACA 
+}
 
-
+)
+});
   },
   productAdd: (req, res) => {
     res.render("productAdd", {
