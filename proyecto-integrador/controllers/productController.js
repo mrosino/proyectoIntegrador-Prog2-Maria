@@ -1,6 +1,7 @@
 const db = require("../database/models");
 const { resolveInclude } = require("ejs");
 const Op = db.Sequelize.Op;
+
 let productController = {
   products: (req, res) => {
     let id = req.params.id;  

@@ -1,5 +1,7 @@
 const db = require("../database/models")
 const Op = db.Sequelize.Op;
+// Necesario para encriptar y desencriptar las contraseñas
+const bcrypt = require('bcryptjs');
 let userController = {
   login: (req, res) => {
     res.render("login", {
@@ -13,6 +15,18 @@ let userController = {
       logged: false,
     });
   },
+  registerCreateUser: (req, res) => {
+    // Encriptamos la contraseña antes de mandar a la base de datos
+    let passEncriptada = bcrypt.hashSync(req.body.password);
+    
+    db.users.create({
+        name: req.body.name,
+        password: passEncriptada
+    }).then(usuario => {
+        res.redirect('/');
+    });
+
+},
   profile: (req, res) => {
     res.render("profile", {
       title: "Pagina de perfil",

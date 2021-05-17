@@ -4,6 +4,7 @@ let db = require('../database/models')
 let userController = require('../controllers/userController');
 
 router.get('/register', userController.register);
+router.post('/register', userController.registerCreateUser);
 
 router.get('/login', userController.login);
 
