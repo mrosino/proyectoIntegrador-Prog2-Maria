@@ -54,16 +54,35 @@
 
 			</div>
 
-			<!-- Show mis productos -->
-			<%- include('./partials/cuadros') %>
-
-			<%- include('./partials/dormitorio') %>
-
-			<%- include('./partials/muebles') %>
-
-			<%- include('./partials/sillones') %>
-
-			<%- include('./partials/pausados') %>
+			<div class="container products-wrapper">
+				<div class="col-12">
+					<h2 class="products-title typography-title"> Todos los productos </h2>
+				</div>
+				<div class="row">
+					<% for (let i = 0; i < products.length; i++) { %>
+					
+					<!-- Show the "ultimos" products -->
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
+			
+							<a href="/ramo/products/<%= products[i].id %>">
+								<figure class="product-box_image">
+									<img src="/images/products/<%= products[i].image %>" alt="<%= products[i].product_name %>">
+								</figure>
+								<article class="product-box_data">
+								   
+									<h2><%= products[i].product_name %></h2>
+									<p><% products[i].description %></p>
+									<p></p> <!-- configurar controller de comentarios.lenght -->
+								</article>
+							</a>
+						</section>
+					</div>
+				   
+			
+				<% } %>
+			</div>
+			</div>
 
 		</div>
 
