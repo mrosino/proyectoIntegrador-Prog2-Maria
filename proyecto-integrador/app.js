@@ -1,11 +1,11 @@
 const http = require('http');
+const db = require('./database/models')
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
-
 
 var ramoRouter = require('./routes/ramo');
 var userRamoRouter = require('./routes/userRamo');
@@ -40,7 +40,7 @@ app.use(session( {
 app.use('/ramo', ramoRouter);
 app.use('/ramo', userRamoRouter);
 app.use('/ramo', productRouter);
-app.use('/', securityRouter);
+app.use('/ramo', securityRouter);
 
 
 // catch 404 and forward to error handler
@@ -57,7 +57,7 @@ const firewall = [
 
 app.use(function(req, res, next){
   if(req.session.user != undefined){
-    res.locals = req.session.user
+    res.locals.user = req.session.user
   } else {
     if (!publicRoutes.includes(req.path)) {
       return res.redirect('/login')

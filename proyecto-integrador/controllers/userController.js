@@ -29,23 +29,23 @@ let userController = {
     res.redirect("/ramo");
   },
   profile: (req, res) => {
-    let id = req.params.id;
-    db.Products.findByPk(id)
+    let id = req.params.id; // ver de poner req.sessions.user.id
+    db.Products.findAll({ where: { created_by: id } })
       .then((data) => {
-        console.log(data)
+      
         db.Comments.findAll({
-          raw: true,
-          where: { creator_id: req.params.id },
+         
+          where: { creator_id: id },
         }).then((info) => {
-          console.log(info)
-          return res.render("products", {
+        
+          return res.render("profile", {
             comments: info.dataValues,
             products: data.dataValues,
-            title: "Pagina de detalle de productos",
+            title: "Perfil del usuario",
             logged: true,
           })
           .catch((error)=> {
-            console.log(error)
+            throw error
 
           });
         });

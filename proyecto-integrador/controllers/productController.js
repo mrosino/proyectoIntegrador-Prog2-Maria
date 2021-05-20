@@ -9,7 +9,7 @@ let productController = {
       .then((data) => {
         db.Comments.findAll({
           raw: true,
-          where: { creator_id: req.params.id },
+          where: { "creator_id": req.params.id },
         }).then((info) => {
           return res.render("products", {
             comments: info.dataValues,
