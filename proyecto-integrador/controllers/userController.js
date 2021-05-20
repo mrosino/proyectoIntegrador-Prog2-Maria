@@ -3,7 +3,7 @@ const Op = db.Sequelize.Op;
 // Necesario para encriptar y desencriptar las contraseñas
 const bcrypt = require("bcryptjs");
 let userController = {
-  
+
   register: (req, res) => {
     res.render("register", {
       title: "Pagina de registracion",
@@ -30,24 +30,22 @@ let userController = {
   },
   profile: (req, res) => {
     let id = req.params.id; // ver de poner req.sessions.user.id
-    db.Products.findAll({ where: { created_by: id } })
+    console.log(id);
+    db.Products.findAll({ where: { created_by: id }, raw: true })
       .then((data) => {
-      
+
         db.Comments.findAll({
-         
-          where: { creator_id: id },
+
+          where: { creator_id: id }, raw: true ,
         }).then((info) => {
-        
+
           return res.render("profile", {
-            comments: info.dataValues,
-            products: data.dataValues,
+            comments: info,
+            products: data,
             title: "Perfil del usuario",
             logged: true,
           })
-          .catch((error)=> {
-            throw error
 
-          });
         });
       })
       .catch((error) => {
