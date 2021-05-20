@@ -32,20 +32,27 @@ let userController = {
     let id = req.params.id;
     db.Products.findByPk(id)
       .then((data) => {
+        console.log(data)
         db.Comments.findAll({
           raw: true,
           where: { creator_id: req.params.id },
         }).then((info) => {
+          console.log(info)
           return res.render("products", {
             comments: info.dataValues,
-            products: data.dataValues, //aca pido el nombre de la base de datos
+            products: data.dataValues,
             title: "Pagina de detalle de productos",
             logged: true,
+          })
+          .catch((error)=> {
+            console.log(error)
+
           });
         });
       })
       .catch((error) => {
-        return resolve.send(error);
+        //return resolve.send(error);
+        console.log(error)
       });
   },
   profileEdit: (req, res) => {
