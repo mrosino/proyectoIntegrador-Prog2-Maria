@@ -1,42 +1,35 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-05-2021 a las 00:56:10
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: May 20, 2021 at 11:36 AM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de datos: `base_proyecto`
+-- Database: `base_proyecto`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comments`
+-- Table structure for table `comments`
 --
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
   `product_id` int(11) DEFAULT NULL,
   `creator_id` int(11) DEFAULT NULL,
-  `content` text DEFAULT NULL,
+  `content` text,
   `creation_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_date`) VALUES
@@ -112,7 +105,7 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -125,16 +118,16 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_date`, `description`) VALUES
-(28, 1, 'silloncallow.jpg', 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
-(80, 1, 'rack.jpg', 'Biblioteca Rack L Wengue', '2020-12-08', 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
-(122, 2, 'aimaretti.jpg', 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mueble mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
-(123, 2, 'rack.jpg', 'Biblioteca Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(28, 1, 'Sillon esquinero Callow.png', 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n'),
+(80, 1, 'Modular Rack 126 Blanco.png', 'Biblioteca Rack L Wengue', '2020-12-08', 'Mueble fabricado en melamina sobre MDP 15 mm. 12 espacios abiertos. 4 cajones de 43 x 34 x 13 cm. con correderas metalicas. Amplitud para TV de 55pulgadas y 2 orificios para el pasaje de los cables.Peso: 56Kg.Ancho: 180cm. Profundo: 45cm. Alto: 183cm. Bul'),
+(122, 2, 'Juego Comedor Aimaretti Combinado Marsella Novo.png', 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mueble mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille'),
+(123, 2, 'Biblioteca Juvenil Wengue Cubos Blanco.png', 'Biblioteca Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
 (124, 3, 'wngue.jpg', 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(125, 4, 'flex.jpg', 'Ropero Flex con espejo', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
+(125, 4, 'Ropero Reflex.png', 'Ropero Flex con espejo', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
 (126, 5, 'chifonier.jpg', 'Super Chifonier Express Chocolate Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
 (127, 5, 'cucheta.jpg', 'Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
 (128, 1, 'mengue.jpg', 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
@@ -144,13 +137,13 @@ INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_d
 (132, 4, 'cubos.jpg', 'Biblioteca Dormitorio Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
 (133, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUCt-x52jMrv5zWEl34VyrqhQMdZ3brRbx41IPQnBwDcWz95WEs16NBwgVoiOXQLA3T_hbz9VN&usqp=CAc', 'Sillon Fitzroy', '0000-00-00', 'Esquinero Fitzroy, de la línea Chelsea, de 2,50  2,50 mts con esqueleto y patas de eucalipto'),
 (134, 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7W4nKBXbgLyOtXcApJ9aVQYCHFK-ajF7ogA2sgD3IHbPfHkQE0Y3qh9I2ffxelx-_j5WGCyr0&usqp=CAc', 'Cuadro Letter Board Blanco', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.'),
-(135, 4, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3jikUElpGLNly_B-RdA2YaweW5ab1dYduxuRWzsALycK-oomBARZWR1JW6L4&usqp=CAc', 'Cuadro Triptico De La Vida', '0000-00-00', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
+(135, 4, 'Letter Board blanco.png', 'Cuadro Triptico De La Vida', '2021-04-12', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
 (136, 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9qaMiZ2RNqr_agJdZLPJEt-03ufLKixbRZ39Lboj4Axk7fjZ3GPli0P6XOw&usqp=CAc', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -167,7 +160,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `document`, `gender`, `birthday`, `phone`) VALUES
@@ -178,11 +171,11 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `
 (5, 'Roberto', 'Gomez', 'robertogomez@live.com.ar', 'pupi33', 'Chubut', 12937152, 'Masculino', '1958-09-22', 1178838871);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `comments`
+-- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -190,59 +183,54 @@ ALTER TABLE `comments`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indices de la tabla `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `created_by` (`created_by`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `comments`
+-- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `comments`
+-- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
