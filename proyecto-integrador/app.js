@@ -56,12 +56,17 @@ const firewall = [
 
 
 app.use(function(req, res, next){
-  if(req.session.user != undefined){
-    res.locals.user = req.session.user
+  if(req.session.user != null){
+    res.locals.user = req.session.user,
+    res.locals.logged = true
+    console.log("locals");
   } else {
+    res.locals.logged = false
     if (!publicRoutes.includes(req.path)) {
+      
       return res.redirect('/login')
     }
+    
   }
   next();
 });

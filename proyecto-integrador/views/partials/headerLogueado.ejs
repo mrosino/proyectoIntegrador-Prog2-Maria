@@ -52,10 +52,11 @@
 					<div class="main-div">
 
 						<a href="/ramo/profile" class="saludo">
-							
+							<p>Hola! <% console.log(locals.user);  %>
+								</p>
 						</a>
 
-						<form action="" method="post">
+						<form action="/ramo/logout" method="post">
 
 							<button class="logout" type="submit">
 								<a href="/ramo">Cerrar sesión <i class="fas fa-sign-in-alt"></i> </a>

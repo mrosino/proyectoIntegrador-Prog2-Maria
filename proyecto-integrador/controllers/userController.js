@@ -30,7 +30,7 @@ let userController = {
   },
   profile: (req, res) => {
     let id = req.params.id; // ver de poner req.sessions.user.id
-    console.log(id);
+    
     db.Products.findAll({ where: { created_by: id }, raw: true })
       .then((data) => {
 

@@ -4,7 +4,6 @@ const securityController = require('../controllers/securityController')
 
 router.get('/login', securityController.login);
 router.post('/login', securityController.authenticate);
-
-// router.get('/security', securityController.logout);
+router.post('/logout', securityController.logout);
 
 module.exports = router;

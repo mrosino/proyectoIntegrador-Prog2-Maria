@@ -1,95 +1,97 @@
-<% if (logged == true) { %> 
+<% if (logged==true) { %>
 	<%- include('./partials/headerLogueado') %>
-<% } else { %> 
+		<% } else { %>
 
-	<%- include('./partials/header') %>
-<% }	%> 
-
-
-<body>
+			<%- include('./partials/header') %>
+				<% } %>
 
 
+					<body>
 
 
 
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title typography-title"> <%= products.product_name %>  #<%= products.id %> </h2> 
-			<p class="product-detail-description">
-				<!--<a href="/ramo/productAdd">Editar</a>-->
-				<div class="no-margin">
-					<button type="editar"><a href="/ramo/productEdit">Editar</a></button>
-					
-				  </div>
-				
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%= products.image %>  " alt="Modulo rack L wengue">
-					<p class="product-detail-description">
-				<%=	products.description %></p>
-				</article>
-				<div class="col-12 col-lg-4 title-thypography">
-					<section class="comments">
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/ramo/profile"> FK de id nnombre </a> </strong>
-								 Muy bueno el mueble, cumple la funcion para la cual fue comprado. El color era el esperado por las fotos, los tiempos de entrega se cumpliero.</p>
+
+
+						<!-- product detail -->
+						<div class="container products-wrapper">
+							<div class="d-flex align-items-center">
+								<h2 class="products-title typography-title">
+									<%= products.product_name %> #<%= products.id %>
+								</h2>
+								<p class="product-detail-description">
+									<!--<a href="/ramo/productAdd">Editar</a>-->
+								<div class="no-margin">
+									<button type="editar"><a href="/ramo/productEdit">Editar</a></button>
+
+								</div>
+
+								</p>
 							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/ramo/profile">Justina Palisa: </a> </strong>
-									El mueble es comodo y practico, tiene los espacios justos que necesitaba. Lo super recomiendo para escritorios.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/ramo/profile">Bruno Rios: </a> </strong>
-									El mueble es de buena calidad pero una madera me llego despegada, mande a reclamar y demoraron 3 meses en cambiarlo. Mala la atencion al cliente. 
-									</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/ramo/profile">Victoria Alaniz: </a> </strong>
-									Me mandaron mal el color que pedi, solicite reclamo y me dijeron que el que yo elegi no lo fabricaban mas, no queria el mueble pedi el reintegro del dinero y no quisieron hacerlo.</p>
-							</div>
-						</article>
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-									<strong> <a href="/ramo/profile">Florencia Sacks: </a> </strong>
-									El mueble es muy comodo para el uso que le doy, podria ser un poco mas ancho y con menos altura algunos estantes. Estoy satisfecha.</p>
-							</div>
-						</article>
+							<div class="product-detail">
+								<div class="row">
+									<article class="col-12 col-lg-8 product-detail-info">
+										<img src="/images/products/<%= products.image %>" alt="Modulo rack L wengue">
+										<p class="product-detail-description">
+											<%= products.description %>
+										</p>
+									</article>
+									<div class="col-12 col-lg-4 title-thypography">
 
-					</section>
-					<form class="form-comentario" action="" method="GET">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
+										<section class="comments">
+											<% if (comments.length>= 5) { %>
+												<% for (let i=0; i < 5; i++) { %>
+													<article>
+														<img src="https://via.placeholder.com/35" alt="">
+														<div class="data">
+															<p class="user">
+																<strong> <a
+																		href="/ramo/profile/<%= comments[i].creator_id  %> ">
+																		<%= comments[i].creator_id %>
+																	</a> </strong>
+																<%= comments[i].content %>
+															</p>
+														</div>
+													</article>
+
+												<% } %>
+											<% } else { %>
+										
 
 
-	<!-- /product detail -->
+												<% for (let i=0; i < comments.length; i++) { %>
+													<article>
+														<img src="https://via.placeholder.com/35" alt="">
+														<div class="data">
+															<p class="user">
+																<strong> <a
+																		href="/ramo/profile/<%= comments[i].creator_id  %> ">
+																		<%= comments[i].creator_id %>
+																	</a> </strong>
+																<%= comments[i].content %>
+															</p>
+														</div>
+													</article>
 
-	<%- include('./partials/footer') %>
-</body>	
-</html>
+												<% } %>
+												<% }%>
+
+
+										</section>
+										<form class="form-comentario" action="" method="GET">
+											<input class="form-input" type="text" value=""
+												placeholder="Agregar comentario">
+											<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+										</form>
+										<hr>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- /product detail -->
+
+						<%- include('./partials/footer') %>
+					</body>
+
+					</html>
