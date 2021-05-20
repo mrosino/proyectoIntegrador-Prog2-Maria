@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 20, 2021 at 11:36 AM
+-- Generation Time: May 20, 2021 at 12:48 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -128,17 +128,17 @@ INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_d
 (123, 2, 'Biblioteca Juvenil Wengue Cubos Blanco.png', 'Biblioteca Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
 (124, 3, 'wngue.jpg', 'Biblioteca Juvenil Wengue Cubos Blancos ', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
 (125, 4, 'Ropero Reflex.png', 'Ropero Flex con espejo', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos'),
-(126, 5, 'chifonier.jpg', 'Super Chifonier Express Chocolate Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
-(127, 5, 'cucheta.jpg', 'Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
-(128, 1, 'mengue.jpg', 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
-(129, 3, 'francis.jpg', 'Sillon Francis', '2021-07-08', 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
-(130, 2, 'watts.jpg', 'Sillon Watts', '2027-04-09', 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
-(131, 1, 'arbo.jpg', 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
-(132, 4, 'cubos.jpg', 'Biblioteca Dormitorio Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
-(133, 1, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUCt-x52jMrv5zWEl34VyrqhQMdZ3brRbx41IPQnBwDcWz95WEs16NBwgVoiOXQLA3T_hbz9VN&usqp=CAc', 'Sillon Fitzroy', '0000-00-00', 'Esquinero Fitzroy, de la línea Chelsea, de 2,50  2,50 mts con esqueleto y patas de eucalipto'),
-(134, 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7W4nKBXbgLyOtXcApJ9aVQYCHFK-ajF7ogA2sgD3IHbPfHkQE0Y3qh9I2ffxelx-_j5WGCyr0&usqp=CAc', 'Cuadro Letter Board Blanco', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.'),
-(135, 4, 'Letter Board blanco.png', 'Cuadro Triptico De La Vida', '2021-04-12', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
-(136, 5, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9qaMiZ2RNqr_agJdZLPJEt-03ufLKixbRZ39Lboj4Axk7fjZ3GPli0P6XOw&usqp=CAc', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.');
+(126, 5, 'Chifonier Super Express Chocolate.png', 'Super Chifonier Express Chocolate Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: '),
+(127, 5, 'Cucheta.png', 'Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda'),
+(128, 1, 'Mesa Tv 120 Melamina Wengue.jpg', 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo'),
+(129, 3, 'sillon francis.png', 'Sillon Francis', '2021-07-08', 'Sillón Francis, de la Línea Chelsea, fabricado en tres módulos de 90 x 90 cm c/u.\r\nEnvios a todo el pais.'),
+(130, 2, 'sillon watts.png', 'Sillon Watts', '2027-04-09', 'Sillón Watts de la línea Camdem de tres cuerpos con esqueleto y patas cónicas de 14 cm.\r\n'),
+(131, 1, 'arbol 2.png', 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
+(132, 4, 'libreria dis.png', 'Biblioteca Dormitorio Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct'),
+(133, 1, 'Sillón Esquinero Fitzroy.png', 'Sillon Fitzroy', '0000-00-00', 'Esquinero Fitzroy, de la línea Chelsea, de 2,50  2,50 mts con esqueleto y patas de eucalipto'),
+(134, 5, 'Letter Board blanco.png', 'Cuadro Letter Board Blanco', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.'),
+(135, 4, 'cuadro moderno flores rojas.png', 'Cuadro Triptico De La Vida', '2021-04-12', 'Creando un espacio minimalista, dándole un detalle único a tu pared.'),
+(136, 5, 'inhale ex.png', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.');
 
 -- --------------------------------------------------------
 
