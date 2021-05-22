@@ -55,25 +55,27 @@ var securityController = {
 
   },
   editedPass:(req, res) => {
-  //   db.Users.findOne({ where: { password: req.body.password } })
-  //     .then((user) => {
-  //       if (!user) {
-           db.Users.update({
-             password: req.body.password,
-         }, {
+    
+    db.Users.findOne({ where: { password: req.body.password } })
+      .then((user) => {
+        if (!user) {
+          let encryptedPss= bcrypt.hashSync(req.body.password);
+          db.Users.update({
+            password:encryptedPss,
+          }, {
             where: { id: req.body.id }
           })
-  //           .then(function (data) {
-  //             console.log(data)
-  //             res.redirect('/ramo/profile/' + req.body.id);
-  //           })
-  //           .catch(function (error) {
-  //             console.log(error)
-  //           })
-  //       } else {
-  //         res.redirect(req.headers.referer)
-  //       }
-  //     })
+            .then(function (data) {
+              console.log(data)
+              res.redirect('/ramo/profile/' + req.body.id);
+            })
+            .catch(function (error) {
+              console.log(error)
+            })
+        } else {
+          res.redirect(req.headers.referer)
+        }
+      })
 
   },
 
