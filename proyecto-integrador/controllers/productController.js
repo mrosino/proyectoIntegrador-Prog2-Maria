@@ -32,11 +32,33 @@ let productController = {
       logged: res.locals.logged,
     });
   },
+
   productEdit: (req, res) => {
     res.render("productEdit", {
-      title: "Pagina de editar producto ",
+      title: "Pagina de agregar producto ",
       logged: res.locals.logged,
     });
+  }, //resolver aca rompe
+  productEdited: (req, res) => {
+    db.Products.findAll({
+      where: [{
+        product_name: {[Op.like]: req.body.product_name}
+      }],
+
+      })
+      .then((data)=> {
+        return res.render("productEdit",{
+          product: data,
+          title: "Pagina de editar producto ",
+          logged: res.locals.logged,
+          //tenemos que lograr pasar el id de todos los productos a la vista
+        })
+      })
+      .catch((error) => {
+        return res.send(error);
+      })
+
+    
   },
 };
 module.exports = productController;
