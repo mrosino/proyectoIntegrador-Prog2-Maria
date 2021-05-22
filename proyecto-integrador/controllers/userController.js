@@ -7,33 +7,36 @@ let userController = {
   register: (req, res) => {
     res.render("register", {
       title: "Pagina de registracion",
-      logged: false,
+      logged: res.locals.logged,
     });
   },
   registerCreateUser: (req, res) => {
     db.Users.findAll({ where: { email: req.body.email } })
       .then((user) => {
-        if (!user) {
-          // Encriptamos la contraseña antes de mandar a la base de datos
-          let passEncriptada = bcrypt.hashSync(req.body.password);
-          let info = req.body;
-          db.Users.create({
-            name: req.body.name,
-            surname: info.surname,
-            email: info.email,
-            province: info.province,
-            document: info.document,
-            gender: info.gender,
-            birthday: info.birthday,
-            phone: info.phone,
-            password: passEncriptada,
-          })
-          .then(()=>{
-            return res.redirect("/ramo/login")
-          })
-          
-          
-        } else {return res.redirect("/ramo/login")}
+        if (user === req.body.email) {
+                 return res.redirect("/ramo/register?failed=1")
+                 //le vamos a poner una cookie que diga que ya esta registrado
+          //no nos hace caso y nos tira error preguntado por slack
+        }
+        else {
+         
+           let passEncriptada = bcrypt.hashSync(req.body.password);
+           let info = req.body;
+           db.Users.create({
+             name: req.body.name,
+             surname: info.surname,
+             email: info.email,
+             province: info.province,
+             document: info.document,
+             gender: info.gender,
+             birthday: info.birthday,
+             phone: info.phone,
+             password: passEncriptada,
+           })
+           .then(()=>{
+             return res.redirect("/ramo/login")
+           })
+        }
         })
   },
   profile: (req, res) => {
@@ -51,7 +54,7 @@ let userController = {
             comments: info,
             products: data,
             title: "Perfil del usuario",
-            logged: true,
+            logged: res.locals.logged,
           })
 
         });

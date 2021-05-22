@@ -5,7 +5,8 @@ let ramoController = {
   index: (req, res) => {
     db.Products.findAll({
         order: [ [ 'product_name', 'ASC' ]],
-        limit: 16
+        limit: 16,
+        logged: res.locals.logged,
      
 }) //aca pido el modelo
 
@@ -15,7 +16,7 @@ let ramoController = {
       return res.render("index", {
         products: data, //aca pido el nombre de la base de datos
         title: "Pagina de inicio",
-        logged: false,
+        logged: res.locals.logged,
       });
     })
     .catch((error)=> {
@@ -30,13 +31,13 @@ let ramoController = {
     res.render("searchResult", {
       search,
       title: " Pagina resultado de busquedas",
-      logged: false,
+      logged: res.locals.logged,
     });
   },
   contacto: (req, res) => {
     res.render("contacto", {
       title: " Pagina muestra con quien contactar del sitio",
-      logged: false,
+      logged: res.locals.logged,
     });
   },
 };

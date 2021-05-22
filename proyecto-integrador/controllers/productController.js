@@ -15,7 +15,7 @@ let productController = {
             comments: info,
             products: data.dataValues, //aca pido el nombre de la base de datos
             title: "Pagina de detalle de productos",
-            logged: true,
+            logged: res.locals.logged,
           });
         });
       })
@@ -29,13 +29,13 @@ let productController = {
   productAdd: (req, res) => {
     res.render("productAdd", {
       title: "Pagina de agregar producto ",
-      logged: true,
+      logged: res.locals.logged,
     });
   },
   productEdit: (req, res) => {
     res.render("productEdit", {
       title: "Pagina de editar producto ",
-      logged: true,
+      logged: res.locals.logged,
     });
   },
 };

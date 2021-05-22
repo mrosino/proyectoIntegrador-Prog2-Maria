@@ -5,7 +5,7 @@ var securityController = {
   login: (req, res) => {
     return res.render("security/login", {
       failed: req.query.failed,
-      logged: false,
+      logged: res.locals.logged,
     });
   },
   authenticate: (req, res) => {
@@ -22,10 +22,10 @@ var securityController = {
           }
         }
 
-        res.redirect("/login?failed=1");
+        return res.redirect(req.headers.referer);
       })
       .catch((error) => {
-        res.redirect("/login?failed=1");
+        return res.redirect(req.headers.referer);
       });
   },
   logout: (req, res) => {
