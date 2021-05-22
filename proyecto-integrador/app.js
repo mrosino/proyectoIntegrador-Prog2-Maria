@@ -32,10 +32,50 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session( {
   secret: "ramo",
 	resave: false,
-	saveUninitialized: true
+	saveUninitialized: true,
+  cookie:{
+    httpOnly:true,
+    maxAge: 1*60*60*1000
+  }
 }));
 
+app.use(function(req, res, next){
+  if(req.session.user != null){
+    res.cookie('logged', req.session.logged, {maxAge: 1*60*60*1000});
+    res.locals = {
+      user: req.session.user,
+      logged: req.session.logged
 
+  } 
+  } else {
+    res.locals.logged = false
+    // if (!publicRoutes.includes(req.path)) {      
+    //   return res.redirect('/login')
+    // }
+    
+  }
+  next();
+});
+
+
+
+
+
+// error handler
+
+app.use(function(err, req, res, next) {
+
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+ 
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+ });
+ app.listen(3000);
+ 
+ module.exports = app;
 
 app.use('/ramo', ramoRouter);
 app.use('/ramo', userRamoRouter);
@@ -55,38 +95,7 @@ const firewall = [
 
 
 
-app.use(function(req, res, next){
-  if(req.session.user != null){
-    res.locals.user = req.session.user,
-    res.locals.logged = true
-    console.log("locals");
-  } else {
-    res.locals.logged = false
-    if (!publicRoutes.includes(req.path)) {
-      
-      return res.redirect('/login')
-    }
-    
-  }
-  next();
-});
 
 
 
 
-
-// error handler
-
-app.use(function(err, req, res, next) {
-
- // set locals, only providing error in development
- res.locals.message = err.message;
- res.locals.error = req.app.get('env') === 'development' ? err : {};
-
- // render the error page
- res.status(err.status || 500);
- res.render('error');
-});
-app.listen(3000);
-
-module.exports = app;

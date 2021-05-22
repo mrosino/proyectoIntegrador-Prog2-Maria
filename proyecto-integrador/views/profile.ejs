@@ -18,7 +18,7 @@
 			</div>
 			<div class="data-container col-6 costado">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> Malena Perez
+					<h1 class="main-title"> <%= locals.user.name.toUpperCase() %>
 						<a href="/ramo/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -31,9 +31,9 @@
 				</div>
 				<div>
 					<ul>
-						<li>20 productos</li>
-						<li>1600 seguidores</li>
-						<li>300 comentarios</li>
+						 </li><%= products.length %> Productos</li> 
+						<li>1600 seguidores </li>
+						<li><%= comments.length %> Comentarios</li>
 
 						<li><a href="/ramo/productAdd" class="btn mt-3" href="">Añadir producto</a></li>
 

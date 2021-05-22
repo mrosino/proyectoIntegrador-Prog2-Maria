@@ -10,14 +10,18 @@ var securityController = {
   },
   authenticate: (req, res) => {
     db.Users.findOne({ where: { email: req.body.email } })
+    
       .then((user) => {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          req.session.user = user;
-          req.session.logged = true;
-          req.session.save();
-
-          return res.redirect(`/ramo/profile/${user.id}`);
+        if (user != undefined) {
+          if (bcrypt.compareSync(req.body.password, user.password)) {
+            req.session.user = user;
+            req.session.logged = true;
+            req.session.save();
+  
+            return res.redirect(`/ramo/profile/${user.id}`);
+          }
         }
+        
         res.redirect("/login?failed=1");
       })
       .catch((error) => {
