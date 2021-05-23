@@ -767,6 +767,10 @@ textarea.form-input {
   justify-content: space-between;
   margin: 0 0 20px;
 }
+.boton{
+width: 50%;
+text-align: center;
+}
 
 .form-group:last-child {
   margin: 0;
