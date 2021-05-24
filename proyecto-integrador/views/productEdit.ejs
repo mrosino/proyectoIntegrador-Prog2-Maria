@@ -1,4 +1,4 @@
-<% if (logged == true) { %> 
+<% if (locals.logged == true) { %> 
 	<%- include('./partials/headerLogueado') %>
 <% } else { %> 
 
@@ -17,8 +17,8 @@
 				<h2>Ingresá los datos correspondientes para editar un producto.</h2>
 			</div>
 			<div class="form-content">
-				<form method="POST" action="/ramo/profileEdit">
-					<input type="hidden" name="id" value="<%= locals.product.id %> ">
+				<form method="POST" action="/ramo/productEdit">
+					<input type="hidden" name="id" value="<%= id %> ">
 					<div class="form-group">
 						<label for="productName">Nombre del producto </label>
 						<input type="text"  name="product_name" 
@@ -30,7 +30,7 @@
 							placeholder="caracteristicas del producto" required />
 					</div>
 					<div class="form-group">
-						<button type="submit">cargar imagenes</button>
+						<button type="submit">Cargar imagenes</button>
 					</div>
 					<div class="form-group">
 						<label class="form-remember">

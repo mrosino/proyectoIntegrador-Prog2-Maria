@@ -1,4 +1,4 @@
-<% if (logged==true) { %>
+<% if (locals.logged==true) { %>
 	<%- include('./partials/headerLogueado') %>
 		<% } else { %>
 
@@ -21,7 +21,7 @@
 								<p class="product-detail-description">
 									<!--<a href="/ramo/productAdd">Editar</a>-->
 								<div class="no-margin">
-									<button type="editar"><a href="/ramo/productEdit">Editar</a></button>
+									<button type="submit"><a href="/ramo/productEdit/<%= products.id %> ">Editar</a></button>
 
 								</div>
 

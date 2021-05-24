@@ -1,4 +1,4 @@
-<% if (logged == true) { %>
+<% if (locals.logged == true) { %>
 <%- include('./partials/headerLogueado') %>
 <% } else { %>
 
@@ -18,7 +18,7 @@
 			</div>
 			<div class="data-container col-6 costado">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= locals.user.name.toUpperCase() %>
+					<h1 class="main-title"> <%= user.name.toUpperCase() %>
 						<a href="/ramo/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
@@ -32,10 +32,10 @@
 				<div>
 					<ul>
 						 </li><%= products.length %> Productos</li> 
-						<li>1600 seguidores </li>
+						<!-- <li>1600 seguidores </li>-->
 						<li><%= comments.length %> Comentarios</li>
 
-						<li><a href="/ramo/productAdd" class="btn mt-3" href="">Añadir producto</a></li>
+						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
 
 					</ul>
 

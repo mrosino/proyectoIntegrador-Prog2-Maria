@@ -5,7 +5,7 @@ var securityController = {
   login: (req, res) => {
     return res.render("security/login", {
       failed: req.query.failed,
-      logged: res.locals.logged,
+      
     });
   },
   authenticate: (req, res) => {

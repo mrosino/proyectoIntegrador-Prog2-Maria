@@ -15,7 +15,7 @@ let productController = {
             comments: info,
             products: data.dataValues, //aca pido el nombre de la base de datos
             title: "Pagina de detalle de productos",
-            logged: res.locals.logged,
+
           });
         });
       })
@@ -23,42 +23,41 @@ let productController = {
         return resolve.send(error);
       });
   },
-//DEJO LA VISTA ASÍ HASTA QUE SEPAMOS COMO RELACIONAR LA FK CON EL CREATOR ID
+  //DEJO LA VISTA ASÍ HASTA QUE SEPAMOS COMO RELACIONAR LA FK CON EL CREATOR ID
 
 
   productAdd: (req, res) => {
     res.render("productAdd", {
       title: "Pagina de agregar producto ",
-      logged: res.locals.logged,
+
     });
   },
 
   productEdit: (req, res) => {
     res.render("productEdit", {
       title: "Pagina de agregar producto ",
-      logged: res.locals.logged,
+      id: req.params.id
     });
-  }, //resolver aca rompe
+  },
   productEdited: (req, res) => {
-    db.Products.findAll({
-      where: [{
-        product_name: {[Op.like]: req.body.product_name}
-      }],
+    let editId = req.body.id
+    db.Products.update({
+      product_name: req.body.product_name,
+      description: req.body.description
+      //fatla ver para cambiar la imagen 
 
-      })
-      .then((data)=> {
-        return res.render("productEdit",{
-          product: data,
-          title: "Pagina de editar producto ",
-          logged: res.locals.logged,
-          //tenemos que lograr pasar el id de todos los productos a la vista
-        })
-      })
+    }, {
+      where: { id: editId }
+    })
+    .then(()=>{
+      return res.redirect (`/ramo/products/${editId}`)
+    })
+
       .catch((error) => {
         return res.send(error);
       })
 
-    
+
   },
 };
 module.exports = productController;
