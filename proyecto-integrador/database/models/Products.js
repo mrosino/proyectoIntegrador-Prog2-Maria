@@ -26,7 +26,7 @@ let cols = {
 
 }
 let config = {
-    tableName: "products", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
+    tableName: "products", 
     timestamps: false,
 }
 const Products = sequelize.define(alias, cols, config);

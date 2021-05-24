@@ -409,6 +409,9 @@ hr {
   background-color: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
 }
 
 .product-detail-img {
@@ -418,8 +421,10 @@ hr {
 }
 
 .product-detail-info {
+  
   border-right: 1px solid var(--light-gray);
   padding: 15px;
+  
   /* height: 100%; */
 }
 
@@ -483,6 +488,9 @@ hr {
   border-radius: 8px;
   border: none;
   margin-bottom: 15px;
+  display: block;
+  margin: 0 auto;
+
 }
 
 .action-button {
@@ -527,7 +535,9 @@ hr {
 }
 .comments .user {
   font-size: 1.7em;
+ 
 }
+
 
 /*====== contacto ======*/
 .nombres {
@@ -772,6 +782,7 @@ width: 50%;
 text-align: center;
 }
 
+
 .form-group:last-child {
   margin: 0;
 }
@@ -1015,3 +1026,4 @@ text-align: center;
     right: 110%;
   }
 }
+

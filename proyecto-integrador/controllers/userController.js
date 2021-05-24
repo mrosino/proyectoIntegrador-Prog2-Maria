@@ -52,7 +52,7 @@ let userController = {
         })
           .then((products) => {
             db.Comments.findAll({
-              where: { creator_id: user.id }
+              where: { creator_id: user.id,  }
             })
               .then((comments) => {
                 return res.render("profile", {
