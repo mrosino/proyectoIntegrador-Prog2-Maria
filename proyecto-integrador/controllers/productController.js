@@ -53,7 +53,26 @@ let productController = {
         res.render("productAdd", {
             title: "Pagina de agregar producto ",
         });
+
+        
     },
+
+productADd: (req, res) => {
+db.products.create ({
+  product_id: req.body.id, 
+  image: req.body.image, 
+  product_name: req.body.productname, 
+  creation_date: req.body.fechacreacion, 
+  description:req.body.descripcion, 
+})
+.then(() => {
+  return res.redirect('/home'); 
+})
+.catch((error) => {
+  return res.send (error); 
+})
+
+}, 
 
     productEdit: (req, res) => {
         res.render("productEdit", {

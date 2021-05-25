@@ -1,7 +1,6 @@
-<%- include('./partials/headerLogueado') %>
+ <%- include('./partials/headerLogueado') %> 
 
-<body>
-
+<body>	
 
 	<div class="form">
 		<div class="form-toggle"></div>
@@ -17,24 +16,24 @@
 						<input type="text" id="nombre del producto" name="nombre del producto"
 							placeholder="nombre del producto" required="required" />
 					</div>
-					<div class="form-group">
-						<label for="password">Marca del prdocuto</label>
-						<input type="text" id="marca" name="marca" placeholder="marca del producto"
-							required="required" />
-					</div>
-					<div class="form-group">
-						<label for="password">Modelo del producto</label>
-						<input type="text" id="modelo del producto" name="modelo del producto"
-							placeholder="modelo del producto" required="required" />
-					</div>
-					<div class="form-group">
-						<label for="password">Caracteristicas del producto</label>
-						<input type="text" id="caracteristicas del producto" name="caracteristicas del producto"
-							placeholder="caracteristicas del producto" required="required" />
-					</div>
-					<div class="form-group">
-						<button type="submit">Cargar imagenes</button>
-					</div>
+
+				<div class="form-group">
+					<label for="image" class="postLabel">Carga tu imagen</label>
+					<input type="file" name="image" class="postInput">
+				</div>
+
+				<div class="form-group">
+					<label for="creationDate" class="postLabel"> Ingresa la fecha de creacion</label>
+					<input type="date" name="creation_date "class="postInput">
+				</div>
+
+				<div class="form-group">
+					<label for="description" class="postLabel"> Ingrese descripcion</label>
+					<input type="text" name="description" class="postInput">
+				</div>
+
+			
+				
 					<div class="form-group">
 						<label class="form-remember">
 							<input type="checkbox" />Aceptar terminos y condiciones
