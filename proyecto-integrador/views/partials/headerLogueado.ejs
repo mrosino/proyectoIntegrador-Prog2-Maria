@@ -47,21 +47,21 @@
                 <div class="main-navbar">
 
                     <div class="main-div">
+                        <div class="problematico"> <a href="/ramo/profile/<%= locals.user.id %> " class="saludo">
+                            Hola  <%= locals.user.name.toUpperCase()  %>! <ion-icon name="person-circle"></ion-icon>                       
+                           
+                              </a>
+                            <form action="/ramo/logout" method="post">
 
-                        <a href="/ramo/profile/<%= locals.user.id %> " class="saludo">
-                            <p>Hola
-                                <%= locals.user.name.toUpperCase()  %>!
-
-                            </p>
-                        </a>
-
-                        <form action="/ramo/logout" method="post">
-
-                            <button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+                                <button class="logout" type="submit">
+								Cerrar sesión <ion-icon name="log-out"></ion-icon>
 							</button>
 
-                        </form>
+                            </form>
+                        </div>
+
+
+
                     </div>
                 </div>
 
