@@ -50,7 +50,7 @@ let productController = {
             });
     },
     productAdd: (req, res) => {
-        res.render("productAdd", {
+       res.render("productAdd", {
             title: "Pagina de agregar producto ",
         });
 
@@ -58,7 +58,7 @@ let productController = {
     },
 
 productADd: (req, res) => {
-db.products.create ({
+db.Products.create ({
   product_id: req.body.id, 
   image: req.body.image, 
   product_name: req.body.productname, 
@@ -75,11 +75,11 @@ db.products.create ({
 }, 
 
 productDelete: (req, res) => {
-db.products.destroy ({
+db.Products.destroy ({
   where: { id: req.params.id}
 })
 .then(() => {
-  return res.redirect(/user/profile + res.session.userLogueado.id); 
+  return res.redirect("/user/profile" + res.session.userLogueado.id); 
 })
 .catch ((error) => {
   return res.send (error);
