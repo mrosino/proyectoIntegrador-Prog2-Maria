@@ -32,7 +32,7 @@ CREATE TABLE `comments` (
   `product_id` int(11) DEFAULT NULL,
   `creator_id` int(11) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
-  `creation_date` date DEFAULT current_timestamp()
+  `creation_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -128,7 +128,7 @@ CREATE TABLE `products` (
   `created_by` int(10) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
-  `creation_date` date DEFAULT current_timestamp(),
+  `creation_date` date DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
