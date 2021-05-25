@@ -79,7 +79,7 @@ db.products.destroy ({
   where: { id: req.params.id}
 })
 .then(() => {
-  return res.redirect(/user/profile + res.session.userLogueado.id)
+  return res.redirect(/user/profile + res.session.userLogueado.id); 
 })
 .catch ((error) => {
   return res.send (error);
