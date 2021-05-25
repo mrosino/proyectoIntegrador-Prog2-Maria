@@ -1,56 +1,51 @@
-<% if (locals.logged == true) { %> 
-	<%- include('./partials/headerLogueado') %>
-<% } else { %> 
+<% if (locals.logged == true) { %>
+    <%- include('./partials/headerLogueado') %>
+        <% } else { %>
 
-	<%- include('./partials/header') %>
-<% }	%> 
-
-
-<body>
+            <%- include('./partials/header') %>
+                <% }	%>
 
 
-	<div class="form">
-		<div class="form-toggle"></div>
-		<div class="form-panel one">
-			<div class="form-header">
-				<h1>Editar productos</h1>
-				<h2>Ingresá los datos correspondientes para editar un producto.</h2>
-			</div>
-			<div class="form-content">
-				<form method="POST" action="/ramo/productEdit">
-					<input type="hidden" name="id" value="<%= id %> ">
-					<div class="form-group">
-						<label for="productName">Nombre del producto </label>
-						<input type="text"  name="product_name" 
-							placeholder="nombre del producto" required />
-					</div>
-					<div class="form-group">
-						<label for="password">Caracteristicas del producto</label>
-						<input type="text" name="description" 
-							placeholder="caracteristicas del producto" required />
-					</div>
-					<div class="form-group">
-						<button type="submit">Cargar imagenes</button>
-					</div>
-					<div class="form-group">
-						<label class="form-remember">
-							<input type="checkbox" />Aceptar terminos y condiciones
-					</div>
-					<div class="form-group">
-						<button type="submit">Subir producto</button>
-					</div>
-				</form>
-
-			</div>
-		</div>
-
-	</div>
-	</div>
-	</div>
-	<br><br><br><br><br>
+                    <body>
 
 
-	<%- include('./partials/footer') %>
-</body>
+                        <div class="form">
+                            <div class="form-toggle"></div>
+                            <div class="form-panel one">
+                                <div class="form-header">
+                                    <h1>Editar productos</h1>
+                                    <h2>Ingresá los datos correspondientes para editar un producto.</h2>
+                                </div>
+                                <div class="form-content">
+                                    <form method="POST" action="/ramo/productEdit">
+                                        <input type="hidden" name="id" value="<%= id %> ">
+                                        <div class="form-group">
+                                            <label for="productName">Nombrá tu producto </label>
+                                            <input type="text" name="product_name" placeholder="nombre del producto" required />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Describí tu producto</label>
+                                            <input type="text" name="description" placeholder="caracteristicas del producto" required />
+                                        </div>
+                                        <!-- <div class="form-group">
+                                            <button type="submit">Cargar imagenes</button>
+                                        </div> -->
 
-</html>
+                                        <div class="form-group">
+                                            <button type="submit">Actualizar producto</button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
+                        </div>
+                        <br><br><br><br><br>
+
+
+                        <%- include('./partials/footer') %>
+                    </body>
+
+                    </html>

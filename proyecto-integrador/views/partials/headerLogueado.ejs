@@ -3,90 +3,89 @@
 <!-- Include Head -->
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;" />
-	<link
-		href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo:ital,wght@1,200&family=Didact+Gothic&family=Mulish:wght@700&family=Nunito&family=Varela+Round&family=Work+Sans&display=swap"
-		rel="stylesheet">
-	<title> Ramo Furniture </title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link width="" rel="shortcut icon" href="/images/ramo-logo.png" style="background-color: white;" />
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Archivo:ital,wght@1,200&family=Didact+Gothic&family=Mulish:wght@700&family=Nunito&family=Varela+Round&family=Work+Sans&display=swap" rel="stylesheet">
+    <title> Ramo Furniture </title>
+    <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!-- Bootstrap Grid Stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
 
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="/stylesheets/app.css">
+    <!-- Own Stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/app.css">
 
 </head>
 
 <body>
-	<!-- Header -->
-	<header class="main-header">
+    <!-- Header -->
+    <header class="main-header">
 
 
 
-		<div class="container">
-			<div class="row align-items-center primera-linea">
-				<div class="col-5 col-md-2">
-					<a href="/ramo" class="left-navbar main-header_home-link">
-						<img class="logo" src="/images/ramo-logo.png">
-					</a>
+        <div class="container">
+            <div class="row align-items-center primera-linea">
+                <div class="col-5 col-md-2">
+                    <a href="/ramo" class="left-navbar main-header_home-link">
+                        <img class="logo" src="/images/ramo-logo.png">
+                    </a>
 
-				</div>
+                </div>
 
 
-				<div class="col-7 col-md-6">
-					<form action="/ramo/searchResult" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
-							class="search-form_input">
-						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-					</form>
-				</div>
+                <div class="col-7 col-md-6">
+                    <form action="/ramo/searchResult" method="GET" class="search-form">
+                        <input type="text" name="search" placeholder="Buscar productos, marcas y más" class="search-form_input">
+                        <button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
 
-				<button class="btn-toggle-navbar">
+                <button class="btn-toggle-navbar">
 					<i class="fas fa-bars"></i>
 				</button>
-				<div class="main-navbar">
+                <div class="main-navbar">
 
-					<div class="main-div">
+                    <div class="main-div">
 
-						<a href="/ramo/profile/<%= locals.user.id %> " class="saludo">
-							 <p>Hola! <%= locals.user.name  %> <!--Evaluar si poner en mayusculas o minusculas -->
-								</p>
-						</a>
+                        <a href="/ramo/profile/<%= locals.user.id %> " class="saludo">
+                            <p>Hola
+                                <%= locals.user.name.toUpperCase()  %>!
 
-						<form action="/ramo/logout" method="post">
+                            </p>
+                        </a>
 
-							<button class="logout" type="submit">
-								<a href="/ramo">Cerrar sesión <i class="fas fa-sign-in-alt"></i> </a>
+                        <form action="/ramo/logout" method="post">
+
+                            <button class="logout" type="submit">
+								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
 							</button>
 
-						</form>
-					</div>
-				</div>
+                        </form>
+                    </div>
+                </div>
 
-			</div>
-
-
-
-
-		</div>
+            </div>
 
 
 
 
-	</header>
-	<!-- /Header -->
-	<div class="container">
-		<div class="row">
+        </div>
 
-		
-		<div class="col-lg-4 pb-5">
-			<a href="/ramo" class="todos-prod2">Todos los productos</a>
-		</div>
-		</div>
-		</div>
+
+
+
+    </header>
+    <!-- /Header -->
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-4 pb-5">
+                <a href="/ramo" class="todos-prod2">Todos los productos</a>
+            </div>
+        </div>
+    </div>
 
 </body>
 

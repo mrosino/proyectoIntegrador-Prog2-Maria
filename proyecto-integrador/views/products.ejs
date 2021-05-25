@@ -1,98 +1,94 @@
 <% if (locals.logged==true) { %>
-	<%- include('./partials/headerLogueado') %>
-		<% } else { %>
+    <%- include('./partials/headerLogueado') %>
+        <% } else { %>
 
-			<%- include('./partials/header') %>
-				<% } %>
-
-
-					<body>
+            <%- include('./partials/header') %>
+                <% } %>
 
 
+                    <body>
 
 
 
-						<!-- product detail -->
-						<div class="container products-wrapper">
-							<div class="d-flex align-items-center">
-								<h2 class="products-title typography-title">
-									<%= products.product_name %> #<%= products.id %>
-								</h2>
-								<p class="product-detail-description">
-									<!--<a href="/ramo/productAdd">Editar</a>-->
-								<div class="no-margin">
-									<button type="submit"><a
-											href="/ramo/productEdit/<%= products.id %> ">Editar</a></button>
 
-								</div>
 
-								</p>
-							</div>
-							<div class="product-detail">
-								<div class="row">
-									<article class="col-11 col-lg-8 product-detail-info">
-										<img src="/images/products/<%= products.image %>" alt="Modulo rack L wengue">
-										<p class="product-detail-description">
-											<%= products.description %>
-										</p>
-									</article>
-									<div class="col-12 col-lg-4 title-thypography">
+                        <!-- product detail -->
+                        <div class="container products-wrapper">
+                            <div class="d-flex align-items-center">
+                                <h2 class="products-title typography-title">
+                                    <%= products.product_name %> #
+                                        <%= products.id %>
+                                </h2>
+                                <p class="product-detail-description">
+                                    <% if (locals.logged==true && locals.user.id == products.created_by) { %>
+                                        <div class="no-margin">
+                                            <button type="submit"><a href="/ramo/productEdit/<%= products.id %> ">Editar</a></div>button>
 
-										<section class="comments">
+                                        </div>
+										<% } %>
+                                </p>
+                            </div>
+                            <div class="product-detail">
+                                <div class="row">
+                                    <article class="col-11 col-lg-8 product-detail-info">
+                                        <img src="/images/products/<%= products.image %>" alt="Modulo rack L wengue">
+                                        <p class="product-detail-description">
+                                            <%= products.description %>
+                                        </p>
+                                    </article>
+                                    <div class="col-12 col-lg-4 title-thypography">
 
-											<% if (comments.length>= 5) { %>
-												<% for (let i=0; i < 5; i++) { %>
+                                        <section class="comments">
 
-													<article>
-														<img src="https://via.placeholder.com/35" alt="">
-														<div class="data">
-															<p class="user">
-																<strong> <a
+                                            <% if (comments.length>= 5) { %>
+                                                <% for (let i=0; i < 5; i++) { %>
+
+                                                    <article>
+                                                        <img src="https://via.placeholder.com/35" alt="">
+                                                        <div class="data">
+                                                            <p class="user">
+                                                                <strong> <a
 																		href="/ramo/profile/<%= comments[i].creator_id  %> ">
 																		<%= comments[i].creator_id %>
 																	</a> </strong>
-																<%= comments[i].content %>
-																	<% if ( locals.logged==true && locals.user.id == comments[i].creator_id) { %>
-																		<form action="/ramo/products/commentDelete"
-																			method="post">
-																			<input type="hidden" name="id"
-																				value="<%= comments[i].id %> ">
-																			<button type="submit">
+                                                                <%= comments[i].content %>
+                                                                    <% if ( locals.logged==true && locals.user.id == comments[i].creator_id) { %>
+                                                                        <form action="/ramo/products/commentDelete" method="post">
+                                                                            <input type="hidden" name="id" value="<%= comments[i].id %> ">
+                                                                            <button type="submit">
 																				<ion-icon name="trash-outline"
 																					class="deleteB"></ion-icon>
 																			</button>
 
 
 
-																		</form>
-																		<% } %>
-															</p>
-														</div>
-													</article>
+                                            </form>
+                                            <% } %>
+                                </p>
+                                </div>
+                                </article>
 
-													<% } %>
-														<% } else { %>
+                                <% } %>
+                                    <% } else { %>
 
 
 
-															<% for (let i=0; i < comments.length; i++) { %>
-																<article>
-																	<img src="https://via.placeholder.com/35" alt="">
-																	<div class="data">
-																		<p class="user">
-																			<strong> <a
+                                        <% for (let i=0; i < comments.length; i++) { %>
+                                            <article>
+                                                <img src="https://via.placeholder.com/35" alt="">
+                                                <div class="data">
+                                                    <p class="user">
+                                                        <strong> <a
 																					href="/ramo/profile/<%= comments[i].creator_id  %> ">
 																					<%= comments[i].creator_id %>
 																				</a> </strong>
-																			<%= comments[i].content %>
-																				<% if (locals.logged==true &&
+                                                        <%= comments[i].content %>
+                                                            <% if (locals.logged==true &&
 																					locals.user.id==comments[i].creator_id)
 																					{ %>
-																					<form action="/ramo/products/commentDelete"
-																						method="post">
-																						<input type="hidden" name="id"
-																						value="<%= comments[i].id %> ">
-																						<button type="submit">
+                                                                <form action="/ramo/products/commentDelete" method="post">
+                                                                    <input type="hidden" name="id" value="<%= comments[i].id %> ">
+                                                                    <button type="submit">
 																							<ion-icon
 																								name="trash-outline"></ion-icon>
 																							</ion-icon>
@@ -101,46 +97,44 @@
 
 
 
-																					</form>
-																					<% } %>
-																		</p>
+                                                                </form>
+                                                                <% } %>
+                                                    </p>
 
 
-																	</div>
-																</article>
+                                                </div>
+                                            </article>
 
-																<% } %>
-																	<% }%>
+                                            <% } %>
+                                                <% }%>
 
 
-										</section>
+                                                    </section>
 
-										<% if (locals.logged==true){ %>
-											<form class="form-comentario" action="/ramo/products/commentAdd"
-												method="POST">
-												<input type="hidden" name="id" value="<%= products.id %> ">
-												<input class="form-input" type="text" name="comment"
-													placeholder="Agregar comentario">
-												<button type="submit" class="buy-now-button">Agregar comentario</button>
-											</form>
-											<% } else { %>
-												<a href="/ramo/login"> <button type="text" class="buy-now-button">Inicie
+                                                    <% if (locals.logged==true){ %>
+                                                        <form class="form-comentario" action="/ramo/products/commentAdd" method="POST">
+                                                            <input type="hidden" name="id" value="<%= products.id %> ">
+                                                            <input class="form-input" type="text" name="comment" placeholder="Agregar comentario">
+                                                            <button type="submit" class="buy-now-button">Agregar comentario</button>
+                                                        </form>
+                                                        <% } else { %>
+                                                            <a href="/ramo/login"> <button type="text" class="buy-now-button">Inicie
 														sesion para comentar</button></a>
-												<% } %>
+                                                            <% } %>
 
-													<hr>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						<!-- /product detail -->
+                                                                <hr>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
 
 
+                        <!-- /product detail -->
 
 
-						<%- include('./partials/footer') %>
-					</body>
 
-					</html>
+
+                        <%- include('./partials/footer') %>
+                    </body>
+
+                    </html>
