@@ -200,6 +200,8 @@ hr {
     flex-direction: column;
     font-size: 1.2em;
     font-family: var(--hipervinculos-font-family);
+    color: #825050;
+    letter-spacing: 0.06em;
 }
 
 .logout {
@@ -210,6 +212,7 @@ hr {
     font-family: var(--hipervinculos-font-family);
     padding-top: 10px;
     text-align: center;
+    color: #825050;
 }
 
 .left-navbar a,
