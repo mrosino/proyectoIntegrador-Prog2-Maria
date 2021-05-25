@@ -74,6 +74,18 @@ db.products.create ({
 
 }, 
 
+productDelete: (req, res) => {
+db.products.destroy ({
+  where: { id: req.params.id}
+})
+.then(() => {
+  return res.redirect(/user/profile + res.session.userLogueado.id)
+})
+.catch ((error) => {
+  return res.send (error);
+})
+},
+
     productEdit: (req, res) => {
         res.render("productEdit", {
             title: "Pagina de agregar producto ",
