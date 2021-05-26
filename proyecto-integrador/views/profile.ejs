@@ -34,9 +34,10 @@
 						 </li><%= products.length %> Productos</li> 
 						<!-- <li>1600 seguidores </li>-->
 						<li><%= comments.length %> Comentarios</li>
-
-						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
-
+						<% if (locals.logged==true && locals.user.id == user.id) { %>
+							
+						<a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a>
+						<% } %>
 					</ul>
 
 				</div>

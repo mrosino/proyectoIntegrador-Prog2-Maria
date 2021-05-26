@@ -50,26 +50,27 @@ let productController = {
             });
     },
     productAdd: (req, res) => {
-       res.render("productAdd", {
+       return res.render("productAdd", {
             title: "Pagina de agregar producto ",
         });
 
         
     },
 
-productADd: (req, res) => {
+productAdded: (req, res) => {
+let info = req.body;
 db.Products.create ({
-  product_id: req.body.id, 
-  image: req.body.image, 
-  product_name: req.body.productname, 
-  creation_date: req.body.fechacreacion, 
-  description:req.body.descripcion, 
+  cretaed_by: res.locals.user.id,
+  image: info.image, 
+  product_name: info.product_name, 
+  creation_date: info.creation_date, 
+  description: info.description, 
 })
 .then(() => {
-  return res.redirect('/home'); 
+    return res.redirect(req.headers.referer);
 })
 .catch((error) => {
-  return res.send (error); 
+  throw error
 })
 
 }, 
@@ -79,10 +80,10 @@ db.Products.destroy ({
   where: { id: req.params.id}
 })
 .then(() => {
-  return res.redirect("/user/profile" + res.session.userLogueado.id); 
+    return res.redirect(req.headers.referer);
 })
 .catch ((error) => {
-  return res.send (error);
+    throw error
 })
 },
 
