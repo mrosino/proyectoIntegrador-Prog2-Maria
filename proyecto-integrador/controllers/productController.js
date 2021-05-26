@@ -62,7 +62,7 @@ let productController = {
       description: info.description,
     })
       .then(() => {
-        return res.redirect("/ramo/login");
+        return res.redirect(req.headers.referer);
       })
 
       .catch((error) => {
