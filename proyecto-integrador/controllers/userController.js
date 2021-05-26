@@ -64,8 +64,8 @@ let userController = {
                     });
                 });
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((error) => {
+                throw error
             });
     })
 },

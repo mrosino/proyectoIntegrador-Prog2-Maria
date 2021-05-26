@@ -28,7 +28,6 @@ let ramoController = {
                     [Op.like]: "%" + search + "%" } }],
             //despues poner año , creador etc
         }).then((results) => {
-            console.log(results);
             return res.render("searchResult", {
                 search: results,
                 lookedFor: req.query.search,

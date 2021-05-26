@@ -40,11 +40,11 @@ var securityController = {
                         where: { id: req.body.id },
                     })
                     .then(function(data) {
-                        console.log(data);
+                        
                         res.redirect("/ramo/profile/" + req.body.id);
                     })
                     .catch(function(error) {
-                        console.log(error);
+                        throw error
                     });
             } else {
                 res.redirect(req.headers.referer);
@@ -62,11 +62,11 @@ var securityController = {
                             where: { id: req.body.id },
                         })
                         .then(function(data) {
-                            console.log(data);
+                            
                             res.redirect("/ramo/profile/" + req.body.id);
                         })
                         .catch(function(error) {
-                            console.log(error);
+                            throw error
                         });
                 } else {
                     res.redirect(req.headers.referer);

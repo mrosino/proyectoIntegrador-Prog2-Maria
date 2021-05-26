@@ -55,14 +55,14 @@ let productController = {
   productAdded: (req, res) => {
     let info = req.body;
     db.Products.create({
-      cretaed_by: res.locals.user.id,
+      created_by: res.locals.user.id,
       image: info.image,
       product_name: info.product_name,
       creation_date: info.creation_date,
       description: info.description,
     })
       .then(() => {
-        return res.redirect(req.headers.referer);
+        return res.redirect("/ramo/login");
       })
 
       .catch((error) => {
@@ -71,7 +71,7 @@ let productController = {
   },
   productDelete: (req, res) => {
     db.Products.destroy({
-     // where: { id: req.params.id }, nos va a borrar el id del usuario ahi, hay que pasarle un input hidden
+     where: { id: req.body.id },
     })
       .then(() => {
         return res.redirect(req.headers.referer);
