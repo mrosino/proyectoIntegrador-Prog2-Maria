@@ -57,34 +57,34 @@ let productController = {
         
     },
 
-productADd: (req, res) => {
-db.Products.create ({
-  product_id: req.body.id, 
-  image: req.body.image, 
-  product_name: req.body.productname, 
-  creation_date: req.body.fechacreacion, 
-  description:req.body.descripcion, 
-})
-.then(() => {
-  return res.redirect('/home'); 
-})
-.catch((error) => {
-  return res.send (error); 
-})
+//productADd: (req, res) => {
+//db.Products.create ({
+ // product_id: req.body.id, 
+ // image: req.body.image, 
+ // product_name: req.body.productname, 
+ // creation_date: req.body.fechacreacion, 
+ // description:req.body.descripcion, 
+//})
+//.then(() => {
+ // return res.redirect('/home'); 
+//})
+//.catch((error) => {
+ // return res.send (error); 
+//})
 
-}, 
+//}, 
 
-productDelete: (req, res) => {
-db.Products.destroy ({
-  where: { id: req.params.id}
-})
-.then(() => {
-  return res.redirect("/user/profile" + res.session.userLogueado.id); 
-})
-.catch ((error) => {
-  return res.send (error);
-})
-},
+//productDelete: (req, res) => {
+//db.Products.destroy ({
+ // where: { id: req.params.id}
+//})
+//.then(() => {
+  //return res.redirect("/user/profile" + res.session.userLogueado.id); 
+//})
+//.catch ((error) => {
+ // return res.send (error);
+//})
+//},
 
     productEdit: (req, res) => {
         res.render("productEdit", {
