@@ -10,11 +10,11 @@
 				<h2>Ingresá los datos correspondientes para agregar un nuevo producto a tu cuenta</h2>
 			</div>
 			<div class="form-content">
-				<form>
+				<form method="POST">
 					<div class="form-group">
 						<label for="productName">Nombre del producto </label>
 						<input type="text" id="nombre del producto" name="nombre del producto"
-							placeholder="nombre del producto" required="required" />
+							placeholder="nombre del producto" required >
 					</div>
 
 				<div class="form-group">
@@ -24,19 +24,19 @@
 
 				<div class="form-group">
 					<label for="creationDate" class="postLabel"> Ingresa la fecha de creacion</label>
-					<input type="date" name="creation_date "class="postInput">
+					<input type="date" name="creation_date "class="postInput" >
 				</div>
 
 				<div class="form-group">
 					<label for="description" class="postLabel"> Ingrese descripcion</label>
-					<input type="text" name="description" class="postInput">
+					<input type="text" name="description" class="postInput" required>
 				</div>
 
 			
 				
 					<div class="form-group">
-						<label class="form-remember">
-							<input type="checkbox" />Aceptar terminos y condiciones
+						
+							<input type="checkbox" required >Aceptar terminos y condiciones  
 					</div>
 					<div class="form-group">
 						<button type="submit">Subir producto</button>

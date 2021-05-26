@@ -538,9 +538,12 @@ hr {
 .action-button.delete {
     background-color: rgb(248, 69, 37);
 }
-
+.eddel{
+width: 90%;
+justify-content: space-between;
+}
 .comments {
-    padding: 30px 15px 15px 0;
+    padding: 1px 15px 15px 0;
 }
 
 .comments article {
@@ -567,7 +570,7 @@ hr {
 }
 
 .comments .user {
-    font-size: 1.7em;
+    font-size: 1.5em;
 }
 
 
