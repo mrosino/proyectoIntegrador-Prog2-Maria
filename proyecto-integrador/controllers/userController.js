@@ -34,20 +34,28 @@ let userController = {
         });
     },
     profile: (req, res) => {
-        let id = req.params.id; // ver de poner req.sessions.user.id
+        let id = res.locals.user.id; // ver de poner req.sessions.user.id
+        let  visitedProfile = req.params.id
+         db.Users.findOne({
+            where: { id: visitedProfile },
+            raw: true,
+        })
+        .then((visitor) => {
         db.Users.findOne({
                 where: { id: id },
                 raw: true,
             })
             .then((user) => {
                 db.Products.findAll({
-                    where: { created_by: user.id },
+                    where: { created_by: visitedProfile },
                     raw: true,
                 }).then((products) => {
                     db.Comments.findAll({
-                        where: { creator_id: user.id },
+                        where: { creator_id: visitedProfile },
                     }).then((comments) => {
                         return res.render("profile", {
+                         
+                            visitor: visitor,
                             title: "Pagina de perfil",
                             user: user,
                             products: products,
@@ -59,7 +67,8 @@ let userController = {
             .catch((err) => {
                 console.log(err);
             });
-    },
+    })
+},
     profileEdit: (req, res) => {
         res.render("profileEdit", {
             title: "Pagina de edicion de perfil",

@@ -18,10 +18,12 @@
 			</div>
 			<div class="data-container col-6 costado">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= user.name.toUpperCase() %>
+					<h1 class="main-title"> <%= visitor.name.toUpperCase() %>
+						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<a href="/ramo/profileEdit">
 							<i class="fas fa-cog"></i>
 						</a>
+						<% } %> 
 						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
 						<!-- <form class="form-seguir" action="" method="GET">
 							<button type="submit" class="btn mt-3">SEGUIR</button>
@@ -34,9 +36,10 @@
 						 </li><%= products.length %> Productos</li> 
 						<!-- <li>1600 seguidores </li>-->
 						<li><%= comments.length %> Comentarios</li>
-
+						<%= console.log(user.id) %> 
+						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
-
+<% } %> 
 					</ul>
 
 				</div>
