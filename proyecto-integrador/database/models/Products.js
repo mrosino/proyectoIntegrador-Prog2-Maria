@@ -27,7 +27,7 @@ let cols = {
 }
 let config = {
     tableName: "products", 
-    timestamps: false,
+    timestamps: true,
 }
 const Products = sequelize.define(alias, cols, config);
 return Products; //lo que retorno en la ruta/controlador

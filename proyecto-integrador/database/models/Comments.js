@@ -24,7 +24,7 @@ let cols = {
 }
 let config = {
     tableName: "comments", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
-    timestamps: false, 
+    timestamps: true, 
 }
 const Comments = sequelize.define(alias, cols, config);
 return Comments; //lo que retorno en la ruta/controlador
