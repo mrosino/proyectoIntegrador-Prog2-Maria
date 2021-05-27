@@ -17,14 +17,14 @@ let cols = {
         type: DataTypes.STRING
     },
     creation_date: {
-        type: DataTypes.DATE,    
+        type: DataTypes.DATEONLY,    
     },
  
 
 }
 let config = {
     tableName: "comments", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
-    timestamps: true, 
+    timestamps: false, 
 }
 const Comments = sequelize.define(alias, cols, config);
 return Comments; //lo que retorno en la ruta/controlador

@@ -17,17 +17,19 @@ let cols = {
         type: DataTypes.STRING
     },
     creation_date: {
-        type: DataTypes.DATE,
+        type: DataTypes.DATEONLY,
         
     },
     description: {
         type: DataTypes.INTEGER
     },
-
+    updated_date: {
+        type: DataTypes.DATEONLY, // seguir aca
+    }
 }
 let config = {
     tableName: "products", 
-    timestamps: true,
+    timestamps: false,
 }
 const Products = sequelize.define(alias, cols, config);
 return Products; //lo que retorno en la ruta/controlador

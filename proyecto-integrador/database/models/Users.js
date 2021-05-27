@@ -29,16 +29,19 @@ let cols = {
         type: DataTypes.STRING
     },
     birthday: {
-        type: DataTypes.DATE
+        type: DataTypes.DATEONLY
     },
     phone: {
         type: DataTypes.INTEGER
     },
+    user_update: {
+        type: DataTypes.DATEONLY, // VERIFICAR SI ES DATEONLY O NO
+    }
 
 }
 let config = {
     tableName: "users", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
-    timestamps: true, //sino la base de datos me suma dos columnas de created by y noseque mas
+    timestamps: false, //sino la base de datos me suma dos columnas de created by y noseque mas
 }
 const Users = sequelize.define(alias, cols, config);
 return Users; //lo que retorno en la ruta/controlador
