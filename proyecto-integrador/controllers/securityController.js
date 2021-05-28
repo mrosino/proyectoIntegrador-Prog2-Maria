@@ -39,7 +39,7 @@ var securityController = {
             if (!user) {
                 db.Users.update({
                         email: req.body.email,
-                       // user_update: moment().format(),
+                       user_update: moment().format(),
                     }, {
                         where: { id: req.body.id },
                     })
@@ -63,7 +63,7 @@ var securityController = {
                     let encryptedPss = bcrypt.hashSync(req.body.password);
                     db.Users.update({
                             password: encryptedPss,
-                          //  user_update: moment().format(),
+                           user_update: moment().format(),
                         }, {
                             where: { id: req.body.id },
                         })

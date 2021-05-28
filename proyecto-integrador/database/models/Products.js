@@ -17,14 +17,14 @@ let cols = {
         type: DataTypes.STRING
     },
     creation_date: {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         
     },
     description: {
         type: DataTypes.INTEGER
     },
     updated_date: {
-        type: DataTypes.DATEONLY, // seguir aca
+        type: DataTypes.DATE, // seguir aca
     }
 }
 let config = {

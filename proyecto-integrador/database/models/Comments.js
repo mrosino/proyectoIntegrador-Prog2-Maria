@@ -17,7 +17,7 @@ let cols = {
         type: DataTypes.STRING
     },
     creation_date: {
-        type: DataTypes.DATEONLY,    
+        type: DataTypes.DATE,    
     },
  
 

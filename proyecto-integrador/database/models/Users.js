@@ -29,13 +29,13 @@ let cols = {
         type: DataTypes.STRING
     },
     birthday: {
-        type: DataTypes.DATEONLY
+        type: DataTypes.DATE
     },
     phone: {
         type: DataTypes.INTEGER
     },
     user_update: {
-        type: DataTypes.DATEONLY, // VERIFICAR SI ES DATEONLY O NO
+        type: DataTypes.DATE, 
     }
 
 }
