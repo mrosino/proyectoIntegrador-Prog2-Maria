@@ -10,7 +10,7 @@ let ramoController = {
             raw: true,
         })
 
-        .then((data) => {
+            .then((data) => {
                 return res.render("index", {
                     products: data,
                     title: "Pagina de inicio",
@@ -24,8 +24,16 @@ let ramoController = {
     searchResult: (req, res) => {
         let search = req.query.search;
         db.Products.findAll({
-            where: [{ product_name: {
-                    [Op.like]: "%" + search + "%" } }],
+            where: [{
+                product_name: {
+                    [Op.like]: "%" + search + "%"
+                }
+            }],
+            where: [{
+                description: {
+                    [Op.like]: "%" + search + "%"
+                }
+            }],
             //despues poner año , creador etc
         }).then((results) => {
             return res.render("searchResult", {
