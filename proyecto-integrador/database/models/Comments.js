@@ -19,6 +19,9 @@ let cols = {
     creation_date: {
         type: DataTypes.DATE,    
     },
+    updated_date: {
+        type: DataTypes.DATE, 
+    }
  
 
 }

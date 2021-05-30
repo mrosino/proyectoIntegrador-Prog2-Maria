@@ -23,8 +23,8 @@ let cols = {
     description: {
         type: DataTypes.INTEGER
     },
-    updated_date: {
-        type: DataTypes.DATE, // seguir aca
+    update_date: {
+        type: DataTypes.DATE, 
     }
 }
 let config = {

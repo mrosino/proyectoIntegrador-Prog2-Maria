@@ -34,7 +34,10 @@ let cols = {
     phone: {
         type: DataTypes.INTEGER
     },
-    user_update: {
+    registration_date: {
+        type: DataTypes.DATE, 
+    },
+    registrationUpdate_date: {
         type: DataTypes.DATE, 
     }
 
