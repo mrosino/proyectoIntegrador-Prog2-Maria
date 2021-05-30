@@ -62,7 +62,7 @@ let productController = {
       description: info.description,
     })
       .then(() => {
-        return res.redirect(req.headers.referer);
+        return res.redirect(`/ramo/profile/${info.id}`);
       })
 
       .catch((error) => {
@@ -70,11 +70,16 @@ let productController = {
       });
   },
   productDelete: (req, res) => {
-    db.Products.destroy({
-     where: { id: req.body.id },
+    db.Comments.destroy({
+      where: { id: req.body.id },
     })
+    .then(()=> {
+      db.Products.destroy({
+        where: { id: req.body.id },
+    })
+  })
       .then(() => {
-        return res.redirect(req.headers.referer);
+        return res.redirect("/ramo");
       })
       .catch((error) => {
         throw error;
