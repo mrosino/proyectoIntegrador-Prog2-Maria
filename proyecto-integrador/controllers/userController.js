@@ -34,6 +34,7 @@ let userController = {
         });
     },
     profile: (req, res) => {
+       
         let id = res.locals.user.id; // ver de poner req.sessions.user.id
         let  visitedProfile = req.params.id
          db.Users.findOne({
@@ -70,6 +71,7 @@ let userController = {
     })
 },
     profileEdit: (req, res) => {
+       
         res.render("profileEdit", {
             title: "Pagina de edicion de perfil",
         });

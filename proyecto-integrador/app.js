@@ -38,6 +38,10 @@ app.use(session( {
     maxAge: 1*60*60*1000
   }
 }));
+const privateRoutes = [
+  '/ramo/productAdd', '/ramo/profileEdit', '/ramo/productEdit' //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado 
+]
+
 
 app.use(function(req, res, next){
   if(req.session.user != null){
@@ -48,10 +52,11 @@ app.use(function(req, res, next){
 
   } 
   } else {
+    console.log(req.path, privateRoutes);
     res.locals.logged = false
-    // if (!publicRoutes.includes(req.path)) {      
-    //   return res.redirect('/login')
-    // }
+    if (privateRoutes.includes(req.path)) {      
+      return res.redirect('/ramo/login')
+    }
     
   }
   next();
@@ -88,10 +93,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
-const firewall = [
-  '/login', '/register'
-]
 
 
 

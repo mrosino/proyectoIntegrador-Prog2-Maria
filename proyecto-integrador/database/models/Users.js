@@ -34,6 +34,9 @@ let cols = {
     phone: {
         type: DataTypes.INTEGER
     },
+    user_update: {
+        type: DataTypes.DATE, 
+    }
 
 }
 let config = {

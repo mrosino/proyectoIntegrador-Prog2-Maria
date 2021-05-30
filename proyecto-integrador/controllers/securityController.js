@@ -32,10 +32,14 @@ var securityController = {
         return res.redirect("/ramo");
     },
     editedUser: (req, res) => {
-        db.Users.findOne({ where: { email: req.body.email } }).then((user) => {
+       
+        db.Users.findOne({
+             where: { email: req.body.email } })
+             .then((user) => {
             if (!user) {
                 db.Users.update({
                         email: req.body.email,
+                       user_update: moment().format(),
                     }, {
                         where: { id: req.body.id },
                     })
@@ -52,12 +56,14 @@ var securityController = {
         });
     },
     editedPass: (req, res) => {
+       
         db.Users.findOne({ where: { password: req.body.password } }).then(
             (user) => {
                 if (!user) {
                     let encryptedPss = bcrypt.hashSync(req.body.password);
                     db.Users.update({
                             password: encryptedPss,
+                           user_update: moment().format(),
                         }, {
                             where: { id: req.body.id },
                         })

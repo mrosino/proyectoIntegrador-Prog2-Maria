@@ -48,6 +48,7 @@ let productController = {
       });
   },
   productAdd: (req, res) => {
+    
     return res.render("productAdd", {
       title: "Pagina de agregar producto ",
     });
@@ -58,7 +59,7 @@ let productController = {
       created_by: res.locals.user.id,
       image: info.image,
       product_name: info.product_name,
-      creation_date: info.creation_date,
+      creation_date:  moment().format(),
       description: info.description,
     })
       .then(() => {
@@ -87,9 +88,13 @@ let productController = {
   },
 
   productEdit: (req, res) => {
+    if (!res.locals.user) {
+      return res.redirect("/ramo/login");
+  }
     res.render("productEdit", {
       title: "Pagina de agregar producto ",
       id: req.params.id,
+      //updated_date: Date.now(),
     });
   },
   productEdited: (req, res) => {

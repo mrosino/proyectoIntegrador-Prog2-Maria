@@ -129,7 +129,9 @@ CREATE TABLE `products` (
   `image` varchar(255) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
   `creation_date` date DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL
+  `description` varchar(500) DEFAULT NULL,
+  `updated_date` date DEFAULT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -171,7 +173,8 @@ CREATE TABLE `users` (
   `document` int(11) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
   `birthday` date DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL
+  `phone` int(11) DEFAULT NULL,
+   `user_update` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

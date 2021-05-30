@@ -23,7 +23,9 @@ let cols = {
     description: {
         type: DataTypes.INTEGER
     },
-
+    updated_date: {
+        type: DataTypes.DATE, // seguir aca
+    }
 }
 let config = {
     tableName: "products", 
