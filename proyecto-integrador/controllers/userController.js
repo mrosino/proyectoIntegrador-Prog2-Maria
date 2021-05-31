@@ -35,11 +35,12 @@ let userController = {
     },
     profile: (req, res) => {
        
-        let id = res.locals.user.id; // ver de poner req.sessions.user.id
+        let id = res.locals.user.id; 
         let  visitedProfile = req.params.id
-         db.Users.findOne({
+         db.Users.findOne({           
             where: { id: visitedProfile },
             raw: true,
+            
         })
         .then((visitor) => {
         db.Users.findOne({

@@ -47,6 +47,17 @@
                                         <p class="product-detail-description">
                                             <%= products.description %>
                                         </p>
+<br>
+<% if (locals.logged==true) { %>
+                                        <p class="product-author">
+                                            Producto publicado por <a  style="font-weight: bold;" href="/ramo/profile/<%= products.products_users.id %> "><%= products.products_users.name %></a>
+
+                                            <a   href="/ramo/profile/<%= products.products_users.id %> ">Visitá su perfil para ver el resto de sus productos publicados</a>
+                                            
+
+                                        </p>
+
+                                        <% } %>
                                     </article>
                                     <div class="col-12 col-lg-4 title-thypography">
                                         <h1 style="padding: 15px; text-align: center;">Comentarios</h1>
@@ -61,7 +72,7 @@
                                                             <p class="user">
                                                                 <strong> <a
 																		href="/ramo/profile/<%= comments[i].creator_id  %> ">
-																		<%= comments[i].creator_id %>
+																		<%= comments[i].comments_users.name %>
 																	</a> </strong>
                                                                 <%= comments[i].content %>
                                                                     <% if ( locals.logged==true && locals.user.id == comments[i].creator_id) { %>

@@ -47,8 +47,8 @@
                 <div class="main-navbar">
 
                     <div class="main-div ">
-                        <div class="problematico"> <a href="/ramo/profile/<%= locals.user.id %> " class="saludo">
-                            Hola  <%= locals.user.name.toUpperCase()  %>! <ion-icon name="person-circle"></ion-icon>                       
+                        <div class="problematico saludo"> <a href="/ramo/profile/<%= locals.user.id %> ">
+                           <%= locals.user.name.toLowerCase()%> <ion-icon name="person-circle"></ion-icon>                       
                            
                               </a>
                             <form action="/ramo/logout" method="post">

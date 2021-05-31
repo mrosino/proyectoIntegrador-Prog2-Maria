@@ -227,6 +227,9 @@ hr {
     margin: 0 auto;
     font-family: var(--hipervinculos-font-family);
 }
+.saludo ::first-letter {
+    text-transform: uppercase;
+}
 
 
 /*====== Banner ======*/
@@ -465,6 +468,15 @@ hr {
     text-align: justify;
 }
 
+.product-author{
+    padding: 15px 15px 15px 40px;
+    font-size: 1.5em;
+    /*line-height: 1.5;*/
+    
+}
+.product-author ::first-letter {
+    text-transform: uppercase;
+}
 .product-detail-price {
     font-size: 5.5em;
     margin: 10px 0;

@@ -1,24 +1,12 @@
--- phpMyAdmin SQL Dump
--- version 4.9.7
--- https://www.phpmyadmin.net/
---
--- Servidor: localhost:3306
--- Tiempo de generación: 30-05-2021 a las 17:48:43
--- Versión del servidor: 5.7.32
--- Versión de PHP: 7.4.12
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
---
--- Base de datos: `base_proyecto`
---
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `comments`
---
+-- Estructura de tabla  `comments`
+
 
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL,
@@ -29,9 +17,6 @@ CREATE TABLE `comments` (
   `update_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `comments`
---
 
 INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_date`, `update_date`) VALUES
 (1, 28, 1, 'Me sorprendió la calidad, esperaba menos.\r\nMuy recomendable.', '2013-04-18', NULL),
@@ -111,15 +96,13 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (95, 122, 7, 'Buen set', '2021-05-24', NULL),
 (97, 136, 18, '¿Que ancho tiene?', '2021-05-25', NULL);
 
--- --------------------------------------------------------
+-- Estructura de tabla  `products`
 
---
--- Estructura de tabla para la tabla `products`
---
 
 CREATE TABLE `products` (
   `id` int(10) NOT NULL,
   `created_by` int(10) DEFAULT NULL,
+  `commented_by` int(10) DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   `product_name` varchar(255) DEFAULT NULL,
   `creation_date` date DEFAULT NULL,
@@ -127,9 +110,7 @@ CREATE TABLE `products` (
   `update_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `products`
---
+
 
 INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_date`, `description`, `update_date`) VALUES
 (28, 1, 'Sillon esquinero Callow.png', 'Sillon Callow', '2021-04-08', 'Sillon Callow esquinero, de la Línea Chelsea, fabricado en tres cuerpos.\r\n', NULL),
@@ -150,11 +131,9 @@ INSERT INTO `products` (`id`, `created_by`, `image`, `product_name`, `creation_d
 (135, 4, 'cuadro moderno flores rojas.png', 'Cuadro Triptico De La Vida', '2021-04-12', 'Creando un espacio minimalista, dándole un detalle único a tu pared.', NULL),
 (136, 5, 'inhale ex.png', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.', NULL);
 
--- --------------------------------------------------------
 
---
 -- Estructura de tabla para la tabla `users`
---
+
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
@@ -171,9 +150,6 @@ CREATE TABLE `users` (
   `registrationUpdate_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Volcado de datos para la tabla `users`
---
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `registrationUpdate_date`) VALUES
 (1, 'Adriana', 'Carrasco', 'acarrasco@gmail.com', 'acarra1', 'Bs.As.', 30937152, 'femenino', '1973-05-28', 1164838871, NULL, NULL),
@@ -188,67 +164,35 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `
 (16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
 (18, 'mariano francisco ', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, NULL);
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `comments`
---
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `creator_id` (`creator_id`),
   ADD KEY `product_id` (`product_id`);
 
---
--- Indices de la tabla `products`
---
+
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`) USING BTREE,
   ADD KEY `created_by` (`created_by`);
 
---
--- Indices de la tabla `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
---
--- AUTO_INCREMENT de las tablas volcadas
---
 
---
--- AUTO_INCREMENT de la tabla `comments`
---
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
---
--- AUTO_INCREMENT de la tabla `products`
---
+
 ALTER TABLE `products`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
---
--- AUTO_INCREMENT de la tabla `users`
---
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `comments`
---
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
---
--- Filtros para la tabla `products`
---
+
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);

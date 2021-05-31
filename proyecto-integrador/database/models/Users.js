@@ -43,12 +43,27 @@ let cols = {
 
 }
 let config = {
-    tableName: "users", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
-    timestamps: false, //sino la base de datos me suma dos columnas de created by y noseque mas
+    tableName: "users",
+    timestamps: false,
 }
 const Users = sequelize.define(alias, cols, config);
-return Users; //lo que retorno en la ruta/controlador
 
+Users.associate = function (models) {
+    Users.hasMany(models.Comments, {
+        as: "users_comments",
+        foreignKey: "creator_id"
+    });
+ 
+    Users.hasMany(models.Products, {
+        as: "users_products",
+        foreignKey: "created_by"
+    });
+ 
+}
+
+
+
+return Users; 
 }
 
 

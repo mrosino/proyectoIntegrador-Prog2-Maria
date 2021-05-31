@@ -10,6 +10,7 @@ let cols = {
     created_by: {
         type: DataTypes.INTEGER
     },
+   
     image: {
         type: DataTypes.STRING
     },
@@ -32,8 +33,22 @@ let config = {
     timestamps: false,
 }
 const Products = sequelize.define(alias, cols, config);
-return Products; //lo que retorno en la ruta/controlador
 
+Products.associate = function (models) {
+    Products.belongsTo(models.Users, {
+        as: "products_users",
+        foreignKey: "created_by"
+    });
+   
+    Products.hasMany(models.Comments, {
+        as: "products_comments",
+        foreignKey: "product_id"
+    });
+    
 }
 
-//agregar columna activo true or false, y usarlo para el partials pausado, y dsps hacer boton que cambie la propiedad.
+
+
+return Products; 
+}
+

@@ -18,7 +18,7 @@
 			</div>
 			<div class="data-container col-6 costado">
 				<div class="d-flex align-items-center ">
-					<h1 class="main-title"> <%= visitor.name.toUpperCase() %>
+					<h1 class="saludo main-title "> <%= visitor.name %>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<a href="/ramo/profileEdit">
 							<i class="fas fa-cog"></i>

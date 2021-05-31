@@ -5,12 +5,26 @@ const Op = db.Sequelize.Op;
 let productController = {
   products: (req, res) => {
     let id = req.params.id;
-    db.Products.findByPk(id)
+    db.Products.findOne({
+      where: { id: id },
+      include: [
+        {
+          association: "products_users",
+        },
+      ],
+    })
+
       .then((data) => {
         db.Comments.findAll({
-          raw: true,
+          include: [
+            {
+              association: "comments_users",
+            },
+          ],
+
+          // raw: true, //VAMOS A TENER QUE SACAR ESTO chequear que en ningun controlador haya que agregar datavalues
           where: { product_id: id },
-          order: [["creation_date", "DESC"]],
+          order: [["creation_date", "ASC"]],
         }).then((info) => {
           return res.render("products", {
             comments: info,
@@ -48,7 +62,6 @@ let productController = {
       });
   },
   productAdd: (req, res) => {
-    
     return res.render("productAdd", {
       title: "Pagina de agregar producto ",
     });
@@ -59,7 +72,7 @@ let productController = {
       created_by: res.locals.user.id,
       image: info.image,
       product_name: info.product_name,
-      creation_date: moment().add(10, 'days').calendar(),
+      creation_date: moment().add(10, "days").calendar(),
       description: info.description,
     })
       .then(() => {
@@ -74,11 +87,11 @@ let productController = {
     db.Comments.destroy({
       where: { id: req.body.id },
     })
-    .then(()=> {
-      db.Products.destroy({
-        where: { id: req.body.id },
-    })
-  })
+      .then(() => {
+        db.Products.destroy({
+          where: { id: req.body.id },
+        });
+      })
       .then(() => {
         return res.redirect("/ramo");
       })
@@ -90,7 +103,7 @@ let productController = {
   productEdit: (req, res) => {
     if (!res.locals.user) {
       return res.redirect("/ramo/login");
-  }
+    }
     res.render("productEdit", {
       title: "Pagina de agregar producto ",
       id: req.params.id,

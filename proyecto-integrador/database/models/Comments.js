@@ -1,3 +1,5 @@
+const Users = require("./Users");
+
 module.exports = (sequelize, DataTypes) => {
     //parametros definidos desde el otro archivo, y los utilizamos cuando necesitamos
 let alias = 'Comments';
@@ -26,10 +28,25 @@ let cols = {
 
 }
 let config = {
-    tableName: "comments", //x ej, en alias use con mayusculas, aca aclaro el verdadero nombre en la tabla (la de phpmyadmin)
+    tableName: "comments",
     timestamps: false, 
 }
 const Comments = sequelize.define(alias, cols, config);
-return Comments; //lo que retorno en la ruta/controlador
 
+Comments.associate = function (models) {
+    Comments.belongsTo(models.Users, {
+        as: "comments_users",
+        foreignKey: "creator_id"
+    });
+   
+    Comments.belongsTo(models.Products, {
+        as: "comments_products",
+        foreignKey: "product_id"
+    });
+    
+}
+
+
+
+return Comments; 
 }
