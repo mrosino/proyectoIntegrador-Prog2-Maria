@@ -30,38 +30,37 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Habilitamos a express a usar sesiones (req.session.abc)
 
 
-app.use(session( {
+app.use(session({
   secret: "ramo",
-	resave: false,
-	saveUninitialized: true,
-  cookie:{
-    httpOnly:true,
-    maxAge: 1*60*60*1000
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    httpOnly: true,
+    maxAge: 1 * 60 * 60 * 1000
   }
 }));
 const privateRoutes = [
-  '/ramo/productAdd', '/ramo/profileEdit', '/ramo/productEdit', '/products/productDelete', '/products/commentAdd','/products/commentDelete', //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado 
+  '/ramo/productAdd', '/ramo/emailEdit','/ramo/pssEdit', '/ramo/productEdit', '/products/productDelete', '/products/commentAdd', '/products/commentDelete', //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado 
 ]
 
 
-app.use(function(req, res, next){
+app.use(function (req, res, next) {
 
-  res.cookie('usuario', 'logueado', {maxAge:1000*60*5});
 
-  if(req.session.user != null){
-    res.cookie('logged', req.session.logged, {usuario: req.cookies.usuario});
+
+  if (req.session.user != null) {
+    res.cookie('loggedIn', 'logged', { maxAge: 1000 * 60 * 5 });
     res.locals = {
       user: req.session.user,
       logged: req.session.logged
 
-  } 
+    }
   } else {
-    console.log(req.path, privateRoutes);
     res.locals.logged = false
-    if (privateRoutes.includes(req.path)) {      
+    if (privateRoutes.includes(req.path)) {
       return res.redirect('/ramo/login')
     }
-    
+
   }
   next();
 });
@@ -72,19 +71,19 @@ app.use(function(req, res, next){
 
 // error handler
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
 
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
- 
+
   // render the error page
   res.status(err.status || 500);
   res.render('error');
- });
- app.listen(3000);
- 
- module.exports = app;
+});
+app.listen(3000);
+
+module.exports = app;
 
 app.use('/ramo', ramoRouter);
 app.use('/ramo', userRamoRouter);
@@ -93,7 +92,7 @@ app.use('/ramo', securityRouter);
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 

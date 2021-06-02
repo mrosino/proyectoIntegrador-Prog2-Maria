@@ -26,21 +26,6 @@
 					<h3>Por cualquier inconveniente contactarse con soporte para que podamos ayudarlo.</h3>
 			</div>
 			<div class="form-content">
-				<form action="/ramo/editedUser" method="POST">
-
-					<div class="form-group">
-						<label for="email">
-							Si desea modificar su email escribalo aquí
-						</label>
-						<input type="email" name="email" placeholder="Nuevo correo electronico">
-
-					</div>
-					<input type="hidden" name="id" value="<%= locals.user.id %> ">
-					<div class="form-group boton">
-						<button type="submit">Cambiar email</button>
-					</div>
-<br>
-				</form>
 				<form action="/ramo/editedPass" method="POST">
 				<div class="form-group">
 					<label for="password">

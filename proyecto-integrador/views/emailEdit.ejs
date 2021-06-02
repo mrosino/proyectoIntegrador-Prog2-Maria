@@ -1,0 +1,67 @@
+<% if (locals.logged == true) { %>
+<%- include('./partials/headerLogueado') %>
+<% } else { %>
+
+<%- include('./partials/header') %>
+<% }	%>
+
+
+
+<body>
+
+	<!-- Novedades -->
+
+
+
+
+	<!-- Rearmado -->
+
+	<div class="form">
+
+		<div class="form-panel one">
+			<div class="form-header">
+				<h1 style="text-align: center;">Cambie su información</h1>
+				<h2>Modifique los datos que desee cambiar a continuación</h2>
+				<h3>Por motivos de seguridad solo puede modificar su email y contraseña
+					<h3>Por cualquier inconveniente contactarse con soporte para que podamos ayudarlo.</h3>
+			</div>
+			<div class="form-content">
+				<form action="/ramo/editedUser" method="POST">
+
+					<div class="form-group">
+						<label for="email">
+							Si desea modificar su email escribalo aquí
+						</label>
+						<input type="email" name="email" placeholder="Nuevo correo electronico">
+
+					</div>
+					<input type="hidden" name="id" value="<%= locals.user.id %> ">
+					<div class="form-group boton">
+						<button type="submit">Cambiar email</button>
+					</div>
+
+				</form>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+
+
+
+
+
+
+	<%- include('./partials/footer') %>
+</body>
+
+</html>

@@ -6,14 +6,16 @@ let userController = {
     register: (req, res) => {
         res.render("register", {
             title: "Pagina de registracion",
+            error: req.cookies.error,
         });
     },
-    registerCreateUser: (req, res) => {
+    registered: (req, res) => {
         db.Users.findAll({ where: { email: req.body.email } }).then((user) => {
             if (user === req.body.email) {
+                res.cookie("error", "failRegistered", { maxAge: 1000 * 60 })
                 return res.redirect("/ramo/register?failed=1");
                 //le vamos a poner una cookie que diga que ya esta registrado
-                //no nos hace caso y nos tira error preguntado por slack
+                
             } else {
                 let passEncriptada = bcrypt.hashSync(req.body.password);
                 let info = req.body;
@@ -28,6 +30,7 @@ let userController = {
                     phone: info.phone,
                     password: passEncriptada,
                 }).then(() => {
+                    res.cookie("error", "registered", { maxAge: 1000 * 60 })
                     return res.redirect("/ramo/login");
                 });
             }
@@ -71,11 +74,19 @@ let userController = {
             });
     })
 },
-    profileEdit: (req, res) => {
+    emailEdit: (req, res) => {
        
-        res.render("profileEdit", {
+       return res.render("emailEdit", {
             title: "Pagina de edicion de perfil",
+            //error: res.cookies.error
         });
     },
+    pssEdit: (req, res) => {
+       
+        return res.render("pssEdit", {
+             title: "Pagina de edicion de perfil",
+             //error: res.cookies.error
+         });
+     },
 };
 module.exports = userController;
