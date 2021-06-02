@@ -40,14 +40,13 @@ var securityController = {
     },
     editedUser: (req, res) => {
 
-        db.Users.findOne({
-            where: { email: req.body.email }
-        })
+        db.Users.findOne({ where: { id: req.body.id } })
             .then((user) => {
-                if (!user) {
+                if (req.body.id == req.session.user.id) {
+                    if (bcrypt.compareSync(req.body.password, user.password)) {
                     db.Users.update({
                         email: req.body.email,
-                        user_update: new Date().getTime(),
+                        //user_update: new Date().getTime(),
                     }, {
                         where: { id: req.body.id },
                     })
@@ -58,8 +57,9 @@ var securityController = {
                         .catch(function (error) {
                             throw error
                         });
+                    }
                 } else {
-                    res.cookie("error", "usedEmail", { maxAge: 1000 * 60 })
+                    res.cookie("error", "wrongUser", { maxAge: 1000 * 60 })
                     res.redirect(req.headers.referer);
                 }
             });
