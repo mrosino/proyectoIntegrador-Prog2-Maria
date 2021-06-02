@@ -47,7 +47,7 @@ var securityController = {
                 if (!user) {
                     db.Users.update({
                         email: req.body.email,
-                        user_update: moment().add(10, 'days').calendar(),
+                        user_update: new Date().getTime(),
                     }, {
                         where: { id: req.body.id },
                     })
@@ -59,34 +59,41 @@ var securityController = {
                             throw error
                         });
                 } else {
+                    res.cookie("error", "usedEmail", { maxAge: 1000 * 60 })
                     res.redirect(req.headers.referer);
                 }
             });
     },
     editedPass: (req, res) => {
 
-        db.Users.findOne({ where: { password: req.body.password } }).then(
-            (user) => {
-                if (!user) {
-                    let encryptedPss = bcrypt.hashSync(req.body.password);
-                    db.Users.update({
-                        password: encryptedPss,
-                        user_update: moment().add(10, 'days').calendar(),
-                    }, {
-                        where: { id: req.body.id },
-                    })
-                        .then(function (data) {
-
-                            res.redirect("/ramo/profile/" + req.body.id);
+        db.Users.findOne({ where: { id: req.body.id } })
+            .then((user) => {
+                if (req.body.id == req.session.user.id) {
+                    if (bcrypt.compareSync(req.body.oldPss, user.password)) {
+                        let encryptedPss = bcrypt.hashSync(req.body.password);
+                        db.Users.update({
+                            password: encryptedPss,
+                            //user_update: new Date().getTime(),
+                        }, {
+                            where: { id: req.body.id },
                         })
-                        .catch(function (error) {
-                            throw error
-                        });
+
+                            .then(function (data) {
+
+                                return res.redirect("/ramo/profile/" + req.body.id);
+                            })
+
+
+                            .catch(function (error) {
+                                throw error
+                            });
+                    }
                 } else {
-                    res.redirect(req.headers.referer);
+                    res.cookie("error", "wrongUser", { maxAge: 1000 * 60 })
+                    return res.redirect(req.headers.referer);
                 }
             }
-        );
+            );
     },
 };
 

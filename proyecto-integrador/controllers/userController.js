@@ -37,7 +37,7 @@ let userController = {
         });
     },
     profile: (req, res) => {
-       
+       console.log(req.session.user)
         let id = res.locals.user.id; 
         let  visitedProfile = req.params.id
          db.Users.findOne({           
