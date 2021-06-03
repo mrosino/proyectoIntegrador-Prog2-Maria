@@ -20,12 +20,7 @@ let cols = {
     },
     creation_date: {
         type: DataTypes.DATE,    
-    },
-    update_date: {
-        type: DataTypes.DATE, 
     }
- 
-
 }
 let config = {
     tableName: "comments",

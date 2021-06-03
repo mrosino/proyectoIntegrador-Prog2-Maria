@@ -42,6 +42,7 @@ let productController = {
       product_id: req.body.id,
       creator_id: res.locals.user.id,
       content: req.body.comment,
+      creation_date:  new Date().getTime(),
     })
       .then(() => {
         return res.redirect(req.headers.referer);

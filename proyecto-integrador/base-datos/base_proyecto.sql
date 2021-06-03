@@ -13,8 +13,7 @@ CREATE TABLE `comments` (
   `product_id` int(11) DEFAULT NULL,
   `creator_id` int(11) DEFAULT NULL,
   `content` varchar(255) DEFAULT NULL,
-  `creation_date` date DEFAULT NULL,
-  `update_date` date DEFAULT NULL
+  `creation_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
