@@ -3,7 +3,7 @@ const Op = db.Sequelize.Op;
 let ramoController = {
   index: (req, res) => {
     db.Products.findAll({
-      order: [["product_name", "ASC"]],
+      order: [["creation_date", "DESC"]],
       limit: 16,
       raw: true,
     })

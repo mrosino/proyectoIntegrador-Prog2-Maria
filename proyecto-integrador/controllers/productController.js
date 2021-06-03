@@ -72,7 +72,7 @@ let productController = {
       created_by: res.locals.user.id,
       image: info.image,
       product_name: info.product_name,
-      creation_date: moment().add(10, "days").calendar(),
+      //creation_date: moment().add(10, "days").calendar(),
       description: info.description,
     })
       .then(() => {
