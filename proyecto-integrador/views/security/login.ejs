@@ -16,6 +16,18 @@
 				<h2>Ingresá tu e-mail y contraseña para acceder al sitio</h2>
 			</div>
 			<div class="form-content">
+				<% if(error == "failedRegistered"){%>
+					<h2 style="text-align:center; color:red;">El email ingresado ya está registrado. Inicie sesion</h2>
+				<%} %> 
+				<%if(error == "wrongUser"){%>
+					<h2 style="text-align:center; color:red;">Debes ingresar con el usuario corrrespondiente. Intente nuevamente</h2>
+				<%}%>
+				<% if (error == "noPss"){ %> 
+					<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
+					<% } %>
+					<% if(error == "registered"){%>
+						<h2 style="text-align:center; color:green;">Te registraste correctamente. Ahora iniciá sesión.</h2>
+					<%} %>
 				<form method="POST">
 					<div class="form-group">
 						<label for="username">Correo Electronico </label>

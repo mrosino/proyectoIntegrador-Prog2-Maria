@@ -10,10 +10,11 @@ let userController = {
         });
     },
     registered: (req, res) => {
-        db.Users.findAll({ where: { email: req.body.email } }).then((user) => {
-            if (user === req.body.email) {
-                res.cookie("error", "failRegistered", { maxAge: 1000 * 60 })
-                return res.redirect("/ramo/register?failed=1");
+        db.Users.findAll({ where: { email: req.body.email } })
+        .then((user) => {
+            if (user == req.body.email) {
+                res.cookie("error", "failedRegistered", { maxAge: 1000 * 60 })
+                return res.redirect("/security/login");
                 //le vamos a poner una cookie que diga que ya esta registrado
                 
             } else {
