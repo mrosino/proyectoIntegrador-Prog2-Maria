@@ -29,7 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Habilitamos a express a usar sesiones (req.session.abc)
 
-
+const privateRoutes = [
+  '/ramo/productAdd', '/ramo/emailEdit','/ramo/pssEdit', '/ramo/productEdit', '/products/productDelete', '/products/commentAdd', '/products/commentDelete', //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado 
+]
 app.use(session({
   secret: "ramo",
   resave: false,
@@ -39,17 +41,16 @@ app.use(session({
     maxAge: 1 * 60 * 60 * 1000
   }
 }));
-const privateRoutes = [
-  '/ramo/productAdd', '/ramo/emailEdit','/ramo/pssEdit', '/ramo/productEdit', '/products/productDelete', '/products/commentAdd', '/products/commentDelete', //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado 
-]
+
+
+
+
 
 
 app.use(function (req, res, next) {
 
-
-
   if (req.session.user != null) {
-    res.cookie('loggedIn', 'logged', { maxAge: 1000 * 60 * 5 });
+    res.cookie('loggedIn', 'logged', { maxAge: 5000 * 60 });
     res.locals = {
       user: req.session.user,
       logged: req.session.logged
@@ -65,7 +66,17 @@ app.use(function (req, res, next) {
   next();
 });
 
+app.use( async  (req, res, next) => {
 
+  if (req.cookies.remembered != undefined && res.locals.logged == undefined) {
+   let user = await db.Users.findByPK(req.cookies.remembered)
+  
+   req.session.user = user;
+   req.session.logged = true;
+
+    }
+return next();
+});
 
 
 

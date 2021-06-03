@@ -25,11 +25,7 @@
 				<% if (error == "noPss"){ %> 
 					<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
 					<% } %>
-					<% if(error == "error"){%>
-						<h2 style="text-align:center; color:green;">Te registraste correctamente. 
-							<br>
-							Iniciá sesión.</h2>
-					<%} %>
+				
 				<form method="POST">
 					<div class="form-group">
 						<label for="username">Correo Electronico </label>
@@ -42,8 +38,8 @@
 					</div>
 					<div class='form-group'>
 						<label class="form-remember">
-							<input type="checkbox" >Recordar
-						</label><a class="form-recovery" href="#">¿Olvidaste tu contraseña?</a>
+							<input type="checkbox" name="remember"/>Recordar
+					 </label>	<!--<a class="form-recovery" href="#">¿Olvidaste tu contraseña?</a> -->
 					</div>
 					<div class="form-group">
 						<button type="submit">Iniciar sesión</button>

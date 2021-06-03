@@ -34,7 +34,7 @@ let userController = {
                     phone: info.phone,
                     password: encryptedPss,
                 }).then(() => {
-                    res.cookie("error", "registered", { maxAge: 1000 * 30 })
+                   
                     return res.redirect("/ramo/login");
                 });
 
