@@ -15,12 +15,9 @@ var securityController = {
       .then((user) => {
         if (user != undefined) {
           if (bcrypt.compareSync(req.body.password, user.password)) {
-
-        if (req.body.remember != undefined) {
-           
-            res.cookie('remembered', user.id, { maxAge: 1000 * 60 * 30}) //pensar si 30 min es un nro razonable
-            
-        }
+            if (req.body.remember != undefined) {
+              res.cookie("remembered", user.id, { maxAge: 1000 * 60 * 30 }); //pensar si 30 min es un nro razonable
+            }
             req.session.user = user;
             req.session.logged = true;
             req.session.save();

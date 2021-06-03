@@ -35,8 +35,7 @@ let ramoController = {
           { product_name: { [Op.like]: "%" + search + "%" } },
         ],
       },
-    })
-    .then((results) => {
+    }).then((results) => {
       return res.render("searchResult", {
         search: products,
         lookedFor: req.query.search,
@@ -53,4 +52,3 @@ let ramoController = {
 };
 
 module.exports = ramoController;
-

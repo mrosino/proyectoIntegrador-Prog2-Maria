@@ -107,7 +107,6 @@ let productController = {
     res.render("productEdit", {
       title: "Pagina de agregar producto ",
       id: req.params.id,
-     
     });
   },
   productEdited: (req, res) => {
