@@ -28,9 +28,10 @@
 						</a>
 						<% } %> 
 						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
-						<!-- <form class="form-seguir" action="" method="GET">
+						<input type="hidden" name="id" value="<%= locals.user.id %> ">
+						<form class="form-seguir" action="" method="GET">
 							<button type="submit" class="btn mt-3">SEGUIR</button>
-						</form> -->
+						</form> 
 					</h1>
 
 				</div>
