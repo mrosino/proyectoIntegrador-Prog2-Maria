@@ -20,13 +20,15 @@
 					<h2 style="text-align:center; color:red;">El email ingresado ya está registrado. Inicie sesion</h2>
 				<%} %> 
 				<%if(error == "wrongUser"){%>
-					<h2 style="text-align:center; color:red;">Debes ingresar con el usuario corrrespondiente. Intente nuevamente</h2>
+					<h2 style="text-align:center; color:red;">Para cambiar los datos de este usuario debes ingresar a su cuenta.</h2>
 				<%}%>
 				<% if (error == "noPss"){ %> 
 					<h2 style="text-align:center; color:red;">La contraseña es incorrecta. Intente ingresar nuevamente</h2>
 					<% } %>
-					<% if(error == "registered"){%>
-						<h2 style="text-align:center; color:green;">Te registraste correctamente. Ahora iniciá sesión.</h2>
+					<% if(error == "error"){%>
+						<h2 style="text-align:center; color:green;">Te registraste correctamente. 
+							<br>
+							Iniciá sesión.</h2>
 					<%} %>
 				<form method="POST">
 					<div class="form-group">

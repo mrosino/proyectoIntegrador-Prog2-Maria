@@ -10,16 +10,19 @@ let userController = {
         });
     },
     registered: (req, res) => {
-        db.Users.findAll({ where: { email: req.body.email } })
+       let submitedEmail = req.body.email
+   
+        db.Users.findOne({
+             where: { email: submitedEmail }
+      })
+       
         .then((user) => {
-            if (!user == req.body.email) {
-                res.cookie("error", "failedRegistered", { maxAge: 1000 * 60 })
-                return res.redirect("/security/login");
-                //le vamos a poner una cookie que diga que ya esta registrado
+           
+            if (!user && req.body.password == req.body.passwordConfirm) {
                 
-            } else {
-                let passEncriptada = bcrypt.hashSync(req.body.password);
+                let encryptedPss = bcrypt.hashSync(req.body.password);
                 let info = req.body;
+
                 db.Users.create({
                     name: req.body.name,
                     surname: info.surname,
@@ -29,11 +32,19 @@ let userController = {
                     gender: info.gender,
                     birthday: info.birthday,
                     phone: info.phone,
-                    password: passEncriptada,
+                    password: encryptedPss,
                 }).then(() => {
-                    res.cookie("error", "registered", { maxAge: 1000 * 60 })
+                    res.cookie("error", "registered", { maxAge: 1000 * 30 })
                     return res.redirect("/ramo/login");
                 });
+
+
+            } else {
+                res.cookie("error", "failedRegistered", { maxAge: 1000 * 30 })
+                return res.redirect("/ramo/login");
+              
+               
+                  
             }
         });
     },
