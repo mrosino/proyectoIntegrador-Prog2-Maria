@@ -147,7 +147,7 @@ CREATE TABLE `users` (
   `birthday` date DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
   `registration_date` date DEFAULT NULL,
-  `registrationUpdate_date` date DEFAULT NULL
+  `userUpdate_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 

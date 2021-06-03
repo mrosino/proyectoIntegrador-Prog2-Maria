@@ -37,7 +37,7 @@ let cols = {
     registration_date: {
         type: DataTypes.DATE, 
     },
-    registrationUpdate_date: {
+    userUpdate_date: {
         type: DataTypes.DATE, 
     }
 

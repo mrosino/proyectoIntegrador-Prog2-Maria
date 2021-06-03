@@ -48,7 +48,7 @@ var securityController = {
           db.Users.update(
             {
               email: req.body.email,
-              //user_update: new Date().getTime(),
+              userUpdate_date: new Date().getTime()
             },
             {
               where: { id: req.body.id },
@@ -75,7 +75,7 @@ var securityController = {
           db.Users.update(
             {
               password: encryptedPss,
-              //user_update: new Date().getTime(),
+              userUpdate_date: new Date().getTime()
             },
             {
               where: { id: req.body.id },

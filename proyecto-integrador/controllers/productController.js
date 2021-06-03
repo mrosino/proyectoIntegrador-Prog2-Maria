@@ -72,7 +72,7 @@ let productController = {
       created_by: res.locals.user.id,
       image: info.image,
       product_name: info.product_name,
-      //creation_date: moment().add(10, "days").calendar(),
+      creation_date: new Date().getTime(),
       description: info.description,
     })
       .then(() => {
@@ -115,6 +115,7 @@ let productController = {
       {
         product_name: req.body.product_name,
         description: req.body.description,
+        update_date: new Date().getTime()
         //fatla ver para cambiar la imagen
       },
       {
