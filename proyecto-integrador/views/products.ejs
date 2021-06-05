@@ -49,7 +49,7 @@
                                         </p>
 <br>
 <% if (locals.logged==true) { %>
-                                        <p class="product-author">
+                                        <p class="product-author padding">
                                             Producto publicado por <a  style="font-weight: bold;" href="/ramo/profile/<%= products.products_users.id %> "><%= products.products_users.name %></a>
 
                                             <a   href="/ramo/profile/<%= products.products_users.id %> ">Visitá su perfil para ver el resto de sus productos publicados</a>
@@ -63,36 +63,8 @@
                                         <h1 style="padding: 15px; text-align: center;">Comentarios</h1>
                                         <section class="comments">
 
-                                            <% if (comments.length>= 5) { %>
-                                                <% for (let i=0; i < 5; i++) { %>
-
-                                                    <article>
-                                                        <img src="https://via.placeholder.com/35" alt="">
-                                                        <div class="data">
-                                                            <p class="user">
-                                                                <strong> <a
-																	style="color: #653e3e;"	href="/ramo/profile/<%= comments[i].creator_id  %> ">
-																		<%= comments[i].comments_users.name %>
-																	</a> </strong>
-                                                                <%= comments[i].content %>
-                                                                    <% if ( locals.logged==true && locals.user.id == comments[i].creator_id) { %>
-                                                                        <form action="/ramo/products/commentDelete" method="post">
-                                                                            <input type="hidden" name="id" value="<%= comments[i].id %> ">
-                                                                            <button type="submit">
-																				<ion-icon name="trash-outline"
-																					class="deleteB"></ion-icon>
-																			</button>
-
-
-
-                                            </form>
-                                            <% } %>
-                                </p>
-                                </div>
-                                </article>
-
-                                <% } %>
-                                    <% } else { %>
+                                         
+                           
 
 
 
@@ -101,9 +73,8 @@
                                                 <img src="https://via.placeholder.com/35" alt="">
                                                 <div class="data">
                                                     <p class="user">
-                                                        <strong> <a
-																					href="/ramo/profile/<%= comments[i].creator_id  %> ">
-																					<%= comments[i].creator_id %>
+                                                        <strong class="product-author"> <a class="product-author" href="/ramo/profile/<%= comments[i].creator_id  %> ">
+																					<%= comments[i].comments_users.name %>
 																				</a> </strong>
                                                         <%= comments[i].content %>
                                                             <% if (locals.logged==true &&
@@ -129,7 +100,7 @@
                                             </article>
 
                                             <% } %>
-                                                <% }%>
+                                               
 
 
                                                     </section>

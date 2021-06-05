@@ -469,10 +469,14 @@ hr {
 }
 
 .product-author{
-    padding: 15px 15px 15px 40px;
-    font-size: 1.5em;
+
+    font-weight: bold;
+    color: #653e3e;
     /*line-height: 1.5;*/
     
+}
+ .padding{
+    padding: 15px 15px 15px 40px;
 }
 .product-author ::first-letter {
     text-transform: uppercase;

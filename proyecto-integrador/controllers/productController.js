@@ -23,6 +23,7 @@ let productController = {
             },
           ],
           where: { product_id: id },
+          limit: 5,
           order: [["creation_date", "DESC"]],
         }).then((info) => {
           return res.render("products", {
