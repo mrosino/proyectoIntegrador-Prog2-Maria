@@ -1,5 +1,6 @@
 const db = require("../database/models");
 const { resolveInclude } = require("ejs");
+const bcrypt = require("bcryptjs");
 const Op = db.Sequelize.Op;
 
 let productController = {
@@ -42,7 +43,7 @@ let productController = {
       product_id: req.body.id,
       creator_id: res.locals.user.id,
       content: req.body.comment,
-      creation_date:  new Date().getTime(),
+      creation_date: new Date().getTime(),
     })
       .then(() => {
         return res.redirect(req.headers.referer);
@@ -110,26 +111,45 @@ let productController = {
       id: req.params.id,
     });
   },
-  productEdited: (req, res) => {
-    let editId = req.body.id;
-    db.Products.update(
-      {
-        product_name: req.body.product_name,
-        description: req.body.description,
-        update_date: new Date().getTime()
-        //fatla ver para cambiar la imagen
-      },
-      {
-        where: { id: editId },
-      }
-    )
+ productEdited: (req, res) => {
+  db.Products.findOne({
+    where: {
+      created_by: req.body.id
+    }
+  })
       .then(() => {
-        return res.redirect(`/ramo/products/${editId}`);
+        db.Users.findOne({ where: { id: req.body.id } 
+        })
+          .then((user) => {
+            if (bcrypt.compareSync(req.body.password, user.password)) {
+              db.Products.update(
+                {
+                  product_name: req.body.product_name,
+                  description: req.body.description,
+                  update_date: new Date().getTime()
+                  //fatla ver para cambiar la imagen
+                },
+                {
+                  where: { id: req.body.idP},
+                }
+              )
+
+                .then(()=> {
+                  return res.redirect(`/ramo/products/${req.body.idP}`);
+                })
+
+
+            } else {
+              res.cookie("error", "noPss", { maxAge: 1000 * 60 });
+              return res.redirect(req.headers.referer);
+            }
+          })
+          .catch(function (error) {
+            throw error;
+          });
+
       })
 
-      .catch((error) => {
-        return res.send(error);
-      });
   },
 };
 module.exports = productController;

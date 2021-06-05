@@ -28,6 +28,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Habilitamos a express a usar sesiones (req.session.abc)
 
+const publicRoutes = [
+  "/ramo/register",
+  "ramo/login",
+];
+
 const privateRoutes = [
   "/ramo/productAdd",
   "/ramo/emailEdit",

@@ -42,31 +42,49 @@ var securityController = {
     return res.redirect("/ramo");
   },
   editedUser: (req, res) => {
-    db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
-      if (req.body.id == req.session.user.id) {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          db.Users.update(
-            {
-              email: req.body.email,
-              userUpdate_date: new Date().getTime()
-            },
-            {
-              where: { id: req.body.id },
-            }
-          )
-            .then(function (data) {
-              res.redirect("/ramo/profile/" + req.body.id);
+    let submitedEmail = req.body.email;
+    db.Users.findOne({
+      where: { email: submitedEmail }
+    })
+      .then((email) => {
+        if (!email) {
+          db.Users.findOne({ where: { id: req.body.id } })
+            .then((user) => {
+              if (bcrypt.compareSync(req.body.password, user.password)) {
+                db.Users.update(
+                  {
+                    email: req.body.email,
+                    userUpdate_date: new Date().getTime()
+                  },
+                  {
+                    where: { id: req.body.id },
+                  })
+                  .then(() => {
+                    return res.redirect("/ramo/profile/" + req.body.id);
+                  })
+                  .catch(function (error) {
+                    throw error;
+                  })
+              } else {
+                res.cookie("error", "noPss", { maxAge: 1000 * 60 });
+                req.session.destroy();
+                res.clearCookie("loggedIn");
+                return res.redirect("/ramo/login");
+
+              }
+
             })
-            .catch(function (error) {
-              throw error;
-            });
         }
-      } else {
-        res.cookie("error", "wrongUser", { maxAge: 1000 * 60 });
-        res.redirect(req.headers.referer);
-      }
-    });
+        else {
+          res.cookie("error", "emailUsed", { maxAge: 1000 * 60 });
+          return res.redirect(req.headers.referer);
+
+        }
+
+      })
+
   },
+
   editedPass: (req, res) => {
     db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
       if (req.body.id == req.session.user.id) {

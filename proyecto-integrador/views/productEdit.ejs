@@ -18,7 +18,8 @@
                                 </div>
                                 <div class="form-content">
                                     <form method="POST" action="/ramo/productEdit">
-                                        <input type="hidden" name="id" value="<%= id %> ">
+                                        <input type="hidden" name="idP" value="<%= id %> ">
+                                        <input type="hidden" name="id" value="<%= locals.user.id %> ">
                                         <div class="form-group">
                                             <label for="productName">Nombrá tu producto </label>
                                             <input type="text" name="product_name" placeholder="nombre del producto" required />
@@ -30,7 +31,13 @@
                                         <!-- <div class="form-group">
                                             <button type="submit">Cargar imagenes</button>
                                         </div> -->
-
+                                        <div class="form-group">
+                                            <label for="password">
+                                                Por favor escriba su contraseña 
+                                            </label>
+                                            <input type="password" name="password" placeholder="Nueva contraseña">
+                        
+                                        </div>
                                         <div class="form-group">
                                             <button type="submit">Actualizar producto</button>
                                         </div>

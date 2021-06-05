@@ -37,7 +37,7 @@ let ramoController = {
       },
     }).then((results) => {
       return res.render("searchResult", {
-        search: products,
+        search: results,
         lookedFor: req.query.search,
         title: " Pagina resultado de busquedas",
       });

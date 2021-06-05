@@ -79,12 +79,14 @@ let userController = {
   emailEdit: (req, res) => {
     return res.render("emailEdit", {
       title: "Pagina de edicion de perfil",
+      error: req.cookies.error,
      
     });
   },
   pssEdit: (req, res) => {
     return res.render("pssEdit", {
       title: "Pagina de edicion de perfil",
+      error: req.cookies.error,
      
     });
   },
