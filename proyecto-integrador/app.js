@@ -28,19 +28,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Habilitamos a express a usar sesiones (req.session.abc)
 
-const publicRoutes = [
-  "/ramo/register",
-  "ramo/login",
-];
+
 
 const privateRoutes = [
   "/ramo/productAdd",
   "/ramo/emailEdit",
   "/ramo/pssEdit",
   "/ramo/productEdit",
-  "/products/productDelete",
-  "/products/commentAdd",
-  "/products/commentDelete", //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado
+  "/ramo/products/productDelete",
+  `/ramo/profile` //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado
 ];
 app.use(
   session({
@@ -55,7 +51,8 @@ app.use(
 );
 
 app.use(function (req, res, next) {
-  if (req.session.user != null) {
+
+  if (req.session.user != undefined) {
     res.cookie("loggedIn", "logged", { maxAge: 5000 * 60 });
     res.locals = {
       user: req.session.user,
