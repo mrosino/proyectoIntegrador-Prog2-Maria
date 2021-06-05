@@ -13,12 +13,13 @@
                             <div class="form-toggle"></div>
                             <div class="form-panel one">
                                 <div class="form-header">
-                                    <h1>Editar productos</h1>
+                                    <h1>Editar: <%= products.product_name  %> </h1>
+                                    
                                     <h2>Ingresá los datos correspondientes para editar un producto.</h2>
                                 </div>
                                 <div class="form-content">
                                     <form method="POST" action="/ramo/productEdit">
-                                        <input type="hidden" name="idP" value="<%= id %> ">
+                                        <input type="hidden" name="idP" value="<%= products.id %> ">
                                         <input type="hidden" name="id" value="<%= locals.user.id %> ">
                                         <div class="form-group">
                                             <label for="productName">Nombrá tu producto </label>

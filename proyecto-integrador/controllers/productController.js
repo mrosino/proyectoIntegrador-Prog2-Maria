@@ -22,10 +22,8 @@ let productController = {
               association: "comments_users",
             },
           ],
-
-          // raw: true, //VAMOS A TENER QUE SACAR ESTO chequear que en ningun controlador haya que agregar datavalues
           where: { product_id: id },
-          order: [["creation_date", "ASC"]],
+          order: [["creation_date", "DESC"]],
         }).then((info) => {
           return res.render("products", {
             comments: info,
@@ -93,6 +91,8 @@ let productController = {
     .then((ok)=> {
       if (!ok) {
         res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+        req.session.destroy();
+        res.clearCookie("loggedIn");
         return res.redirect("/ramo/login")
       }
       else{ 
@@ -116,10 +116,26 @@ let productController = {
   },
 
   productEdit: (req, res) => {
-
-    res.render("productEdit", {
-      title: "Pagina de agregar producto ",
-      id: req.params.id,
+    let idP = req.params.id;
+    db.Products.findOne ({
+      where: { id: idP },
+      raw: true
+    })
+    .then ((product)=> {
+      if (product.created_by != req.session.user.id) {
+        res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+        req.session.destroy();
+        res.clearCookie("loggedIn");
+        return res.redirect("/ramo/login")
+      }else {
+        return res.render("productEdit", {
+          products: product,
+          title: "Pagina de agregar producto ",
+        });
+      }
+    })
+    .catch((error) => {
+      throw error;
     });
   },
  productEdited: (req, res) => {
