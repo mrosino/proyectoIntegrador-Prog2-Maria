@@ -14,27 +14,32 @@ let userController = {
 
     db.Users.findOne({
       where: { email: submitedEmail },
-    })
-    .then((user) => {
-      if (!user && req.body.password == req.body.passwordConfirm) {
-        let encryptedPss = bcrypt.hashSync(req.body.password);
-        let info = req.body;
+    }).then((user) => {
+   
+        if (!user && req.body.password == req.body.passwordConfirm) {
+              if (req.body.password.length > 4) {
+          let encryptedPss = bcrypt.hashSync(req.body.password);
+          let info = req.body;
 
-        db.Users.create({
-          name: req.body.name,
-          surname: info.surname,
-          email: info.email,
-          province: info.province,
-          document: info.document,
-          gender: info.gender,
-          birthday: info.birthday,
-          phone: info.phone,
-          password: encryptedPss,
-          registration_date:new Date().getTime(),
-          userUpdate_date: new Date().getTime()
-        }).then(() => {
-          return res.redirect("/ramo/login");
-        });
+          db.Users.create({
+            name: req.body.name,
+            surname: info.surname,
+            email: info.email,
+            province: info.province,
+            document: info.document,
+            gender: info.gender,
+            birthday: info.birthday,
+            phone: info.phone,
+            password: encryptedPss,
+            registration_date: new Date().getTime(),
+            userUpdate_date: new Date().getTime(),
+          }).then(() => {
+            return res.redirect("/ramo/login");
+          });
+        } else {
+          res.cookie("error", "length", { maxAge: 1000 * 60 });
+          return res.redirect(req.headers.referer);
+        }
       } else {
         res.cookie("error", "failedRegistered", { maxAge: 1000 * 30 });
         return res.redirect("/ramo/login");
@@ -79,14 +84,12 @@ let userController = {
     return res.render("emailEdit", {
       title: "Pagina de edicion de perfil",
       error: req.cookies.error,
-     
     });
   },
   pssEdit: (req, res) => {
     return res.render("pssEdit", {
       title: "Pagina de edicion de perfil",
       error: req.cookies.error,
-     
     });
   },
 };

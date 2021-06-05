@@ -88,29 +88,37 @@ var securityController = {
   editedPass: (req, res) => {
     db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
       if (req.body.id == req.session.user.id) {
-        if (bcrypt.compareSync(req.body.oldPss, user.password)) {
-          let encryptedPss = bcrypt.hashSync(req.body.password);
-          db.Users.update(
-            {
-              password: encryptedPss,
-              userUpdate_date: new Date().getTime()
-            },
-            {
-              where: { id: req.body.id },
-            }
-          )
-
-            .then(function (data) {
-              return res.redirect("/ramo/profile/" + req.body.id);
-            })
-
-            .catch(function (error) {
-              throw error;
-            });
+        if (req.body.password.length > 4 ) {
+          if (bcrypt.compareSync(req.body.oldPss, user.password)) {
+            let encryptedPss = bcrypt.hashSync(req.body.password);
+            db.Users.update(
+              {
+                password: encryptedPss,
+                userUpdate_date: new Date().getTime()
+              },
+              {
+                where: { id: req.body.id },
+              }
+            )
+  
+              .then(function (data) {
+                return res.redirect("/ramo/profile/" + req.body.id);
+              })
+  
+              .catch(function (error) {
+                throw error;
+              });
+          }
+          
+        } else {
+          res.cookie("error", "length", { maxAge: 1000 * 60 });
+          return res.redirect(req.headers.referer);
         }
+     
       } else {
         res.cookie("error", "wrongUser", { maxAge: 1000 * 60 });
         return res.redirect(req.headers.referer);
+       
       }
     });
   },
