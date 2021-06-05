@@ -34,9 +34,9 @@ const privateRoutes = [
   "/ramo/productAdd",
   "/ramo/emailEdit",
   "/ramo/pssEdit",
-  "/ramo/productEdit",
   "/ramo/products/productDelete",
-  `/ramo/profile` //poner aca todas las rutas a las que no quiero que acceda alguien que no está logueado
+  "/ramo/profile",
+  "/ramo/productEdit",
 ];
 app.use(
   session({
@@ -60,7 +60,7 @@ app.use(function (req, res, next) {
     };
   } else {
     res.locals.logged = false;
-    if (privateRoutes.includes(req.path)) {
+    if (privateRoutes.find(element => req.path.includes(element))) {
       return res.redirect("/ramo/login");
     }
   }

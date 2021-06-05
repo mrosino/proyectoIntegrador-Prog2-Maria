@@ -86,26 +86,37 @@ let productController = {
       });
   },
   productDelete: (req, res) => {
-    db.Comments.destroy({
-      where: { id: req.body.id },
+    db.Products.findOne({
+      where: { created_by: req.body.id },
+      
     })
-      .then(() => {
-        db.Products.destroy({
-          where: { id: req.body.id },
+    .then((ok)=> {
+      if (!ok) {
+        res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+        return res.redirect("/ramo/login")
+      }
+      else{ 
+      db.Comments.destroy({
+        where: { id: req.body.idP },
+      })
+        .then(() => {
+          db.Products.destroy({
+            where: { id: req.body.idP },
+          });
+        })
+        .then(() => {
+          return res.redirect("/ramo");
+        })
+        .catch((error) => {
+          throw error;
         });
-      })
-      .then(() => {
-        return res.redirect("/ramo");
-      })
-      .catch((error) => {
-        throw error;
-      });
+      }
+    })
+  
   },
 
   productEdit: (req, res) => {
-    if (!res.locals.user) {
-      return res.redirect("/ramo/login");
-    }
+
     res.render("productEdit", {
       title: "Pagina de agregar producto ",
       id: req.params.id,

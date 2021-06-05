@@ -3,6 +3,11 @@ const Op = db.Sequelize.Op;
 let ramoController = {
   index: (req, res) => {
     db.Products.findAll({
+      include: [
+        {
+          association: "products_users",
+        },
+      ],
       order: [["creation_date", "DESC"]],
       limit: 16,
       raw: true,

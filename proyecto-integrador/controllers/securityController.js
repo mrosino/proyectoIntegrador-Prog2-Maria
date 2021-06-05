@@ -39,7 +39,7 @@ var securityController = {
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("loggedIn");
-    return res.redirect("/ramo");
+    return res.redirect("/ramo/login");
   },
   editedUser: (req, res) => {
     let submitedEmail = req.body.email;

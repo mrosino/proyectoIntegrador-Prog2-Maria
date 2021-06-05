@@ -32,7 +32,8 @@
                                 </p>
                                 <% if (locals.logged==true && locals.user.id==products.created_by) { %>
                                     <form action="/ramo/products/productDelete" method="post">
-                                        <input type="hidden" name="id" value="<%= products.id %> ">
+                                        <input type="hidden" name="idP" value="<%= products.id %> ">
+                                        <input type="hidden" name="id" value="<%= locals.user.id %> ">
                                         <div class="no-margin">
                                             <button type="submit">Eliminar</button>
                                         </div>
