@@ -12,7 +12,7 @@
 
 
 
-                        <!-- product detail -->
+                   
                         <div class="container products-wrapper">
                             <div class="d-flex align-items-center eddel">
                                 
@@ -77,17 +77,15 @@
 																					<%= comments[i].comments_users.name %>
 																				</a> </strong>
                                                         <%= comments[i].content %>
-                                                            <% if (locals.logged==true &&
-																					locals.user.id==comments[i].creator_id)
-																					{ %>
+                                                            <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
                                                                 <form action="/ramo/products/commentDelete" method="post">
                                                                     <input type="hidden" name="id" value="<%= comments[i].id %> ">
                                                                     <input type="hidden" name="user" value="<%= locals.user.id %> ">
                                                                     <button type="submit">
 																							<ion-icon
-																								name="trash-outline"></ion-icon>
+																								name="trash-outline">
 																							</ion-icon>
-																							</ion-icon>
+																							
 																						</button>
 
 
