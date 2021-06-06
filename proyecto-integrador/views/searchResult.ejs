@@ -54,8 +54,8 @@
 							<h2><%= search[i].product_name %></h2>
 							<% if (locals.logged==true ) { %>
 							<h4>Publicado por <a href="/ramo/profile/<%= search[i].products_users.id %>">
-								 <%= search[i].products_users.name %> 
-											</a>
+									<%= search[i].products_users.name %>
+								</a>
 							</h4>
 							<% } %>
 							<p><%= search[i].description %></p>

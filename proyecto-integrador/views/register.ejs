@@ -1,50 +1,49 @@
 <% if (locals.logged==true) { %>
-	<%- include('./partials/headerLogueado') %>
-		<% } else { %>
+<%- include('./partials/headerLogueado') %>
+<% } else { %>
 
-			<%- include('./partials/header') %>
-				<% } %>
-
-
-
-					<body class="bodyRegister">
+<%- include('./partials/header') %>
+<% } %>
 
 
 
-						<!-- Rearmado -->
-						<div class="form">
+<body class="bodyRegister">
 
-							<div class="form-panel one">
-								<div class="form-header">
-									<h1>Registrarse</h1>
-									<h2>Ingresá tus datos.</h2>
-								</div>
-								<div class="form-content">
 
-									<form method="POST" action="/ramo/register">
-										<div class="form-group">
-											<label for="name"> Ingrese su Nombre </label>
-											<input type="text" name="name" placeholder="Ingrese su nombre">
-										</div>
-										<div class="form-group">
-											<label for="surname">
-												Ingrese su Apellido
-											</label>
-											<input type="text" name="surname" placeholder="Ingrese su apellido">
-										</div>
-										<div class="form-group">
-											<label for="email">
-												Ingrese su email
-											</label>
-											<input type="email" name="email"
-												placeholder="Ingrese su correo electronico">
-										</div>
 
-										<div class="form-group">
-											<%if(error=="length" ){%>
-												<h2 style="text-align:center; color:red;">La contraseña debe tener un
-													minimo de 4 caracteres.</h2>
-												<%}%>
+	<!-- Rearmado -->
+	<div class="form">
+
+		<div class="form-panel one">
+			<div class="form-header">
+				<h1>Registrarse</h1>
+				<h2>Ingresá tus datos.</h2>
+			</div>
+			<div class="form-content">
+
+				<form method="POST" action="/ramo/register">
+					<div class="form-group">
+						<label for="name"> Ingrese su Nombre </label>
+						<input type="text" name="name" placeholder="Ingrese su nombre">
+					</div>
+					<div class="form-group">
+						<label for="surname">
+							Ingrese su Apellido
+						</label>
+						<input type="text" name="surname" placeholder="Ingrese su apellido">
+					</div>
+					<div class="form-group">
+						<label for="email">
+							Ingrese su email
+						</label>
+						<input type="email" name="email" placeholder="Ingrese su correo electronico">
+					</div>
+
+					<div class="form-group">
+						<%if(error=="length" ){%>
+						<h2 style="text-align:center; color:red;">La contraseña debe tener un
+							minimo de 4 caracteres.</h2>
+						<%}%>
 													<label for="password">
 														Ingrese su clave
 													</label>
@@ -152,6 +151,6 @@
 						</div>
 						<br><br><br><br><br><br>
 						<%- include('./partials/footer') %>
-					</body>
+</body>
 
-					</html>
+</html>

@@ -11,8 +11,8 @@ router.post('/products/commentDelete', productController.commentDelete);
 router.get('/productAdd', productController.productAdd);
 
 router.post('/productAdd', productController.productAdded);
-router.post('/products/productDelete', productController.productDelete); 
+router.post('/products/productDelete', productController.productDelete);
 
-router.get('/productEdit/:id', productController.productEdit); 
+router.get('/productEdit/:id', productController.productEdit);
 router.post('/productEdit', productController.productEdited);
 module.exports = router;

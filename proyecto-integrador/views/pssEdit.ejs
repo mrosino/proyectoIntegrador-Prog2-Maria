@@ -21,33 +21,34 @@
 		<div class="form-panel one">
 			<div class="form-header">
 				<h1 style="text-align: center;">Cambie su contraseña</h1>
-				
+
 			</div>
 			<div class="form-content">
 				<form action="/ramo/editedPass" method="POST">
-				<div class="form-group">
-					<%if(error == "length"){%>
-						<h2 style="text-align:center; color:red;">La contraseña debe tener un minimo de 4 caracteres.</h2>
-					<%}%>
+					<div class="form-group">
+						<%if(error == "length"){%>
+						<h2 style="text-align:center; color:red;">La contraseña debe tener un minimo de 4 caracteres.
+						</h2>
+						<%}%>
 					<label for="password">
 						Por favor escriba su contraseña anterior
 					</label>
 					<input type="hidden" name="id" value="<%= locals.user.id %> ">
-					<input type="password" name="oldPss" placeholder="Nueva contraseña">
+						<input type="password" name="oldPss" placeholder="Nueva contraseña">
 
-				</div>
-				<div class="form-group">
-					<label for="password">
-						Ingrese su nueva contraseña
-					</label>
-					<input type="password" name="password" placeholder="Nueva contraseña">
+					</div>
+					<div class="form-group">
+						<label for="password">
+							Ingrese su nueva contraseña
+						</label>
+						<input type="password" name="password" placeholder="Nueva contraseña">
 
-				</div>
+					</div>
 
-				
-				<div class="form-group boton">
-					<button type="submit">Cambiar contraseña</button>
-				</div>
+
+					<div class="form-group boton">
+						<button type="submit">Cambiar contraseña</button>
+					</div>
 
 				</form>
 

@@ -15,9 +15,9 @@ let userController = {
     db.Users.findOne({
       where: { email: submitedEmail },
     }).then((user) => {
-   
-        if (!user && req.body.password == req.body.passwordConfirm) {
-              if (req.body.password.length > 4) {
+
+      if (!user && req.body.password == req.body.passwordConfirm) {
+        if (req.body.password.length > 4) {
           let encryptedPss = bcrypt.hashSync(req.body.password);
           let info = req.body;
 

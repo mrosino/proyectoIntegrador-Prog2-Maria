@@ -20,7 +20,9 @@
 				<div class="d-flex align-items-center ">
 					<ul>
 
-					<li><h1 class="saludo main-title "> <%= visitor.name %> </h1></li>
+						<li>
+							<h1 class="saludo main-title "> <%= visitor.name %> </h1>
+						</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<a href="/ramo/emailEdit">
 							<i class="fas fa-cog"></i>
@@ -28,25 +30,27 @@
 						<a href="/ramo/pssEdit">
 							<i class="fas fa-cog"></i>
 						</a>
-						<% } %> 
+						<% } %>
 						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 					</ul>
-				
-						<% if (locals.logged==true && visitor.id != user.id) { %>
-						<a href="#" class="btn mt-3">Seguir</a> <!--falta agregar a donde va este boton-->
-						<% } %> 
-					
+
+					<% if (locals.logged==true && visitor.id != user.id) { %>
+					<a href="#" class="btn mt-3">Seguir</a>
+					<!--falta agregar a donde va este boton-->
+					<% } %>
+
 
 				</div>
 				<div>
 					<ul>
-						 </li><%= products.length %> Productos</li> 
-						<!-- <li>1600 seguidores </li>--> <!--cuando este la tabla hay que descomentar-->
+						</li><%= products.length %> Productos</li>
+						<!-- <li>1600 seguidores </li>-->
+						<!--cuando este la tabla hay que descomentar-->
 						<li><%= comments.length %> Comentarios</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
-<% } %> 
+						<% } %>
 					</ul>
 
 				</div>

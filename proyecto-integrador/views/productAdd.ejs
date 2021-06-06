@@ -1,6 +1,6 @@
- <%- include('./partials/headerLogueado') %> 
+<%- include('./partials/headerLogueado') %>
 
-<body>	
+<body>
 
 	<div class="form">
 		<div class="form-toggle"></div>
@@ -10,36 +10,35 @@
 				<h2>Ingresá los datos correspondientes para agregar un nuevo producto a tu cuenta</h2>
 			</div>
 			<div class="form-content">
-				<form method="POST" action= "/ramo/productAdd" >
+				<form method="POST" action="/ramo/productAdd">
 					<div class="form-group">
 						<label for="productName">Nombre del producto </label>
-						<input type="text" name="product_name"
-							placeholder="nombre del producto" required >
+						<input type="text" name="product_name" placeholder="nombre del producto" required>
 					</div>
 
-				<div class="form-group">
-					<label for="image" class="postLabel">Carga tu imagen</label>
-					<input type="file" name="image" class="postInput">
-				</div>
-
-				<div class="form-group">
-					<label for="creationDate" class="postLabel"> Ingresa la fecha de creacion</label>
-					<input type="date" name="creation_date "class="postInput" >
-				</div>
-
-				<div class="form-group">
-					<label for="description" class="postLabel"> Ingrese descripcion</label>
-					<input type="text" name="description" class="postInput" required>
-				</div>
-
-			
-				
 					<div class="form-group">
-						
-							<input type="checkbox" required >Aceptar terminos y condiciones  
+						<label for="image" class="postLabel">Carga tu imagen</label>
+						<input type="file" name="image" class="postInput">
+					</div>
+
+					<div class="form-group">
+						<label for="creationDate" class="postLabel"> Ingresa la fecha de creacion</label>
+						<input type="date" name="creation_date " class="postInput">
+					</div>
+
+					<div class="form-group">
+						<label for="description" class="postLabel"> Ingrese descripcion</label>
+						<input type="text" name="description" class="postInput" required>
+					</div>
+
+
+
+					<div class="form-group">
+
+						<input type="checkbox" required>Aceptar terminos y condiciones
 					</div>
 					<div class="form-group">
-					<input type="hidden" name="id" value="<%= locals.user.id %> ">
+						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 						<button type="submit">Subir producto</button>
 					</div>
 				</form>

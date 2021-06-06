@@ -11,7 +11,7 @@ router.get('/searchResult', ramoController.searchResult);
 router.get('/contacto', ramoController.contacto);
 
 
-  
+
 
 module.exports = router;
 

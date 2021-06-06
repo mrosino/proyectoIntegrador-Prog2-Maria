@@ -57,13 +57,13 @@ let productController = {
         where: { id: req.body.id },
       })
         .then(() => {
-          return res.redirect( `/ramo/products${req.params.id}`);
+          return res.redirect(`/ramo/products${req.params.id}`);
         })
         .catch((error) => {
           throw error;
         });
     }
-   
+
   },
   productAdd: (req, res) => {
     return res.render("productAdd", {
@@ -90,66 +90,67 @@ let productController = {
   productDelete: (req, res) => {
     db.Products.findOne({
       where: { created_by: req.body.id },
-      
+
     })
-    .then((ok)=> {
-      if (!ok) {
-        res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-        req.session.destroy();
-        res.clearCookie("loggedIn");
-        return res.redirect("/ramo/login")
-      }
-      else{ 
-      db.Comments.destroy({
-        where: { id: req.body.idP },
-      })
-        .then(() => {
-          db.Products.destroy({
+      .then((ok) => {
+        if (!ok) {
+          res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+          req.session.destroy();
+          res.clearCookie("loggedIn");
+          return res.redirect("/ramo/login")
+        }
+        else {
+          db.Comments.destroy({
             where: { id: req.body.idP },
-          });
-        })
-        .then(() => {
-          return res.redirect("/ramo");
-        })
-        .catch((error) => {
-          throw error;
-        });
-      }
-    })
-  
+          })
+            .then(() => {
+              db.Products.destroy({
+                where: { id: req.body.idP },
+              });
+            })
+            .then(() => {
+              return res.redirect("/ramo");
+            })
+            .catch((error) => {
+              throw error;
+            });
+        }
+      })
+
   },
 
   productEdit: (req, res) => {
     let idP = req.params.id;
-    db.Products.findOne ({
+    db.Products.findOne({
       where: { id: idP },
       raw: true
     })
-    .then ((product)=> {
-      if (product.created_by != req.session.user.id) {
-        res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-        req.session.destroy();
-        res.clearCookie("loggedIn");
-        return res.redirect("/ramo/login")
-      }else {
-        return res.render("productEdit", {
-          products: product,
-          title: "Pagina de agregar producto ",
-        });
+      .then((product) => {
+        if (product.created_by != req.session.user.id) {
+          res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+          req.session.destroy();
+          res.clearCookie("loggedIn");
+          return res.redirect("/ramo/login")
+        } else {
+          return res.render("productEdit", {
+            products: product,
+            title: "Pagina de agregar producto ",
+          });
+        }
+      })
+      .catch((error) => {
+        throw error;
+      });
+  },
+  productEdited: (req, res) => {
+    db.Products.findOne({
+      where: {
+        created_by: req.body.id
       }
     })
-    .catch((error) => {
-      throw error;
-    });
-  },
- productEdited: (req, res) => {
-  db.Products.findOne({
-    where: {
-      created_by: req.body.id
-    }
-  })
       .then(() => {
-        db.Users.findOne({ where: { id: req.body.id } 
+        db.Users.findOne({
+          where: { id: req.body.id }
         })
           .then((user) => {
             if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -161,11 +162,11 @@ let productController = {
                   //fatla ver para cambiar la imagen
                 },
                 {
-                  where: { id: req.body.idP},
+                  where: { id: req.body.idP },
                 }
               )
 
-                .then(()=> {
+                .then(() => {
                   return res.redirect(`/ramo/products/${req.body.idP}`);
                 })
 
