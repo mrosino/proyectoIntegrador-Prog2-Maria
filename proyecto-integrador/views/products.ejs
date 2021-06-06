@@ -82,6 +82,7 @@
 																					{ %>
                                                                 <form action="/ramo/products/commentDelete" method="post">
                                                                     <input type="hidden" name="id" value="<%= comments[i].id %> ">
+                                                                    <input type="hidden" name="user" value="<%= locals.user.id %> ">
                                                                     <button type="submit">
 																							<ion-icon
 																								name="trash-outline"></ion-icon>

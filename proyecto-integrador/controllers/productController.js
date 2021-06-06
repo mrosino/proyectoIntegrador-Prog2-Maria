@@ -52,15 +52,18 @@ let productController = {
       });
   },
   commentDelete: (req, res) => {
-    db.Comments.destroy({
-      where: { id: req.body.id },
-    })
-      .then(() => {
-        return res.redirect(req.headers.referer);
+    if (req.body.id == req.session.user.id) {
+      db.Comments.destroy({
+        where: { id: req.body.id },
       })
-      .catch((error) => {
-        throw error;
-      });
+        .then(() => {
+          return res.redirect( `/ramo/products${req.params.id}`);
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
+   
   },
   productAdd: (req, res) => {
     return res.render("productAdd", {
