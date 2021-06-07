@@ -71,6 +71,8 @@ let productController = {
     });
   },
   productAdded: (req, res) => {
+    console.log('/images/products/' + req.file.filename);
+    
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,
