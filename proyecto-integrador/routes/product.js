@@ -19,9 +19,8 @@ const storage = multer.diskStorage({
         let directoryRoute = 'public/images/products';
         cb(null,directoryRoute);
     },
-    filename: (req,file,cb)=> {
-               
-               let fileName = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+    filename: (req,file,cb)=> {               
+               let fileName = Date.now() + path.extname(file.originalname) + '-' + file.fieldname;
         cb(null, fileName)
     }
 }); 

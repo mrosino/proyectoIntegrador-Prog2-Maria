@@ -26,8 +26,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Habilitamos a express a usar sesiones (req.session.abc)
-
 
 
 const privateRoutes = [
@@ -50,6 +48,18 @@ app.use(
   })
 );
 
+app.use(async (req, res, next) => {
+  console.log(req.cookies.remembered);
+  if (req.cookies.remembered != undefined && req.session.user == undefined) {
+    let user = await db.Users.findByPk(req.cookies.remembered);
+
+    req.session.user = user;
+    req.session.logged = true;
+  }
+   next();
+});
+
+
 app.use(function (req, res, next) {
 
   if (req.session.user != undefined) {
@@ -67,15 +77,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(async (req, res, next) => {
-  if (req.cookies.remembered != undefined && res.locals.logged == undefined) {
-    let user = await db.Users.findByPK(req.cookies.remembered);
-
-    req.session.user = user;
-    req.session.logged = true;
-  }
-  return next();
-});
 
 // error handler
 

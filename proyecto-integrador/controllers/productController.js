@@ -154,18 +154,23 @@ let productController = {
         created_by: req.body.idP
       }
     })
-      .then(() => {
+      .then((prod) => {
         db.Users.findOne({
           where: { id: req.body.id }
         })
           .then((user) => {
             if (bcrypt.compareSync(req.body.password, user.password)) {
+              let image = prod.image;
+              if (req.file) { 
+                image = req.file.filename
+              }
+          
               db.Products.update(
                 {
                   product_name: req.body.product_name,
                   description: req.body.description,
                   update_date: new Date().getTime(),
-                  image: req.file.filename,
+                  image: image,
                  
               
                 },

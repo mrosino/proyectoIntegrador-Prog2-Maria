@@ -24,12 +24,24 @@
 							<h1 class="saludo main-title "> <%= visitor.name %> </h1>
 						</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
-						<a href="/ramo/emailEdit">
-							<i class="fas fa-cog"></i>
-						</a>
-						<a href="/ramo/pssEdit">
-							<i class="fas fa-cog"></i>
-						</a>
+							<li>
+								<a href="/ramo/emailEdit" class="spoiler" >
+									Cambiar email
+								</a>
+							</li>
+							<li>
+								<a href="/ramo/pssEdit" class="spoiler">
+									Cambiar contraseña
+								</a>
+							</li>
+
+							<li>
+								<a href="/ramo/picEdit" class="spoiler">
+									Cambiar foto de perfil
+								</a>
+							</li>
+					
+						
 						<% } %>
 						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">

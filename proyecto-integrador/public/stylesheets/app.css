@@ -270,6 +270,12 @@ hr {
 
 .product-box_image {
     border-bottom: 1px solid var(--light-gray);
+  
+        margin-top: auto;
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      
 }
 
 .product-box_data {
@@ -589,6 +595,31 @@ justify-content: space-between;
     font-size: 1.5em;
 }
 
+/* detalles cool */
+
+
+.spoiler {
+    visibility: hidden;
+  }
+  .spoiler:before {
+    visibility: visible;
+    content: " ✉";
+  }
+  .spoiler:hover {
+    visibility: visible;
+  }
+/* cambiar por icono
+   */
+/* .spoiler {
+    visibility: hidden;
+  }
+  .spoiler:before {
+    visibility: visible;
+    content: " ✉";
+  }
+  .spoiler:hover {
+    visibility: visible;
+  } */
 
 /*====== contacto ======*/
 
