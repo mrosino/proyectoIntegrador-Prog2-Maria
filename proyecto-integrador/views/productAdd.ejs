@@ -10,7 +10,7 @@
 				<h2>Ingresá los datos correspondientes para agregar un nuevo producto a tu cuenta</h2>
 			</div>
 			<div class="form-content">
-				<form method="POST" action="/ramo/productAdd">
+				<form method="POST" action="/ramo/productAdd"  enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productName">Nombre del producto </label>
 						<input type="text" name="product_name" placeholder="nombre del producto" required>
@@ -18,7 +18,7 @@
 
 					<div class="form-group">
 						<label for="image" class="postLabel">Carga tu imagen</label>
-						<input type="file" name="image" class="postInput">
+						<input type="file" name="imagen" class="postInput">
 					</div>
 
 					<div class="form-group">
