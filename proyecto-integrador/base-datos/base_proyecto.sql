@@ -1,30 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-06-2021 a las 17:12:11
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: Jun 07, 2021 at 02:48 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de datos: `base_proyecto`
+-- Database: `base_proyecto`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comments`
+-- Table structure for table `comments`
 --
 
 CREATE TABLE `comments` (
@@ -36,7 +29,7 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_date`) VALUES
@@ -116,12 +109,38 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (94, 135, 7, 'Muy grande, ocupa mucho lugar', '2021-05-24'),
 (95, 122, 7, 'Buen set', '2021-05-24'),
 (97, 136, 18, '¿Que ancho tiene?', '2021-05-25'),
-(99, 123, 18, 'Viene en negro?', NULL);
+(99, 123, 18, 'Viene en negro?', NULL),
+(100, 134, 18, 'hola', '2021-06-05'),
+(101, 28, 18, 'holaaa', '2021-06-05'),
+(102, 144, 16, 'holaaa', '2021-06-05'),
+(103, 145, 16, 'holaaa', '2021-06-05'),
+(104, 146, 16, 'hoaaaa', '2021-06-05'),
+(105, 130, 16, 'holaaa', '2021-06-05'),
+(106, 129, 16, 'hollaaaa', '2021-06-05'),
+(107, 125, 16, 'holaaaa', '2021-06-05'),
+(108, 145, 16, 'holaaaa', '2021-06-05'),
+(109, 134, 16, 'holaaaa', '2021-06-05'),
+(110, 125, 18, 'holaaa', '2021-06-05'),
+(111, 145, 18, 'holaaaa', '2021-06-05'),
+(112, 146, 18, 'holaaaa', '2021-06-05'),
+(113, 128, 18, 'holaaaa', '2021-06-05'),
+(114, 131, 18, 'holaaa', '2021-06-05'),
+(115, 131, 16, 'holaaa', '2021-06-05'),
+(116, 145, 16, 'hoaaaa', '2021-06-05'),
+(117, 145, 23, 'holaaaaaaaaaaaaaa', '2021-06-05'),
+(118, 134, 23, 'como estas ', '2021-06-05'),
+(119, 145, 23, 'como etas', '2021-06-05'),
+(120, 145, 23, 'como estas ', '2021-06-05'),
+(121, 146, 23, 'holaaa', '2021-06-05'),
+(122, 146, 23, 'como estas ', '2021-06-05'),
+(123, 145, 23, 'prueba 111111', '2021-06-05'),
+(124, 143, 18, 'holaaa', '2021-06-06'),
+(125, 148, 18, 'holaaa', '2021-06-07');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -136,7 +155,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_name`, `creation_date`, `description`, `update_date`) VALUES
@@ -145,7 +164,7 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (122, 2, NULL, 'Juego Comedor Aimaretti Combinado Marsella Novo.png', 'Juego Comedor Aimaretti Combinado Marsella Novo', '2020-12-08', 'Mueble mesa de 150 x 0,50 + 6 sillas. Mesa melamina simil madera - Chasis silla estructura caño - Pintura epoxi termoconvertible - Tapizado chenille', NULL),
 (123, 2, NULL, 'Biblioteca Juvenil Wengue Cubos Blanco.png', 'Biblioteca Rack 126 Blanco', '2014-04-17', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct', NULL),
 (124, 3, NULL, 'Modulo Rack L Wengue.jpg', 'Biblioteca melamina cubos', '2016-06-03', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct', NULL),
-(125, 18, NULL, 'Ropero Reflex.png', 'Ropero puertas de vidrio', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos, interiores revestidos', '2021-06-03'),
+(125, 18, NULL, 'Ropero Reflex.png', 'ropero de vidrio', '2029-07-20', 'Ropero Reflex DL352, 4 puertas, 8 espejos', '2021-06-05'),
 (126, 5, NULL, 'Chifonier Super Express Chocolate.png', 'Super Chifonier Express Chocolate Cajones ', '2020-08-25', 'El chifonier Super Express de Mosconi esta fabricado en MDP de 15 mm de grosor y revestido en pintura UV, para mayor proteccion. Posee 5 cajones con correderas plasticas, que te permitiran organizar de manera ordenada ropa, juguetes y otros objetos.Peso: ', NULL),
 (127, 5, NULL, 'Cucheta.png', 'Cucheta Gabinete Triliche Caoba ', '2015-10-17', 'Cama Cucheta confeccionada en MDP 15 mm, con terminacion en pintura UV y largueros en MDF 22 mm. La misma cuenta con escalera fabricada en madera y PVC de alta resistencia. A la vez que, cuenta con 1 puerta y 1 cajon que se puede ser armado a la izquierda', NULL),
 (128, 1, NULL, 'Mesa Tv 120 Melamina Wengue.jpg', 'Mesa Tv 120 Melamina Wengue (Chocolate)\r\n', '2016-08-30', 'Mueble fabricado en melamina sobre MDP 15 mm. Puerta con bisagras metalicas y estante. Posee ruedas para facilitar su movimiento.Peso: 27Kg.Ancho: 90cm. Profundo: 45cm. Alto: 75cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instructivo', NULL),
@@ -154,14 +173,20 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (131, 1, NULL, 'arbol 2.png', 'Cuadro Arbol de la vida', '2013-04-11', 'Creando un espacio minimalista, dándole un detalle único a tu pared.', NULL),
 (132, 4, NULL, 'libreria dis.png', 'Biblioteca Dormitorio Cubos', '2013-04-11', 'Mueble fabricado en melamina sobre MDP 15 mm. combinado con 5 cubos color blanco. Diseño contemporaneo de amplia funcionalidad.Peso: 55Kg.Ancho: 74,3cm. Profundo: 35,5cm. Alto: 212cm. Bultos: 1.Este producto se entrega en caja para armar. Incluye instruct', NULL),
 (133, 1, NULL, 'Sillón Esquinero Fitzroy.png', 'Sillon Fitzroy', '0000-00-00', 'Esquinero Fitzroy, de la línea Chelsea, de 2,50  2,50 mts con esqueleto y patas de eucalipto', NULL),
-(134, 5, NULL, 'Letter Board blanco.png', 'Cuadro Letter Board Blanco', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.', NULL),
+(134, 16, NULL, 'Letter Board blanco.png', 'Cuadro Letter Board Blanco', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.', NULL),
 (135, 4, NULL, 'cuadro moderno flores rojas.png', 'Cuadro Triptico De La Vida', '2021-04-12', 'Creando un espacio minimalista, dándole un detalle único a tu pared.', NULL),
-(136, 5, NULL, 'inhale ex.png', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.', NULL);
+(136, 5, NULL, 'inhale ex.png', 'Cuadros Inhale Exhale', '0000-00-00', 'Cuadro doble frases inhale y Exhale, listo para pegar.', NULL),
+(143, 18, NULL, 'Ropero Reflex.png', 'ropero de vidrio 123', '2020-03-20', 'roperooooo', '2021-06-05'),
+(144, 16, NULL, 'Letter Board blanco.png', 'Cuadro Letter Board Blanco 1', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.', NULL),
+(145, 16, NULL, '', 'Cuadro Letter Board Blanco 12', '2021-06-05', 'Pizarra de fieltro con letras blancas intercambiable', NULL),
+(146, 16, NULL, '', 'aaaaaaa', '2021-06-05', 'aaaaaa', NULL),
+(148, 18, NULL, NULL, 'vinilo 11', '2021-06-07', 'hola', NULL),
+(160, 18, NULL, 'imagen-1623076447961.jpg', 'vinilo 112', '2021-06-07', 'Producto ', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -180,7 +205,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
@@ -194,16 +219,17 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `
 (8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
 (9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
 (16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
-(18, 'mariano francisco ', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, NULL),
+(18, 'mariano francisco ', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
 (21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
-(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL);
+(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
+(23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `comments`
+-- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -211,60 +237,56 @@ ALTER TABLE `comments`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indices de la tabla `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD KEY `created_by` (`created_by`);
+  ADD KEY `created_by` (`created_by`),
+  ADD KEY `commented_by` (`commented_by`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `comments`
+-- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `comments`
+-- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
