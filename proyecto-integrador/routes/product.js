@@ -4,7 +4,6 @@ let db = require('../database/models');
 const multer = require ('multer');
 const path = require ('path');
 
-
 let productController = require('../controllers/productController');
 
 router.get('/products/:id?', productController.products);

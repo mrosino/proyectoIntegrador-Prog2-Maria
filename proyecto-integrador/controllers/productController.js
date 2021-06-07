@@ -71,12 +71,16 @@ let productController = {
     });
   },
   productAdded: (req, res) => {
-    console.log('/images/products/' + req.file.filename);
+   // console.log('/images/products/' + req.file.filename);
+    //console.log(req.file);
+
+    console.log('objeto request 112345' + req.file.filename );
+    
     
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,
-      image: info.image,
+      image: req.file.filename,
       product_name: info.product_name,
       creation_date: new Date().getTime(),
       description: info.description,
