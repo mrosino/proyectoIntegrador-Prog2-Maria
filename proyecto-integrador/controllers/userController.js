@@ -21,6 +21,7 @@ let userController = {
           let encryptedPss = bcrypt.hashSync(req.body.password);
           let info = req.body;
 
+
           db.Users.create({
             name: req.body.name,
             surname: info.surname,
@@ -30,6 +31,7 @@ let userController = {
             gender: info.gender,
             birthday: info.birthday,
             phone: info.phone,
+            profile_pic: req.file.filename,
             password: encryptedPss,
             registration_date: new Date().getTime(),
             userUpdate_date: new Date().getTime(),

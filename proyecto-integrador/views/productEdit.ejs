@@ -15,26 +15,28 @@
             <div class="form-header">
                 <h1>Editar: <%= products.product_name  %> </h1>
 
-                <h2>Ingresá los datos correspondientes para editar un producto.</h2>
+                <h2>Ingresá los datos correspondientes para editar tu producto.</h2>
             </div>
             <div class="form-content">
-                <form method="POST" action="/ramo/productEdit">
+                <form method="POST" action="/ramo/productEdit" enctype="multipart/form-data">
                     <input type="hidden" name="idP" value="<%= products.id %> ">
                     <input type="hidden" name="id" value="<%= locals.user.id %> ">
                     <div class="form-group">
-                        <label for="productName">Nombrá tu producto </label>
-                        <input type="text" name="product_name" placeholder="nombre del producto" required />
+                        <label for="productName">Renombrá tu producto </label>
+                        <input type="text" name="product_name" placeholder="nombre del producto"  />
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="postLabel">Actualiza la imagen de tu producto</label>
+                        <input type="file" name="newImage" class="image">
                     </div>
                     <div class="form-group">
                         <label for="password">Describí tu producto</label>
-                        <input type="text" name="description" placeholder="caracteristicas del producto" required />
+                        <input type="text" name="description" placeholder="caracteristicas del producto"  />
                     </div>
-                    <!-- <div class="form-group">
-                                            <button type="submit">Cargar imagenes</button>
-                                        </div> -->
+                 
                     <div class="form-group">
                         <label for="password">
-                            Por favor escriba su contraseña
+                             Por seguridad escriba su contraseña
                         </label>
                         <input type="password" name="password" placeholder="Nueva contraseña">
 

@@ -10,25 +10,28 @@ router.get('/products/:id?', productController.products);
 
 router.post('/products/commentAdd', productController.commentAdd);
 router.post('/products/commentDelete', productController.commentDelete);
-
+router.post('/products/productDelete', productController.productDelete);
+router.get('/productEdit/:id', productController.productEdit);
 router.get('/productAdd', productController.productAdd);
 
 const storage = multer.diskStorage({
     destination:(req, file, cb) => {
-        let rutaDirectorio = 'public/images/products';
-        cb(null,rutaDirectorio);
+        let directoryRoute = 'public/images/products';
+        cb(null,directoryRoute);
     },
     filename: (req,file,cb)=> {
-        let nombreArchivo = file.fieldname + '-' + Date.now() +path.extname(file.originalname);
-        cb(null, nombreArchivo)
+               
+               let fileName = file.fieldname + '-' + Date.now() + path.extname(file.originalname);
+        cb(null, fileName)
     }
 }); 
 const upload = multer ({
     storage: storage
 });
-router.post('/productAdd', upload.single('imagen') ,productController.productAdded);
-router.post('/products/productDelete', productController.productDelete);
+router.post('/productAdd', upload.single('image') ,productController.productAdded);
+router.post('/productEdit', upload.single('newImage'), productController.productEdited);
 
-router.get('/productEdit/:id', productController.productEdit);
-router.post('/productEdit', productController.productEdited);
+
+
+
 module.exports = router;

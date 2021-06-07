@@ -1,7 +1,7 @@
 const db = require("../database/models");
-const { resolveInclude } = require("ejs");
+// const { resolveInclude } = require("ejs");
 const bcrypt = require("bcryptjs");
-const Op = db.Sequelize.Op;
+
 
 let productController = {
   products: (req, res) => {
@@ -52,17 +52,17 @@ let productController = {
       });
   },
   commentDelete: (req, res) => {
-    if (req.body.id == req.session.user.id) {
+   
       db.Comments.destroy({
-        where: { id: req.body.id },
+        where: { id: req.body.idC },
       })
         .then(() => {
-          return res.redirect(`/ramo/products${req.params.id}`);
+          return res.redirect(req.headers.referer);
         })
         .catch((error) => {
           throw error;
         });
-    }
+    
 
   },
   productAdd: (req, res) => {
@@ -151,7 +151,7 @@ let productController = {
   productEdited: (req, res) => {
     db.Products.findOne({
       where: {
-        created_by: req.body.id
+        created_by: req.body.idP
       }
     })
       .then(() => {
@@ -164,8 +164,10 @@ let productController = {
                 {
                   product_name: req.body.product_name,
                   description: req.body.description,
-                  update_date: new Date().getTime()
-                  //fatla ver para cambiar la imagen
+                  update_date: new Date().getTime(),
+                  image: req.file.filename,
+                 
+              
                 },
                 {
                   where: { id: req.body.idP },
@@ -179,7 +181,7 @@ let productController = {
 
             } else {
               res.cookie("error", "noPss", { maxAge: 1000 * 60 });
-              return res.redirect(req.headers.referer);
+              return res.redirect("/ramo/login")
             }
           })
           .catch(function (error) {

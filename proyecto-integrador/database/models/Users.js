@@ -39,6 +39,9 @@ let cols = {
     },
     userUpdate_date: {
         type: DataTypes.DATE, 
+    },
+    profile_pic: {
+        type: DataTypes.STRING, 
     }
 
 }

@@ -43,7 +43,7 @@
         <div class="product-detail">
             <div class="row">
                 <article class="col-11 col-lg-8 product-detail-info">
-                    <img src="/images/products/<%= products.image %>" alt="Modulo rack L wengue">
+                    <img src="/images/products/<%= products.image %>" alt="<%= products.prodduct_name %>">
                     <p class="product-detail-description">
                         <%= products.description %>
                     </p>
@@ -82,7 +82,8 @@
                                     <%= comments[i].content %>
                                     <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
                                 <form action="/ramo/products/commentDelete" method="post">
-                                    <input type="hidden" name="id" value="<%= comments[i].id %> ">
+                                    
+                                    <input type="hidden" name="idC" value="<%= comments[i].id %> ">
                                     <input type="hidden" name="user" value="<%= locals.user.id %> ">
                                     <button type="submit">
                                         <ion-icon name="trash-outline">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2021 a las 17:28:59
+-- Tiempo de generación: 07-06-2021 a las 21:46:32
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -127,7 +127,6 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (107, 125, 16, 'holaaaa', '2021-06-05'),
 (108, 145, 16, 'holaaaa', '2021-06-05'),
 (109, 134, 16, 'holaaaa', '2021-06-05'),
-(110, 125, 18, 'holaaa', '2021-06-05'),
 (111, 145, 18, 'holaaaa', '2021-06-05'),
 (112, 146, 18, 'holaaaa', '2021-06-05'),
 (113, 128, 18, 'holaaaa', '2021-06-05'),
@@ -142,7 +141,8 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (122, 146, 23, 'como estas ', '2021-06-05'),
 (123, 145, 23, 'prueba 111111', '2021-06-05'),
 (124, 143, 18, 'holaaa', '2021-06-06'),
-(125, 148, 18, 'holaaa', '2021-06-07');
+(125, 148, 18, 'holaaa', '2021-06-07'),
+(126, 129, 24, 'hola', '2021-06-07');
 
 -- --------------------------------------------------------
 
@@ -187,8 +187,12 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (144, 16, NULL, 'Letter Board blanco.png', 'Cuadro Letter Board Blanco 1', '2021-05-10', 'Pizarra de fieltro con letras blancas intercambiables.', NULL),
 (145, 16, NULL, '', 'Cuadro Letter Board Blanco 12', '2021-06-05', 'Pizarra de fieltro con letras blancas intercambiable', NULL),
 (146, 16, NULL, '', 'aaaaaaa', '2021-06-05', 'aaaaaa', NULL),
-(148, 18, NULL, NULL, 'vinilo 11', '2021-06-07', 'hola', NULL),
-(160, 18, NULL, 'imagen-1623076447961.jpg', 'vinilo 112', '2021-06-07', 'Producto ', NULL);
+(148, 18, NULL, 'newImage-1623094925380.jpg', '', '2021-06-07', '', '2021-06-07'),
+(160, 18, NULL, 'imagen-1623076447961.jpg', 'vinilo 112', '2021-06-07', 'Producto ', NULL),
+(161, 18, NULL, 'image-1623092778756.jpg', 'Gato', '2021-06-07', 'xdgfchjbkl', NULL),
+(162, 18, NULL, 'image-1623094241049.jpg', 'Gato', '2021-06-07', 'Gato tricolor con ojos claros. Macho.', NULL),
+(163, 18, NULL, 'image-1623094811113.jpg', 'Gato', '2021-06-07', 'me parece que vi un lindo gatito', NULL),
+(164, 18, NULL, 'image-1623095019448.jpg', 'Gato', '2021-06-07', 'gato con boca abierta', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,6 +206,7 @@ CREATE TABLE `users` (
   `surname` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL,
   `province` varchar(255) DEFAULT NULL,
   `document` int(11) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
@@ -215,21 +220,23 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
-(1, 'Adriana', 'Carrasco', 'acarrasco@gmail.com', 'acarra1', 'Bs.As.', 30937152, 'femenino', '1973-05-28', 1164838871, NULL, NULL),
-(2, 'Agustina', 'Vallejos', 'avallejos@gmail.com', 'avall1', 'Catamarca', 8273646, 'Femenimo', '1944-01-07', 1130298374, NULL, NULL),
-(3, 'Oscar', 'Roxano', 'roxanooscar@yahoo.com.ar', 'roxarockstar', 'Cordoba', 26094827, 'Masculino', '1969-09-28', 1164838872, NULL, NULL),
-(4, 'Analia', 'Tranchin', 'tranchiniok@hotmail.com', 'soycool', 'Salta', 2973646, 'Femenino', '1961-05-03', 118268374, NULL, NULL),
-(5, 'Roberto', 'Gomez', 'robertogomez@live.com.ar', 'pupi33', 'Chubut', 12937152, 'Masculino', '1958-09-22', 1178838871, NULL, NULL),
-(6, 'mery', 'rosino', '', '$2a$10$gShG200AOjLVB8lcOOfJ..5Fl4EkyFgU2FmRznnmkwd2aNpbtCHNW', 'Rio Negro', 40937112, 'femenino', '2021-04-27', 113018052, NULL, NULL),
-(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
-(8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
-(9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
-(16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
-(18, 'mariano francisco ', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
-(21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
-(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
-(23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05');
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
+(1, 'Adriana', 'Carrasco', 'acarrasco@gmail.com', 'acarra1', NULL, 'Bs.As.', 30937152, 'femenino', '1973-05-28', 1164838871, NULL, NULL),
+(2, 'Agustina', 'Vallejos', 'avallejos@gmail.com', 'avall1', NULL, 'Catamarca', 8273646, 'Femenimo', '1944-01-07', 1130298374, NULL, NULL),
+(3, 'Oscar', 'Roxano', 'roxanooscar@yahoo.com.ar', 'roxarockstar', NULL, 'Cordoba', 26094827, 'Masculino', '1969-09-28', 1164838872, NULL, NULL),
+(4, 'Analia', 'Tranchin', 'tranchiniok@hotmail.com', 'soycool', NULL, 'Salta', 2973646, 'Femenino', '1961-05-03', 118268374, NULL, NULL),
+(5, 'Roberto', 'Gomez', 'robertogomez@live.com.ar', 'pupi33', NULL, 'Chubut', 12937152, 'Masculino', '1958-09-22', 1178838871, NULL, NULL),
+(6, 'mery', 'rosino', '', '$2a$10$gShG200AOjLVB8lcOOfJ..5Fl4EkyFgU2FmRznnmkwd2aNpbtCHNW', NULL, 'Rio Negro', 40937112, 'femenino', '2021-04-27', 113018052, NULL, NULL),
+(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', NULL, 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
+(8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
+(9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
+(16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
+(18, 'mariano francisco ', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', NULL, 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
+(21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
+(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
+(23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
+(24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', NULL, 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07'),
+(25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07');
 
 --
 -- Índices para tablas volcadas
@@ -266,19 +273,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=129;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
