@@ -615,8 +615,10 @@ justify-content: space-between;
   }
   .spoiler:before {
     visibility: visible;
-    content: " ✉";
+    content: " 🔒";
   }
+
+  chequear esta pag https://www.symbolsofit.com/id/
   .spoiler:hover {
     visibility: visible;
   } */
