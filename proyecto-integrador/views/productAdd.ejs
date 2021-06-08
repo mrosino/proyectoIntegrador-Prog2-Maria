@@ -13,7 +13,7 @@
 				<form method="POST" action="/ramo/productAdd" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="productName">Nombre del producto </label>
-						<input type="text" name="product_name" placeholder="nombre del producto" required>
+						<input type="text" name="product_name" placeholder="Inclui marca y detalles generales" required>
 					</div>
 
 					<div class="form-group">
@@ -25,15 +25,13 @@
 
 					<div class="form-group">
 						<label for="description" class="postLabel"> Ingrese descripcion</label>
-						<input type="text" name="description" class="postInput" required>
+						<input type="text" name="description" class="postInput" placeholder="Ayuda a tus clientes a encontrar el producto que buscan" required>
 					</div>
 
 
 
-					<div class="form-group">
-
-						<input type="checkbox" required>Aceptar terminos y condiciones
-					</div>
+					<br>
+					<br>
 					<div class="form-group">
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 						<button type="submit">Subir producto</button>

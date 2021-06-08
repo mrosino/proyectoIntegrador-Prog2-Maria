@@ -262,19 +262,28 @@ hr {
     overflow: hidden;
     transition: 300ms;
     margin: 20px 0;
+    height: 400px;
 }
+
 
 .product-box a {
     display: block;
 }
+.publishedBy{
+        text-align: center;
 
+}
 .product-box_image {
     border-bottom: 1px solid var(--light-gray);
   
-        margin-top: auto;
-        height: 200px;
-        width: 100%;
-        object-fit: cover;
+}
+.imagen {
+  
+  
+    margin-top: auto;
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
       
 }
 
@@ -454,14 +463,21 @@ hr {
     width: 70%;
     display: block;
     margin: auto;
+   
 }
 
 .product-detail-info {
     border-right: 1px solid var(--light-gray);
     padding: 15px;
-    /* height: 100%; */
+  
 }
-
+.dictadura{
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
 .product-detail-title {
     font-weight: 400;
     font-size: 2.8em;

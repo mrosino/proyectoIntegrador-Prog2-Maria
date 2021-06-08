@@ -38,26 +38,30 @@
 
 	<% } else { %>
 	<div class="container products-wrapper">
+		<h2 class="todos-prod2" style="text-align: center;">Resultados para tu búsqueda "<%= lookedFor %>"</h2>
 		<div class="row">
 			<% for (let i = 0; i < search.length; i++) { %>
 
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-
+					
+					<% if (locals.logged==true ) { %>
+						<div class="publishedBy">
+						 <a href="/ramo/profile/<%= search[i].products_users.id %>"><h4>Publicado por
+								<%= search[i].products_users.name %>	</h4>
+							</a>
+					
+						</div>
+						<% } %>
 					<a href="/ramo/products/<%= search[i].id %>">
 						<figure class="product-box_image">
-							<img src="/images/products/<%= search[i].image %>" alt="<%= search[i].product_name %>">
+							<img class="imagen" src="/images/products/<%= search[i].image %>" alt="<%= search[i].product_name %>">
 						</figure>
 						<article class="product-box_data">
 
 							<h2><%= search[i].product_name %></h2>
-							<% if (locals.logged==true ) { %>
-							<h4>Publicado por <a href="/ramo/profile/<%= search[i].products_users.id %>">
-									<%= search[i].products_users.name %>
-								</a>
-							</h4>
-							<% } %>
+							
 							<p><%= search[i].description %></p>
 							<p></p>
 						</article>
