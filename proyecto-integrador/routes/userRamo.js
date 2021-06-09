@@ -1,32 +1,32 @@
 var express = require('express');
 var router = express.Router();
-const multer = require ('multer');
-const path = require ('path');
+const multer = require('multer');
+const path = require('path');
 let userController = require('../controllers/userController');
 
 
 router.get('/profile/:id', userController.profile);
-router.get('/emailEdit', userController.emailEdit); 
-router.get('/pssEdit', userController.pssEdit); 
+router.get('/emailEdit', userController.emailEdit);
+router.get('/pssEdit', userController.pssEdit);
 router.get('/register', userController.register);
-router.get('/imagenEdit', userController.imagenEdit); 
+router.get('/imagenEdit', userController.imagenEdit);
 
 
 const storage = multer.diskStorage({
-    destination:(req, file, cb) => {
+    destination: (req, file, cb) => {
         let directoryRoute = 'public/images/users';
-        cb(null,directoryRoute);
+        cb(null, directoryRoute);
     },
-    filename: (req,file,cb)=> {
+    filename: (req, file, cb) => {
         let fileName = Date.now() + path.extname(file.originalname) + '-' + file.fieldname;
         cb(null, fileName)
     }
-}); 
-const upload = multer ({
+});
+const upload = multer({
     storage: storage
 });
 
-router.post('/register',  upload.single('pp') ,userController.registered);
+router.post('/register', upload.single('pp'), userController.registered);
 
 
 

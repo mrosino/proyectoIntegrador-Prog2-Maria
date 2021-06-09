@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const multer = require ('multer');
-const path = require ('path');
+const multer = require('multer');
+const path = require('path');
 const securityController = require('../controllers/securityController')
 
 router.get('/login', securityController.login);
@@ -12,16 +12,16 @@ router.post('/editedPass', securityController.editedPass);
 
 
 const storage = multer.diskStorage({
-    destination:(req, file, cb) => {
+    destination: (req, file, cb) => {
         let directoryRoute = 'public/images/users';
-        cb(null,directoryRoute);
+        cb(null, directoryRoute);
     },
-    filename: (req,file,cb)=> {
+    filename: (req, file, cb) => {
         let fileName = Date.now() + path.extname(file.originalname) + '-' + file.fieldname;
         cb(null, fileName)
     }
-}); 
-const upload = multer ({
+});
+const upload = multer({
     storage: storage
 });
 

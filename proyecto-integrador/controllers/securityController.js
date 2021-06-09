@@ -122,7 +122,7 @@ var securityController = {
       }
     });
   },
-  editedImagen: (req,res)=> {
+  editedImagen: (req, res) => {
 
   },
 

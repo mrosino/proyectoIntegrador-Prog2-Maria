@@ -52,17 +52,17 @@ let productController = {
       });
   },
   commentDelete: (req, res) => {
-   
-      db.Comments.destroy({
-        where: { id: req.body.idC },
+
+    db.Comments.destroy({
+      where: { id: req.body.idC },
+    })
+      .then(() => {
+        return res.redirect(req.headers.referer);
       })
-        .then(() => {
-          return res.redirect(req.headers.referer);
-        })
-        .catch((error) => {
-          throw error;
-        });
-    
+      .catch((error) => {
+        throw error;
+      });
+
 
   },
   productAdd: (req, res) => {
@@ -71,12 +71,11 @@ let productController = {
     });
   },
   productAdded: (req, res) => {
-   // console.log('/images/products/' + req.file.filename);
-    //console.log(req.file);
 
-    console.log('objeto request 112345' + req.file.filename );
-    
-    
+
+    console.log('objeto request 112345' + req.file.filename);
+
+
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,
@@ -162,8 +161,8 @@ let productController = {
             console.log(prod);
             let image;
             if (bcrypt.compareSync(req.body.password, user.password)) {
-             
-              if (req.file) { 
+
+              if (req.file) {
                 image = req.file.filename
               } else {
                 image = req.body.imagenH
@@ -174,8 +173,8 @@ let productController = {
                   description: req.body.description,
                   update_date: new Date().getTime(),
                   image: image
-                 
-              
+
+
                 },
                 {
                   where: { id: req.body.idP },

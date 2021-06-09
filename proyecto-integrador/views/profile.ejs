@@ -24,24 +24,24 @@
 							<h1 class="saludo main-title "> <%= visitor.name %> </h1>
 						</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
-							<li>
-								<a href="/ramo/emailEdit" class="spoiler" >
-									Cambiar email
-								</a>
-							</li>
-							<li>
-								<a href="/ramo/pssEdit" class="spoiler">
-									Cambiar contraseña
-								</a>
-							</li>
+						<li>
+							<a href="/ramo/emailEdit" class="spoiler">
+								Cambiar email
+							</a>
+						</li>
+						<li>
+							<a href="/ramo/pssEdit" class="spoiler">
+								Cambiar contraseña
+							</a>
+						</li>
 
-							<li>
-								<a href="/ramo/imagenEdit" class="spoiler">
-									Cambiar foto de perfil
-								</a>
-							</li>
-					
-						
+						<li>
+							<a href="/ramo/imagenEdit" class="spoiler">
+								Cambiar foto de perfil
+							</a>
+						</li>
+
+
 						<% } %>
 						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
@@ -93,8 +93,8 @@
 
 							<a href="/ramo/products/<%= products[i].id %>">
 								<figure class="product-box_image">
-									<img src="/images/products/<%= products[i].image %>"
-									class="imagen"	alt="<%= products[i].product_name %>">
+									<img src="/images/products/<%= products[i].image %>" class="imagen"
+										alt="<%= products[i].product_name %>">
 								</figure>
 								<article class="product-box_data">
 

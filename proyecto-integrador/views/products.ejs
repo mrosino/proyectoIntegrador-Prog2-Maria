@@ -44,8 +44,8 @@
             <div class="row">
                 <article class="col-11 col-lg-8 product-detail-info">
                     <div class="dictadura">
-                    <img src="/images/products/<%= products.image %>" alt="<%= products.prodduct_name %>">
-                </div>
+                        <img src="/images/products/<%= products.image %>" alt="<%= products.prodduct_name %>">
+                    </div>
                     <p class="product-detail-description">
                         <%= products.description %>
                     </p>
@@ -57,21 +57,12 @@
 
                         <a href="/ramo/profile/<%= products.products_users.id %> ">Visitá su perfil para ver el resto de
                             sus productos publicados</a>
-
-
                     </p>
-
                     <% } %>
                 </article>
                 <div class="col-12 col-lg-4 title-thypography">
                     <h1 style="padding: 15px; text-align: center;">Comentarios</h1>
                     <section class="comments">
-
-
-
-
-
-
                         <% for (let i=0; i < comments.length; i++) { %>
                         <article>
                             <img src="https://via.placeholder.com/35" alt="">
@@ -84,31 +75,19 @@
                                     <%= comments[i].content %>
                                     <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
                                 <form action="/ramo/products/commentDelete" method="post">
-                                    
+
                                     <input type="hidden" name="idC" value="<%= comments[i].id %> ">
                                     <input type="hidden" name="user" value="<%= locals.user.id %> ">
                                     <button type="submit">
-                                        <ion-icon name="trash-outline">
-                                        </ion-icon>
-
+                                        <ion-icon name="trash-outline"></ion-icon>
                                     </button>
-
-
-
                                 </form>
                                 <% } %>
                                 </p>
-
-
                             </div>
                         </article>
-
                         <% } %>
-
-
-
                     </section>
-
                     <% if (locals.logged==true){ %>
                     <form class="form-comentario" action="/ramo/products/commentAdd" method="POST">
                         <input type="hidden" name="id" value="<%= products.id %> ">

@@ -45,23 +45,25 @@
 			<!-- Show the "ultimos" products -->
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					
+
 					<% if (locals.logged==true ) { %>
-						<div class="publishedBy">
-						 <a href="/ramo/profile/<%= search[i].products_users.id %>"><h4>Publicado por
-								<%= search[i].products_users.name %>	</h4>
-							</a>
-					
-						</div>
-						<% } %>
+					<div class="publishedBy">
+						<a href="/ramo/profile/<%= search[i].products_users.id %>">
+							<h4>Publicado por
+								<%= search[i].products_users.name %> </h4>
+						</a>
+
+					</div>
+					<% } %>
 					<a href="/ramo/products/<%= search[i].id %>">
 						<figure class="product-box_image">
-							<img class="imagen" src="/images/products/<%= search[i].image %>" alt="<%= search[i].product_name %>">
+							<img class="imagen" src="/images/products/<%= search[i].image %>"
+								alt="<%= search[i].product_name %>">
 						</figure>
 						<article class="product-box_data">
 
 							<h2><%= search[i].product_name %></h2>
-							
+
 							<p><%= search[i].description %></p>
 							<p></p>
 						</article>

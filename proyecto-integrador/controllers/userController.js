@@ -94,10 +94,10 @@ let userController = {
       error: req.cookies.error,
     });
   },
-  imagenEdit:(req,res)=>{
+  imagenEdit: (req, res) => {
     return res.render("imagenEdit", {
       title: "Pagina de edicion foto de perfil",
-      error:req.cookies.error
+      error: req.cookies.error
     });
   },
 
