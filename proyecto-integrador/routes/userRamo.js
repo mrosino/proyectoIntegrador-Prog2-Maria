@@ -9,6 +9,7 @@ router.get('/profile/:id', userController.profile);
 router.get('/emailEdit', userController.emailEdit); 
 router.get('/pssEdit', userController.pssEdit); 
 router.get('/register', userController.register);
+router.get('/imagenEdit', userController.imagenEdit); 
 
 
 const storage = multer.diskStorage({

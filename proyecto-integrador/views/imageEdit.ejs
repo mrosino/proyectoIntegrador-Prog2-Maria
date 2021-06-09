@@ -1,0 +1,71 @@
+<% if (locals.logged == true) { %>
+    <%- include('./partials/headerLogueado') %>
+    <% } else { %>
+    
+    <%- include('./partials/header') %>
+    <% }	%>
+    
+    
+    
+    <body>
+    
+        <!-- Novedades -->
+    
+    
+    
+    
+        <!-- Rearmado -->
+    
+        <div class="form">
+    
+            <div class="form-panel one">
+                <div class="form-header">
+                    <h1 style="text-align: center;">Cambie su foto de perfil</h1>
+    
+                </div>
+                <div class="form-content">
+                    <form action="/ramo/editedImagen" method="POST">
+                        <div class="form-group">
+                            <label for="image" class="postLabel">Carga tu imagen de perfil</label>
+                            <input type="file" name="pp" class="pp">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">
+                                Por favor escriba su contraseña 
+                            </label>
+                            <input type="password" name="password" placeholder="Contraseña">
+        
+                        </div>
+                        <input type="hidden" name="id" value="<%= locals.user.id %> ">
+                        <div class="form-group boton">
+                            <button type="submit">Cambiar foto de perfil</button>
+                        </div>
+    
+
+                    
+    
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    
+    
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    
+    
+    
+    
+    
+    
+    
+        <%- include('./partials/footer') %>
+    </body>
+    
+    </html>

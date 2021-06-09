@@ -122,6 +122,12 @@ var securityController = {
       }
     });
   },
+  editedImagen: (req,res)=> {
+
+  },
+
+
+
 };
 
 module.exports = securityController;
