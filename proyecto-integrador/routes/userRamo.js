@@ -11,7 +11,6 @@ router.get('/pssEdit', userController.pssEdit);
 router.get('/register', userController.register);
 router.get('/imagenEdit', userController.imagenEdit);
 
-
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         let directoryRoute = 'public/images/users';
