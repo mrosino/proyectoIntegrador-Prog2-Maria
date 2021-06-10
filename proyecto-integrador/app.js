@@ -11,6 +11,7 @@ var ramoRouter = require("./routes/ramo");
 var userRamoRouter = require("./routes/userRamo");
 var productRouter = require("./routes/product");
 var securityRouter = require("./routes/security");
+var followersRouter = require("./routes/followers"); 
 var app = express();
 
 const hostname = "127.0.0.1";
@@ -97,6 +98,7 @@ app.use("/ramo", ramoRouter);
 app.use("/ramo", userRamoRouter);
 app.use("/ramo", productRouter);
 app.use("/ramo", securityRouter);
+app.use("/ramo", followersRouter); 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
