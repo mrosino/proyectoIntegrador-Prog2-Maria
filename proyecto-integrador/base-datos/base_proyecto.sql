@@ -1,30 +1,23 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 08-06-2021 a las 13:33:38
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Host: localhost:3306
+-- Generation Time: Jun 10, 2021 at 12:33 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
--- Base de datos: `base_proyecto`
+-- Database: `base_proyecto`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `comments`
+-- Table structure for table `comments`
 --
 
 CREATE TABLE `comments` (
@@ -36,7 +29,7 @@ CREATE TABLE `comments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `comments`
+-- Dumping data for table `comments`
 --
 
 INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_date`) VALUES
@@ -147,7 +140,18 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `products`
+-- Table structure for table `follower`
+--
+
+CREATE TABLE `follower` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `id_follower` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -162,7 +166,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_name`, `creation_date`, `description`, `update_date`) VALUES
@@ -195,12 +199,13 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (164, 18, NULL, 'image-1623095019448.jpg', 'Gato', '2021-06-07', 'gato con boca abierta', NULL),
 (165, 24, NULL, '1623114506220.jpg-image', 'Gato', '2021-06-08', 'Mi gaturri', NULL),
 (166, 24, NULL, '1623115757744.jpg-image', 'Gatito Gatito Gatito Gatito !!', '2021-06-08', 'Fiera', NULL),
-(167, 24, NULL, '1623115937820.jpg-image', 'Gaturri', '2021-06-08', 'Gato tricolor con ojos claros. Macho, buenazo.', NULL);
+(167, 24, NULL, '1623115937820.jpg-image', 'Gaturri', '2021-06-08', 'Gato tricolor con ojos claros. Macho, buenazo.', NULL),
+(168, 26, NULL, '1623269588932.jpeg-image', 'mesa Ramo', '2021-06-09', 'mesa de comedor grande ', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -220,7 +225,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
@@ -239,14 +244,18 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`
 (22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
 (24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', NULL, 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07'),
-(25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07');
+(25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07'),
+(26, 'olivia', 'rozze', 'olirozze@gmail.com', '$2a$10$9RnKn1dYTAi0oNxmzZvkG./DCa/ezqHdAUR6RAZDE1acDMoKInl9y', '1623261319687.png-pp', 'CABA', 23434643, 'femenino', '2021-06-01', 345235245, '2021-06-09', '2021-06-09'),
+(27, 'martin', 'dualde', 'martin12@gmail.com', '$2a$10$j3Gb1L/rLvwaw2ofdyhuRuMolkWb30Pnc1RD5mpJvi1TJX55LSo/2', '1623271025721.jpeg-pp', 'CABA', 36587573, 'masculino', '2018-06-27', 325432543, '2021-06-09', '2021-06-09'),
+(28, 'martina', 'lorenzo', 'martulo@gmail.com', '$2a$10$xLUuaDdq1yT35CR8cIRNcecaWON45akZyx6i0Q10OST5xYeeuJV6W', '1623271422332.jpeg-pp', 'CABA', 7254872, 'femenino', '2021-01-06', 213752642, '2021-06-09', '2021-06-09'),
+(29, 'manuela', 'lopez', 'manulope@gmail.com', '$2a$10$My0hUnNu.e0mnnVv5OHHDOPzSWry9UojNdqiOUedLHekiJxpnI1wW', '1623271495565.jpeg-pp', 'CABA', 761238722, 'femenino', '2019-06-20', 67257642, '2021-06-09', '2021-06-09');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `comments`
+-- Indexes for table `comments`
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -254,7 +263,14 @@ ALTER TABLE `comments`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Indices de la tabla `products`
+-- Indexes for table `follower`
+--
+ALTER TABLE `follower`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_follow` (`id_follower`);
+
+--
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`) USING BTREE,
@@ -262,53 +278,52 @@ ALTER TABLE `products`
   ADD KEY `commented_by` (`commented_by`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `comments`
+-- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
--- AUTO_INCREMENT de la tabla `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=168;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `comments`
+-- Constraints for table `comments`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
--- Filtros para la tabla `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
