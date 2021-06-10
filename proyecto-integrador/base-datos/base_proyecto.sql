@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 10, 2021 at 12:33 PM
+-- Generation Time: Jun 10, 2021 at 01:56 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -135,7 +135,30 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (123, 145, 23, 'prueba 111111', '2021-06-05'),
 (124, 143, 18, 'holaaa', '2021-06-06'),
 (126, 129, 24, 'hola', '2021-06-07'),
-(129, 148, 18, 'te extraño miausi', '2021-06-08');
+(129, 148, 18, 'te extraño miausi', '2021-06-08'),
+(130, 168, 31, 'muy lindo ', '2021-06-10'),
+(131, 168, 31, 'me interesa', '2021-06-10'),
+(132, 129, 31, 'Muy lindo color ', '2021-06-10'),
+(133, 169, 32, 'me encanta este sillon ', '2021-06-10'),
+(134, 169, 32, 'me gusta mucho el color ', '2021-06-10'),
+(135, 170, 32, 'una cama muy comoda parece', '2021-06-10'),
+(136, 170, 32, 'cual es su marca', '2021-06-10'),
+(137, 174, 33, 'que precio?', '2021-06-10'),
+(138, 174, 33, 'podria elegir otros colores?', '2021-06-10'),
+(139, 172, 33, 'me gusta el gris ', '2021-06-10'),
+(140, 172, 33, 'esta disponible?', '2021-06-10'),
+(141, 168, 33, 'cuantos metros tiene?\'', '2021-06-10'),
+(142, 175, 34, 'me interesa', '2021-06-10'),
+(143, 175, 34, 'vienen en ese color?', '2021-06-10'),
+(144, 173, 34, 'vienen en marrron y blanco?', '2021-06-10'),
+(145, 170, 34, 'me encatan esos sillones', '2021-06-10'),
+(146, 170, 34, 'los vendes por separado?', '2021-06-10'),
+(147, 178, 35, 'que medidas tiene', '2021-06-10'),
+(148, 177, 35, 'que medida tienen los cajones', '2021-06-10'),
+(149, 175, 35, 'que tamaño tiene', '2021-06-10'),
+(150, 179, 36, 'me gusta el sillon ', '2021-06-10'),
+(151, 179, 36, 'que precio tiene ', '2021-06-10'),
+(152, 180, 36, 'de que año es el mueble', '2021-06-10');
 
 -- --------------------------------------------------------
 
@@ -200,7 +223,20 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (165, 24, NULL, '1623114506220.jpg-image', 'Gato', '2021-06-08', 'Mi gaturri', NULL),
 (166, 24, NULL, '1623115757744.jpg-image', 'Gatito Gatito Gatito Gatito !!', '2021-06-08', 'Fiera', NULL),
 (167, 24, NULL, '1623115937820.jpg-image', 'Gaturri', '2021-06-08', 'Gato tricolor con ojos claros. Macho, buenazo.', NULL),
-(168, 26, NULL, '1623269588932.jpeg-image', 'mesa Ramo', '2021-06-09', 'mesa de comedor grande ', NULL);
+(168, 26, NULL, '1623269588932.jpeg-image', 'mesa Ramo', '2021-06-09', 'mesa de comedor grande ', NULL),
+(169, 31, NULL, '1623331143838.jpeg-image', 'Sillon merlin gris ', '2021-06-10', 'Sillon grande gris equipado con dos almohadones', NULL),
+(170, 31, NULL, '1623331261399.jpeg-image', 'Cama lorun ', '2021-06-10', 'Cama de dos plazas grande con silloncitos incluidos', NULL),
+(172, 32, NULL, '1623331547739.jpeg-image', 'Almohadones neutros ', '2021-06-10', 'almohadones de color neutros elegi tu color!', NULL),
+(173, 32, NULL, '1623331591961.jpeg-image', 'Almohadones morenos', '2021-06-10', 'almohadones combinados para tu eleccion!', NULL),
+(174, 32, NULL, '1623331639205.jpeg-image', 'Almohadones indios ', '2021-06-10', 'Almohadones decorados de la india ', NULL),
+(175, 33, NULL, '1623331881556.jpeg-image', 'Mesa Blanca', '2021-06-10', 'Mesa blanca con sillas nude', NULL),
+(176, 33, NULL, '1623331920810.jpeg-image', 'Mesa Flord', '2021-06-10', 'Mesa Amplia de 8 personas blancas', NULL),
+(177, 34, NULL, '1623332160385.jpeg-image', 'Mueble Roble ', '2021-06-10', 'Mueble roble con 6 cajones 3 grandes y 3 chicos ', NULL),
+(178, 34, NULL, '1623332208913.jpeg-image', 'Mueble cantel', '2021-06-10', 'Mueble cante grande impecable para tu dormitorio ', NULL),
+(179, 35, NULL, '1623333003189.jpeg-image', 'sillon vinatge rosa', '2021-06-10', 'Sillon vinatge de gamuza rosa', NULL),
+(180, 35, NULL, '1623333034395.jpeg-image', 'Mueble vintage blanco ', '2021-06-10', 'Mueble vinatage blanco en perfecto estado', NULL),
+(181, 36, NULL, '1623333287341.jpeg-image', 'Mantel tematico', '2021-06-10', 'Manteles con diseños divinos!', NULL),
+(182, 36, NULL, '1623333342896.jpeg-image', 'Manteles neutros', '2021-06-10', 'Manteles colores neutros, el que mas te guste!', NULL);
 
 -- --------------------------------------------------------
 
@@ -246,9 +282,14 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`
 (24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', NULL, 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07'),
 (25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07'),
 (26, 'olivia', 'rozze', 'olirozze@gmail.com', '$2a$10$9RnKn1dYTAi0oNxmzZvkG./DCa/ezqHdAUR6RAZDE1acDMoKInl9y', '1623261319687.png-pp', 'CABA', 23434643, 'femenino', '2021-06-01', 345235245, '2021-06-09', '2021-06-09'),
-(27, 'martin', 'dualde', 'martin12@gmail.com', '$2a$10$j3Gb1L/rLvwaw2ofdyhuRuMolkWb30Pnc1RD5mpJvi1TJX55LSo/2', '1623271025721.jpeg-pp', 'CABA', 36587573, 'masculino', '2018-06-27', 325432543, '2021-06-09', '2021-06-09'),
-(28, 'martina', 'lorenzo', 'martulo@gmail.com', '$2a$10$xLUuaDdq1yT35CR8cIRNcecaWON45akZyx6i0Q10OST5xYeeuJV6W', '1623271422332.jpeg-pp', 'CABA', 7254872, 'femenino', '2021-01-06', 213752642, '2021-06-09', '2021-06-09'),
-(29, 'manuela', 'lopez', 'manulope@gmail.com', '$2a$10$My0hUnNu.e0mnnVv5OHHDOPzSWry9UojNdqiOUedLHekiJxpnI1wW', '1623271495565.jpeg-pp', 'CABA', 761238722, 'femenino', '2019-06-20', 67257642, '2021-06-09', '2021-06-09');
+(31, 'marilu', 'londres', 'marilulondres@gmail.com', '$2a$10$dUbWBnB1DtQFYrApMgsKMulKRO99de0yeItYwCvd.A503FWkrmHxO', '1623330224249.jpeg-pp', 'CABA', 23434642, 'femenino', '2020-06-29', 345235246, '2021-06-10', '2021-06-10'),
+(32, 'Mateo', 'Casasnovas', 'casasnovasmateo@gmail.com', '$2a$10$AaghvX1b3gpI.XWppU7R8uCS1tcuVftlAZDw4xUcTOx3zusbiR4uS', '1623330405306.jpeg-pp', 'Buenos Aires', 8252077, 'masculino', '2021-06-01', 67257645, '2021-06-10', '2021-06-10'),
+(33, 'mariano', 'lauren', 'marianolauren@gmail.com', '$2a$10$5uc.D5ny1Ndw4UgW.VRX5O8Qzky33JTejUiUKwzAWecAsVqHEtsjy', '1623330541153.jpeg-pp', 'CABA', 8254075, 'masculino', '2018-06-06', 345235286, '2021-06-10', '2021-06-10'),
+(34, 'marianela', 'martinez', 'marianelamarti@gmail.com', '$2a$10$7MIUPsLIWihAbV079vKXGOyuA53ug5S9heLbCOUjxOiuk5keRFKju', '1623330605330.jpeg-pp', 'CABA', 384754356, 'masculino', '2020-06-09', 345235784, '2021-06-10', '2021-06-10'),
+(35, 'gustavo', 'rodriguez', 'gusrodriguez@gmail.com', '$2a$10$12DCl60QruTizoFKh0OYzezc0WdTreUy4W9p3k/zk5fMe92FxuaEy', '1623330652951.jpeg-pp', 'CABA', 346534585, 'masculino', '2018-02-08', 347585246, '2021-06-10', '2021-06-10'),
+(36, 'martin', 'pereyra', 'martinpere@gmail.com', '$2a$10$bzVKIrt4/uKKfgXy31HXn.jfgxyvb0XhgbqzIkVkQdLa79MasefUi', '1623330820003.jpeg-pp', 'CABA', 234783453, 'masculino', '2017-07-13', 564235246, '2021-06-10', '2021-06-10'),
+(37, 'miranda', 'doral', 'miridoral@gmail.com', '$2a$10$8aD5ngfetRLJlKvLqD/IqukQkmrzcWoJzR5heG4ymDKAYnwKTFB0.', '1623330866903.jpeg-pp', 'CABA', 756840345, 'femenino', '2017-02-08', 345289746, '2021-06-10', '2021-06-10'),
+(38, 'milagros', 'sanju', 'milusanju@gmail.com', '$2a$10$dMe.eUCW84FMiVGprhdIS.qSB4Luddj/DXYHcRgeM71sf6a1Y8lJ2', '1623330913808.jpeg-pp', 'CABA', 237543532, 'femenino', '2017-09-12', 345235057, '2021-06-10', '2021-06-10');
 
 --
 -- Indexes for dumped tables
@@ -292,19 +333,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=169;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=183;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- Constraints for dumped tables
@@ -323,6 +364,7 @@ ALTER TABLE `comments`
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+
 
 
 
