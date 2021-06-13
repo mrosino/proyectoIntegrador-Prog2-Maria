@@ -42,14 +42,7 @@ let cols = {
     },
     profile_pic: {
         type: DataTypes.STRING, 
-    },
-    follows: {
-        type: DataTypes.INTEGER
-    },
-    followed_by: {
-        type: DataTypes.INTEGER
     }
-
 }
 let config = {
     tableName: "users",
@@ -68,22 +61,15 @@ Users.associate = function (models) {
         foreignKey: "created_by"
     });
 
-    Users.belongsToMany(models.Follower, {
-        as: "users_followed", 
-        through: "follower",
-        foreignKey: "followed_by",
-        otherKey: "followed_by",
-        timestamps:false
+    Users.hasMany(models.Follower, {
+        as: "users_followed",
+        foreignKey: "followed_by"
+    });
+    Users.hasMany(models.Follower, {
+        as: "users_follows",
+        foreignKey: "follows"
+    });
 
-    });  
-    Users.belongsToMany(models.Follower, {
-        as: "users_follows", 
-        through: "follower",
-        foreignKey: "follows",
-        otherKey: "follows",
-        timestamps:false
-
-    });  
   
  
 }
