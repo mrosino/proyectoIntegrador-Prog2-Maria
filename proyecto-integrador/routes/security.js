@@ -25,7 +25,6 @@ const upload = multer({
     storage: storage
 });
 
-router.post('/editedImagen', upload.single('pp'), securityController.editedImagen);
 
-
+router.post('/imagenEdit', upload.single('ppe'), securityController.imagenEdited);
 module.exports = router;

@@ -158,7 +158,7 @@ let productController = {
           where: { id: req.body.id }
         })
           .then((user) => {
-            console.log(prod);
+           
             let image;
             if (bcrypt.compareSync(req.body.password, user.password)) {
 

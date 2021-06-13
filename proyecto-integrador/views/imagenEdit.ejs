@@ -20,18 +20,18 @@
 
         <div class="form-panel one">
             <div class="form-header">
-                <h1 style="text-align: center;">Cambie su foto de perfil</h1>
+                <h1 style="text-align: center;">Actualizá tu foto de perfil</h1>
 
             </div>
             <div class="form-content">
-                <form action="/ramo/editedImagen" method="POST">
+                <form action="/ramo/imagenEdit" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="image" class="postLabel">Carga tu imagen de perfil</label>
-                        <input type="file" name="pp" class="pp">
+                        <input type="file" name="ppe" class="pp">
                     </div>
                     <div class="form-group">
                         <label for="password">
-                            Por favor escriba su contraseña
+                            Por seguridad escriba su contraseña
                         </label>
                         <input type="password" name="password" placeholder="Contraseña">
 
