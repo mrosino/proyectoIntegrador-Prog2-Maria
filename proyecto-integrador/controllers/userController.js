@@ -2,6 +2,7 @@ const db = require("../database/models");
 const Op = db.Sequelize.Op;
 // Necesario para encriptar y desencriptar las contraseñas
 const bcrypt = require("bcryptjs");
+
 let userController = {
   register: (req, res) => {
     res.render("register", {
@@ -15,12 +16,10 @@ let userController = {
     db.Users.findOne({
       where: { email: submitedEmail },
     }).then((user) => {
-
       if (!user && req.body.password == req.body.passwordConfirm) {
         if (req.body.password.length > 4) {
           let encryptedPss = bcrypt.hashSync(req.body.password);
           let info = req.body;
-
 
           db.Users.create({
             name: req.body.name,
@@ -97,10 +96,9 @@ let userController = {
   imagenEdit: (req, res) => {
     return res.render("imagenEdit", {
       title: "Pagina de edicion foto de perfil",
-      error: req.cookies.error
+      error: req.cookies.error,
     });
   },
-
 
 };
 module.exports = userController;

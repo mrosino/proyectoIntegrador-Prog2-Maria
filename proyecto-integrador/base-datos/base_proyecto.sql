@@ -1,14 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 13-06-2021 a las 14:25:21
--- Versión del servidor: 5.7.32
--- Versión de PHP: 7.4.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 13-06-2021 a las 19:38:11
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `base_proyecto`
@@ -63,8 +70,9 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 --
 
 CREATE TABLE `follower` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `id_follower` int(11) DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `followed_by` int(11) DEFAULT NULL,
+  `follows` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -133,34 +141,36 @@ CREATE TABLE `users` (
   `birthday` date DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
   `registration_date` date DEFAULT NULL,
-  `userUpdate_date` date DEFAULT NULL
+  `userUpdate_date` date DEFAULT NULL,
+  `follows` int(255) DEFAULT NULL,
+  `followed_by` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
-(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', NULL, 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
-(8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
-(9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
-(16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
-(18, 'Mariano', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', NULL, 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
-(21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
-(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
-(23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
-(24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', NULL, 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07'),
-(25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07'),
-(26, 'olivia', 'rozze', 'olirozze@gmail.com', '$2a$10$9RnKn1dYTAi0oNxmzZvkG./DCa/ezqHdAUR6RAZDE1acDMoKInl9y', '1623261319687.png-pp', 'CABA', 23434643, 'femenino', '2021-06-01', 345235245, '2021-06-09', '2021-06-09'),
-(31, 'marilu', 'londres', 'marilulondres@gmail.com', '$2a$10$dUbWBnB1DtQFYrApMgsKMulKRO99de0yeItYwCvd.A503FWkrmHxO', '1623330224249.jpeg-pp', 'CABA', 23434642, 'femenino', '2020-06-29', 345235246, '2021-06-10', '2021-06-10'),
-(32, 'Mateo', 'Casasnovas', 'casasnovasmateo@gmail.com', '$2a$10$AaghvX1b3gpI.XWppU7R8uCS1tcuVftlAZDw4xUcTOx3zusbiR4uS', '1623330405306.jpeg-pp', 'Buenos Aires', 8252077, 'masculino', '2021-06-01', 67257645, '2021-06-10', '2021-06-10'),
-(33, 'mariano', 'lauren', 'marianolauren@gmail.com', '$2a$10$5uc.D5ny1Ndw4UgW.VRX5O8Qzky33JTejUiUKwzAWecAsVqHEtsjy', '1623330541153.jpeg-pp', 'CABA', 8254075, 'masculino', '2018-06-06', 345235286, '2021-06-10', '2021-06-10'),
-(34, 'marianela', 'martinez', 'marianelamarti@gmail.com', '$2a$10$7MIUPsLIWihAbV079vKXGOyuA53ug5S9heLbCOUjxOiuk5keRFKju', '1623330605330.jpeg-pp', 'CABA', 384754356, 'masculino', '2020-06-09', 345235784, '2021-06-10', '2021-06-10'),
-(35, 'gustavo', 'rodriguez', 'gusrodriguez@gmail.com', '$2a$10$12DCl60QruTizoFKh0OYzezc0WdTreUy4W9p3k/zk5fMe92FxuaEy', '1623330652951.jpeg-pp', 'CABA', 346534585, 'masculino', '2018-02-08', 347585246, '2021-06-10', '2021-06-10'),
-(36, 'martin', 'pereyra', 'martinpere@gmail.com', '$2a$10$bzVKIrt4/uKKfgXy31HXn.jfgxyvb0XhgbqzIkVkQdLa79MasefUi', '1623330820003.jpeg-pp', 'CABA', 234783453, 'masculino', '2017-07-13', 564235246, '2021-06-10', '2021-06-10'),
-(37, 'miranda', 'doral', 'miridoral@gmail.com', '$2a$10$8aD5ngfetRLJlKvLqD/IqukQkmrzcWoJzR5heG4ymDKAYnwKTFB0.', '1623330866903.jpeg-pp', 'CABA', 756840345, 'femenino', '2017-02-08', 345289746, '2021-06-10', '2021-06-10'),
-(38, 'milagros', 'sanju', 'milusanju@gmail.com', '$2a$10$dMe.eUCW84FMiVGprhdIS.qSB4Luddj/DXYHcRgeM71sf6a1Y8lJ2', '1623330913808.jpeg-pp', 'CABA', 237543532, 'femenino', '2017-09-12', 345235057, '2021-06-10', '2021-06-10'),
-(39, 'Maria ', 'Rosino', 'mvrosino@hotmail.com', '$2a$10$8Dp27Q3BKIrtooR.TtZuaej6H2M6XkAnx7onMrWlopRUnbsfH9biq', '1623592063107.jpg-pp', 'Buenos Aires', 41375125, 'femenino', '1998-07-03', 381639879, '2021-06-13', '2021-06-13');
+INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`, `follows`, `followed_by`) VALUES
+(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', NULL, 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL, NULL, NULL),
+(8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL, NULL, NULL),
+(9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL, NULL, NULL),
+(16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL, NULL, NULL),
+(18, 'Mariano', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', NULL, 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05', NULL, NULL),
+(21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL, NULL, NULL),
+(22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL, NULL, NULL),
+(23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05', NULL, NULL),
+(24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', '1623601972211.jpg-ppe', 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07', NULL, NULL),
+(25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07', NULL, NULL),
+(26, 'olivia', 'rozze', 'olirozze@gmail.com', '$2a$10$9RnKn1dYTAi0oNxmzZvkG./DCa/ezqHdAUR6RAZDE1acDMoKInl9y', '1623261319687.png-pp', 'CABA', 23434643, 'femenino', '2021-06-01', 345235245, '2021-06-09', '2021-06-09', NULL, NULL),
+(31, 'marilu', 'londres', 'marilulondres@gmail.com', '$2a$10$dUbWBnB1DtQFYrApMgsKMulKRO99de0yeItYwCvd.A503FWkrmHxO', '1623330224249.jpeg-pp', 'CABA', 23434642, 'femenino', '2020-06-29', 345235246, '2021-06-10', '2021-06-10', NULL, NULL),
+(32, 'Mateo', 'Casasnovas', 'casasnovasmateo@gmail.com', '$2a$10$AaghvX1b3gpI.XWppU7R8uCS1tcuVftlAZDw4xUcTOx3zusbiR4uS', '1623330405306.jpeg-pp', 'Buenos Aires', 8252077, 'masculino', '2021-06-01', 67257645, '2021-06-10', '2021-06-10', NULL, NULL),
+(33, 'mariano', 'lauren', 'marianolauren@gmail.com', '$2a$10$5uc.D5ny1Ndw4UgW.VRX5O8Qzky33JTejUiUKwzAWecAsVqHEtsjy', '1623330541153.jpeg-pp', 'CABA', 8254075, 'masculino', '2018-06-06', 345235286, '2021-06-10', '2021-06-10', NULL, NULL),
+(34, 'marianela', 'martinez', 'marianelamarti@gmail.com', '$2a$10$7MIUPsLIWihAbV079vKXGOyuA53ug5S9heLbCOUjxOiuk5keRFKju', '1623330605330.jpeg-pp', 'CABA', 384754356, 'masculino', '2020-06-09', 345235784, '2021-06-10', '2021-06-10', NULL, NULL),
+(35, 'gustavo', 'rodriguez', 'gusrodriguez@gmail.com', '$2a$10$12DCl60QruTizoFKh0OYzezc0WdTreUy4W9p3k/zk5fMe92FxuaEy', '1623330652951.jpeg-pp', 'CABA', 346534585, 'masculino', '2018-02-08', 347585246, '2021-06-10', '2021-06-10', NULL, NULL),
+(36, 'martin', 'pereyra', 'martinpere@gmail.com', '$2a$10$bzVKIrt4/uKKfgXy31HXn.jfgxyvb0XhgbqzIkVkQdLa79MasefUi', '1623330820003.jpeg-pp', 'CABA', 234783453, 'masculino', '2017-07-13', 564235246, '2021-06-10', '2021-06-10', NULL, NULL),
+(37, 'miranda', 'doral', 'miridoral@gmail.com', '$2a$10$8aD5ngfetRLJlKvLqD/IqukQkmrzcWoJzR5heG4ymDKAYnwKTFB0.', '1623330866903.jpeg-pp', 'CABA', 756840345, 'femenino', '2017-02-08', 345289746, '2021-06-10', '2021-06-10', NULL, NULL),
+(38, 'milagros', 'sanju', 'milusanju@gmail.com', '$2a$10$dMe.eUCW84FMiVGprhdIS.qSB4Luddj/DXYHcRgeM71sf6a1Y8lJ2', '1623330913808.jpeg-pp', 'CABA', 237543532, 'femenino', '2017-09-12', 345235057, '2021-06-10', '2021-06-10', NULL, NULL),
+(39, 'Maria ', 'Rosino', 'mvrosino@hotmail.com', '$2a$10$8Dp27Q3BKIrtooR.TtZuaej6H2M6XkAnx7onMrWlopRUnbsfH9biq', '1623592063107.jpg-pp', 'Buenos Aires', 41375125, 'femenino', '1998-07-03', 381639879, '2021-06-13', '2021-06-13', NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -179,7 +189,8 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `follower`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_follow` (`id_follower`);
+  ADD KEY `id_follow` (`followed_by`),
+  ADD KEY `follows` (`follows`);
 
 --
 -- Indices de la tabla `products`
@@ -194,7 +205,9 @@ ALTER TABLE `products`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD KEY `follows` (`follows`),
+  ADD KEY `followed_by` (`followed_by`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -230,12 +243,27 @@ ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
 
 --
+-- Filtros para la tabla `follower`
+--
+ALTER TABLE `follower`
+  ADD CONSTRAINT `follower_ibfk_1` FOREIGN KEY (`followed_by`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `follower_ibfk_2` FOREIGN KEY (`follows`) REFERENCES `users` (`id`);
+
+--
 -- Filtros para la tabla `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
 
+--
+-- Filtros para la tabla `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`follows`) REFERENCES `follower` (`follows`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`followed_by`) REFERENCES `follower` (`followed_by`);
+COMMIT;
 
-
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

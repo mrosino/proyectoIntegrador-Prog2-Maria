@@ -72,10 +72,6 @@ let productController = {
   },
   productAdded: (req, res) => {
 
-
-    console.log('objeto request 112345' + req.file.filename);
-
-
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,
@@ -158,7 +154,7 @@ let productController = {
           where: { id: req.body.id }
         })
           .then((user) => {
-            console.log(prod);
+           
             let image;
             if (bcrypt.compareSync(req.body.password, user.password)) {
 

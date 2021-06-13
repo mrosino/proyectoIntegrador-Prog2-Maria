@@ -14,7 +14,10 @@
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="/images/users/<%= visitor.profile_pic %>" alt="foto de perfil" class="foto-perfil">
+				<div class="cajita">
+					<img src="/images/users/<%= visitor.profile_pic %>" alt="foto de perfil" class="foto-perfil">
+				</div>
+				
 			</div>
 			<div class="data-container col-6 costado">
 				<div class="d-flex align-items-center ">
@@ -23,40 +26,18 @@
 						<li>
 							<h1 class="saludo main-title "> <%= visitor.name %> </h1>
 						</li>
-						<% if (locals.logged==true && visitor.id == user.id) { %>
-						<li>
-							<a href="/ramo/emailEdit" class="spoiler">
-								Cambiar email
-							</a>
-						</li>
-						<li>
-							<a href="/ramo/pssEdit" class="spoiler">
-								Cambiar contraseña
-							</a>
-						</li>
-
-						<li>
-							<a href="/ramo/imagenEdit" class="spoiler">
-								Cambiar foto de perfil
-							</a>
-						</li>
-
-
-						<% } %>
-						<!-- Aca iria el boton de seguir pero lo sacamos porque no tiene sentido y queda feo. Si lo descomentan está funcional. -->
+					
+						
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 					</ul>
 
-					<% if (locals.logged==true && visitor.id != user.id) { %>
-					<a href="#" class="btn mt-3">Seguir</a>
-				
-
-					<!--falta agregar a donde va este boton-->
-					<% } %>
+		
 
 
 				</div>
-				<div>
+				
+		
+				<div>	
 					<ul>
 						</li><%= products.length %> Productos</li>
 						<!-- <li>1600 seguidores </li>-->
@@ -67,21 +48,49 @@
 						<% } %>
 					</ul>
 
+					
+
 				</div>
+				<% if (locals.logged==true && visitor.id != user.id) { %>
+				
+					<form action="/ramo/follow" method="post">
+						<input type="hidden" name="by" value=" <%= locals.user.id %> ">
+						<input type="hidden" name="toFollow" value=" <%= visitor.id %> ">
+						<button type="submit" class="btn mt-2"> seguir</button>
+					</form>
+	
+					
+						<% } %>
+				
 
 			</div>
+			<div class="spoilers">
+			<% if (locals.logged==true && visitor.id == user.id) { %>
+				<a href="/ramo/imagenEdit" class="spoiler2">
+					Cambiar foto de perfil
+				</a>
+		
+			
+					<a href="/ramo/emailEdit" class="spoiler">
+						Cambiar email
+					</a>
+			
+					<a href="/ramo/pssEdit" class="spoiler1">
+						Cambiar contraseña
+					</a>
+			
+					
+
+
+				<% } %>
+			</div>
+		
 		</div>
 	</section>
-	<!-- /Datos del usuario -->
-
-	<!-- Mis productos -->
+	
 	<div class="container products-wrapper">
 		<div class="row">
-			<div class="col-12 ">
-				<h2 class="products-title typography-title" style="text-align: center;">Productos Activos</h2>
-
-			</div>
-
+	
 			<div class="container products-wrapper">
 				<div class="col-12">
 					<h2 class="products-title typography-title"> Todos los productos </h2>
@@ -89,7 +98,7 @@
 				<div class="row">
 					<% for (let i = 0; i < products.length; i++) { %>
 
-					<!-- Show the "ultimos" products -->
+				
 					<div class="col-12 col-sm-6 col-lg-3">
 						<section class="product-box">
 
@@ -102,7 +111,7 @@
 
 									<h2><%= products[i].product_name %></h2>
 									<p><% products[i].description %></p>
-									<p></p> <!-- configurar controller de comentarios.length -->
+									
 								</article>
 							</a>
 						</section>
