@@ -9,7 +9,7 @@ let ramoController = {
         },
       ],
       order: [["creation_date", "DESC"]],
-      limit: 16,
+      limit: 24,
       raw: true,
     })
 
