@@ -50,7 +50,7 @@ app.use(
 );
 
 app.use(async (req, res, next) => {
-  console.log(req.cookies.remembered);
+ 
   if (req.cookies.remembered != undefined && req.session.user == undefined) {
     let user = await db.Users.findByPk(req.cookies.remembered);
 

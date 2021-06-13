@@ -72,10 +72,6 @@ let productController = {
   },
   productAdded: (req, res) => {
 
-
-    console.log('objeto request 112345' + req.file.filename);
-
-
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,

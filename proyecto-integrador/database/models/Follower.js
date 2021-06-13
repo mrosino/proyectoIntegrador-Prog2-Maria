@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true, 
             type: DataTypes.INTEGER
         }, 
-        id_follower: {
+        followed_by: {
+            type: DataTypes.INTEGER,
+        } ,
+        follows: {
             type: DataTypes.INTEGER,
         } 
     }
@@ -18,10 +21,23 @@ module.exports = (sequelize, DataTypes) => {
     const Follower = sequelize.define(alias, cols, config); 
 
     Follower.associate = function (models) {
-        Follower.belongsTo(models.Users, {
-            as: "follower_users", 
-            foreignKey: "id_follower"
+        Follower.belongsToMany(models.Users, {
+            as: "followed_users", 
+            through: "follower",
+            foreignKey: "followed_by",
+            otherKey: "followed_by",
+            timestamps:false
+
         });  
+        Follower.belongsToMany(models.Users, {
+            as: "follows_users", 
+            through: "follower",
+            foreignKey: "follows",
+            otherKey: "follows",
+            timestamps:false
+
+        });  
+     
     }
 
     return Follower; 

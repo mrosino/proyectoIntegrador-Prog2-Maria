@@ -31,12 +31,7 @@
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 					</ul>
 
-					<% if (locals.logged==true && visitor.id != user.id) { %>
-				<!-- Aca iria el boton de seguir -->
-				
-
-					<!--falta agregar a donde va este boton-->
-					<% } %>
+		
 
 
 				</div>
@@ -56,11 +51,25 @@
 					
 
 				</div>
+				<% if (locals.logged==true && visitor.id != user.id) { %>
+				
+					<form action="/ramo/follow" method="post">
+						<input type="hidden" name="by" value=" <%= locals.user.id %> ">
+						<input type="hidden" name="toFollow" value=" <%= visitor.id %> ">
+						<button type="submit" class="btn mt-2"> seguir</button>
+					</form>
+	
+					
+						<% } %>
 				
 
 			</div>
 			<div class="spoilers">
 			<% if (locals.logged==true && visitor.id == user.id) { %>
+				<a href="/ramo/imagenEdit" class="spoiler2">
+					Cambiar foto de perfil
+				</a>
+		
 			
 					<a href="/ramo/emailEdit" class="spoiler">
 						Cambiar email
@@ -70,10 +79,7 @@
 						Cambiar contraseña
 					</a>
 			
-					<a href="/ramo/imagenEdit" class="spoiler2">
-						Cambiar foto de perfil
-					</a>
-			
+					
 
 
 				<% } %>
