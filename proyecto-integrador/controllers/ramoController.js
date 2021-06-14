@@ -10,7 +10,7 @@ let ramoController = {
       ],
       order: [["creation_date", "DESC"]],
       limit: 32,
-      raw: true,
+      
     })
 
       .then((data) => {

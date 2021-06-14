@@ -1,5 +1,5 @@
 const db = require("../database/models");
-const Op = db.Sequelize.Op;
+
 const bcrypt = require("bcryptjs");
 
 let userController = {
@@ -67,20 +67,20 @@ let userController = {
   },
 
   profile: async (req, res) => {
-    let id = res.locals.user.id;
+    let id = req.session.user.id;
     let visitedProfile = req.params.id;
 
     let visitor = await db.Users.findOne({
       where: { id: visitedProfile },
-      raw: true,
+     
     });
     let user = await db.Users.findOne({
       where: { id: id },
-      raw: true,
+      
     });
     let products = await db.Products.findAll({
       where: { created_by: visitedProfile },
-      raw: true,
+     
     });
     let comments = await db.Comments.findAll({
       where: { creator_id: visitedProfile },

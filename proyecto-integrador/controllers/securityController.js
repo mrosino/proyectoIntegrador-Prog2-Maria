@@ -1,5 +1,5 @@
 const db = require("../database/models");
-const Op = db.Sequelize.Op;
+
 const bcrypt = require("bcryptjs");
 
 var securityController = {
@@ -61,7 +61,7 @@ var securityController = {
               }
             )
               .then(() => {
-                req.flash('success', "Actualizaste tus datos") 
+                req.flash("success", "Actualizaste tus datos");
                 return res.redirect("/ramo/profile/" + req.body.id);
               })
               .catch(function (error) {
@@ -97,8 +97,8 @@ var securityController = {
               }
             )
 
-              .then(function (data) {
-                req.flash('success', "Actualizaste tus datos") 
+              .then(function () {
+                req.flash("success", "Actualizaste tus datos");
                 return res.redirect("/ramo/profile/" + req.body.id);
               })
 
@@ -128,7 +128,7 @@ var securityController = {
             where: { id: req.body.id },
           }
         ).then(() => {
-          req.flash('success', "Actualizaste tus datos") 
+          req.flash("success", "Actualizaste tus datos");
           return res.redirect(`/ramo/profile/${user.id}`);
         });
       } else {

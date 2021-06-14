@@ -56,7 +56,10 @@ app.use(async (req, res, next) => {
   res.locals.flash = {
     success: await req.consumeFlash('success'),
     danger: await req.consumeFlash('danger')
+
   }
+ 
+
     next();
  });
 
@@ -77,10 +80,9 @@ app.use(function (req, res, next) {
 
   if (req.session.user != undefined) {
     res.cookie("loggedIn", "logged", { maxAge: 5000 * 60 });
-    res.locals = {
-      user: req.session.user,
-      logged: req.session.logged,
-    };
+    res.locals.user =  req.session.user;
+      // logged: req.session.logged,
+      res.locals.logged = true;
   } else {
     res.locals.logged = false;
     if (privateRoutes.find(element => req.path.includes(element))) {

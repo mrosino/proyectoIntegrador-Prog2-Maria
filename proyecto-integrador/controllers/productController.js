@@ -2,8 +2,6 @@ const db = require("../database/models");
 // const { resolveInclude } = require("ejs");
 const bcrypt = require("bcryptjs");
 
-
-
 let productController = {
   products: (req, res) => {
     let id = req.params.id;
@@ -46,7 +44,7 @@ let productController = {
       creation_date: new Date().getTime(),
     })
       .then(() => {
-        req.flash('success', "Comentario añadido!") 
+        req.flash("success", "Comentario añadido!");
         return res.redirect(req.headers.referer);
       })
       .catch((error) => {
@@ -54,19 +52,16 @@ let productController = {
       });
   },
   commentDelete: (req, res) => {
-
     db.Comments.destroy({
       where: { id: req.body.idC },
     })
       .then(() => {
-        req.flash('danger', "Comentario eliminado") 
+        req.flash("danger", "Comentario eliminado");
         return res.redirect(req.headers.referer);
       })
       .catch((error) => {
         throw error;
       });
-
-
   },
   productAdd: (req, res) => {
     return res.render("productAdd", {
@@ -74,7 +69,6 @@ let productController = {
     });
   },
   productAdded: (req, res) => {
-
     let info = req.body;
     db.Products.create({
       created_by: res.locals.user.id,
@@ -84,7 +78,7 @@ let productController = {
       description: info.description,
     })
       .then(() => {
-        req.flash('success', "Producto añadido!") 
+        req.flash("success", "Producto añadido!");
         return res.redirect(`/ramo/profile/${info.id}`);
       })
 
@@ -114,7 +108,7 @@ let productController = {
               });
             })
             .then(() => {
-              req.flash('danger', "Producto eliminado") 
+              req.flash('danger', "Producto eliminado")
               return res.redirect("/ramo");
             })
             .catch((error) => {
@@ -129,14 +123,14 @@ let productController = {
     let idP = req.params.id;
     db.Products.findOne({
       where: { id: idP },
-      raw: true
+      raw: true,
     })
       .then((product) => {
         if (product.created_by != req.session.user.id) {
           res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
           req.session.destroy();
           res.clearCookie("loggedIn");
-          return res.redirect("/ramo/login")
+          return res.redirect("/ramo/login");
         } else {
           return res.render("productEdit", {
             products: product,
@@ -151,53 +145,66 @@ let productController = {
   productEdited: (req, res) => {
     db.Products.findOne({
       where: {
-        created_by: req.body.id
-      }
-    })
-      .then((prod) => {
-        db.Users.findOne({
-          where: { id: req.body.id }
-        })
-          .then((user) => {
-           
-            let image;
-            if (bcrypt.compareSync(req.body.password, user.password)) {
-
-              if (req.file) {
-                image = req.file.filename
-              } else {
-                image = req.body.imagenH
-              }
-              db.Products.update(
-                {
-                  product_name: req.body.product_name,
-                  description: req.body.description,
-                  update_date: new Date().getTime(),
-                  image: image
-
-
-                },
-                {
-                  where: { id: req.body.idP },
-                }
-              )
-
-                .then(() => {
-                  return res.redirect(`/ramo/products/${req.body.idP}`);
-                })
-
-
-            } else {
-              res.cookie("error", "noPss", { maxAge: 1000 * 60 });
-              return res.redirect("/ramo/login")
-            }
-          })
-          .catch(function (error) {
-            throw error;
-          });
-
+        created_by: req.body.id,
+      },
+    }).then((prod) => {
+      db.Users.findOne({
+        where: { id: req.body.id },
       })
-
+        .then((user) => {
+          let image;
+          if (bcrypt.compareSync(req.body.password, user.password)) {
+            if (req.file) {
+              image = req.file.filename;
+            } else {
+              image = req.body.imagenH;
+            }
+            db.Products.update(
+              {
+                product_name: req.body.product_name,
+                description: req.body.description,
+                update_date: new Date().getTime(),
+                image: image,
+              },
+              {
+                where: { id: req.body.idP },
+              }
+            )
+            .then(() => {
+              return res.redirect(`/ramo/products/${req.body.idP}`);
+            });
+          } else {
+            res.cookie("error", "noPss", { maxAge: 1000 * 60 });
+            return res.redirect("/ramo/login");
+          }
+        })
+        .catch(function (error) {
+          throw error;
+        });
+    });
   },
+
+  // productDelete: async (req, res) => {
+  //   let ok = await db.Products.findOne({
+  //     where: { created_by: req.body.id },
+  //   });
+  //   if (!ok) {
+  //     res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+  //     req.session.destroy();
+  //     res.clearCookie("loggedIn");
+  //     return res.redirect("/ramo/login");
+  //   } else {
+  //      await db.Comments.destroy({
+  //       where: { id: req.body.idP },
+  //     });
+  //      await db.Products.destroy({
+  //       where: { id: req.body.idP },
+  //     });
+
+  //     req.flash("danger", "Producto eliminado");
+  //     return res.redirect("/ramo");
+  //   }
+  // },
 };
+
 module.exports = productController;

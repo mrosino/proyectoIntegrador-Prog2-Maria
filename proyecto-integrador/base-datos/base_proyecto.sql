@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2021 a las 14:16:26
+-- Tiempo de generación: 15-06-2021 a las 00:17:36
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -62,7 +62,8 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (150, 179, 36, 'me gusta el sillon ', '2021-06-10'),
 (151, 179, 36, 'que precio tiene ', '2021-06-10'),
 (152, 180, 36, 'de que año es el mueble', '2021-06-10'),
-(153, 203, 24, 'Muy bueno', '2021-06-14');
+(153, 203, 24, 'Muy bueno', '2021-06-14'),
+(154, 182, 40, 'Me gusta este', '2021-06-14');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,11 @@ CREATE TABLE `follower` (
 INSERT INTO `follower` (`id`, `followed_by`, `follows`) VALUES
 (1, 18, 26),
 (4, 24, 31),
-(5, 24, 31);
+(5, 24, 31),
+(13, 7, 39),
+(14, 7, 40),
+(15, 7, 34),
+(16, 40, 36);
 
 -- --------------------------------------------------------
 
@@ -173,7 +178,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
-(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', NULL, 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
+(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', '1623690971168.jpg-ppe', 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
 (8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
 (9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
 (16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
@@ -238,19 +243,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT de la tabla `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -267,7 +272,7 @@ ALTER TABLE `users`
 --
 ALTER TABLE `comments`
   ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`creator_id`) REFERENCES `users` (`id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `follower`
