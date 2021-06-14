@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2021 a las 04:05:40
+-- Tiempo de generación: 14-06-2021 a las 14:16:26
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -61,7 +61,8 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (149, 175, 35, 'que tamaño tiene', '2021-06-10'),
 (150, 179, 36, 'me gusta el sillon ', '2021-06-10'),
 (151, 179, 36, 'que precio tiene ', '2021-06-10'),
-(152, 180, 36, 'de que año es el mueble', '2021-06-10');
+(152, 180, 36, 'de que año es el mueble', '2021-06-10'),
+(153, 203, 24, 'Muy bueno', '2021-06-14');
 
 -- --------------------------------------------------------
 
@@ -74,6 +75,15 @@ CREATE TABLE `follower` (
   `followed_by` int(11) DEFAULT NULL,
   `follows` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `follower`
+--
+
+INSERT INTO `follower` (`id`, `followed_by`, `follows`) VALUES
+(1, 18, 26),
+(4, 24, 31),
+(5, 24, 31);
 
 -- --------------------------------------------------------
 
@@ -133,7 +143,8 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (203, 33, NULL, '1623621495542.jpeg-image', 'Estantería abierta ', '2021-03-24', 'Estanteria pared a pared ', NULL),
 (204, 32, NULL, '1623621526819.jpeg-image', 'Cucheta de madera ', '2021-04-30', 'Cucheta con escalera anti deslizante, ya viene con los colchones ', NULL),
 (205, 31, NULL, '1623621574294.png-image', 'Barra para tragos', '2021-04-26', 'Barra para exterior e interior con 2 sillas ', NULL),
-(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', NULL);
+(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', NULL),
+(207, 40, NULL, '1623639746045.jpg-image', 'Gato', '2021-06-14', 'Gato tricolor con ojos claros. Macho.', NULL);
 
 -- --------------------------------------------------------
 
@@ -166,7 +177,7 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`
 (8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
 (9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
 (16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
-(18, 'Mariano', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', NULL, 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
+(18, 'Mariano', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', '1623637303892.jpg-ppe', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
 (21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
@@ -181,7 +192,8 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`
 (36, 'martin', 'pereyra', 'martinpere@gmail.com', '$2a$10$bzVKIrt4/uKKfgXy31HXn.jfgxyvb0XhgbqzIkVkQdLa79MasefUi', '1623330820003.jpeg-pp', 'CABA', 234783453, 'masculino', '2017-07-13', 564235246, '2021-06-10', '2021-06-10'),
 (37, 'miranda', 'doral', 'miridoral@gmail.com', '$2a$10$8aD5ngfetRLJlKvLqD/IqukQkmrzcWoJzR5heG4ymDKAYnwKTFB0.', '1623330866903.jpeg-pp', 'CABA', 756840345, 'femenino', '2017-02-08', 345289746, '2021-06-10', '2021-06-10'),
 (38, 'milagros', 'sanju', 'milusanju@gmail.com', '$2a$10$dMe.eUCW84FMiVGprhdIS.qSB4Luddj/DXYHcRgeM71sf6a1Y8lJ2', '1623330913808.jpeg-pp', 'CABA', 237543532, 'femenino', '2017-09-12', 345235057, '2021-06-10', '2021-06-10'),
-(39, 'Maria ', 'Rosino', 'mvrosino@hotmail.com', '$2a$10$8Dp27Q3BKIrtooR.TtZuaej6H2M6XkAnx7onMrWlopRUnbsfH9biq', '1623592063107.jpg-pp', 'Buenos Aires', 41375125, 'femenino', '1998-07-03', 381639879, '2021-06-13', '2021-06-13');
+(39, 'Maria ', 'Rosino', 'mvrosino@hotmail.com', '$2a$10$8Dp27Q3BKIrtooR.TtZuaej6H2M6XkAnx7onMrWlopRUnbsfH9biq', '1623592063107.jpg-pp', 'Buenos Aires', 41375125, 'femenino', '1998-07-03', 381639879, '2021-06-13', '2021-06-13'),
+(40, 'Nicolas', 'bilinkis', 'nico@bilinkis.com', '$2a$10$Ui3nUmg7hV1Ecj3AImzUeuKnTUPouF/nY3Nymo2BuDCJ6nyk8tSrS', '1623639722383.jpg-pp', 'CABA', 42768999, 'masculino', '1999-08-03', 1130180066, '2021-06-14', '2021-06-14');
 
 --
 -- Índices para tablas volcadas
@@ -226,19 +238,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+
+--
+-- AUTO_INCREMENT de la tabla `follower`
+--
+ALTER TABLE `follower`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- Restricciones para tablas volcadas
