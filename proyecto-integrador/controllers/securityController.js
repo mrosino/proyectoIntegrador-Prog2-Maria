@@ -61,6 +61,7 @@ var securityController = {
               }
             )
               .then(() => {
+                req.flash('success', "Actualizaste tus datos") 
                 return res.redirect("/ramo/profile/" + req.body.id);
               })
               .catch(function (error) {
@@ -97,6 +98,7 @@ var securityController = {
             )
 
               .then(function (data) {
+                req.flash('success', "Actualizaste tus datos") 
                 return res.redirect("/ramo/profile/" + req.body.id);
               })
 
@@ -115,20 +117,20 @@ var securityController = {
     });
   },
   imagenEdited: (req, res) => {
-    db.Users.findByPk(req.body.id)
-    .then((user) => {
+    db.Users.findByPk(req.body.id).then((user) => {
       if (bcrypt.compareSync(req.body.password, user.password)) {
-        db.Users.update({
-          profile_pic: req.file.filename,
-          update_date: new Date().getTime(),
-        },
-        {
-          where: { id: req.body.id },
-        })
-        .then(()=>{
+        db.Users.update(
+          {
+            profile_pic: req.file.filename,
+            update_date: new Date().getTime(),
+          },
+          {
+            where: { id: req.body.id },
+          }
+        ).then(() => {
+          req.flash('success', "Actualizaste tus datos") 
           return res.redirect(`/ramo/profile/${user.id}`);
-        })
-        
+        });
       } else {
         res.cookie("error", "noPss", { maxAge: 1000 * 60 });
         return res.redirect("/ramo/login");

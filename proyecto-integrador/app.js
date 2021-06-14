@@ -6,6 +6,8 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
+const { flash } = require('express-flash-message');
+
 
 var ramoRouter = require("./routes/ramo");
 var userRamoRouter = require("./routes/userRamo");
@@ -48,6 +50,16 @@ app.use(
     },
   })
 );
+app.use(flash({ sessionKeyName: 'flashMessage' }));
+app.use(async (req, res, next) => {
+ 
+  res.locals.flash = {
+    success: await req.consumeFlash('success'),
+    danger: await req.consumeFlash('danger')
+  }
+    next();
+ });
+
 
 app.use(async (req, res, next) => {
  
@@ -90,6 +102,10 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
+
+
+
+
 app.listen(3000);
 
 module.exports = app;

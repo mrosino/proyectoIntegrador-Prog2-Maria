@@ -3,6 +3,7 @@ const db = require("../database/models");
 const bcrypt = require("bcryptjs");
 
 
+
 let productController = {
   products: (req, res) => {
     let id = req.params.id;
@@ -45,6 +46,7 @@ let productController = {
       creation_date: new Date().getTime(),
     })
       .then(() => {
+        req.flash('success', "Comentario añadido!") 
         return res.redirect(req.headers.referer);
       })
       .catch((error) => {
@@ -57,6 +59,7 @@ let productController = {
       where: { id: req.body.idC },
     })
       .then(() => {
+        req.flash('danger', "Comentario eliminado") 
         return res.redirect(req.headers.referer);
       })
       .catch((error) => {
@@ -81,6 +84,7 @@ let productController = {
       description: info.description,
     })
       .then(() => {
+        req.flash('success', "Producto añadido!") 
         return res.redirect(`/ramo/profile/${info.id}`);
       })
 
@@ -110,6 +114,7 @@ let productController = {
               });
             })
             .then(() => {
+              req.flash('danger', "Producto eliminado") 
               return res.redirect("/ramo");
             })
             .catch((error) => {

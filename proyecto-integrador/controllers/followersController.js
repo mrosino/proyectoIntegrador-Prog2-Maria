@@ -9,8 +9,9 @@ let followersController = {
       followed_by: req.body.by,
       follows: req.body.toFollow,
     })
-    .then(()=>{      
-    return res.redirect(`/ramo/profile/${req.body.toFollow}`);
+    .then(()=>{     
+     req.flash('success', "Siguiendo!") 
+     res.redirect(`/ramo/profile/${req.body.toFollow}`);
   })
   .catch((error) => {
     throw error;
@@ -23,8 +24,8 @@ let followersController = {
       where: { followed_by: req.body.by, follows: req.body.toFollow },
     })
     .then(()=>{
-
-      return res.redirect(`/ramo/profile/${req.body.toFollow}`);
+      req.flash('success', "Ya no seguis a esta cuenta") 
+      res.redirect(`/ramo/profile/${req.body.toFollow}`);
     })
     .catch((error) => {
       throw error;

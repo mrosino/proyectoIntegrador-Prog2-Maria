@@ -28,7 +28,7 @@
 					<% if (locals.logged==true ) { %>
 					<div class="publishedBy">
 						<a href="/ramo/profile/<%= products[i].created_by %>">
-							<h4>Publicado por <%= products[i]["products_users.name"] %>
+							<h4 >Publicado por <span class="product-author"> <%= products[i]["products_users.name"] %></span>
 							</h4>
 						</a>
 

@@ -1,6 +1,5 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
-// Necesario para encriptar y desencriptar las contraseñas
 const bcrypt = require("bcryptjs");
 
 let userController = {
@@ -35,6 +34,7 @@ let userController = {
             registration_date: new Date().getTime(),
             userUpdate_date: new Date().getTime(),
           }).then(() => {
+            req.flash("success", "Te registraste con éxito");
             return res.redirect("/ramo/login");
           });
         } else {
@@ -45,56 +45,6 @@ let userController = {
         res.cookie("error", "failedRegistered", { maxAge: 1000 * 30 });
         return res.redirect("/ramo/login");
       }
-    });
-  },
-  profile: (req, res) => {
-    let id = res.locals.user.id;
-    let visitedProfile = req.params.id;
-    db.Users.findOne({
-      where: { id: visitedProfile },
-      raw: true,
-    }).then((visitor) => {
-      db.Users.findOne({
-        where: { id: id },
-        raw: true,
-      })
-        .then((user) => {
-          db.Products.findAll({
-            where: { created_by: visitedProfile },
-            raw: true,
-          }).then((products) => {
-            db.Comments.findAll({
-              where: { creator_id: visitedProfile },
-            }).then((comments) => {
-              db.Follower.findAll ({
-                where: {follows: visitor.id}
-              })
-              .then((followers)=>{
-                db.Follower.findOne({
-                  where: {follows:visitor.id, followed_by: id}
-                })
-                .then((followed)=>{
-                  return res.render("profile", {
-                    followers: followers,
-                    followed: followed,
-                    visitor: visitor,
-                    title: "Pagina de perfil",
-                    user: user,
-                    products: products,
-                    comments: comments,
-                  });
-  
-                })
-              })
-
-              
-            
-            });
-          });
-        })
-        .catch((error) => {
-          throw error;
-        });
     });
   },
   emailEdit: (req, res) => {
@@ -116,5 +66,40 @@ let userController = {
     });
   },
 
+  profile: async (req, res) => {
+    let id = res.locals.user.id;
+    let visitedProfile = req.params.id;
+
+    let visitor = await db.Users.findOne({
+      where: { id: visitedProfile },
+      raw: true,
+    });
+    let user = await db.Users.findOne({
+      where: { id: id },
+      raw: true,
+    });
+    let products = await db.Products.findAll({
+      where: { created_by: visitedProfile },
+      raw: true,
+    });
+    let comments = await db.Comments.findAll({
+      where: { creator_id: visitedProfile },
+    });
+    let followers = await db.Follower.findAll({
+      where: { follows: visitor.id },
+    });
+    let followed = await db.Follower.findOne({
+      where: { follows: visitor.id, followed_by: id },
+    });
+    return res.render("profile", {
+      followers: followers,
+      followed: followed,
+      visitor: visitor,
+      title: "Pagina de perfil",
+      user: user,
+      products: products,
+      comments: comments,
+    });
+  },
 };
 module.exports = userController;

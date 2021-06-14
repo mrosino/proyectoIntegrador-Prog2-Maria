@@ -8,11 +8,12 @@
 
 
 <body>
-
+	<%- include('./partials/flashKeys') %> 
 
 	<!-- Datos del usuario -->
 	<section class="info-usuario container products-wrapper">
 		<div class="row">
+			
 			<div class="img-container offset-3 col-2">
 				<div class="cajita">
 					<img src="/images/users/<%= visitor.profile_pic %>" alt="foto de perfil" class="foto-perfil">
@@ -46,6 +47,7 @@
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
 						<% } %>
+						
 					</ul>
 
 					
@@ -62,7 +64,7 @@
 	
 					
 						<% } %>
-
+					
 						<% if (locals.logged==true && visitor.id != user.id && followed != null) { %>
 				
 							<form action="/ramo/unfollow" method="post">
