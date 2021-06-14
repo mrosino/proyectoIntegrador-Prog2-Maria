@@ -39,9 +39,9 @@
 		
 				<div>	
 					<ul>
-						</li><%= products.length %> Productos</li>
-						<!-- <li>1600 seguidores </li>-->
-						<!--cuando este la tabla hay que descomentar-->
+						<li><%= products.length %> Productos</li>
+						<!--aca va lo de followed.length pero hay que hacer el findall primero-->
+					
 						<li><%= comments.length %> Comentarios</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
