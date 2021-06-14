@@ -40,8 +40,8 @@
 				<div>	
 					<ul>
 						<li><%= products.length %> Productos</li>
-						<!--aca va lo de followed.length pero hay que hacer el findall primero-->
-						<!--<li> followed.length Seguidores</li>--> <!--rompe xq dice que length of null, el find all ya esta -->
+						
+						<li> <%= followers.length%> Seguidores</li> 
 						<li><%= comments.length %> Comentarios</li>
 						<% if (locals.logged==true && visitor.id == user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>

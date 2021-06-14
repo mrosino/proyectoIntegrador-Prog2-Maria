@@ -67,14 +67,15 @@ let userController = {
               where: { creator_id: visitedProfile },
             }).then((comments) => {
               db.Follower.findAll ({
-                where: {follows:visitor.id, followed_by: id}
+                where: {follows: visitor.id}
               })
-              .then(()=>{
+              .then((followers)=>{
                 db.Follower.findOne({
                   where: {follows:visitor.id, followed_by: id}
                 })
                 .then((followed)=>{
                   return res.render("profile", {
+                    followers: followers,
                     followed: followed,
                     visitor: visitor,
                     title: "Pagina de perfil",
