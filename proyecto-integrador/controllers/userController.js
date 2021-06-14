@@ -66,13 +66,22 @@ let userController = {
             db.Comments.findAll({
               where: { creator_id: visitedProfile },
             }).then((comments) => {
-              return res.render("profile", {
-                visitor: visitor,
-                title: "Pagina de perfil",
-                user: user,
-                products: products,
-                comments: comments,
-              });
+
+              db.Follower.findOne({
+                where: {follows:visitor.id, followed_by: id}
+              })
+              .then((followed)=>{
+                return res.render("profile", {
+                  followed: followed,
+                  visitor: visitor,
+                  title: "Pagina de perfil",
+                  user: user,
+                  products: products,
+                  comments: comments,
+                });
+
+              })
+            
             });
           });
         })

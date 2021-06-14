@@ -51,8 +51,8 @@
 					
 
 				</div>
-				<!-- hacer if a ver si ya seguis o no, y si lo seguis que te muestre el de dejar de seguir -->
-				<% if (locals.logged==true && visitor.id != user.id) { %>
+				
+				<% if (locals.logged==true && visitor.id != user.id && followed == null) { %>
 				
 					<form action="/ramo/follow" method="post">
 						<input type="hidden" name="by" value=" <%= locals.user.id %> ">
@@ -63,7 +63,7 @@
 					
 						<% } %>
 
-						<% if (locals.logged==true && visitor.id != user.id) { %>
+						<% if (locals.logged==true && visitor.id != user.id && followed != null) { %>
 				
 							<form action="/ramo/unfollow" method="post">
 								<input type="hidden" name="by" value=" <%= locals.user.id %> ">
