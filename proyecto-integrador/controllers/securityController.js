@@ -17,12 +17,11 @@ var securityController = {
         if (user != undefined) {
           if (bcrypt.compareSync(req.body.password, user.password)) {
             if (req.body.remember) {
-              res.cookie("remembered", user.id, { maxAge: 1000 * 60 * 30 }); //pensar si 30 min es un nro razonable
+              res.cookie("remembered", user.id, { maxAge: 1000 * 60 * 30 });
             }
             req.session.user = user;
             req.session.logged = true;
             req.session.save();
-
             return res.redirect(`/ramo/profile/${user.id}`);
           } else {
             res.cookie("error", "noPss", { maxAge: 1000 * 60 });
@@ -94,14 +93,11 @@ var securityController = {
               },
               {
                 where: { id: req.body.id },
-              }
-            )
-
+              })
               .then(function () {
                 req.flash("success", "Actualizaste tus datos");
                 return res.redirect("/ramo/profile/" + req.body.id);
               })
-
               .catch(function (error) {
                 throw error;
               });
@@ -126,11 +122,11 @@ var securityController = {
           },
           {
             where: { id: req.body.id },
-          }
-        ).then(() => {
-          req.flash("success", "Actualizaste tus datos");
-          return res.redirect(`/ramo/profile/${user.id}`);
-        });
+          })
+          .then(() => {
+            req.flash("success", "Actualizaste tus datos");
+            return res.redirect(`/ramo/profile/${user.id}`);
+          });
       } else {
         res.cookie("error", "noPss", { maxAge: 1000 * 60 });
         return res.redirect("/ramo/login");

@@ -1,163 +1,161 @@
 <% if (locals.logged==true) { %>
-	<%- include('./partials/headerLogueado') %>
-		<% } else { %>
+<%- include('./partials/headerLogueado') %>
+<% } else { %>
 
-			<%- include('./partials/header') %>
+<%- include('./partials/header') %>
+<% } %>
+
+
+
+<body>
+
+
+	<!-- Datos del usuario -->
+	<section class="info-usuario container products-wrapper">
+		<div class="row">
+
+			<div class="img-container offset-3 col-2">
+				<div class="cajita">
+					<img src="/images/users/<%= visitor.profile_pic %>" alt="foto de perfil" class="foto-perfil">
+				</div>
+
+			</div>
+			<div class="data-container col-6 costado">
+				<div class="d-flex align-items-center ">
+					<ul>
+
+						<li>
+							<h1 class="saludo main-title ">
+								<%= visitor.name %>
+							</h1>
+						</li>
+
+
+						<input type="hidden" name="id" value="<%= locals.user.id %> ">
+					</ul>
+
+
+
+
+				</div>
+
+
+				<div>
+					<ul>
+						<li>
+							<%= products.length %> Productos
+						</li>
+
+						<li>
+							<%= followers.length%> Seguidores
+						</li>
+						<li>
+							<%= comments.length %> Comentarios
+						</li>
+						<% if (locals.logged==true && visitor.id==user.id) { %>
+						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
+						<% } %>
+
+					</ul>
+
+
+
+				</div>
+
+				<% if (locals.logged==true && visitor.id !=user.id && followed==null) { %>
+
+				<form action="/ramo/follow" method="post">
+					<input type="hidden" name="by" value=" <%= locals.user.id %> ">
+					<input type="hidden" name="toFollow" value=" <%= visitor.id %> ">
+					<button type="submit" class="btn mt-2"> Follow</button>
+				</form>
+
+
+				<% } %>
+				<%- include('./partials/flashKeys') %>
+
+				<% if (locals.logged==true && visitor.id !=user.id && followed !=null) {
+													%>
+
+				<form action="/ramo/unfollow" method="post">
+					<input type="hidden" name="by" value=" <%= locals.user.id %> ">
+					<input type="hidden" name="toFollow" value=" <%= visitor.id %> ">
+					<button type="submit" class="btn mt-2"> Unfollow</button>
+				</form>
+
+
 				<% } %>
 
 
-
-					<body>
-
-
-						<!-- Datos del usuario -->
-						<section class="info-usuario container products-wrapper">
-							<div class="row">
-
-								<div class="img-container offset-3 col-2">
-									<div class="cajita">
-										<img src="/images/users/<%= visitor.profile_pic %>" alt="foto de perfil"
-											class="foto-perfil">
-									</div>
-
-								</div>
-								<div class="data-container col-6 costado">
-									<div class="d-flex align-items-center ">
-										<ul>
-
-											<li>
-												<h1 class="saludo main-title ">
-													<%= visitor.name %>
-												</h1>
-											</li>
+			</div>
+			<div class="spoilers">
+				<% if (locals.logged==true && visitor.id==user.id) { %>
+				<a href="/ramo/imagenEdit" class="spoiler2">
+					Cambiar foto de perfil
+				</a>
 
 
-											<input type="hidden" name="id" value="<%= locals.user.id %> ">
-										</ul>
+				<a href="/ramo/emailEdit" class="spoiler">
+					Cambiar email
+				</a>
+
+				<a href="/ramo/pssEdit" class="spoiler1">
+					Cambiar contraseña
+				</a>
 
 
 
 
-									</div>
+				<% } %>
+			</div>
+
+		</div>
+	</section>
+
+	<div class="container products-wrapper">
+		<div class="row">
+
+			<div class="container products-wrapper">
+				<div class="col-12">
+					<h2 class="products-title typography-title"> Todos los productos </h2>
+				</div>
+				<div class="row">
+					<% for (let i=0; i < products.length; i++) { %>
 
 
-									<div>
-										<ul>
-											<li>
-												<%= products.length %> Productos
-											</li>
+					<div class="col-12 col-sm-6 col-lg-3">
+						<section class="product-box">
 
-											<li>
-												<%= followers.length%> Seguidores
-											</li>
-											<li>
-												<%= comments.length %> Comentarios
-											</li>
-											<% if (locals.logged==true && visitor.id==user.id) { %>
-												<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
-												<% } %>
+							<a href="/ramo/products/<%= products[i].id %>">
+								<figure class="product-box_image">
+									<img src="/images/products/<%= products[i].image %>" class="imagen"
+										alt="<%= products[i].product_name %>">
+								</figure>
+								<article class="product-box_data">
 
-										</ul>
+									<h2>
+										<%= products[i].product_name %>
+									</h2>
+									<p>
+										<% products[i].description %>
+									</p>
 
-
-
-									</div>
-
-									<% if (locals.logged==true && visitor.id !=user.id && followed==null) { %>
-
-										<form action="/ramo/follow" method="post">
-											<input type="hidden" name="by" value=" <%= locals.user.id %> ">
-											<input type="hidden" name="toFollow" value=" <%= visitor.id %> ">
-											<button type="submit" class="btn mt-2"> Follow</button>
-										</form>
-
-
-										<% } %>
-											<%- include('./partials/flashKeys') %>
-
-												<% if (locals.logged==true && visitor.id !=user.id && followed !=null) {
-													%>
-
-													<form action="/ramo/unfollow" method="post">
-														<input type="hidden" name="by" value=" <%= locals.user.id %> ">
-														<input type="hidden" name="toFollow"
-															value=" <%= visitor.id %> ">
-														<button type="submit" class="btn mt-2"> Unfollow</button>
-													</form>
-
-
-													<% } %>
-
-
-								</div>
-								<div class="spoilers">
-									<% if (locals.logged==true && visitor.id==user.id) { %>
-										<a href="/ramo/imagenEdit" class="spoiler2">
-											Cambiar foto de perfil
-										</a>
-
-
-										<a href="/ramo/emailEdit" class="spoiler">
-											Cambiar email
-										</a>
-
-										<a href="/ramo/pssEdit" class="spoiler1">
-											Cambiar contraseña
-										</a>
-
-
-
-
-										<% } %>
-								</div>
-
-							</div>
+								</article>
+							</a>
 						</section>
-
-						<div class="container products-wrapper">
-							<div class="row">
-
-								<div class="container products-wrapper">
-									<div class="col-12">
-										<h2 class="products-title typography-title"> Todos los productos </h2>
-									</div>
-									<div class="row">
-										<% for (let i=0; i < products.length; i++) { %>
+					</div>
 
 
-											<div class="col-12 col-sm-6 col-lg-3">
-												<section class="product-box">
+					<% } %>
+				</div>
+			</div>
+		</div>
 
-													<a href="/ramo/products/<%= products[i].id %>">
-														<figure class="product-box_image">
-															<img src="/images/products/<%= products[i].image %>"
-																class="imagen" alt="<%= products[i].product_name %>">
-														</figure>
-														<article class="product-box_data">
-
-															<h2>
-																<%= products[i].product_name %>
-															</h2>
-															<p>
-																<% products[i].description %>
-															</p>
-
-														</article>
-													</a>
-												</section>
-											</div>
+	</div>
 
 
-											<% } %>
-									</div>
-								</div>
-							</div>
+	<%- include('./partials/footer') %>
 
-						</div>
+</body>
 
-
-						<%- include('./partials/footer') %>
-
-					</body>
-
-					</html>
+</html>

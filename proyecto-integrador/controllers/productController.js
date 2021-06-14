@@ -13,7 +13,6 @@ let productController = {
         },
       ],
     })
-
       .then((data) => {
         db.Comments.findAll({
           include: [
@@ -97,8 +96,7 @@ let productController = {
           req.session.destroy();
           res.clearCookie("loggedIn");
           return res.redirect("/ramo/login")
-        }
-        else {
+        } else {
           db.Comments.destroy({
             where: { id: req.body.idP },
           })
@@ -116,7 +114,6 @@ let productController = {
             });
         }
       })
-
   },
 
   productEdit: (req, res) => {
@@ -168,11 +165,10 @@ let productController = {
               },
               {
                 where: { id: req.body.idP },
-              }
-            )
-            .then(() => {
-              return res.redirect(`/ramo/products/${req.body.idP}`);
-            });
+              })
+              .then(() => {
+                return res.redirect(`/ramo/products/${req.body.idP}`);
+              });
           } else {
             res.cookie("error", "noPss", { maxAge: 1000 * 60 });
             return res.redirect("/ramo/login");

@@ -10,9 +10,7 @@ let ramoController = {
       ],
       order: [["creation_date", "DESC"]],
       limit: 32,
-      
     })
-
       .then((data) => {
         return res.render("index", {
           products: data,
@@ -26,14 +24,12 @@ let ramoController = {
 
   searchResult: (req, res) => {
     let search = req.query.search;
-
     db.Products.findAll({
       include: [
         {
           association: "products_users",
         },
       ],
-
       where: {
         [Op.or]: [
           { description: { [Op.like]: "%" + search + "%" } },

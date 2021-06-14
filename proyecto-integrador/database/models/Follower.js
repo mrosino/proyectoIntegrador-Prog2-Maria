@@ -3,22 +3,22 @@ module.exports = (sequelize, DataTypes) => {
     let cols = {
         id: {
             autoIncrement: true,
-            primaryKey: true, 
+            primaryKey: true,
             type: DataTypes.INTEGER
-        }, 
+        },
         followed_by: {
             type: DataTypes.INTEGER,
-        } ,
+        },
         follows: {
             type: DataTypes.INTEGER,
-        } 
+        }
     }
     let config = {
         tableName: "follower",
-        timestamps: false, 
+        timestamps: false,
 
     }
-    const Follower = sequelize.define(alias, cols, config); 
+    const Follower = sequelize.define(alias, cols, config);
 
     Follower.associate = function (models) {
         Follower.belongsTo(models.Users, {
@@ -29,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
             as: "follows_users",
             foreignKey: "follows"
         });
-    
+
     }
 
-    return Follower; 
+    return Follower;
 }
