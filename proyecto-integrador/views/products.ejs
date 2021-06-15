@@ -1,17 +1,9 @@
 <% if (locals.logged==true) { %>
 <%- include('./partials/headerLogueado') %>
 <% } else { %>
-
 <%- include('./partials/header') %>
 <% } %>
-
-
 <body>
-
-
-
-
-
 
     <div class="container products-wrapper">
         <div class="d-flex align-items-center eddel">
@@ -49,9 +41,11 @@
                     <p class="product-detail-description">
                         <%= products.description %>
                     </p>
+                    <% if (locals.logged==true) { %>
                     <p class="product-detail-description">
                           Precio $  <%= products.price %> 
                     </p>
+                    <% } %>
                     <br>
                     <% if (locals.logged==true) { %>
                     <p class="product-author padding">
@@ -77,15 +71,15 @@
                                         </a> </strong>
                                     <%= comments[i].content %>
                                     <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
-                                <form action="/ramo/products/commentDelete" method="post">
-
-                                    <input type="hidden" name="idC" value="<%= comments[i].id %> ">
-                                    <input type="hidden" name="user" value="<%= locals.user.id %> ">
-                                    <button type="submit">
-                                        <ion-icon name="trash-outline"></ion-icon>
-                                    </button>
-                                </form>
-                                <% } %>
+                                        <form action="/ramo/products/commentDelete" method="post">
+        
+                                            <input type="hidden" name="idC" value="<%= comments[i].id %> ">
+                                            <input type="hidden" name="user" value="<%= locals.user.id %> ">
+                                            <button type="submit">
+                                                <ion-icon name="trash-outline"></ion-icon>
+                                            </button>
+                                        </form>
+                                        <% } %>
                                 </p>
                             </div>
                         </article>
@@ -107,12 +101,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
 
     <%- include('./partials/footer') %>
 </body>

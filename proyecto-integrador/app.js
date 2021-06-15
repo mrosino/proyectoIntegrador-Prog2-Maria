@@ -1,4 +1,4 @@
-const http = require("http");
+
 const db = require("./database/models");
 var createError = require("http-errors");
 var express = require("express");
@@ -16,8 +16,7 @@ var securityRouter = require("./routes/security");
 var followersRouter = require("./routes/followers"); 
 var app = express();
 
-const hostname = "127.0.0.1";
-const port = 3000;
+
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -103,6 +102,7 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+  next();
 });
 
 

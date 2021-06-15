@@ -438,6 +438,12 @@ hr {
 .redes a {
   color: black;
 }
+ .alert-success{
+  color: #2d6a4f;
+}
+ .alert-danger{
+  color: rgba(159, 22, 22, 0.778);
+}
 
 /*====== Product Detail ======*/
 

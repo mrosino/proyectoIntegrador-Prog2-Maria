@@ -44,7 +44,9 @@
 						<article class="product-box_data">
 
 							<h2><%= products[i].product_name %></h2>
+							<% if (locals.logged==true ) { %>
 							<h4> Precio $<%= products[i].price %> </h4>
+							<% } %>
 						</article>
 					</a>
 				</section>

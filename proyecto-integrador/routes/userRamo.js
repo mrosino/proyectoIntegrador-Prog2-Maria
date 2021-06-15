@@ -4,7 +4,9 @@ const multer = require('multer');
 const path = require('path');
 let userController = require('../controllers/userController');
 
-
+router.get('/', (req,res)=> {
+    res.redirect("/ramo")
+});
 router.get('/profile/:id', userController.profile);
 router.get('/emailEdit', userController.emailEdit);
 router.get('/pssEdit', userController.pssEdit);
