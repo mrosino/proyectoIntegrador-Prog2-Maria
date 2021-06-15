@@ -73,6 +73,7 @@ let productController = {
       product_name: info.product_name,
       creation_date: new Date().getTime(),
       description: info.description,
+      price: info.price
     })
       .then(() => {
         req.flash("success", "Producto añadido!");
@@ -129,6 +130,7 @@ let productController = {
                 description: req.body.description,
                 update_date: new Date().getTime(),
                 image: image,
+                price: req.body.price
               },
               {
                 where: { id: req.body.idP },

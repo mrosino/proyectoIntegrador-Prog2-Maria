@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         update_date: {
             type: DataTypes.DATE,
+        },
+        price:{
+            type:DataTypes.INTEGER
         }
     }
     let config = {
