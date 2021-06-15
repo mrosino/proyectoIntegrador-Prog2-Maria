@@ -1,21 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2021 a las 00:17:36
--- Versión del servidor: 10.4.18-MariaDB
--- Versión de PHP: 8.0.3
+-- Servidor: localhost:3306
+-- Tiempo de generación: 15-06-2021 a las 01:03:39
+-- Versión del servidor: 5.7.32
+-- Versión de PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `base_proyecto`
@@ -63,7 +56,8 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (151, 179, 36, 'que precio tiene ', '2021-06-10'),
 (152, 180, 36, 'de que año es el mueble', '2021-06-10'),
 (153, 203, 24, 'Muy bueno', '2021-06-14'),
-(154, 182, 40, 'Me gusta este', '2021-06-14');
+(154, 182, 40, 'Me gusta este', '2021-06-14'),
+(155, 197, 37, 'hola ', '2021-06-15');
 
 -- --------------------------------------------------------
 
@@ -88,7 +82,8 @@ INSERT INTO `follower` (`id`, `followed_by`, `follows`) VALUES
 (13, 7, 39),
 (14, 7, 40),
 (15, 7, 34),
-(16, 40, 36);
+(16, 40, 36),
+(18, 37, 38);
 
 -- --------------------------------------------------------
 
@@ -104,52 +99,51 @@ CREATE TABLE `products` (
   `product_name` varchar(255) DEFAULT NULL,
   `creation_date` date DEFAULT NULL,
   `description` varchar(500) DEFAULT NULL,
-  `update_date` date DEFAULT NULL
+  `update_date` date DEFAULT NULL,
+  `price` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `products`
 --
 
-INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_name`, `creation_date`, `description`, `update_date`) VALUES
-(168, 26, NULL, '1623269588932.jpeg-image', 'mesa Ramo', '2021-06-09', 'mesa de comedor grande ', NULL),
-(169, 31, NULL, '1623331143838.jpeg-image', 'Sillon merlin gris ', '2021-06-06', 'Sillon grande gris equipado con dos almohadones', NULL),
-(170, 31, NULL, '1623331261399.jpeg-image', 'Cama lorun ', '2021-06-10', 'Cama de dos plazas grande con silloncitos incluidos', NULL),
-(172, 32, NULL, '1623331547739.jpeg-image', 'Almohadones neutros ', '2021-03-18', 'almohadones de color neutros elegi tu color!', NULL),
-(173, 32, NULL, '1623331591961.jpeg-image', 'Almohadones morenos', '2021-04-22', 'almohadones combinados para tu eleccion!', NULL),
-(174, 32, NULL, '1623331639205.jpeg-image', 'Almohadones indios ', '2021-04-19', 'Almohadones decorados de la india ', NULL),
-(175, 33, NULL, '1623331881556.jpeg-image', 'Mesa Blanca', '2021-05-06', 'Mesa blanca con sillas nude', NULL),
-(176, 33, NULL, '1623331920810.jpeg-image', 'Mesa Flord', '2021-03-10', 'Mesa Amplia de 8 personas blancas', NULL),
-(177, 34, NULL, '1623332160385.jpeg-image', 'Mueble Roble ', '2021-03-26', 'Mueble roble con 6 cajones 3 grandes y 3 chicos ', NULL),
-(178, 34, NULL, '1623332208913.jpeg-image', 'Mueble cantel', '2021-03-29', 'Mueble cante grande impecable para tu dormitorio ', NULL),
-(179, 35, NULL, '1623333003189.jpeg-image', 'sillon vinatge rosa', '2021-04-23', 'Sillon vinatge de gamuza rosa', NULL),
-(180, 35, NULL, '1623333034395.jpeg-image', 'Mueble vintage blanco ', '2021-04-10', 'Mueble vinatage blanco en perfecto estado', NULL),
-(181, 36, NULL, '1623333287341.jpeg-image', 'Mantel tematico', '2021-05-08', 'Manteles con diseños divinos!', NULL),
-(182, 36, NULL, '1623333342896.jpeg-image', 'Manteles neutros', '2021-06-01', 'Manteles colores neutros, el que mas te guste!', NULL),
-(183, 39, NULL, '1623592140406.jpg-image', 'Vinilo puente de brooklyn', '2021-06-01', 'Vinilo adhesivo a la pared 40 x 20. ', NULL),
-(184, 39, NULL, '1623592180993.jpg-image', 'Vinilo ciudad atardecer', '2021-06-04', 'Vinilo adhesivo a la pared 50 x 30', NULL),
-(185, 36, NULL, '1623592208994.jpg-image', 'Vinilo times square', '2021-06-07', 'Vinilo 40 x 30. Auto adhesivo', NULL),
-(186, 36, NULL, '1623592238171.jpg-image', 'Vinilo empire state ', '2021-05-15', 'Vinilo adhesivo a la pared 40 x 20. ', NULL),
-(187, 39, NULL, '1623592268644.jpg-image', 'Vinilo NYC nocturno', '2021-05-17', 'Vinilo adhesivo a la pared 40 x 20. ', NULL),
-(188, 39, NULL, '1623592319633.jpg-image', 'Vinilo vista muelle ', '2021-06-13', 'Vinilo adhesivo a la pared 60 x 80', NULL),
-(189, 38, NULL, '1623594131225.jpeg-image', 'Sillon blanco 3 cuerpos', '2021-03-02', 'Sillon 3 cuerpos con detalles en metal', NULL),
-(190, 38, NULL, '1623594166212.jpeg-image', 'Juego comedor madera eucalipto', '2021-05-19', 'Juego comedor para 6 personas, ideal para living comedor', NULL),
-(191, 38, NULL, '1623594198565.jpeg-image', 'Reposeras exterior ', '2021-05-14', 'Juego de reposeras para piletas, aptas para exterior e interior', NULL),
-(192, 38, NULL, '1623594225262.jpeg-image', 'Sommier 2 plazas', '2021-04-06', 'Sommier 2 plazas, alta densidad ', NULL),
-(193, 37, NULL, '1623620630072.png-image', 'Sillon de jardin', '2021-04-05', 'Sillon de jardin, apto para exteriror. Tela impermeable ', NULL),
-(194, 37, NULL, '1623620658649.png-image', 'Sillon 1 cuerpo ', '2021-04-09', 'Sillon un cuerpo, ideal para comerdor ', NULL),
-(195, 37, NULL, '1623620679353.png-image', 'Ropero con puertas de vidrio', '2021-03-02', 'Ropero de madera con puertas de vidrio, ideal para vestidores pequeños ', NULL),
-(197, 37, NULL, '1623620799707.png-image', 'Modular rack ', '2021-04-24', 'Modulo para guardar cosas ', NULL),
-(198, 35, NULL, '1623621297981.png-image', 'Cuadro con frase inspiradora ', '2021-06-07', 'Cuadro personalizable con frases, ideal para colgar en ingresos  o escritorios ', NULL),
-(199, 35, NULL, '1623621313686.png-image', 'Libreria para comedor ', '2021-05-16', 'Librería con espacios para libros y decoración ', NULL),
-(200, 34, NULL, '1623621433263.jpeg-image', 'Cuadro mandala', '2021-04-26', 'Cuadro a base de mandalas, varias combinaciones de colores ', NULL),
-(201, 34, NULL, '1623621456654.jpeg-image', 'Bancos exterior ', '2021-03-11', 'Mesa y bancos exterior integrados ', NULL),
-(202, 33, NULL, '1623621482097.png-image', 'Mesa chica para exterior ', '2021-03-20', 'Mesa para exterior , ideal para el borde de la pileta ', NULL),
-(203, 33, NULL, '1623621495542.jpeg-image', 'Estantería abierta ', '2021-03-24', 'Estanteria pared a pared ', NULL),
-(204, 32, NULL, '1623621526819.jpeg-image', 'Cucheta de madera ', '2021-04-30', 'Cucheta con escalera anti deslizante, ya viene con los colchones ', NULL),
-(205, 31, NULL, '1623621574294.png-image', 'Barra para tragos', '2021-04-26', 'Barra para exterior e interior con 2 sillas ', NULL),
-(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', NULL),
-(207, 40, NULL, '1623639746045.jpg-image', 'Gato', '2021-06-14', 'Gato tricolor con ojos claros. Macho.', NULL);
+INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_name`, `creation_date`, `description`, `update_date`, `price`) VALUES
+(168, 26, NULL, '1623269588932.jpeg-image', 'mesa Ramo', '2021-06-09', 'mesa de comedor grande ', NULL, 1340),
+(169, 31, NULL, '1623331143838.jpeg-image', 'Sillon merlin gris ', '2021-06-06', 'Sillon grande gris equipado con dos almohadones', NULL, 5450),
+(170, 31, NULL, '1623331261399.jpeg-image', 'Cama lorun ', '2021-06-10', 'Cama de dos plazas grande con silloncitos incluidos', NULL, 12700),
+(172, 32, NULL, '1623331547739.jpeg-image', 'Almohadones neutros ', '2021-03-18', 'almohadones de color neutros elegi tu color!', '2021-06-14', 650),
+(173, 32, NULL, '1623331591961.jpeg-image', 'Almohadones morenos', '2021-04-22', 'almohadones combinados para tu eleccion!', NULL, 780),
+(174, 32, NULL, '1623331639205.jpeg-image', 'Almohadones indios ', '2021-04-19', 'Almohadones decorados de la india ', '2021-06-14', 500),
+(175, 33, NULL, '1623331881556.jpeg-image', 'Mesa Blanca', '2021-05-06', 'Mesa blanca con sillas nude', NULL, 3260),
+(176, 33, NULL, '1623331920810.jpeg-image', 'Mesa Flord', '2021-03-10', 'Mesa Amplia de 8 personas blancas', NULL, 9560),
+(177, 34, NULL, '1623332160385.jpeg-image', 'Mueble Roble ', '2021-03-26', 'Mueble roble con 6 cajones 3 grandes y 3 chicos ', NULL, 11450),
+(178, 34, NULL, '1623332208913.jpeg-image', 'Mueble cantel', '2021-03-29', 'Mueble cante grande impecable para tu dormitorio ', NULL, 8540),
+(179, 35, NULL, '1623333003189.jpeg-image', 'sillon vinatge rosa', '2021-04-23', 'Sillon vinatge de gamuza rosa', NULL, 12360),
+(180, 35, NULL, '1623333034395.jpeg-image', 'Mueble vintage blanco ', '2021-04-10', 'Mueble vinatage blanco en perfecto estado', NULL, 11120),
+(181, 36, NULL, '1623333287341.jpeg-image', 'Mantel tematico', '2021-05-08', 'Manteles con diseños divinos!', '2021-06-14', 450),
+(182, 36, NULL, '1623718928593.crdownload-newImage', 'Manteles neutros ', '2021-06-01', 'Manteles colores neutros, el que mas te guste! ', '2021-06-15', 760),
+(183, 39, NULL, '1623592140406.jpg-image', 'Vinilo puente de brooklyn', '2021-06-01', 'Vinilo adhesivo a la pared 40 x 20. ', '2021-06-14', 750),
+(184, 39, NULL, '1623592180993.jpg-image', 'Vinilo ciudad atardecer', '2021-06-04', 'Vinilo adhesivo a la pared 50 x 30', '2021-06-14', 740),
+(185, 36, NULL, '1623592208994.jpg-image', 'Vinilo times square', '2021-06-07', 'Vinilo 40 x 30. Auto adhesivo', '2021-06-14', 730),
+(186, 36, NULL, '1623592238171.jpg-image', 'Vinilo empire state ', '2021-05-15', 'Vinilo adhesivo a la pared 40 x 20. ', '2021-06-14', 730),
+(187, 39, NULL, '1623592268644.jpg-image', 'Vinilo NYC nocturno', '2021-05-17', 'Vinilo adhesivo a la pared 40 x 20. ', '2021-06-14', 800),
+(188, 39, NULL, '1623592319633.jpg-image', 'Vinilo vista muelle ', '2021-06-13', 'Vinilo adhesivo a la pared 60 x 80', '2021-06-14', 800),
+(189, 38, NULL, '1623594131225.jpeg-image', 'Sillon blanco 3 cuerpos', '2021-03-02', 'Sillon 3 cuerpos con detalles en metal', '2021-06-14', 12340),
+(190, 38, NULL, '1623594166212.jpeg-image', 'Juego comedor madera eucalipto', '2021-05-19', 'Juego comedor para 6 personas, ideal para living comedor', '2021-06-14', 22550),
+(191, 38, NULL, '1623594198565.jpeg-image', 'Reposeras exterior ', '2021-05-14', 'Juego de reposeras para piletas, aptas para exterior e interior', '2021-06-14', 11780),
+(192, 38, NULL, '1623594225262.jpeg-image', 'Sommier 2 plazas', '2021-04-06', 'Sommier 2 plazas, alta densidad ', '2021-06-14', 17500),
+(193, 37, NULL, '1623620630072.png-image', 'Sillon de jardin', '2021-04-05', 'Sillon de jardin, apto para exteriror. Tela impermeable ', '2021-06-14', 19750),
+(195, 37, NULL, '1623620679353.png-image   ', 'Ropero con puertas de vidrio 1 ', '2021-03-02', 'Ropero de madera con puertas de vidrio, ideal para vestidores pequeños    ', '2021-06-14', 9860),
+(197, 37, NULL, '1623620799707.png-image ', 'Modular rack  ', '2021-04-24', 'Modulo para guardar cosas  ', '2021-06-14', 2340),
+(198, 35, NULL, '1623621297981.png-image', 'Cuadro con frase inspiradora ', '2021-06-07', 'Cuadro personalizable con frases, ideal para colgar en ingresos  o escritorios ', '2021-06-14', 550),
+(199, 35, NULL, '1623621313686.png-image', 'Libreria para comedor ', '2021-05-16', '', '2021-06-14', 6540),
+(200, 34, NULL, '1623621433263.jpeg-image', 'Cuadro mandala', '2021-04-26', 'Cuadro a base de mandalas, varias combinaciones de colores ', '2021-06-14', 760),
+(201, 34, NULL, '1623621456654.jpeg-image', 'Bancos exterior ', '2021-03-11', 'Mesa y bancos exterior integrados ', '2021-06-14', 12350),
+(202, 33, NULL, '1623621482097.png-image', 'Mesa chica para exterior ', '2021-03-20', 'Mesa para exterior , ideal para el borde de la pileta ', '2021-06-14', 4800),
+(203, 33, NULL, '1623621495542.jpeg-image', 'Estantería abierta ', '2021-03-24', 'Estanteria pared a pared ', '2021-06-14', 9900),
+(204, 32, NULL, '1623621526819.jpeg-image', 'Cucheta de madera ', '2021-04-30', 'Cucheta con escalera anti deslizante, ya viene con los colchones ', '2021-06-14', 13500),
+(205, 31, NULL, '1623621574294.png-image', 'Barra para tragos', '2021-04-26', 'Barra para exterior e interior con 2 sillas ', '2021-06-14', 21500),
+(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', '2021-06-14', 18700);
 
 -- --------------------------------------------------------
 
@@ -243,19 +237,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT de la tabla `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -287,8 +281,3 @@ ALTER TABLE `follower`
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
