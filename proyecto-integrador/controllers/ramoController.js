@@ -8,7 +8,8 @@ let ramoController = {
           association: "products_users",
         },
       ],
-      order: [["creation_date", "DESC"]],
+      order: [["creation_date", "DESC",]],
+      
       limit: 32,
     })
       .then((data) => {
