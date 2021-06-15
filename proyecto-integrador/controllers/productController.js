@@ -1,5 +1,4 @@
 const db = require("../database/models");
-// const { resolveInclude } = require("ejs");
 const bcrypt = require("bcryptjs");
 
 let productController = {
@@ -26,7 +25,7 @@ let productController = {
         }).then((info) => {
           return res.render("products", {
             comments: info,
-            products: data.dataValues, //aca pido el nombre de la base de datos
+            products: data.dataValues, 
             title: "Pagina de detalle de productos",
           });
         });
@@ -38,12 +37,11 @@ let productController = {
   commentAdd: (req, res) => {
     db.Comments.create({
       product_id: req.body.id,
-      creator_id: res.locals.user.id,
+      creator_id: req.session.user.id,
       content: req.body.comment,
       creation_date: new Date().getTime(),
     })
       .then(() => {
-        req.flash("success", "Comentario añadido!");
         return res.redirect(req.headers.referer);
       })
       .catch((error) => {
@@ -70,7 +68,7 @@ let productController = {
   productAdded: (req, res) => {
     let info = req.body;
     db.Products.create({
-      created_by: res.locals.user.id,
+      created_by: req.session.user.id,
       image: req.file.filename,
       product_name: info.product_name,
       creation_date: new Date().getTime(),
@@ -80,41 +78,10 @@ let productController = {
         req.flash("success", "Producto añadido!");
         return res.redirect(`/ramo/profile/${info.id}`);
       })
-
       .catch((error) => {
         throw error;
       });
   },
-  // productDelete: (req, res) => {
-  //   db.Products.findOne({
-  //     where: { created_by: req.body.id },
-
-  //   })
-  //     .then((ok) => {
-  //       if (!ok) {
-  //         res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-  //         req.session.destroy();
-  //         res.clearCookie("loggedIn");
-  //         return res.redirect("/ramo/login")
-  //       } else {
-  //         db.Comments.destroy({
-  //           where: { id: req.body.idP },
-  //         })
-  //           .then(() => {
-  //             db.Products.destroy({
-  //               where: { id: req.body.idP },
-  //             });
-  //           })
-  //           .then(() => {
-  //             req.flash('danger', "Producto eliminado")
-  //             return res.redirect("/ramo");
-  //           })
-  //           .catch((error) => {
-  //             throw error;
-  //           });
-  //       }
-  //     })
-  // },
 
   productEdit: (req, res) => {
     let idP = req.params.id;
@@ -196,7 +163,6 @@ let productController = {
        await db.Products.destroy({
         where: { id: req.body.idP },
       });
-
        req.flash("danger", "Producto eliminado");
        return res.redirect("/ramo");
      }

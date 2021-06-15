@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    //parametros definidos desde el otro archivo, y los utilizamos cuando necesitamos
+
     let alias = 'Users';
     let cols = {
         id: {

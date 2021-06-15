@@ -1,7 +1,7 @@
 const Users = require("./Users");
 
 module.exports = (sequelize, DataTypes) => {
-    //parametros definidos desde el otro archivo, y los utilizamos cuando necesitamos
+    
     let alias = 'Comments';
     let cols = {
         id: {
