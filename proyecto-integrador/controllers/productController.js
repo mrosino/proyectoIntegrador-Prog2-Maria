@@ -85,36 +85,36 @@ let productController = {
         throw error;
       });
   },
-  productDelete: (req, res) => {
-    db.Products.findOne({
-      where: { created_by: req.body.id },
+  // productDelete: (req, res) => {
+  //   db.Products.findOne({
+  //     where: { created_by: req.body.id },
 
-    })
-      .then((ok) => {
-        if (!ok) {
-          res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-          req.session.destroy();
-          res.clearCookie("loggedIn");
-          return res.redirect("/ramo/login")
-        } else {
-          db.Comments.destroy({
-            where: { id: req.body.idP },
-          })
-            .then(() => {
-              db.Products.destroy({
-                where: { id: req.body.idP },
-              });
-            })
-            .then(() => {
-              req.flash('danger', "Producto eliminado")
-              return res.redirect("/ramo");
-            })
-            .catch((error) => {
-              throw error;
-            });
-        }
-      })
-  },
+  //   })
+  //     .then((ok) => {
+  //       if (!ok) {
+  //         res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+  //         req.session.destroy();
+  //         res.clearCookie("loggedIn");
+  //         return res.redirect("/ramo/login")
+  //       } else {
+  //         db.Comments.destroy({
+  //           where: { id: req.body.idP },
+  //         })
+  //           .then(() => {
+  //             db.Products.destroy({
+  //               where: { id: req.body.idP },
+  //             });
+  //           })
+  //           .then(() => {
+  //             req.flash('danger', "Producto eliminado")
+  //             return res.redirect("/ramo");
+  //           })
+  //           .catch((error) => {
+  //             throw error;
+  //           });
+  //       }
+  //     })
+  // },
 
   productEdit: (req, res) => {
     let idP = req.params.id;
@@ -170,8 +170,8 @@ let productController = {
                 return res.redirect(`/ramo/products/${req.body.idP}`);
               });
           } else {
-            res.cookie("error", "noPss", { maxAge: 1000 * 60 });
-            return res.redirect("/ramo/login");
+            req.flash("danger", "La contraseña no es correcta");
+            return res.redirect(req.headers.referer);
           }
         })
         .catch(function (error) {
@@ -180,27 +180,27 @@ let productController = {
     });
   },
 
-  // productDelete: async (req, res) => {
-  //   let ok = await db.Products.findOne({
-  //     where: { created_by: req.body.id },
-  //   });
-  //   if (!ok) {
-  //     res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-  //     req.session.destroy();
-  //     res.clearCookie("loggedIn");
-  //     return res.redirect("/ramo/login");
-  //   } else {
-  //      await db.Comments.destroy({
-  //       where: { id: req.body.idP },
-  //     });
-  //      await db.Products.destroy({
-  //       where: { id: req.body.idP },
-  //     });
+   productDelete: async (req, res) => {
+     let ok = await db.Products.findOne({
+       where: { created_by: req.body.id },
+     });
+   if (!ok) {
+       res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+     req.session.destroy();
+       res.clearCookie("loggedIn");
+     return res.redirect("/ramo/login");
+     } else {
+      await db.Comments.destroy({
+        where: { id: req.body.idP },
+      });
+       await db.Products.destroy({
+        where: { id: req.body.idP },
+      });
 
-  //     req.flash("danger", "Producto eliminado");
-  //     return res.redirect("/ramo");
-  //   }
-  // },
+       req.flash("danger", "Producto eliminado");
+       return res.redirect("/ramo");
+     }
+   },
 };
 
 module.exports = productController;

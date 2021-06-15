@@ -20,7 +20,7 @@
                 <%= products.product_name %> #
                 <%= products.id %>
             </h2>
-
+            <%- include('./partials/flashKeys') %>
             <p class="product-detail-description">
                 <% if (locals.logged==true && locals.user.id == products.created_by) { %>
             <div class="no-margin">
