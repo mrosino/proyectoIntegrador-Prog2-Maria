@@ -8,11 +8,13 @@ let ramoController = {
           association: "products_users",
         },
       ],
-      order: [["creation_date", "DESC",]],
-      
+      order: [[db.sequelize.literal('creation_date, price'), 'desc']],  
       limit: 32,
     })
       .then((data) => {
+        console.log();
+        console.log('data', data);
+        console.log();
         return res.render("index", {
           products: data,
           title: "Pagina de inicio",
