@@ -25,7 +25,7 @@ let productController = {
         }).then((info) => {
           return res.render("products", {
             comments: info,
-            products: data.dataValues, 
+            products: data.dataValues,
             title: "Pagina de detalle de productos",
           });
         });
@@ -149,26 +149,26 @@ let productController = {
     });
   },
 
-   productDelete: async (req, res) => {
-     let ok = await db.Products.findOne({
-       where: { created_by: req.body.id },
-     });
-   if (!ok) {
-       res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
-     req.session.destroy();
-       res.clearCookie("loggedIn");
-     return res.redirect("/ramo/login");
-     } else {
+  productDelete: async (req, res) => {
+    let ok = await db.Products.findOne({
+      where: { created_by: req.body.id },
+    });
+    if (!ok) {
+      res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
+      req.session.destroy();
+      res.clearCookie("loggedIn");
+      return res.redirect("/ramo/login");
+    } else {
       await db.Comments.destroy({
         where: { id: req.body.idP },
       });
-       await db.Products.destroy({
+      await db.Products.destroy({
         where: { id: req.body.idP },
       });
-       req.flash("danger", "Producto eliminado");
-       return res.redirect("/ramo");
-     }
-   },
+      req.flash("danger", "Producto eliminado");
+      return res.redirect("/ramo");
+    }
+  },
 };
 
 module.exports = productController;

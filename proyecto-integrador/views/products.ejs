@@ -3,6 +3,7 @@
 <% } else { %>
 <%- include('./partials/header') %>
 <% } %>
+
 <body>
 
     <div class="container products-wrapper">
@@ -43,7 +44,7 @@
                     </p>
                     <% if (locals.logged==true) { %>
                     <p class="product-detail-description">
-                          Precio $  <%= products.price %> 
+                        Precio $ <%= products.price %>
                     </p>
                     <% } %>
                     <br>
@@ -71,15 +72,15 @@
                                         </a> </strong>
                                     <%= comments[i].content %>
                                     <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
-                                        <form action="/ramo/products/commentDelete" method="post">
-        
-                                            <input type="hidden" name="idC" value="<%= comments[i].id %> ">
-                                            <input type="hidden" name="user" value="<%= locals.user.id %> ">
-                                            <button type="submit">
-                                                <ion-icon name="trash-outline"></ion-icon>
-                                            </button>
-                                        </form>
-                                        <% } %>
+                                <form action="/ramo/products/commentDelete" method="post">
+
+                                    <input type="hidden" name="idC" value="<%= comments[i].id %> ">
+                                    <input type="hidden" name="user" value="<%= locals.user.id %> ">
+                                    <button type="submit">
+                                        <ion-icon name="trash-outline"></ion-icon>
+                                    </button>
+                                </form>
+                                <% } %>
                                 </p>
                             </div>
                         </article>

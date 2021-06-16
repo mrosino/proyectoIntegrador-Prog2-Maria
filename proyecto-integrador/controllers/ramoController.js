@@ -12,9 +12,6 @@ let ramoController = {
       limit: 32,
     })
       .then((data) => {
-        console.log();
-        console.log('data', data);
-        console.log();
         return res.render("index", {
           products: data,
           title: "Pagina de inicio",
