@@ -112,7 +112,7 @@ let productController = {
       where: {
         created_by: req.body.id,
       },
-    }).then((prod) => {
+    }).then(() => {
       db.Users.findOne({
         where: { id: req.body.id },
       })
