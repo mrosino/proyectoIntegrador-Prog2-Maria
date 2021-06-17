@@ -196,6 +196,7 @@ hr {
 }
 
 .main-navbar {
+  text-align: end;
   letter-spacing: 0.06em;
   display: flex;
   flex-direction: column;
