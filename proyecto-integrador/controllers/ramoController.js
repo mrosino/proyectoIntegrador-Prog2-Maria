@@ -8,7 +8,7 @@ let ramoController = {
           association: "products_users",
         },
       ],
-      order: [[db.sequelize.literal('creation_date, price'), 'desc']],  
+      order: [["creation_date", "DESC"]], 
       limit: 32,
     })
       .then((data) => {
