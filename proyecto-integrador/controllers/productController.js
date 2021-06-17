@@ -166,7 +166,7 @@ let productController = {
         where: { id: req.body.idP },
       });
       req.flash("danger", "Producto eliminado");
-      return res.redirect("/ramo");
+      return res.redirect("/"); //ver acá si esta ruta funciona
     }
   },
 };

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 let ramoController = require('../controllers/ramoController');
-let db = require('../database/models')
+
 
 router.get('/', ramoController.index);
 

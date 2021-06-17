@@ -112,7 +112,7 @@ app.listen(3000);
 
 module.exports = app;
 
-app.use("/ramo", ramoRouter);
+app.use("/", ramoRouter);
 app.use("/ramo", userRamoRouter);
 app.use("/ramo", productRouter);
 app.use("/ramo", securityRouter);
