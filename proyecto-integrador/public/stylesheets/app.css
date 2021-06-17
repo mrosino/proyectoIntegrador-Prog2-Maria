@@ -445,6 +445,66 @@ hr {
   color: rgba(159, 22, 22, 0.778);
 }
 
+/*====== Modal a mano ======*/
+
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+  padding-top: 50px;
+  
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: #3f272761;
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+  
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+
+.modalDialog > div {
+	width: 450px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #f6eeee;
+	background: -moz-linear-gradient(#f1e4e4, #e2bcbc);
+	background: -webkit-linear-gradient(#f1e4e4, #e7c6c6);
+	background: -o-linear-gradient(#f1e4e4, #e2c0c0);
+}
+.close {
+	background: #915d5d;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: -12px;
+	text-align: center;
+	top: -10px;
+	width: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	-webkit-border-radius: 12px;
+	-moz-border-radius: 12px;
+	border-radius: 12px;
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover { background: #8e5a5a; }
+
+
+
 /*====== Product Detail ======*/
 
 .product-detail {

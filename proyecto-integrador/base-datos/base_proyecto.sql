@@ -1,14 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 15-06-2021 a las 01:03:39
--- Versión del servidor: 5.7.32
--- Versión de PHP: 7.4.12
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 17-06-2021 a las 22:54:58
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `base_proyecto`
@@ -57,7 +64,8 @@ INSERT INTO `comments` (`id`, `product_id`, `creator_id`, `content`, `creation_d
 (152, 180, 36, 'de que año es el mueble', '2021-06-10'),
 (153, 203, 24, 'Muy bueno', '2021-06-14'),
 (154, 182, 40, 'Me gusta este', '2021-06-14'),
-(155, 197, 37, 'hola ', '2021-06-15');
+(155, 197, 37, 'hola ', '2021-06-15'),
+(156, 170, 7, 'Me interesa', '2021-06-15');
 
 -- --------------------------------------------------------
 
@@ -76,14 +84,28 @@ CREATE TABLE `follower` (
 --
 
 INSERT INTO `follower` (`id`, `followed_by`, `follows`) VALUES
-(1, 18, 26),
-(4, 24, 31),
+(1, 39, 26),
 (5, 24, 31),
-(13, 7, 39),
-(14, 7, 40),
-(15, 7, 34),
 (16, 40, 36),
-(18, 37, 38);
+(18, 37, 38),
+(42, 7, 31),
+(49, 35, 32),
+(50, 40, 35),
+(51, 39, 36),
+(52, 31, 32),
+(53, 32, 31),
+(54, 33, 34),
+(55, 35, 40),
+(56, 26, 39),
+(58, 16, 38),
+(60, 40, 39),
+(61, 40, 32),
+(62, 40, 38),
+(63, 40, 37),
+(64, 24, 26),
+(65, 24, 36),
+(66, 24, 38),
+(67, 24, 33);
 
 -- --------------------------------------------------------
 
@@ -172,11 +194,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`, `province`, `document`, `gender`, `birthday`, `phone`, `registration_date`, `userUpdate_date`) VALUES
-(7, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', '1623690971168.jpg-ppe', 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, NULL),
+(7, 'adela', 'buye', 'adela.buye@gmail.co', '$2a$10$ALfwR6osp4x3Y18y0OqiR.Q.gDK6M86AbO1qnib8.F.UOx6t.rW3O', '1623690971168.jpg-ppe', 'Chubut', 40937113, 'femenino', '2000-12-03', 1130180066, NULL, '2021-06-15'),
 (8, 'adela', 'buye', 'guido@mail.com', '$2a$10$SE3U7Wmy8.oTQujMXmNx5ODDG0B81Y4/O97kEdo08mTiL54/Pc0c6', NULL, 'Chubut', 40937113, 'masculino', '2021-04-28', 1130180066, NULL, NULL),
 (9, 'marcela', 'perez', 'marcela@gmail.com', '$2a$10$qlm4to8cxRwLE4R7zuZVIOfzZuDcFuSSrW.fihjrb.JTI7wVRviti', NULL, 'Buenos Aires', 40937113, 'femenino', '2021-05-04', 1130180044, NULL, NULL),
 (16, 'violeta', 'olascoaga', 'viole123@yahoo.com', '$2a$10$nY2WreEc7ScUmJggaVTbbenO6bFBtzthB9vKQ6o0fo02SUKztXSP2', NULL, 'Salta', 0, 'femenino', '2021-05-14', 11736253, NULL, NULL),
-(18, 'Mariano', 'biocca', 'mariano.biocca@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', '1623637303892.jpg-ppe', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-05'),
+(18, 'Mariano', 'biocca', 'mariano.biocca1@gmail.com', '$2a$10$21jtMQzmAuif89m3B9aNXeTEZzASvzNz/VlAAk6BgmOSc6dPcem4e', '1623803834958.jpg-ppe', 'Buenos Aires', 37844449, 'masculino', '1995-11-02', 114567890, NULL, '2021-06-16'),
 (21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
@@ -237,19 +259,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT de la tabla `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
@@ -281,3 +303,8 @@ ALTER TABLE `follower`
 ALTER TABLE `products`
   ADD CONSTRAINT `commented_by` FOREIGN KEY (`commented_by`) REFERENCES `comments` (`creator_id`),
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

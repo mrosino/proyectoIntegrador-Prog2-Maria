@@ -2,13 +2,20 @@ const db = require("../database/models");
 
 let followersController = {
   followed: async (req, res) => {
-    await db.Follower.create({
-      followed_by: req.body.by,
-      follows: req.body.toFollow,
-    });
+    let existance = await db.Follower.findOne({
+      where: { id: req.body.toFollow },
+    })
+if (!existance) {
+  await db.Follower.create({
+    followed_by: req.body.by,
+    follows: req.body.toFollow,
+  });
 
-    req.flash("success", "Siguiendo!");
-    res.redirect(`/ramo/profile/${req.body.toFollow}`);
+  req.flash("success", "Siguiendo!");
+  res.redirect(`/ramo/profile/${req.body.toFollow}`);
+}
+
+   
   },
 
   unfollowed: async (req, res) => {

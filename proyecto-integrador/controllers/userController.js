@@ -74,6 +74,7 @@ let userController = {
 
     let visitor = await db.Users.findOne({
       where: { id: visitedProfile },
+     
     });
     let user = await db.Users.findOne({
       where: { id: id },
@@ -86,10 +87,16 @@ let userController = {
     });
     let followers = await db.Follower.findAll({
       where: { follows: visitor.id },
+      include: [
+        {
+          association: "followed_users",
+        },
+      ],
     });
     let followed = await db.Follower.findOne({
-      where: { follows: visitor.id, followed_by: id },
+      where: { follows: visitor.id, followed_by: id },     
     });
+    console.log(followers);
     return res.render("profile", {
       followers: followers,
       followed: followed,
@@ -102,3 +109,4 @@ let userController = {
   },
 };
 module.exports = userController;
+
