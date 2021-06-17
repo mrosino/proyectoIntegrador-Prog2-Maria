@@ -27,7 +27,7 @@
                 <form action="/ramo/imagenEdit" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="image" class="postLabel">Carga tu imagen de perfil</label>
-                         <input type="file" name="ppe" class="pp" >
+                         <input required type="file" name="ppe" class="pp" >
                       
                     </div>
                     <div class="form-group">
@@ -35,12 +35,13 @@
                             Por seguridad escriba su contraseña
                         </label>
 
-                        <input type="password" name="password" placeholder="Contraseña">
+                        <input required type="password" name="password" placeholder="Contraseña">
                        
                     </div>
                     <input type="hidden" name="id" value="<%= locals.user.id %> ">
+                    <%- include('./partials/flashKeys') %>
                     <div class="form-group boton">
-                        <%- include('./partials/flashKeys') %>
+                        
                         <button type="submit">Cambiar foto de perfil</button>
                     </div>
                 </form>

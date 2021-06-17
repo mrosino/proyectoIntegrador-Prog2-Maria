@@ -28,7 +28,7 @@
 						Por favor escriba su contraseña anterior
 					</label>
 					<input type="hidden" name="id" value="<%= locals.user.id %> ">
-						<input type="password" name="oldPss" placeholder="Nueva contraseña">
+						<input required type="password" name="oldPss" placeholder="Nueva contraseña">
 
 
 					</div>
@@ -37,12 +37,12 @@
 						<label for="password">
 							Ingrese su nueva contraseña
 						</label>
-						<input type="password" name="password" placeholder="Nueva contraseña">
+						<input required type="password" name="password" placeholder="Nueva contraseña">
 					</div>
 
-
+					<%- include('./partials/flashKeys') %>
 					<div class="form-group boton">
-						<%- include('./partials/flashKeys') %>
+						
 						<button type="submit">Cambiar contraseña</button>
 					</div>
 

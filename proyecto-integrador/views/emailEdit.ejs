@@ -29,20 +29,21 @@
 						<label for="email">
 							Si desea modificar su email escribalo aquí
 						</label>
-						<input type="email" name="email" placeholder="Nuevo correo electronico">
+						<input required type="email" name="email" placeholder="Nuevo correo electronico">
 
 					</div>
 					<div class="form-group">
 						<label for="password">
 							Por favor escriba su contraseña 
 						</label>
-						<input type="password" name="password" placeholder="Nueva contraseña">
+						<input required type="password" name="password" placeholder="Nueva contraseña">
 						
 					</div>
 					<input type="hidden" name="id" value="<%= locals.user.id %> ">
+					<%- include('./partials/flashKeys') %>
 					<div class="form-group boton">
 						<button type="submit">Cambiar email</button>
-						<%- include('./partials/flashKeys') %>
+						
 					</div>
 
 				</form>

@@ -24,19 +24,19 @@
 				<form method="POST" action="/ramo/register" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="name"> Ingrese su Nombre </label>
-						<input type="text" name="name" placeholder="Ingrese su nombre">
+						<input required type="text" name="name" placeholder="Ingrese su nombre">
 					</div>
 					<div class="form-group">
 						<label for="surname">
 							Ingrese su Apellido
 						</label>
-						<input type="text" name="surname" placeholder="Ingrese su apellido">
+						<input required type="text" name="surname" placeholder="Ingrese su apellido">
 					</div>
 					<div class="form-group">
 						<label for="email">
 							Ingrese su email
 						</label>
-						<input type="email" name="email" placeholder="Ingrese su correo electronico">
+						<input required type="email" name="email" placeholder="Ingrese su correo electronico">
 					</div>
 
 					<div class="form-group">
@@ -47,19 +47,19 @@
 													<label for="password">
 														Ingrese su clave
 													</label>
-													<input type="password" name="password"
+													<input required type="password" name="password"
 														placeholder="Ingrese su clave">
 										</div>
 										<div class="form-group">
 											<label for="passwordConfirm">
 												Confirme su clave
 											</label>
-											<input type="password" name="passwordConfirm"
+											<input required type="password" name="passwordConfirm"
 												placeholder="Confirme su clave">
 										</div>
 										<div class="form-group">
 											<label for="image" class="postLabel">Carga tu imagen de perfil</label>
-											<input type="file" name="pp" class="pp">
+											<input required type="file" name="pp" class="pp">
 										</div>
 
 										<div class="form-group">
@@ -104,7 +104,7 @@
 											<label for="document">
 												Ingrese su documento
 											</label>
-											<input type="number" name="document" placeholder="Ingrese su documento">
+											<input required type="number" name="document" placeholder="Ingrese su documento">
 										</div>
 										<div class="form-group">
 
@@ -124,7 +124,7 @@
 											<label for="birthday">
 												Ingrese su fecha de nacimiento
 											</label>
-											<input type="date" name="birthday"
+											<input required type="date" name="birthday"
 												placeholder="Ingrese su fecha de nacimiento">
 
 										</div>
@@ -133,7 +133,7 @@
 											<label for="phone">
 												Ingrese su telefono
 											</label>
-											<input type="number" name="phone" placeholder="Ingrese solo numeros">
+											<input required type="number" name="phone" placeholder="Ingrese solo numeros">
 										</div>
 
 
