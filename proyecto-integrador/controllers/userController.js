@@ -9,45 +9,39 @@ let userController = {
       error: req.cookies.error,
     });
   },
-  registered: (req, res) => {
+  registered: async (req, res) => {
     let submitedEmail = req.body.email;
-    db.Users.findOne({
+    let user = await db.Users.findOne({
       where: { email: submitedEmail },
-    })
-      .then((user) => {
-        
-        if (!user && req.body.password == req.body.passwordConfirm) {
-          if (req.body.password.length > 4 ) {
-            let encryptedPss = bcrypt.hashSync(req.body.password);
-            let info = req.body;
-            
-           
-            db.Users.create({
-              name: req.body.name,
-              surname: info.surname,
-              email: info.email,
-              province: info.province,
-              document: info.document,
-              gender: info.gender,
-              birthday: info.birthday,
-              phone: info.phone,
-              profile_pic: req.file.filename,
-              password: encryptedPss,
-              registration_date: new Date().getTime(),
-              userUpdate_date: new Date().getTime(),
-            }).then(() => {
-              req.flash("success", "Te registraste con éxito");
-              return res.redirect("/ramo/login");
-            });
-          } else {
-            res.cookie("error", "length", { maxAge: 1000 * 60 });
-            return res.redirect(req.headers.referer);
-          }
-        } else {
-          res.cookie("error", "failedRegistered", { maxAge: 1000 * 30 });
+    });
+    if (!user && req.body.password == req.body.passwordConfirm) {
+      if (req.body.password.length > 5) {
+        let encryptedPss = bcrypt.hashSync(req.body.password);
+        let info = req.body;
+        await db.Users.create({
+          name: req.body.name,
+          surname: info.surname,
+          email: info.email,
+          province: info.province,
+          document: info.document,
+          gender: info.gender,
+          birthday: info.birthday,
+          phone: info.phone,
+          profile_pic: req.file.filename,
+          password: encryptedPss,
+          registration_date: new Date().getTime(),
+          userUpdate_date: new Date().getTime(),
+        })
+          req.flash("success", "Te registraste con éxito");
           return res.redirect("/ramo/login");
-        }
-      });
+      } else {
+        req.flash("danger", "La contraseña debe tener minimo cinco caracteres");
+        return res.redirect(req.headers.referer);
+      }
+    } else {
+      res.cookie("error", "failedRegistered", { maxAge: 1000 * 30 });
+      return res.redirect("/ramo/login");
+    }
   },
   emailEdit: (req, res) => {
     return res.render("emailEdit", {
@@ -74,7 +68,6 @@ let userController = {
 
     let visitor = await db.Users.findOne({
       where: { id: visitedProfile },
-     
     });
     let user = await db.Users.findOne({
       where: { id: id },
@@ -94,9 +87,9 @@ let userController = {
       ],
     });
     let followed = await db.Follower.findOne({
-      where: { follows: visitor.id, followed_by: id },     
+      where: { follows: visitor.id, followed_by: id },
     });
-    console.log(followers);
+    
     return res.render("profile", {
       followers: followers,
       followed: followed,
@@ -109,4 +102,3 @@ let userController = {
   },
 };
 module.exports = userController;
-

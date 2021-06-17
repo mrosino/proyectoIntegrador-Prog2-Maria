@@ -1,30 +1,25 @@
 const db = require("../database/models");
 const Op = db.Sequelize.Op;
 let ramoController = {
-  index: (req, res) => {
-    db.Products.findAll({
+  index: async (req, res) => {
+    let data = await db.Products.findAll({
       include: [
         {
           association: "products_users",
         },
       ],
-      order: [["creation_date", "DESC"]], 
+      order: [["creation_date", "DESC"]],
       limit: 32,
-    })
-      .then((data) => {
-        return res.render("index", {
-          products: data,
-          title: "Pagina de inicio",
-        });
-      })
-      .catch((error) => {
-        return res.send(error);
-      });
+    });
+    return res.render("index", {
+      products: data,
+      title: "Pagina de inicio",
+    });
   },
 
-  searchResult: (req, res) => {
+  searchResult: async (req, res) => {
     let search = req.query.search;
-    db.Products.findAll({
+    let results = await db.Products.findAll({
       include: [
         {
           association: "products_users",
@@ -33,21 +28,21 @@ let ramoController = {
       where: {
         [Op.or]: [
           { description: { [Op.like]: "%" + search + "%" } },
-          { product_name: { [Op.like]: "%" + search + "%" } },
+          { product_name:{ [Op.like]: "%" + search + "%" } },
         ],
       },
-    }).then((results) => {
+    })
       return res.render("searchResult", {
         search: results,
         lookedFor: req.query.search,
-        title: " Pagina resultado de busquedas",
+        title: "Resultado de búsquedas",
       });
-    });
+  
   },
 
   contacto: (req, res) => {
     res.render("contacto", {
-      title: " Pagina muestra con quien contactar del sitio",
+      title: " Contacto",
     });
   },
 };

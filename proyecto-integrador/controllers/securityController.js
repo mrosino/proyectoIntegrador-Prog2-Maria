@@ -1,139 +1,90 @@
 const db = require("../database/models");
-
 const bcrypt = require("bcryptjs");
 
 var securityController = {
   login: (req, res) => {
     return res.render("security/login", {
       title: "Ingresar ramo",
-      error: req.cookies.error,
+      error: req.cookies.error, //ver si ya podemos borrar, creo que cambie todas las cookies x flash. Validar.
       failed: req.query.failed,
     });
   },
-  authenticate: (req, res) => {
-    db.Users.findOne({ where: { email: req.body.email } })
+  authenticate: async (req, res) => {
+    let user = await db.Users.findOne({ where: { email: req.body.email } });
 
-      .then((user) => {
-        if (user != undefined) {
-          if (bcrypt.compareSync(req.body.password, user.password)) {
-            if (req.body.remember) {
-              res.cookie("remembered", user.id, { maxAge: 1000 * 60 * 30 });
-            }
-            req.session.user = user;
-            req.session.logged = true;
-            req.session.save();
-            return res.redirect(`/ramo/profile/${user.id}`);
-          } else {
-            req.flash("danger", "La contraseña ingresada es incorrecta");
-            return res.redirect(req.headers.referer);
-          }
-        } else {
-          req.flash("danger", "El correo ingresado es incorrecto");
-          return res.redirect(req.headers.referer);
+    if (user != undefined) {
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        if (req.body.remember) {
+          res.cookie("remembered", user.id, { maxAge: 1000 * 60 * 30 });
         }
-      })
-      .catch((error) => {
-        throw error;
-      });
+        req.session.user = user;
+        req.session.logged = true;
+        req.session.save();
+        return res.redirect(`/ramo/profile/${user.id}`);
+      } else {
+        req.flash("danger", "La contraseña ingresada es incorrecta");
+        return res.redirect(req.headers.referer);
+      }
+    } else {
+      req.flash("danger", "El correo ingresado es incorrecto");
+      return res.redirect(req.headers.referer);
+    }
   },
+
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("loggedIn");
     res.clearCookie("remembered");
     return res.redirect("/ramo/login");
   },
-  // editedUser: (req, res) => {
-  //   let submitedEmail = req.body.email;
-  //   db.Users.findOne({
-  //     where: { email: submitedEmail },
-  //   }).then((email) => {
-  //     if (!email) {
-  //       db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
-  //         if (bcrypt.compareSync(req.body.password, user.password)) {
-  //           db.Users.update(
-  //             {
-  //               email: req.body.email,
-  //               userUpdate_date: new Date().getTime(),
-  //             },
-  //             {
-  //               where: { id: req.body.id },
-  //             }
-  //           )
-  //             .then(() => {
-  //               req.flash("success", "Actualizaste tus datos");
-  //               return res.redirect("/ramo/profile/" + req.body.id);
-  //             })
-  //             .catch(function (error) {
-  //               throw error;
-  //             });
-  //         } else {
-  //           res.cookie("error", "noPss", { maxAge: 1000 * 60 });
-  //           req.session.destroy();
-  //           res.clearCookie("loggedIn");
-  //           return res.redirect("/ramo/login");
-  //         }
-  //       });
-  //     } else {
-  //       res.cookie("error", "emailUsed", { maxAge: 1000 * 60 });
-  //       return res.redirect(req.headers.referer);
-  //     }
-  //   });
-  // },
 
-  editedPass: (req, res) => {
-    db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
-      if (req.body.id == req.session.user.id) {
-        if (req.body.password.length > 4) {
-          if (bcrypt.compareSync(req.body.oldPss, user.password)) {
-            let encryptedPss = bcrypt.hashSync(req.body.password);
-            db.Users.update(
-              {
-                password: encryptedPss,
-                userUpdate_date: new Date().getTime(),
-              },
-              {
-                where: { id: req.body.id },
-              })
-              .then(function () {
-                req.flash("success", "Actualizaste tus datos");
-                return res.redirect("/ramo/profile/" + req.body.id);
-              })
-              .catch(function (error) {
-                throw error;
-              });
-          }
-        } else {
-          res.cookie("error", "length", { maxAge: 1000 * 60 });
-          return res.redirect(req.headers.referer);
-        }
-      } else {
-        res.cookie("error", "wrongUser", { maxAge: 1000 * 60 });
-        return res.redirect(req.headers.referer);
-      }
-    });
-  },
-  imagenEdited: (req, res) => {
-    db.Users.findByPk(req.body.id).then((user) => {
-      if (bcrypt.compareSync(req.body.password, user.password)) {
-        db.Users.update(
+  editedPass: async (req, res) => {
+    let user = await db.Users.findOne({ where: { id: req.body.id } });
+
+    if (req.body.password.length > 5) {
+      if (bcrypt.compareSync(req.body.oldPss, user.password)) {
+        let encryptedPss = bcrypt.hashSync(req.body.password);
+        await db.Users.update(
           {
-            profile_pic: req.file.filename,
-            update_date: new Date().getTime(),
+            password: encryptedPss,
+            userUpdate_date: new Date().getTime(),
           },
           {
             where: { id: req.body.id },
-          })
-          .then(() => {
-            req.flash("success", "Actualizaste tus datos");
-            return res.redirect(`/ramo/profile/${user.id}`);
-          });
+          }
+        );
+        req.flash("success", "Actualizaste tu contraseña");
+        return res.redirect("/ramo/profile/" + req.body.id);
       } else {
-        res.cookie("error", "noPss", { maxAge: 1000 * 60 });
-        return res.redirect("/ramo/login");
+        req.flash("danger", "Contraseña anterior incorrecta");
+        return res.redirect(req.headers.referer);
       }
-    });
+    } else {
+      req.flash("danger", "La contraseña debe tener minimo cinco caracteres");
+      return res.redirect(req.headers.referer);
+    }
   },
 
+  imagenEdited: async (req, res) => {
+    let user = await db.Users.findByPk(req.body.id);
+
+    if (bcrypt.compareSync(req.body.password, user.password)) {
+      await db.Users.update(
+        {
+          profile_pic: req.file.filename,
+          update_date: new Date().getTime(),
+        },
+        {
+          where: { id: req.body.id },
+        }
+      );
+      req.flash("success", "Actualizaste tus datos");
+      return res.redirect(`/ramo/profile/${user.id}`);
+    } else {
+      req.flash("danger", "La contraseña no es correcta");
+      return res.redirect(req.headers.referer);
+    }
+  },
 
   editedUser: async (req, res) => {
     let submitedEmail = req.body.email;
@@ -141,28 +92,23 @@ var securityController = {
       where: { email: submitedEmail },
     });
     if (!email) {
-      await db.Users.findOne({ where: { id: req.body.id } }).then((user) => {
-        if (bcrypt.compareSync(req.body.password, user.password)) {
-          db.Users.update(
-            {
-              email: req.body.email,
-              userUpdate_date: new Date().getTime(),
-            },
-            {
-              where: { id: req.body.id },
-            }
-          )
-            .then(() => {
-              req.flash("success", "Actualizaste tus datos");
-              return res.redirect("/ramo/profile/" + req.body.id);
-            })
-        } else {
-          req.flash("danger", "Contraseña incorrecta");
-          return res.redirect(req.headers.referer);
-        }
-      });
+      let user = await db.Users.findOne({ where: { id: req.body.id } });
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        await db.Users.update(
+          {
+            email: req.body.email,
+            userUpdate_date: new Date().getTime(),
+          },
+          { where: { id: req.body.id } }
+        );
+        req.flash("success", "Actualizaste tus datos");
+        return res.redirect("/ramo/profile/" + req.body.id);
+      } else {
+        req.flash("danger", "Contraseña incorrecta");
+        return res.redirect(req.headers.referer);
+      }
     } else {
-      res.cookie("error", "emailUsed", { maxAge: 1000 * 30 });
+      req.flash("danger", "Email ya utilizado");
       return res.redirect(req.headers.referer);
     }
   },

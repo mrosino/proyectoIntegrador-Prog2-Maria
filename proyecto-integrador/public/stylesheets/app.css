@@ -601,7 +601,7 @@ hr {
 }
 
 .buy-now-button {
-  background-color: var(--tuscan-red);
+  background-color: #b57d7d;
   font-size: 1.6em;
   color: #ffffff;
   padding: 15px;

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2021 a las 22:54:58
+-- Tiempo de generación: 18-06-2021 a las 01:12:17
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 8.0.3
 
@@ -105,7 +105,10 @@ INSERT INTO `follower` (`id`, `followed_by`, `follows`) VALUES
 (64, 24, 26),
 (65, 24, 36),
 (66, 24, 38),
-(67, 24, 33);
+(67, 24, 33),
+(70, 24, 35),
+(71, 24, 39),
+(72, 24, 40);
 
 -- --------------------------------------------------------
 
@@ -165,7 +168,8 @@ INSERT INTO `products` (`id`, `created_by`, `commented_by`, `image`, `product_na
 (203, 33, NULL, '1623621495542.jpeg-image', 'Estantería abierta ', '2021-03-24', 'Estanteria pared a pared ', '2021-06-14', 9900),
 (204, 32, NULL, '1623621526819.jpeg-image', 'Cucheta de madera ', '2021-04-30', 'Cucheta con escalera anti deslizante, ya viene con los colchones ', '2021-06-14', 13500),
 (205, 31, NULL, '1623621574294.png-image', 'Barra para tragos', '2021-04-26', 'Barra para exterior e interior con 2 sillas ', '2021-06-14', 21500),
-(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', '2021-06-14', 18700);
+(206, 31, NULL, '1623621590517.png-image', 'Biblioteca juvenil', '2021-04-10', 'Biblioteca juvenil, ideal para espacios pequeños ', '2021-06-14', 18700),
+(209, 24, NULL, '1623970728129.jpg-image  ', 'Gaturri  ', '2021-06-17', 'Gato tricolor con ojos claros. Macho.  ', '2021-06-17', 1345);
 
 -- --------------------------------------------------------
 
@@ -202,7 +206,7 @@ INSERT INTO `users` (`id`, `name`, `surname`, `email`, `password`, `profile_pic`
 (21, 'juan', 'buye', 'juantri@yahoo.com', '$2a$10$bwHHtuA786ELjUTYLgzycucDIfK9XL0hf2Qbeaip1C9KWsCWb69OG', NULL, 'CABA', 0, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (22, 'pablo', 'buye', 'pablogh@gmail.com', '$2a$10$wTxF6iwU6vZotzt.jWKxFODX3McJJfxjd/L5dhU24Za8WjpFbNNHS', NULL, 'CABA', 40937113, 'masculino', '2021-06-01', 1130180066, NULL, NULL),
 (23, 'Maria', 'Gomez omil', 'mvgomez@hotmail.com', '$2a$10$HmDF.87AwgrjFujfXJ39rOuArtZUmlVDAVSqDodH8f3ruMk0Uqncu', NULL, 'Tucuman', 23456789, 'femenino', '2021-05-31', 12345, '2021-06-05', '2021-06-05'),
-(24, 'adela', 'buye', 'adela.buye@gjnmail.com', '$2a$10$MxVKUcF2TcQhE8IvvcWQ4Owr83ILC7HUSF6gu95x1I3eiU2wF8IWm', '1623601972211.jpg-ppe', 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-07'),
+(24, 'adela', 'buye', 'adela.buye@gmail.com', '$2a$10$msCXGcXxnYTwW4oeq8UcGOJORPLJG6/nhopKuimH2aYQdtU6hLt6a', '1623601972211.jpg-ppe', 'CABA', 0, 'masculino', '2021-06-03', 1130180066, '2021-06-07', '2021-06-17'),
 (25, 'augusto', 'BUYE', 'abuye@gmail.com', '$2a$10$SMyyBV1O8zrvub6sBKemvegWrHuH4uVYElPwHRen1VHAzWI2Ijj/i', 'pp-1623094194351.jpg', 'CABA', 8252075, 'masculino', '1963-01-13', 1130180066, '2021-06-07', '2021-06-07'),
 (26, 'olivia', 'rozze', 'olirozze@gmail.com', '$2a$10$9RnKn1dYTAi0oNxmzZvkG./DCa/ezqHdAUR6RAZDE1acDMoKInl9y', '1623261319687.png-pp', 'CABA', 23434643, 'femenino', '2021-06-01', 345235245, '2021-06-09', '2021-06-09'),
 (31, 'marilu', 'londres', 'marilulondres@gmail.com', '$2a$10$dUbWBnB1DtQFYrApMgsKMulKRO99de0yeItYwCvd.A503FWkrmHxO', '1623330224249.jpeg-pp', 'CABA', 23434642, 'femenino', '2020-06-29', 345235246, '2021-06-10', '2021-06-10'),
@@ -265,13 +269,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT de la tabla `follower`
 --
 ALTER TABLE `follower`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=209;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=210;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
