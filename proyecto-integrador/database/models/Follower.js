@@ -29,6 +29,5 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: "follows",
     });
   };
-
   return Follower;
 };

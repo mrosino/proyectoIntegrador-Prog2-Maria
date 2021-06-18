@@ -70,8 +70,8 @@
 						<% for (let i = 0; i < followers.length; i++) { %> 
 							<ul>
 								<li >
-									<a href="/ramo/profile/<%= followers[i].followed_users.id %>" class="product-author">
-									<%= followers[i].followed_users.name %>
+									<a href="/ramo/profile/<%= followers[i].follows_users.id %>" >
+									<span class="saludo"><%= followers[i].follows_users.name.toLowerCase() %> </span>
 									</a>
 								</li>
 							</ul>
@@ -99,8 +99,8 @@
 				<% } %>
 
 
-				<% if (locals.logged==true && visitor.id !=user.id && followed !=null) {
-													%>
+				<% if (locals.logged==true && visitor.id !=user.id && followed !=null) { %>
+													
 
 				<form action="/ramo/unfollow" method="post">
 					<input type="hidden" name="by" value=" <%= locals.user.id %> ">

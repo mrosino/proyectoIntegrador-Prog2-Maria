@@ -79,10 +79,10 @@ let userController = {
       where: { creator_id: visitedProfile },
     });
     let followers = await db.Follower.findAll({
-      where: { follows: visitor.id },
+      where: { followed_by: visitor.id },
       include: [
         {
-          association: "followed_users",
+          association: "follows_users",
         },
       ],
     });

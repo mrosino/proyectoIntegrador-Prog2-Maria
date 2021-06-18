@@ -2,6 +2,7 @@ const db = require("../database/models");
 const Op = db.Sequelize.Op;
 let ramoController = {
   index: async (req, res) => {
+    let user_followers;
     let data = await db.Products.findAll({
       include: [
         {
@@ -14,23 +15,33 @@ let ramoController = {
     let info = await db.Products.findAll({
       include: [
         {
-          association: "products_users",
-        },
-        {
           association: "products_comments",
         },
+        {
+          association: "products_users",
+        },
       ],
-      order: [["products_comments", "creation_date", "DESC"]], //ver por que funciona como mas y no recientemente 
-      limit: 8,
+      order: [["products_comments", "creation_date", "DESC"]],
     });
-
-
-  return res.render("index", {
-    products_cmt: info,
-    products: data,
-    title: "Pagina de inicio",
-  });
-
+    if (req.session.user) {
+      user_followers = await db.Follower.findAll({
+        where: { followed_by: req.session.user.id },
+        include: [
+          {
+            association: "follows_users",
+            include: [{ association: "users_products", limit: 1,}],
+          },
+        ],
+          limit: 4,
+      });
+      
+    }
+    return res.render("index", {
+      user_followers,
+      products_cmt: info,
+      products: data,
+      title: "Pagina de inicio",
+    });
   },
   searchResult: async (req, res) => {
     let search = req.query.search;
