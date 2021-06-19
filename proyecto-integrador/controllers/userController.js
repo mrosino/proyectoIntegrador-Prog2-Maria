@@ -1,7 +1,5 @@
 const db = require("../database/models");
-
 const bcrypt = require("bcryptjs");
-
 let userController = {
   register: (req, res) => {
     res.render("register", {
@@ -61,7 +59,6 @@ let userController = {
       error: req.cookies.error,
     });
   },
-
   profile: async (req, res) => {
     let id = req.session.user.id;
     let visitedProfile = req.params.id;
@@ -89,7 +86,6 @@ let userController = {
     let followed = await db.Follower.findOne({
       where: { follows: visitor.id, followed_by: id },
     });
-    
     return res.render("profile", {
       followers: followers,
       followed: followed,
