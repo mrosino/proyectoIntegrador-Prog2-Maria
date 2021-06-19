@@ -83,10 +83,15 @@
 			<% } %>
 		</div>
 	</div>
-
-
-
+	<% if (locals.logged==true) { %> 
 	<div class="container products-wrapper">
+		
+		<% if (user_followers < 1) {%> 
+			<div class="col-12">
+				<h2 class="products-title typography-title">No hay publicaciones disponibles de tus seguidores.</h2>
+			</div>
+		<% } %> 
+		
 		<div class="col-12">
 			<h2 class="products-title typography-title">Publicaciones de personas que seguis</h2>
 		</div>
@@ -122,7 +127,7 @@
 					
 			<%	}%>
 			<%	}  %>
-			
+			<% } %> 
 			
 		</div>
 	</div>
