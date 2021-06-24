@@ -54,6 +54,7 @@
 						<li>
 							<a style="text-decoration:underline;" href="#openModal"><%= followers.length%> Seguidores</a>
 							
+							
 						</li>
 						<% if (locals.logged==true && visitor.id==user.id) { %>
 						<li><a href="/ramo/productAdd" class="btn mt-3">Añadir producto</a></li>
@@ -70,8 +71,10 @@
 						<% for (let i = 0; i < followers.length; i++) { %> 
 							<ul>
 								<li >
-									<a href="/ramo/profile/<%= followers[i].follows_users.id %>" >
-									<span class="saludo"><%= followers[i].follows_users.name.toLowerCase() %> </span>
+									<a href="/ramo/profile/<%= followers[i].followed_users.id %>" >
+									<span class="saludo"><%= followers[i].followed_users.name.toLowerCase() %> 
+</span>
+
 									</a>
 								</li>
 							</ul>
