@@ -85,6 +85,18 @@ var securityController = {
       return res.redirect(req.headers.referer);
     }
   },
+  imagenValidate: async (req, res) => {
+    let user = await db.Users.findByPk(req.body.id);
+
+    if (bcrypt.compareSync(req.body.password, user.password)) {
+      
+      req.flash("success", "Actualizaste tus datos");
+      return res.redirect(`/ramo/profile/${user.id}`);
+    } else {
+      req.flash("danger", "La contraseña no es correcta");
+      return res.redirect(req.headers.referer);
+    }
+  },
 
   editedUser: async (req, res) => {
     let submitedEmail = req.body.email;
