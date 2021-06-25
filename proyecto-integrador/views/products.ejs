@@ -28,7 +28,7 @@
                 <input type="hidden" name="idP" value="<%= products.id %> ">
                 <input type="hidden" name="id" value="<%= locals.user.id %> ">
                 <div class="no-margin">
-                    <button type="submit">Eliminar</button>
+                    <button type="submit" onclick="return confirm('Estas por eliminar tu producto, esta acción no es reversible. ¿Estas seguro?') ? true : event.preventDefault()">     Eliminar</button>
                 </div>
             </form>
             <% } %>

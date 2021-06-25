@@ -55,6 +55,7 @@ let ramoController = {
         [Op.or]: [
           { description: { [Op.like]: "%" + search + "%" } },
           { product_name: { [Op.like]: "%" + search + "%" } },
+          
         ],
       },
     });

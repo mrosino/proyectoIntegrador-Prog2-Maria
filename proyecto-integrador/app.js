@@ -71,7 +71,7 @@ app.use(function (req, res, next) {
     res.locals.logged = false;
     if (privateRoutes.find((element) => req.path.includes(element))) {
       return res.redirect("/ramo/login");
-    } // ver por que pitos no funciona
+    } 
   }
   next();
 });

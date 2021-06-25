@@ -1,13 +1,10 @@
 var express = require("express");
 var router = express.Router();
-let db = require("../database/models");
 const multer = require("multer");
 const path = require("path");
-
 let productController = require("../controllers/productController");
 
 router.get("/products/:id?", productController.products);
-
 router.post("/products/commentAdd", productController.commentAdd);
 router.post("/products/commentDelete", productController.commentDelete);
 router.post("/products/productDelete", productController.productDelete);
@@ -20,23 +17,13 @@ const storage = multer.diskStorage({
     cb(null, directoryRoute);
   },
   filename: (req, file, cb) => {
-    let fileName =
-      Date.now() + path.extname(file.originalname) + "-" + file.fieldname;
+    let fileName = Date.now() + path.extname(file.originalname) + "-" + file.fieldname;
     cb(null, fileName);
   },
 });
-const upload = multer({
-  storage: storage,
-});
-router.post(
-  "/productAdd",
-  upload.single("image"),
-  productController.productAdded
-);
-router.post(
-  "/productEdit",
-  upload.single("newImage"),
-  productController.productEdited
-);
+const upload = multer({ storage: storage,});
+
+router.post("/productAdd",upload.single("image"),productController.productAdded);
+router.post("/productEdit", upload.single("newImage"), productController.productEdited);
 
 module.exports = router;

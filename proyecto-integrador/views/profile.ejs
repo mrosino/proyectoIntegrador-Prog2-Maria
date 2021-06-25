@@ -9,10 +9,7 @@
 
 <body>
 
-
-
 	<section class="info-usuario container products-wrapper">
-
 		<div class="row">
 
 
@@ -33,15 +30,10 @@
 
 						</li>
 
-
 						<input type="hidden" name="id" value="<%= locals.user.id %> ">
 					</ul>
 
-
-
-
 				</div>
-
 
 				<div>
 					<ul>
@@ -64,7 +56,7 @@
 
 				</div>
 
-			 <div id="openModal" class="modalDialog">	<!-- ver de eliminar el id -->
+			 <div id="openModal" class="modalDialog">	
 					<div>
 						<a href="#close" title="Close" class="close">X</a>
 						<h2>Seguidores de <a href="/ramo/profile/<%= visitor.id %>" class="product-author"><%= visitor.name %></a></h2>
@@ -73,7 +65,7 @@
 								<li >
 									<a href="/ramo/profile/<%= followers[i].followed_users.id %>" >
 									<span class="saludo"><%= followers[i].followed_users.name.toLowerCase() %> 
-</span>
+								</span>
 
 									</a>
 								</li>

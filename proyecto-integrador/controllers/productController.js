@@ -26,11 +26,12 @@ let productController = {
 
   productAdded: async (req, res) => {
     let info = req.body;
-    await db.Products.create({
+    await db.Products.create({ 
       created_by: req.session.user.id,
       image: req.file.filename,
       product_name: info.product_name,
       creation_date: new Date().getTime(),
+      update_date: new Date().getTime(),
       description: info.description,
       price: info.price,
     });
@@ -46,11 +47,9 @@ let productController = {
    
     });
     if (product.created_by != req.session.user.id) {
-      res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
       req.session.destroy();
       res.clearCookie("loggedIn");
       res.clearCookie("remembered");
-      return res.redirect("/ramo/login");
     } else {
       return res.render("productEdit", {
         products: product,
@@ -60,14 +59,11 @@ let productController = {
   },
   productEdited: async (req, res) => {
     await db.Products.findOne({
-      where: {
-        created_by: req.body.id,
-      },
+      where: {created_by: req.body.id},
     });
     let user = await db.Users.findOne({
       where: { id: req.body.id },
     });
-
     let image;
     if (bcrypt.compareSync(req.body.password, user.password)) {
       if (req.file) {
@@ -87,7 +83,6 @@ let productController = {
           where: { id: req.body.idP },
         }
       );
-
       return res.redirect(`/ramo/products/${req.body.idP}`);
     } else {
       req.flash("danger", "La contraseña no es correcta");
@@ -96,6 +91,7 @@ let productController = {
   },
 
   productDelete: async (req, res) => {
+    let id = req.body.id;
     let ok = await db.Products.findOne({
       where: { created_by: req.body.id },
     });
@@ -113,7 +109,7 @@ let productController = {
         where: { id: req.body.idP },
       });
       req.flash("danger", "Producto eliminado");
-      return res.redirect("/");
+      return res.redirect(`/ramo/profile/${id}`);
     }
   },
 
