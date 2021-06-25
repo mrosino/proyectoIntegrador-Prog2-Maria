@@ -5,7 +5,7 @@ var securityController = {
   login: (req, res) => {
     return res.render("security/login", {
       title: "Ingresar ramo",
-      error: req.cookies.error, //ver si ya podemos borrar, creo que cambie todas las cookies x flash. Validar.
+      error: req.cookies.error, 
       failed: req.query.failed,
     });
   },

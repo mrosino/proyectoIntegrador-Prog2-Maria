@@ -22,6 +22,7 @@ let ramoController = {
         },
       ],
       order: [["products_comments", "creation_date", "DESC"]],
+      limit: 8,
     });
     if (req.session.user) {
       user_followers = await db.Follower.findAll({
