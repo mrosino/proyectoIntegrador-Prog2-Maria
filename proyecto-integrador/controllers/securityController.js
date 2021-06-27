@@ -30,14 +30,12 @@ var securityController = {
       return res.redirect(req.headers.referer);
     }
   },
-
   logout: (req, res) => {
     req.session.destroy();
     res.clearCookie("loggedIn");
     res.clearCookie("remembered");
     return res.redirect("/ramo/login");
   },
-
   editedPass: async (req, res) => {
     let user = await db.Users.findOne({ where: { id: req.session.user.id } });
 
@@ -111,5 +109,4 @@ var securityController = {
     }
   },
 };
-
 module.exports = securityController;

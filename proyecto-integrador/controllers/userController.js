@@ -7,7 +7,7 @@ let userController = {
       error: req.cookies.error,
     });
   },
-  registered: async (req, res) => {ƒ
+  registered: async (req, res) => {
     let submitedEmail = req.body.email;
     let user = await db.Users.findOne({
       where: { email: submitedEmail },

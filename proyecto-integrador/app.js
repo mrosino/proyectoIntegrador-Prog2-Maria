@@ -51,7 +51,6 @@ app.use(async (req, res, next) => {
   };
   next();
 });
-
 app.use(async (req, res, next) => {
   if (req.cookies.remembered != undefined && req.session.user == undefined) {
     let user = await db.Users.findByPk(req.cookies.remembered);
@@ -60,12 +59,10 @@ app.use(async (req, res, next) => {
   }
   next();
 });
-
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {
     res.cookie("loggedIn", "logged", { maxAge: 5000 * 60 });
     res.locals.user = req.session.user;
-    // logged: req.session.logged,
     res.locals.logged = true;
   } else {
     res.locals.logged = false;
@@ -76,15 +73,12 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(function (err, req, res, next) {
-
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
-
   res.status(err.status || 500);
   res.render("error");
   next();
 });
-
 app.listen(3000);
 module.exports = app;
 app.use("/", ramoRouter);

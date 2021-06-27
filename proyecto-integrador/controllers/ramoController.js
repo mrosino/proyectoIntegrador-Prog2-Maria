@@ -35,7 +35,6 @@ let ramoController = {
         ],
         limit: 4,
       });
-
     }
     return res.render("index", {
       user_followers,

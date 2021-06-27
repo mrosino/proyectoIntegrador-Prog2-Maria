@@ -3,8 +3,7 @@
 <% } else { %>
 
 <%- include('./partials/header') %>
-<% }	%>
-
+<% } %>
 <body>
 	<div class="banner">
 		<img src="/images/diseno banner 2.jpg" alt="">
@@ -20,8 +19,7 @@
 					<% if (locals.logged==true ) { %>
 					<div class="publishedBy">
 						<a href="/ramo/profile/<%= products[i].created_by %>">
-							<h4>Publicado por <span class="product-author">
-									<%= products[i].products_users.name %></span>
+							<h4>Publicado por <span class="product-author">	<%= products[i].products_users.name %></span>
 							</h4>
 						</a>
 					</div>
@@ -120,8 +118,6 @@
 			<% } %>
 		</div>
 	</div>
-
-	<%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
 </body>
-
 </html>

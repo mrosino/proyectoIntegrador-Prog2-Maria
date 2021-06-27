@@ -1,6 +1,5 @@
 const db = require("../database/models");
 const bcrypt = require("bcryptjs");
-
 let productController = {
   productAdd: (req, res) => {
     return res.render("productAdd", {
@@ -23,7 +22,6 @@ let productController = {
     req.flash("danger", "Comentario eliminado");
     return res.redirect(req.headers.referer);
   },
-
   productAdded: async (req, res) => {
     let info = req.body;
     await db.Products.create({
@@ -35,33 +33,31 @@ let productController = {
       description: info.description,
       price: info.price,
     });
-
     req.flash("success", "Producto añadido!");
     return res.redirect(`/ramo/profile/${req.session.user.id}`);
   },
-
   productEdit: async (req, res) => {
     let idP = req.params.id;
     let product = await db.Products.findOne({
       where: { id: idP },
-
     });
-    if (product.created_by != req.session.user.id) {
-      req.session.destroy();
-      res.clearCookie("loggedIn");
-      res.clearCookie("remembered");
+    if (product) {
+      if (product.created_by != req.session.user.id) {
+        req.session.destroy();
+        res.clearCookie("loggedIn");
+        res.clearCookie("remembered");
+        return res.redirect(`/ramo/login`);
+      } else {
+        return res.render("productEdit", {
+          products: product,
+          title: "Pagina de agregar producto ",
+        });
+      }
     } else {
-      return res.render("productEdit", {
-        products: product,
-        title: "Pagina de agregar producto ",
-      });
+      return res.redirect(`/`);
     }
   },
   productEdited: async (req, res) => {
-
-    await db.Products.findOne({
-      where: { created_by: req.session.user.id },
-    });
     let user = await db.Users.findOne({
       where: { id: req.session.user.id },
     });
@@ -90,7 +86,6 @@ let productController = {
       return res.redirect(req.headers.referer);
     }
   },
-
   productDelete: async (req, res) => {
     let id = req.session.user.id;
     let ok = await db.Products.findOne({
@@ -113,7 +108,6 @@ let productController = {
       return res.redirect(`/ramo/profile/${id}`);
     }
   },
-
   products: async (req, res) => {
     let id = req.params.id;
     let data = await db.Products.findOne({
@@ -142,5 +136,4 @@ let productController = {
     });
   },
 };
-
 module.exports = productController;
