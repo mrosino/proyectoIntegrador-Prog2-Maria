@@ -13,19 +13,21 @@
                 <%= products.product_name %> #
                 <%= products.id %>
             </h2>
-           
+
             <p class="product-detail-description">
                 <% if (locals.logged==true && locals.user.id == products.created_by) { %>
             <div class="no-margin">
-                <a href="/ramo/productEdit/<%= products.id %> "> <button type="submit"> Editar</button> </a>            </div>
+                <a href="/ramo/productEdit/<%= products.id %> "> <button type="submit"> Editar</button> </a> </div>
             <% } %>
             </p>
             <% if (locals.logged==true && locals.user.id==products.created_by) { %>
             <form action="/ramo/products/productDelete" method="post">
                 <input type="hidden" name="idP" value="<%= products.id %> ">
-               
+
                 <div class="no-margin">
-                    <button type="submit" onclick="return confirm('Estas por eliminar tu producto, esta acción no es reversible. ¿Estas seguro?') ? true : event.preventDefault()">     Eliminar</button>
+                    <button type="submit"
+                        onclick="return confirm('Estas por eliminar tu producto, esta acción no es reversible. ¿Estas seguro?') ? true : event.preventDefault()">
+                        Eliminar</button>
                 </div>
             </form>
             <% } %>
@@ -72,7 +74,7 @@
                                 <form action="/ramo/products/commentDelete" method="post">
 
                                     <input type="hidden" name="idC" value="<%= comments[i].id %> ">
-                                   
+
                                     <button type="submit">
                                         <ion-icon name="trash-outline"></ion-icon>
                                     </button>

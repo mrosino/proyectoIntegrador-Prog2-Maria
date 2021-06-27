@@ -30,12 +30,12 @@ let ramoController = {
         include: [
           {
             association: "follows_users",
-            include: [{ association: "users_products", limit: 1,}],
+            include: [{ association: "users_products", limit: 1, }],
           },
         ],
-          limit: 4,
+        limit: 4,
       });
-      
+
     }
     return res.render("index", {
       user_followers,
@@ -56,7 +56,7 @@ let ramoController = {
         [Op.or]: [
           { description: { [Op.like]: "%" + search + "%" } },
           { product_name: { [Op.like]: "%" + search + "%" } },
-          
+
         ],
       },
     });

@@ -1,6 +1,7 @@
 <%- include('./partials/headerLogueado') %>
 
-<body><div class="form">
+<body>
+	<div class="form">
 		<div class="form-toggle"></div>
 		<div class="form-panel one">
 			<div class="form-header">
@@ -13,12 +14,13 @@
 						<label for="productName">Nombre del producto </label>
 						<input type="text" maxlength="30" name="product_name"
 							placeholder="Inclui marca y detalles generales" required>
-					</div>				<div class="form-group">
-						<label  for="image" class="postLabel">Carga tu imagen</label>
+					</div>
+					<div class="form-group">
+						<label for="image" class="postLabel">Carga tu imagen</label>
 						<input required type="file" name="image" class="postInput">
 					</div>
 
-				<div class="form-group">
+					<div class="form-group">
 						<label for="description" class="postLabel"> Ingrese descripcion</label>
 						<input type="text" name="description" class="postInput"
 							placeholder="Ayuda a tus clientes a encontrar el producto que buscan" required>
@@ -27,17 +29,19 @@
 						<label for="description" class="postLabel">Precio del producto</label>
 						<input type="number" name="price" class="postInput"
 							placeholder="Ayuda a tus clientes a encontrar la mejor oferta" required>
-					</div>				<br>
+					</div> <br>
 					<br>
 					<div class="form-group">
-											<button type="submit">Subir producto</button>
+						<button type="submit">Subir producto</button>
 					</div>
-				</form>		</div>
-		</div></div>
+				</form>
+			</div>
+		</div>
+	</div>
 	</div>
 	</div>
 	<br><br><br><br><br>
-<%- include('./partials/footer') %>
+	<%- include('./partials/footer') %>
 </body>
 
 </html>

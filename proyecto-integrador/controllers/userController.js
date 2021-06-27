@@ -7,7 +7,7 @@ let userController = {
       error: req.cookies.error,
     });
   },
-  registered: async (req, res) => {
+  registered: async (req, res) => {ƒ
     let submitedEmail = req.body.email;
     let user = await db.Users.findOne({
       where: { email: submitedEmail },
@@ -30,8 +30,8 @@ let userController = {
           registration_date: new Date().getTime(),
           userUpdate_date: new Date().getTime(),
         })
-          req.flash("success", "Te registraste con éxito");
-          return res.redirect("/ramo/login");
+        req.flash("success", "Te registraste con éxito");
+        return res.redirect("/ramo/login");
       } else {
         req.flash("danger", "La contraseña debe tener minimo cinco caracteres");
         return res.redirect(req.headers.referer);

@@ -26,7 +26,7 @@ let productController = {
 
   productAdded: async (req, res) => {
     let info = req.body;
-    await db.Products.create({ 
+    await db.Products.create({
       created_by: req.session.user.id,
       image: req.file.filename,
       product_name: info.product_name,
@@ -44,7 +44,7 @@ let productController = {
     let idP = req.params.id;
     let product = await db.Products.findOne({
       where: { id: idP },
-   
+
     });
     if (product.created_by != req.session.user.id) {
       req.session.destroy();
@@ -58,9 +58,9 @@ let productController = {
     }
   },
   productEdited: async (req, res) => {
-    
+
     await db.Products.findOne({
-      where: {created_by: req.session.user.id},
+      where: { created_by: req.session.user.id },
     });
     let user = await db.Users.findOne({
       where: { id: req.session.user.id },

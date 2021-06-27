@@ -5,7 +5,7 @@ var securityController = {
   login: (req, res) => {
     return res.render("security/login", {
       title: "Ingresar ramo",
-      error: req.cookies.error, 
+      error: req.cookies.error,
       failed: req.query.failed,
     });
   },
@@ -84,7 +84,7 @@ var securityController = {
       req.flash("danger", "La contraseña no es correcta");
       return res.redirect(req.headers.referer);
     }
-  },  editedUser: async (req, res) => {
+  }, editedUser: async (req, res) => {
     let submitedEmail = req.body.email;
     let email = await db.Users.findOne({
       where: { email: submitedEmail },
@@ -100,7 +100,7 @@ var securityController = {
           { where: { id: req.session.user.id } }
         );
         req.flash("success", "Actualizaste tus datos");
-        return res.redirect(`/ramo/profile/${req.session.user.id}` );
+        return res.redirect(`/ramo/profile/${req.session.user.id}`);
       } else {
         req.flash("danger", "Contraseña incorrecta");
         return res.redirect(req.headers.referer);

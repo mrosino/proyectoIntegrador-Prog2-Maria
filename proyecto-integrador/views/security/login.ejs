@@ -2,9 +2,12 @@
 <%- include('../partials/headerLogueado') %>
 <% } else { %>
 
-<%- include('../partials/header') %> 
+<%- include('../partials/header') %>
 <% }%>
-<body class="bodyLogin"><div class="form">	<div class="form-panel one">
+
+<body class="bodyLogin">
+	<div class="form">
+		<div class="form-panel one">
 			<div class="form-header">
 				<h1>Ingresar</h1>
 				<h2>Ingresá tu e-mail y contraseña para acceder al sitio</h2>
@@ -13,7 +16,7 @@
 				<% if(error == "failedRegistered"){%>
 				<h2 style="text-align:center; color:red;">El email ingresado ya está registrado. Inicie sesion</h2>
 				<%} %>
-							<%if(error == "changeSession"){%>
+				<%if(error == "changeSession"){%>
 				<h2 style="text-align:center; color:red;">Solo puedes modificar los productos que creaste</h2>
 				<%}%>			<form method="POST">
 					<div class="form-group">
@@ -30,12 +33,13 @@
 							<input type="checkbox" name="remember" />Recordar
 						</label>				</div>
 					<%- include('../partials/flashKeys') %>
-					<div class="form-group">
-						<button type="submit">Iniciar sesión</button>
-					</div>
+				<div class="form-group">
+					<button type="submit">Iniciar sesión</button>
+				</div>
 				</form>
 			</div>
-		</div></div>
+		</div>
+	</div>
 	<br><br><br><br><br><br><br><br><br>
 	<%- include('../partials/footer') %>
 </body>
