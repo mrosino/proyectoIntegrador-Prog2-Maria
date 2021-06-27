@@ -1,26 +1,19 @@
 <% if (locals.logged == true) { %>
 <%- include('./partials/headerLogueado') %>
 <% } else { %>
-
 <%- include('./partials/header') %>
 <% }	%>
-
-
 <body>
-
-
     <div class="form">
         <div class="form-toggle"></div>
         <div class="form-panel one">
             <div class="form-header">
                 <h1>Editar: <%= products.product_name  %> </h1>
-
                 <h2>Ingresá los datos correspondientes para editar tu producto.</h2>
             </div>
             <div class="form-content">
                 <form method="POST" action="/ramo/productEdit" enctype="multipart/form-data">
                     <input type="hidden" name="idP" value="<%= products.id %> ">
-                    <input type="hidden" name="id" value="<%= locals.user.id %> ">
                     <div class="form-group">
                         <label for="productName">
                             Renombrá tu producto
@@ -43,15 +36,11 @@
                         <input type="text" name="price" placeholder="precio del producto"
                             value="<%= products.price %> " />
                     </div>
-
                     <div class="form-group">
-
                         <label for="password">
                             Por seguridad escriba su contraseña
                         </label>
-
                         <input type="password" name="password" placeholder="Nueva contraseña">
-
                     </div>
                     <div class="form-group">
                         <%- include('./partials/flashKeys') %>
@@ -61,14 +50,10 @@
 
             </div>
         </div>
-
     </div>
     </div>
     </div>
     <br><br><br><br><br>
-
-
     <%- include('./partials/footer') %>
 </body>
-
 </html>

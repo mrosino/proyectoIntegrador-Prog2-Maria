@@ -2,10 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const path = require('path');
-let userController = require('../controllers/userController');
-
-
-router.get('/profile/:id', userController.profile);
+let userController = require('../controllers/userController');router.get('/profile/:id', userController.profile);
 router.get('/emailEdit', userController.emailEdit);
 router.get('/pssEdit', userController.pssEdit);
 router.get('/register', userController.register);
@@ -26,7 +23,4 @@ const upload = multer({
 });
 
 router.post('/register', upload.single('pp'), userController.registered);
-
-
-
 module.exports = router;

@@ -4,16 +4,9 @@
 
 <%- include('./partials/header') %>
 <% }	%>
-
-
-
 <body>
 
-
-
-	<div class="form">
-
-		<div class="form-panel one">
+<div class="form">	<div class="form-panel one">
 			<div class="form-header">
 				<h1 style="text-align: center;">Cambie su información</h1>
 				<h2>Modifique los datos que desee cambiar a continuación</h2>
@@ -29,45 +22,26 @@
 						<label for="email">
 							Si desea modificar su email escribalo aquí
 						</label>
-						<input required type="email" name="email" placeholder="Nuevo correo electronico">
-
-					</div>
+						<input required type="email" name="email" placeholder="Nuevo correo electronico">				</div>
 					<div class="form-group">
 						<label for="password">
 							Por favor escriba su contraseña 
 						</label>
 						<input required type="password" name="password" placeholder="Nueva contraseña">
-						
-					</div>
-					<input type="hidden" name="id" value="<%= locals.user.id %> ">
-					<%- include('./partials/flashKeys') %>
+										</div>
+									<%- include('./partials/flashKeys') %>
 					<div class="form-group boton">
 						<button type="submit">Cambiar email</button>
-						
-					</div>
-
-				</form>
-
-			</div>
+										</div>			</form>		</div>
 		</div>
 	</div>
-
-
+<br>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-
-
-
-
-
-
-
-	<%- include('./partials/footer') %>
+	<br><%- include('./partials/footer') %>
 </body>
 
 </html>

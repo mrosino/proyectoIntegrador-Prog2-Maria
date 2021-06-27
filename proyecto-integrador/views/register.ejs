@@ -4,24 +4,12 @@
 
 <%- include('./partials/header') %>
 <% } %>
-
-
-
-<body class="bodyRegister">
-
-
-
-
-	<div class="form">
-
-		<div class="form-panel one">
+<body class="bodyRegister"><div class="form">	<div class="form-panel one">
 			<div class="form-header">
 				<h1>Registrarse</h1>
 				<h2>Ingresá tus datos.</h2>
 			</div>
-			<div class="form-content">
-
-				<form method="POST" action="/ramo/register" enctype="multipart/form-data">
+			<div class="form-content">			<form method="POST" action="/ramo/register" enctype="multipart/form-data">
 					<div class="form-group">
 						<label for="name"> Ingrese su Nombre </label>
 						<input required type="text" name="name" placeholder="Ingrese su nombre">
@@ -37,9 +25,7 @@
 							Ingrese su email
 						</label>
 						<input required type="email" name="email" placeholder="Ingrese su correo electronico">
-					</div>
-
-					<div class="form-group">
+					</div>				<div class="form-group">
 						<%if(error=="length" ){%>
 						<h2 style="text-align:center; color:red;">La contraseña debe tener un
 							minimo de 4 caracteres.</h2>
@@ -60,15 +46,11 @@
 										<div class="form-group">
 											<label for="image" class="postLabel">Carga tu imagen de perfil</label>
 											<input required type="file" name="pp" class="pp">
-										</div>
-
-										<div class="form-group">
+										</div>									<div class="form-group">
 											<label for="country">
 												Argentina es el unico pais disponible
 											</label>
-										</div>
-
-										<div class="form-group">
+										</div>									<div class="form-group">
 											<label for="province">
 												Seleccione su provincia
 											</label>
@@ -97,18 +79,14 @@
 												<option value="Sgo. del Estero">Sgo. del Estero</option>
 												<option value="Tierra del Fuego">Tierra del Fuego</option>
 												<option value="Tucuman">Tucuman</option>
-											</select>
-
-										</div>
+											</select>									</div>
 										<div class="form-group">
 											<label for="document">
 												Ingrese su documento
 											</label>
 											<input required type="number" name="document" placeholder="Ingrese su documento">
 										</div>
-										<div class="form-group">
-
-											<label for="gender">
+										<div class="form-group">										<label for="gender">
 												Ingrese el genero de identificación
 											</label>
 											<select id="gender" name="gender" class="form-control">
@@ -116,40 +94,26 @@
 												<option value="femenino">Femenino</option>
 												<option value="nsnc">Prefiero no elegir</option>
 											</select>
-
-
-										</div>
-										<div class="form-group">
-
-											<label for="birthday">
+									</div>
+										<div class="form-group">										<label for="birthday">
 												Ingrese su fecha de nacimiento
 											</label>
 											<input required type="date" name="birthday"
-												placeholder="Ingrese su fecha de nacimiento">
-
-										</div>
-										<div class="form-group">
-
-											<label for="phone">
+												placeholder="Ingrese su fecha de nacimiento">									</div>
+										<div class="form-group">										<label for="phone">
 												Ingrese su telefono
 											</label>
 											<input required type="number" name="phone" placeholder="Ingrese solo numeros">
 										</div>
-
-
-										<div class="form-group">
+									<div class="form-group">
 											<button type="submit">Registrarse</button>
 										</div>
 									</form>
 								</div>
-							</div>
-
+							</div>					</div>
 						</div>
 						</div>
-						</div>
-
-
-						</div>
+					</div>
 						<br><br><br><br><br><br>
 						<%- include('./partials/footer') %>
 </body>

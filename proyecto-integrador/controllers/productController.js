@@ -37,7 +37,7 @@ let productController = {
     });
 
     req.flash("success", "Producto añadido!");
-    return res.redirect(`/ramo/profile/${info.id}`);
+    return res.redirect(`/ramo/profile/${req.session.user.id}`);
   },
 
   productEdit: async (req, res) => {
@@ -58,11 +58,12 @@ let productController = {
     }
   },
   productEdited: async (req, res) => {
+    
     await db.Products.findOne({
-      where: {created_by: req.body.id},
+      where: {created_by: req.session.user.id},
     });
     let user = await db.Users.findOne({
-      where: { id: req.body.id },
+      where: { id: req.session.user.id },
     });
     let image;
     if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -91,9 +92,9 @@ let productController = {
   },
 
   productDelete: async (req, res) => {
-    let id = req.body.id;
+    let id = req.session.user.id;
     let ok = await db.Products.findOne({
-      where: { created_by: req.body.id },
+      where: { created_by: req.session.user.id },
     });
     if (!ok) {
       res.cookie("error", "changeSession", { maxAge: 1000 * 60 });

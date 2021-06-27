@@ -39,7 +39,7 @@ var securityController = {
   },
 
   editedPass: async (req, res) => {
-    let user = await db.Users.findOne({ where: { id: req.body.id } });
+    let user = await db.Users.findOne({ where: { id: req.session.user.id } });
 
     if (req.body.password.length > 5) {
       if (bcrypt.compareSync(req.body.oldPss, user.password)) {
@@ -50,11 +50,11 @@ var securityController = {
             userUpdate_date: new Date().getTime(),
           },
           {
-            where: { id: req.body.id },
+            where: { id: req.session.user.id },
           }
         );
         req.flash("success", "Actualizaste tu contraseña");
-        return res.redirect("/ramo/profile/" + req.body.id);
+        return res.redirect("/ramo/profile/" + req.session.user.id);
       } else {
         req.flash("danger", "Contraseña anterior incorrecta");
         return res.redirect(req.headers.referer);
@@ -66,7 +66,7 @@ var securityController = {
   },
 
   imagenEdited: async (req, res) => {
-    let user = await db.Users.findByPk(req.body.id);
+    let user = await db.Users.findByPk(req.session.user.id);
 
     if (bcrypt.compareSync(req.body.password, user.password)) {
       await db.Users.update(
@@ -75,7 +75,7 @@ var securityController = {
           update_date: new Date().getTime(),
         },
         {
-          where: { id: req.body.id },
+          where: { id: req.session.user.id },
         }
       );
       req.flash("success", "Actualizaste tus datos");
@@ -84,26 +84,23 @@ var securityController = {
       req.flash("danger", "La contraseña no es correcta");
       return res.redirect(req.headers.referer);
     }
-  },
-
-
-  editedUser: async (req, res) => {
+  },  editedUser: async (req, res) => {
     let submitedEmail = req.body.email;
     let email = await db.Users.findOne({
       where: { email: submitedEmail },
     });
     if (!email) {
-      let user = await db.Users.findOne({ where: { id: req.body.id } });
+      let user = await db.Users.findOne({ where: { id: req.session.user.id } });
       if (bcrypt.compareSync(req.body.password, user.password)) {
         await db.Users.update(
           {
             email: req.body.email,
             userUpdate_date: new Date().getTime(),
           },
-          { where: { id: req.body.id } }
+          { where: { id: req.session.user.id } }
         );
         req.flash("success", "Actualizaste tus datos");
-        return res.redirect("/ramo/profile/" + req.body.id);
+        return res.redirect(`/ramo/profile/${req.session.user.id}` );
       } else {
         req.flash("danger", "Contraseña incorrecta");
         return res.redirect(req.headers.referer);

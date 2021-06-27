@@ -1,8 +1,8 @@
 <% for (const key in locals.flash) { %>
 <% for (const content of flash[key]) { %>
-<div class="alert alert-<%= key %>" role="alert">
+<div class="alert-<%= key %>" role="alert">
 
-  <h2>  <%= content %> </h2>
+  <h3>  <%= content %> </h3>
 </div>
 
 <%  } %>

@@ -469,10 +469,7 @@ hr {
 .modalDialog:target {
 	opacity:1;
 	pointer-events: auto;
-}
-
-
-.modalDialog > div {
+}.modalDialog > div {
 	width: 450px;
 	position: relative;
 	margin: 10% auto;
@@ -503,9 +500,6 @@ hr {
 }
 
 .close:hover { background: #8e5a5a; }
-
-
-
 /*====== Product Detail ======*/
 
 .product-detail {
@@ -622,10 +616,7 @@ hr {
   justify-content: center;
   padding: 15px 30px;
   margin-top: 15px;
-}
-
-
-.eddel {
+}.eddel {
   width: 90%;
   justify-content: space-between;
 }
