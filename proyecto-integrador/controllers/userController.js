@@ -8,23 +8,22 @@ let userController = {
     });
   },
   registered: async (req, res) => {
-    let submitedEmail = req.body.email;
     let user = await db.Users.findOne({
-      where: { email: submitedEmail },
+      where: { email: req.body.email },
     });
     if (!user && req.body.password == req.body.passwordConfirm) {
       if (req.body.password.length > 5) {
         let encryptedPss = bcrypt.hashSync(req.body.password);
-        let info = req.body;
+       //creamos cada campo manualmente y no con req.body de una, por el tema de version en phpmyadmin y las fechas
         await db.Users.create({
           name: req.body.name,
-          surname: info.surname,
-          email: info.email,
-          province: info.province,
-          document: info.document,
-          gender: info.gender,
-          birthday: info.birthday,
-          phone: info.phone,
+          surname: req.body.surname,
+          email: req.body.email,
+          province: req.body.province,
+          document: req.body.document,
+          gender: req.body.gender,
+          birthday: req.body.birthday,
+          phone: req.body.phone,
           profile_pic: req.file.filename,
           password: encryptedPss,
           registration_date: new Date().getTime(),
@@ -60,14 +59,14 @@ let userController = {
     });
   },
   profile: async (req, res) => {
-    let id = req.session.user.id;
+  
     let visitedProfile = req.params.id;
 
     let visitor = await db.Users.findOne({
       where: { id: visitedProfile },
     });
     let user = await db.Users.findOne({
-      where: { id: id },
+      where: { id: req.session.user.id },
     });
     let products = await db.Products.findAll({
       where: { created_by: visitedProfile },
@@ -84,7 +83,7 @@ let userController = {
       ],
     });
     let followed = await db.Follower.findOne({
-      where: { follows: visitor.id, followed_by: id },
+      where: { follows: visitor.id, followed_by: req.session.user.id },
     });
     return res.render("profile", {
       followers: followers,

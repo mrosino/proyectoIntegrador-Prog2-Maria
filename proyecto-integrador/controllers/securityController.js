@@ -62,10 +62,8 @@ var securityController = {
       return res.redirect(req.headers.referer);
     }
   },
-
   imagenEdited: async (req, res) => {
     let user = await db.Users.findByPk(req.session.user.id);
-
     if (bcrypt.compareSync(req.body.password, user.password)) {
       await db.Users.update(
         {
@@ -82,10 +80,10 @@ var securityController = {
       req.flash("danger", "La contraseña no es correcta");
       return res.redirect(req.headers.referer);
     }
-  }, editedUser: async (req, res) => {
-    let submitedEmail = req.body.email;
+  },
+  editedUser: async (req, res) => {
     let email = await db.Users.findOne({
-      where: { email: submitedEmail },
+      where: { email: req.body.email },
     });
     if (!email) {
       let user = await db.Users.findOne({ where: { id: req.session.user.id } });

@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     created_by: {
       type: DataTypes.INTEGER,
     },
-
     image: {
       type: DataTypes.STRING,
     },

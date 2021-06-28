@@ -23,23 +23,21 @@ let productController = {
     return res.redirect(req.headers.referer);
   },
   productAdded: async (req, res) => {
-    let info = req.body;
     await db.Products.create({
       created_by: req.session.user.id,
       image: req.file.filename,
-      product_name: info.product_name,
+      product_name: req.body.product_name,
       creation_date: new Date().getTime(),
       update_date: new Date().getTime(),
-      description: info.description,
-      price: info.price,
+      description: req.body.description,
+      price: req.body.price,
     });
     req.flash("success", "Producto añadido!");
     return res.redirect(`/ramo/profile/${req.session.user.id}`);
   },
   productEdit: async (req, res) => {
-    let productId = req.params.id;
     let product = await db.Products.findOne({
-      where: { id: productId },
+      where: { id: req.params.id },
     });
     if (product) {
       if (product.created_by != req.session.user.id) {

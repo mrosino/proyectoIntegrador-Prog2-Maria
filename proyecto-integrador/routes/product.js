@@ -11,7 +11,7 @@ router.post("/products/productDelete", productController.productDelete);
 router.get("/productEdit/:id", productController.productEdit);
 router.get("/productAdd", productController.productAdd);
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage( {
   destination: (req, file, cb) => {
     let directoryRoute = "public/images/products";
     cb(null, directoryRoute);

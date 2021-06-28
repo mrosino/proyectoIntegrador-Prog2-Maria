@@ -13,29 +13,28 @@
                 <h2>Ingresá los datos correspondientes para editar tu producto.</h2>
             </div>
             <div class="form-content">
-                <form method="POST" action="/ramo/productEdit" enctype="multipart/form-data">
-                    <input type="hidden" name="productId" value="<%= products.id %> ">
+                <form method="POST" action="/ramo/productEdit" enctype="multipart/form-data"> <!--¿Que es esto?-->
+                    <input type="hidden" name="productId" value="<%= products.id %>">
+                    <!--¿Porque se usa esto acá? ¿Y en el resto de el form?-->
                     <div class="form-group">
                         <label for="productName">
                             Renombrá tu producto
                         </label>
                         <input type="text" name="product_name" placeholder="nombre del producto" maxlength="30"
-                            value="<%= products.product_name %> " />
+                            value="<%=products.product_name %>" />
                     </div>
                     <div class="form-group">
                         <label for="image" class="postLabel">Actualiza la imagen de tu producto</label>
-                        <input type="hidden" name="oldimage" value="<%= products.image %> ">
-                        <input type="file" name="newImage" class="image">
+                        <input type="hidden" name="oldimage" value="<%= products.image %>">
+                        <input type="file" name="newImage" class="image"> <!--¿Por qué tiene nombre-->
                     </div>
                     <div class="form-group">
                         <label for="password">Describí tu producto</label>
-                        <input type="text" name="description" placeholder="caracteristicas del producto"
-                            value="<%= products.description %> " />
+                        <input type="text" name="description" placeholder="caracteristicas del producto" value="<%=products.description %>" />
                     </div>
                     <div class="form-group">
                         <label for="password">Precio de tu producto</label>
-                        <input type="text" name="price" placeholder="precio del producto"
-                            value="<%= products.price %> " />
+                        <input type="text" name="price" placeholder="precio del producto" value="<%=products.price %>" />
                     </div>
                     <div class="form-group">
                         <label for="password">
@@ -44,7 +43,7 @@
                         <input type="password" name="password" placeholder="Nueva contraseña">
                     </div>
                     <div class="form-group">
-                        <%- include('./partials/flashKeys') %>
+                        <%- include('./partials/flashKeys') %> <!--¿Que es esto?-->
                         <button type="submit">Actualizar producto</button>
                     </div>
                 </form>
