@@ -78,7 +78,7 @@ let productController = {
           where: { id: req.body.productId },
         }
       );
-      return res.redirect(`/ramo/products/${req.body.productId}`);
+      return res.redirect(`/ramo/product/${req.body.productId}`);
     } else {
       req.flash("danger", "La contraseña no es correcta");
       return res.redirect(req.headers.referer);
@@ -126,7 +126,7 @@ let productController = {
       order: [["creation_date", "DESC"]],
     });
 
-    return res.render("products", {
+    return res.render("product", {
       comments: info,
       products: data,
       title: "Pagina de detalle de productos",

@@ -21,7 +21,7 @@
             <% } %>
             </p>
             <% if (locals.logged==true && locals.user.id==products.created_by) { %>
-            <form action="/ramo/products/productDelete" method="post">
+            <form action="/ramo/product/productDelete" method="post">
                 <input type="hidden" name="productId" value="<%= products.id %> ">
 
                 <div class="no-margin">
@@ -71,7 +71,7 @@
                                         </a> </strong>
                                     <%= comments[i].content %>
                                     <% if (locals.logged==true && locals.user.id==comments[i].creator_id) { %>
-                                <form action="/ramo/products/commentDelete" method="post">
+                                <form action="/ramo/product/commentDelete" method="post">
 
                                     <input type="hidden" name="idC" value="<%= comments[i].id %> ">
 
@@ -87,7 +87,7 @@
                     </section>
                     <%- include('./partials/flashKeys') %>
                     <% if (locals.logged==true){ %>
-                    <form class="form-comentario" action="/ramo/products/commentAdd" method="POST">
+                    <form class="form-comentario" action="/ramo/product/commentAdd" method="POST">
                         <input type="hidden" name="id" value="<%= products.id %> ">
                         <input class="form-input" type="text" name="comment" placeholder="Agregar comentario">
                         <button type="submit" class="buy-now-button">Agregar comentario</button>

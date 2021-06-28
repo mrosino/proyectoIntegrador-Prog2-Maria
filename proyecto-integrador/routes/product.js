@@ -4,10 +4,10 @@ const multer = require("multer");
 const path = require("path");
 let productController = require("../controllers/productController");
 
-router.get("/products/:id?", productController.products);
-router.post("/products/commentAdd", productController.commentAdd);
-router.post("/products/commentDelete", productController.commentDelete);
-router.post("/products/productDelete", productController.productDelete);
+router.get("/product/:id?", productController.products);
+router.post("/product/commentAdd", productController.commentAdd);
+router.post("/product/commentDelete", productController.commentDelete);
+router.post("/product/productDelete", productController.productDelete);
 router.get("/productEdit/:id", productController.productEdit);
 router.get("/productAdd", productController.productAdd);
 

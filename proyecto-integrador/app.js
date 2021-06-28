@@ -28,7 +28,7 @@ const privateRoutes = [
   "/ramo/productAdd",
   "/ramo/emailEdit",
   "/ramo/pssEdit",
-  "/ramo/products/productDelete",
+  "/ramo/product/productDelete",
   "/ramo/profile",
   "/ramo/productEdit",
 ];
