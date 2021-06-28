@@ -37,9 +37,9 @@ let productController = {
     return res.redirect(`/ramo/profile/${req.session.user.id}`);
   },
   productEdit: async (req, res) => {
-    let idP = req.params.id;
+    let productId = req.params.id;
     let product = await db.Products.findOne({
-      where: { id: idP },
+      where: { id: productId },
     });
     if (product) {
       if (product.created_by != req.session.user.id) {
@@ -66,7 +66,7 @@ let productController = {
       if (req.file) {
         image = req.file.filename;
       } else {
-        image = req.body.imagenH;
+        image = req.body.oldimage;
       }
       await db.Products.update(
         {
@@ -77,10 +77,10 @@ let productController = {
           price: req.body.price,
         },
         {
-          where: { id: req.body.idP },
+          where: { id: req.body.productId },
         }
       );
-      return res.redirect(`/ramo/products/${req.body.idP}`);
+      return res.redirect(`/ramo/products/${req.body.productId}`);
     } else {
       req.flash("danger", "La contraseña no es correcta");
       return res.redirect(req.headers.referer);
@@ -99,10 +99,10 @@ let productController = {
       return res.redirect("/ramo/login");
     } else {
       await db.Comments.destroy({
-        where: { id: req.body.idP },
+        where: { id: req.body.productId },
       });
       await db.Products.destroy({
-        where: { id: req.body.idP },
+        where: { id: req.body.productId },
       });
       req.flash("danger", "Producto eliminado");
       return res.redirect(`/ramo/profile/${id}`);

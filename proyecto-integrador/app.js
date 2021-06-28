@@ -32,6 +32,7 @@ const privateRoutes = [
   "/ramo/profile",
   "/ramo/productEdit",
 ];
+
 app.use(
   session({
     secret: "ramo",
