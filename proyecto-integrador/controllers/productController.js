@@ -85,11 +85,10 @@ let productController = {
     }
   },
   productDelete: async (req, res) => {
-    let id = req.session.user.id;
-    let ok = await db.Products.findOne({
+    let correctUser = await db.Products.findOne({
       where: { created_by: req.session.user.id },
     });
-    if (!ok) {
+    if (!correctUser) {
       res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
       req.session.destroy();
       res.clearCookie("loggedIn");
@@ -103,7 +102,7 @@ let productController = {
         where: { id: req.body.productId },
       });
       req.flash("danger", "Producto eliminado");
-      return res.redirect(`/ramo/profile/${id}`);
+      return res.redirect(`/ramo/profile/${req.session.user.id}`);
     }
   },
   products: async (req, res) => {
@@ -129,7 +128,7 @@ let productController = {
 
     return res.render("products", {
       comments: info,
-      products: data.dataValues,
+      products: data,
       title: "Pagina de detalle de productos",
     });
   },
