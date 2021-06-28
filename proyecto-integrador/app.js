@@ -62,7 +62,7 @@ app.use(async (req, res, next) => {
 });
 app.use(function (req, res, next) {
   if (req.session.user != undefined) {
-    res.cookie("loggedIn", "logged", { maxAge: 5000 * 60 });
+    res.cookie( "logged", { maxAge: 5000 * 60 });
     res.locals.user = req.session.user;
     res.locals.logged = true;
   } else {

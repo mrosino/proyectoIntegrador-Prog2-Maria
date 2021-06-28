@@ -32,7 +32,7 @@ var securityController = {
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.clearCookie("loggedIn");
+    
     res.clearCookie("remembered");
     return res.redirect("/ramo/login");
   },

@@ -42,7 +42,7 @@ let productController = {
     if (product) {
       if (product.created_by != req.session.user.id) {
         req.session.destroy();
-        res.clearCookie("loggedIn");
+        
         res.clearCookie("remembered");
         return res.redirect(`/ramo/login`);
       } else {
@@ -91,7 +91,7 @@ let productController = {
     if (!correctUser) {
       res.cookie("error", "changeSession", { maxAge: 1000 * 60 });
       req.session.destroy();
-      res.clearCookie("loggedIn");
+     
       res.clearCookie("remembered");
       return res.redirect("/ramo/login");
     } else {
