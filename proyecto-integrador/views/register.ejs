@@ -26,14 +26,14 @@
 					</div>
 					<div class="form-group">
 						<label for="email">
-							Ingrese su email
+							Ingrese su Email
 						</label>
 						<input required type="email" name="email" placeholder="Ingrese su correo electronico">
 					</div>
 					<div class="form-group">
 						<%if(error=="length" ){%>
 						<h2 style="text-align:center; color:red;">La contraseña debe tener un
-							minimo de 4 caracteres.</h2>
+							minimo de 4 caracteres.</h2> 
 						<%}%>
 													<label for="password">
 														Ingrese su clave
@@ -85,13 +85,9 @@
 												<option value="Tierra del Fuego">Tierra del Fuego</option>
 												<option value="Tucuman">Tucuman</option>
 											</select>									</div>
+									
 										<div class="form-group">
-											<label for="document">
-												Ingrese su documento
-											</label>
-											<input required type="number" name="document" placeholder="Ingrese su documento">
-										</div>
-										<div class="form-group">										<label for="gender">
+											<label for="gender">
 												Ingrese el genero de identificación
 											</label>
 											<select id="gender" name="gender" class="form-control">
@@ -99,7 +95,7 @@
 												<option value="femenino">Femenino</option>
 												<option value="nsnc">Prefiero no elegir</option>
 											</select>
-									</div>
+										</div>
 										<div class="form-group">									
 												<label for="birthday">
 												Ingrese su fecha de nacimiento

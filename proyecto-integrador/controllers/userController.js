@@ -20,7 +20,6 @@ let userController = {
           surname: req.body.surname,
           email: req.body.email,
           province: req.body.province,
-          document: req.body.document,
           gender: req.body.gender,
           birthday: req.body.birthday,
           phone: req.body.phone,
@@ -43,19 +42,19 @@ let userController = {
   emailEdit: (req, res) => {
     return res.render("emailEdit", {
       title: "Pagina de edicion de perfil",
-      error: req.cookies.error,
+     
     });
   },
   pssEdit: (req, res) => {
     return res.render("pssEdit", {
       title: "Pagina de edicion de perfil",
-      error: req.cookies.error,
+      
     });
   },
   imagenEdit: (req, res) => {
     return res.render("imagenEdit", {
       title: "Pagina de edicion foto de perfil",
-      error: req.cookies.error,
+     
     });
   },
   profile: async (req, res) => {

@@ -21,9 +21,6 @@ module.exports = (sequelize, DataTypes) => {
     province: {
       type: DataTypes.STRING,
     },
-    document: {
-      type: DataTypes.INTEGER,
-    },
     gender: {
       type: DataTypes.STRING,
     },
